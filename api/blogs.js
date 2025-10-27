@@ -32,7 +32,7 @@ app.post("/api/blogs", async (req, res) => {
 });
 
 // ✅ Fetch all blogs
-app.get("/blogs", async (req, res) => {
+app.get("/api/blogs", async (req, res) => {
   try {
     await connectDB();
     const blogs = await Blog.find().sort({ createdAt: -1 });
