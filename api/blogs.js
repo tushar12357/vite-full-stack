@@ -1,14 +1,13 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
+const cors = require("cors");
+const serverless = require("serverless-http");
 
-import serverless from "serverless-http";
-import { connectDB } from "./db.js";
-import Blog from "./models/Blog.js";
+const { connectDB } = require("./db");
+const Blog = require("./models/Blog");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-
-
 
 // POST /api/blogs
 app.post("/api/blogs", async (req, res) => {
@@ -64,5 +63,4 @@ app.patch("/api/blogs/:id", async (req, res) => {
   }
 });
 
-// ✅ Export properly for Vercel
-export default serverless(app);
+module.exports = serverless(app);
