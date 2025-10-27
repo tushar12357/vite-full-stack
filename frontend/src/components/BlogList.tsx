@@ -1,5 +1,18 @@
-export default function BlogList({ blogs, onUpdated }) {
-  const deleteBlog = async (id) => {
+
+interface Blog {
+  _id: string;
+  title: string;
+  content: string;
+  author: string;
+}
+
+interface BlogListProps {
+  blogs: Blog[];
+  onUpdated: () => void;
+}
+
+export default function BlogList({ blogs, onUpdated }: BlogListProps) {
+  const deleteBlog = async (id: string) => {
     await fetch(`/api/blogs/${id}`, { method: "DELETE" });
     onUpdated();
   };
