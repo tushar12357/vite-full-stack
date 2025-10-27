@@ -1,48 +1,25 @@
 import { useEffect, useState } from "react";
+import BlogForm from "./components/BlogForm";
+import BlogList from "./components/BlogList";
 
-function App() {
-  const [data, setData] = useState<{ message?: string; time?: string } | null>(null);
-  const [loading, setLoading] = useState(true);
+export default function App() {
+  const [blogs, setBlogs] = useState([]);
+
+  const fetchBlogs = async () => {
+    const res = await fetch("/api/blogs");
+    const data = await res.json();
+    setBlogs(data);
+  };
 
   useEffect(() => {
-    // 👇 Call your deployed API route
-    fetch("/api/hello")
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching API:", err);
-        setLoading(false);
-      });
+    fetchBlogs();
   }, []);
 
   return (
-    <div
-      style={{
-        fontFamily: "system-ui, sans-serif",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "linear-gradient(135deg, #4f46e5, #3b82f6)",
-        color: "#fff",
-      }}
-    >
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Vite + Express on Vercel 🚀</h1>
-
-      {loading ? (
-        <p>Loading from API...</p>
-      ) : (
-        <>
-          <p>{data?.message}</p>
-          <p style={{ opacity: 0.8, fontSize: "0.9rem" }}>{data?.time}</p>
-        </>
-      )}
+    <div className="p-6 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4 text-center">My Blog</h1>
+      <BlogForm onBlogAdded={fetchBlogs} />
+      <BlogList blogs={blogs} onUpdated={fetchBlogs} />
     </div>
   );
 }
-
-export default App;
