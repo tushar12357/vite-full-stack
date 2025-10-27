@@ -6,7 +6,7 @@ export default function App() {
   const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = async () => {
-    const res = await fetch("/api/blogs");
+    const res = await fetch("http://localhost:3000/api/blogs");
     const data = await res.json();
     setBlogs(data);
   };

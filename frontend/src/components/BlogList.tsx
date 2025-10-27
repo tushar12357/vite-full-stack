@@ -13,7 +13,7 @@ interface BlogListProps {
 
 export default function BlogList({ blogs, onUpdated }: BlogListProps) {
   const deleteBlog = async (id: string) => {
-    await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+    await fetch(`http://localhost:3000/api/blogs/${id}`, { method: "DELETE" });
     onUpdated();
   };
 

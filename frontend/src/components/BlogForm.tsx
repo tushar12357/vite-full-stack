@@ -26,7 +26,7 @@ export default function BlogForm({ onBlogAdded }: BlogFormProps) {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await fetch("/api/blogs", {
+    await fetch("http://localhost:3000/api/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
