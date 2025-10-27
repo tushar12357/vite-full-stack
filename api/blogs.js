@@ -6,7 +6,7 @@ import Blog from "./models/Blog.js";
 const app = express();
 app.use(express.json());
 
-// ✅ Create new blog (POST /api/blogs)
+// POST /api/blogs
 app.post("/api/blogs", async (req, res) => {
   try {
     await connectDB();
@@ -24,7 +24,7 @@ app.post("/api/blogs", async (req, res) => {
   }
 });
 
-// ✅ Fetch all blogs (GET /api/blogs)
+// GET /api/blogs
 app.get("/api/blogs", async (req, res) => {
   try {
     await connectDB();
@@ -36,7 +36,7 @@ app.get("/api/blogs", async (req, res) => {
   }
 });
 
-// ✅ Update a blog (PATCH /api/blogs/:id)
+// PATCH /api/blogs/:id
 app.patch("/api/blogs/:id", async (req, res) => {
   try {
     await connectDB();
@@ -60,4 +60,5 @@ app.patch("/api/blogs/:id", async (req, res) => {
   }
 });
 
-export const handler = serverless(app);
+// ✅ Export properly for Vercel
+export default serverless(app);
