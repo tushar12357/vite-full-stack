@@ -24,12 +24,7 @@ export default function BlogList({ blogs, onUpdated }: BlogListProps) {
           <p className="text-gray-700">{b.content}</p>
           <div className="flex justify-between items-center mt-2 text-sm text-gray-500">
             <span>By {b.author}</span>
-            <button
-              onClick={() => deleteBlog(b._id)}
-              className="text-red-500 hover:underline"
-            >
-              Delete
-            </button>
+            
           </div>
         </div>
       ))}
