@@ -6,13 +6,13 @@
       "config": { "distDir": "dist" }
     },
     {
-      "src": "api/blogs.js",
+      "src": "api/**/*.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/blogs.js" },
+    { "src": "/api/blogs", "methods": ["GET"], "dest": "/api/blogs/get.js" },
+    { "src": "/api/blogs", "methods": ["POST"], "dest": "/api/blogs/post.js" },
     { "src": "/(.*)", "dest": "/frontend/$1" }
-  ],
-  "ignoreCommand": "echo 'Ignoring non-function files'"
+  ]
 }
