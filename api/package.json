@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "blogs.js",
   "dependencies": {
     "express": "^4.19.0",
     "serverless-http": "^3.2.0",

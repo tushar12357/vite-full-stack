@@ -1,10 +1,18 @@
 import express from "express";
+import cors from "cors";
+
 import serverless from "serverless-http";
 import { connectDB } from "./db.js";
 import Blog from "./models/Blog.js";
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({
+  origin: "http://localhost:5173", // your frontend URL
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  credentials: true
+}));
 
 // POST /api/blogs
 app.post("/api/blogs", async (req, res) => {
