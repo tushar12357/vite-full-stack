@@ -14,19 +14,11 @@ interface BlogListProps {
 
 export default function BlogList({ blogs, onUpdated }: BlogListProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [editForm, setEditForm] = useState({
-    title: "",
-    content: "",
-    author: "",
-  });
+  const [editForm, setEditForm] = useState({ title: "", content: "", author: "" });
 
   const startEdit = (blog: Blog) => {
     setEditingId(blog._id);
-    setEditForm({
-      title: blog.title,
-      content: blog.content,
-      author: blog.author,
-    });
+    setEditForm({ title: blog.title, content: blog.content, author: blog.author });
   };
 
   const cancelEdit = () => {
@@ -35,7 +27,7 @@ export default function BlogList({ blogs, onUpdated }: BlogListProps) {
   };
 
   const saveEdit = async (id: string) => {
-    await fetch(`/api/blogs/${id}`, {
+    await fetch(`http://localhost:3000/api/blogs/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editForm),
@@ -45,7 +37,7 @@ export default function BlogList({ blogs, onUpdated }: BlogListProps) {
   };
 
   const deleteBlog = async (id: string) => {
-    await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+    await fetch(`http://localhost:3000/api/blogs/${id}`, { method: "DELETE" });
     onUpdated();
   };
 
@@ -58,25 +50,19 @@ export default function BlogList({ blogs, onUpdated }: BlogListProps) {
               <input
                 type="text"
                 value={editForm.title}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, title: e.target.value })
-                }
+                onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
                 className="border w-full p-2 rounded"
               />
               <textarea
                 value={editForm.content}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, content: e.target.value })
-                }
+                onChange={(e) => setEditForm({ ...editForm, content: e.target.value })}
                 className="border w-full p-2 rounded"
                 rows={3}
               />
               <input
                 type="text"
                 value={editForm.author}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, author: e.target.value })
-                }
+                onChange={(e) => setEditForm({ ...editForm, author: e.target.value })}
                 className="border w-full p-2 rounded"
               />
               <div className="flex gap-2">
