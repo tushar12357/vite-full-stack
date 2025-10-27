@@ -1,8 +1,6 @@
-import express from 'express';
-const app = express();
-
-app.get('/api/users', (req, res) => {
-  res.json([{ id: 1, name: 'Alice' }]);
-});
-
-export default app;
+export default function handler(req, res) {
+  return res.status(200).json({
+    message: 'Hello from Vercel Serverless API 👋',
+    time: new Date().toISOString(),
+  });
+}

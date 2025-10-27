@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState<{ message?: string; time?: string } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 👇 Call your deployed API route
+    fetch("/api/hello")
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching API:", err);
+        setLoading(false);
+      });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div
+      style={{
+        fontFamily: "system-ui, sans-serif",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(135deg, #4f46e5, #3b82f6)",
+        color: "#fff",
+      }}
+    >
+      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Vite + Express on Vercel 🚀</h1>
+
+      {loading ? (
+        <p>Loading from API...</p>
+      ) : (
+        <>
+          <p>{data?.message}</p>
+          <p style={{ opacity: 0.8, fontSize: "0.9rem" }}>{data?.time}</p>
+        </>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
