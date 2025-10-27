@@ -1,68 +1,35 @@
 import express from "express";
-import cors from "cors";
-
 import serverless from "serverless-http";
+import cors from "cors";
 import { connectDB } from "./db.js";
 import Blog from "./models/Blog.js";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
-
-    
-// POST /api/blogs
+// Routes
 app.post("/api/blogs", async (req, res) => {
   try {
     await connectDB();
-    const { title, content, author } = req.body;
-
-    if (!title || !content || !author) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
-
-    const newBlog = await Blog.create({ title, content, author });
-    res.status(201).json(newBlog);
-  } catch (error) {
-    console.error("POST /api/blogs error:", error);
-    res.status(500).json({ error: "Failed to create blog" });
+    const blog = new Blog(req.body);
+    await blog.save();
+    res.status(201).json(blog);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
-// GET /api/blogs
 app.get("/api/blogs", async (req, res) => {
   try {
     await connectDB();
-    const blogs = await Blog.find().sort({ createdAt: -1 });
-    res.status(200).json(blogs);
-  } catch (error) {
-    console.error("GET /api/blogs error:", error);
-    res.status(500).json({ error: "Failed to fetch blogs" });
+    const blogs = await Blog.find();
+    res.json(blogs);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
   }
 });
 
-// PATCH /api/blogs/:id
-app.patch("/api/blogs/:id", async (req, res) => {
-  try {
-    await connectDB();
-    const { id } = req.params;
-    const { title, content, author } = req.body;
-
-    const updated = await Blog.findByIdAndUpdate(
-      id,
-      { title, content, author },
-      { new: true }
-    );
-
-    if (!updated) {
-      return res.status(404).json({ error: "Blog not found" });
-    }
-
-    res.status(200).json(updated);
-  } catch (error) {
-    console.error("PATCH /api/blogs/:id error:", error);
-    res.status(500).json({ error: "Failed to update blog" });
-  }
-});
-
-// ✅ Export properly for Vercel
-export default serverless(app);
+export const handler = serverless(app);
+export default handler;
