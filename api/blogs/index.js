@@ -18,7 +18,6 @@ export default async function handler(req, res) {
       limit = 9,
     } = req.query;
 
-    // Build filter
     const filter = {};
     if (q) {
       const regex = new RegExp(q.trim(), "i");
@@ -47,6 +46,10 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error("GET /api/blogs error:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({
+      message: "Failed to fetch blogs",
+      error: err.message,
+      stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+    });
   }
 }

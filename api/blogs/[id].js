@@ -7,7 +7,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  const { id } = req.query; // Vercel uses req.query for dynamic segments
+  const { id } = req.query; // Vercel dynamic route → req.query.id
+
+  if (!id) {
+    return res.status(400).json({ message: "Blog ID or slug is required" });
+  }
 
   try {
     await connectDB();
@@ -23,6 +27,10 @@ export default async function handler(req, res) {
     res.status(200).json(blog);
   } catch (err) {
     console.error("GET /api/blogs/[id] error:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({
+      message: "Failed to fetch blog",
+      error: err.message,
+      stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+    });
   }
 }

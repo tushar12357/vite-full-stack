@@ -5,13 +5,19 @@ import slugify from "slugify";
 import { v2 as cloudinary } from "cloudinary";
 import { Buffer } from "buffer";
 
-// Configure Cloudinary (set in .env)
+// ---------- Cloudinary ----------
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// ---------- Disable bodyParser ----------
+export const config = {
+  api: { bodyParser: false },
+};
+
+// ---------- Main Handler ----------
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method Not Allowed" });
@@ -20,8 +26,8 @@ export default async function handler(req, res) {
   try {
     await connectDB();
 
-    // Parse form data manually (Vercel doesn't support bodyParser with files)
-    const formData = await parseMultipartForm(req);
+    // Parse multipart manually
+    const { fields, files } = await parseMultipartForm(req);
 
     const {
       title,
@@ -31,51 +37,61 @@ export default async function handler(req, res) {
       readTime,
       category,
       featured = "false",
-    } = formData.fields;
+    } = fields;
 
-    const file = formData.files.image?.[0];
+    const file = files?.image?.[0];
 
-    // Validate
-    if (
-      !title ||
-      !excerpt ||
-      !content ||
-      !author ||
-      !readTime ||
-      !category ||
-      !file
-    ) {
-      return res
-        .status(400)
-        .json({ message: "All fields including image are required" });
+    // ---------- Validation ----------
+    const missing = [];
+    if (!title) missing.push("title");
+    if (!excerpt) missing.push("excerpt");
+    if (!content) missing.push("content");
+    if (!author) missing.push("author");
+    if (!readTime) missing.push("readTime");
+    if (!category) missing.push("category");
+    if (!file) missing.push("image");
+
+    if (missing.length) {
+      return res.status(400).json({
+        message: `Missing required fields: ${missing.join(", ")}`,
+      });
     }
 
-    // Upload to Cloudinary
+    // ---------- Upload to Cloudinary ----------
     const b64 = Buffer.from(file.buffer).toString("base64");
     const dataURI = `data:${file.mimetype};base64,${b64}`;
 
-    const result = await cloudinary.uploader.upload(dataURI, {
-      folder: "blogs",
-      resource_type: "image",
-    });
+    let imageUrl;
+    try {
+      const result = await cloudinary.uploader.upload(dataURI, {
+        folder: "blogs",
+        resource_type: "image",
+        allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
+      });
+      imageUrl = result.secure_url;
+    } catch (cloudErr) {
+      console.error("Cloudinary upload failed:", cloudErr);
+      return res.status(400).json({
+        message: "Image upload failed",
+        error: cloudErr.message,
+      });
+    }
 
-    const imageUrl = result.secure_url;
-
-    // Generate unique slug
+    // ---------- Generate unique slug ----------
     const baseSlug = slugify(title, { lower: true, strict: true });
     let slug = baseSlug;
     let counter = 1;
-    while (await Blog.findOne({ slug })) {
-      slug = `${baseSlug}-${counter}`;
-      counter++;
+    while (await Blog.findOne({ slug }).lean()) {
+      slug = `${baseSlug}-${counter++}`;
     }
 
+    // ---------- Save Blog ----------
     const blog = new Blog({
       title,
       excerpt,
       content,
       author,
-      readTime,
+      readTime: Number(readTime),
       category,
       featured: featured === "true",
       image: imageUrl,
@@ -87,18 +103,29 @@ export default async function handler(req, res) {
     res.status(201).json(blog);
   } catch (err) {
     console.error("POST /api/blogs/create error:", err);
-    res.status(500).json({ message: err.message || "Server error" });
+
+    // Duplicate slug (MongoDB E11000)
+    if (err.code === 11000) {
+      return res.status(400).json({ message: "Slug conflict – try a different title" });
+    }
+
+    res.status(500).json({
+      message: "Internal Server Error",
+      error: err.message,
+      stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+    });
   }
 }
 
-// Helper: Parse multipart/form-data in Vercel
+// ---------- Multipart Parser (no deps) ----------
 async function parseMultipartForm(req) {
   const chunks = [];
-  for await (const chunk of req) {
-    chunks.push(chunk);
-  }
+  for await (const chunk of req) chunks.push(chunk);
   const buffer = Buffer.concat(chunks);
-  const boundary = req.headers["content-type"].split("boundary=")[1];
+
+  const boundary = req.headers["content-type"]?.split("boundary=")[1];
+  if (!boundary) throw new Error("Missing multipart boundary");
+
   const parts = parseFormData(buffer, boundary);
 
   const fields = {};
@@ -106,28 +133,27 @@ async function parseMultipartForm(req) {
 
   for (const part of parts) {
     if (part.filename) {
-      const fieldName = part.name;
-      if (!files[fieldName]) files[fieldName] = [];
-      files[fieldName].push({
+      const name = part.name;
+      if (!files[name]) files[name] = [];
+      files[name].push({
         buffer: part.data,
         filename: part.filename,
         mimetype: part["content-type"],
       });
     } else {
-      fields[part.name] = part.data.toString("utf8");
+      fields[part.name] = part.data.toString("utf8").trim();
     }
   }
 
   return { fields, files };
 }
 
-// Simple form parser (no external deps)
 function parseFormData(buffer, boundary) {
   const parts = [];
   const boundaryBytes = Buffer.from(`--${boundary}`);
   const endBoundary = Buffer.from(`--${boundary}--`);
 
-  let start = buffer.indexOf(boundaryBytes) + boundaryBytes.length + 2; // +2 for \r\n
+  let start = buffer.indexOf(boundaryBytes) + boundaryBytes.length + 2; // skip \r\n
   const end = buffer.indexOf(endBoundary);
 
   while (start > boundaryBytes.length && start < end) {
@@ -136,22 +162,18 @@ function parseFormData(buffer, boundary) {
     const contentStart = headerEnd + 4;
     const nextBoundary = buffer.indexOf(boundaryBytes, contentStart);
 
-    const content = buffer.slice(contentStart, nextBoundary - 2); // -2 for \r\n
+    const content = buffer.slice(contentStart, nextBoundary - 2); // remove \r\n
 
-    const part = { headers: {} };
+    const part = {};
     headers.split("\r\n").forEach((line) => {
       const [key, value] = line.split(": ");
-      if (key.toLowerCase() === "content-disposition") {
-        const nameMatch = value.match(/name="([^"]+)"/);
-        const filenameMatch = value.match(/filename="([^"]+)"/);
-        part.name = nameMatch?.[1];
-        part.filename = filenameMatch?.[1];
+      const k = key.toLowerCase();
+      if (k === "content-disposition") {
+        part.name = value.match(/name="([^"]+)"/)?.[1];
+        part.filename = value.match(/filename="([^"]+)"/)?.[1];
       }
-      if (key.toLowerCase() === "content-type") {
-        part["content-type"] = value;
-      }
+      if (k === "content-type") part["content-type"] = value;
     });
-
     part.data = content;
     parts.push(part);
 
@@ -160,10 +182,3 @@ function parseFormData(buffer, boundary) {
 
   return parts;
 }
-
-// Required: Disable body parsing
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
