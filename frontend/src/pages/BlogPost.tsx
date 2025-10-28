@@ -38,7 +38,7 @@ export default function BlogPost() {
       setError(null);
       try {
         const res = await fetch(
-          `https://vite-full-stack.vercel.app/api/blogs/slug=${id}`
+          `https://vite-full-stack.vercel.app/api/blogs/?slug=${id}`
         );
         if (!res.ok) {
           const err = await res.json();
