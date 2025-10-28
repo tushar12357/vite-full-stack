@@ -1,5 +1,5 @@
 // api/blogs/create.js
-import { connectDB } from "../../db.js";
+import { connectDB } from "../db.js";
 import Blog from "../../models/Blog.js";
 import slugify from "slugify";
 import { v2 as cloudinary } from "cloudinary";
