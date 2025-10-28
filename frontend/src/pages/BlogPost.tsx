@@ -7,24 +7,44 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 
+interface Blog {
+  _id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  readTime: number;
+  category: string;
+  featured: boolean;
+  image: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // -----------------------------------------------------------------
+  // FETCH SINGLE POST
+  // -----------------------------------------------------------------
   useEffect(() => {
     const fetchPost = async () => {
       if (!id) return;
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`https://vite-full-stack.vercel.app/api/blogs/${id}`);
+        const res = await fetch(
+          `https://vite-full-stack.vercel.app/api/blogs/${id}`
+        );
         if (!res.ok) {
           const err = await res.json();
           throw new Error(err.message || "Failed to load post");
         }
-        const data = await res.json();
+        const data: Blog = await res.json();
         setPost(data);
       } catch (e: any) {
         setError(e.message);
@@ -32,10 +52,24 @@ export default function BlogPost() {
         setLoading(false);
       }
     };
-
     fetchPost();
   }, [id]);
 
+  // -----------------------------------------------------------------
+  // HELPERS
+  // -----------------------------------------------------------------
+  const formatDate = (date: string) =>
+    new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+
+  const formatReadTime = (mins: number) => `${mins} min read`;
+
+  // -----------------------------------------------------------------
+  // RENDER
+  // -----------------------------------------------------------------
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
@@ -71,26 +105,13 @@ export default function BlogPost() {
     );
   }
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    });
-  };
-
-  const formatReadTime = (readTime: string) => {
-    if (!readTime || readTime === "NaN") return "5 min read";
-    return readTime;
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       <article className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Back Link */}
+          {/* BACK */}
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
@@ -99,15 +120,15 @@ export default function BlogPost() {
             Back to Blog
           </Link>
 
-          {/* Category Badge */}
+          {/* CATEGORY */}
           <Badge className="mb-4">{post.category}</Badge>
 
-          {/* Title */}
+          {/* TITLE */}
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
             {post.title}
           </h1>
 
-          {/* Meta Info */}
+          {/* META */}
           <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-8 pb-8 border-b border-border">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4" />
@@ -127,7 +148,7 @@ export default function BlogPost() {
             </Button>
           </div>
 
-          {/* Featured Image */}
+          {/* IMAGE */}
           <div className="aspect-video rounded-2xl overflow-hidden mb-12">
             <img
               src={post.image}
@@ -136,7 +157,7 @@ export default function BlogPost() {
             />
           </div>
 
-          {/* Content */}
+          {/* CONTENT (HTML) */}
           <div
             className="prose prose-lg max-w-none
               prose-headings:font-bold prose-headings:text-foreground
@@ -148,7 +169,7 @@ export default function BlogPost() {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          {/* CTA Section */}
+          {/* CTA */}
           <div className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
             <h3 className="text-2xl font-bold mb-4">
               Ready to Transform Your Business?

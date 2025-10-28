@@ -17,12 +17,32 @@ const CATEGORIES = [
   "Research",
 ];
 
-export default function Blog() {
+interface Blog {
+  _id: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  readTime: number;
+  category: string;
+  featured: boolean;
+  image: string;
+  slug: string;
+  createdAt: string;
+}
+
+interface Pagination {
+  page: number;
+  limit: number;
+  total: number;
+  pages: number;
+}
+
+export default function BlogList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [page, setPage] = useState(1);
-  const [blogs, setBlogs] = useState<any[]>([]);
-  const [pagination, setPagination] = useState({
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [pagination, setPagination] = useState<Pagination>({
     page: 1,
     limit: 9,
     total: 0,
@@ -33,6 +53,9 @@ export default function Blog() {
 
   const limit = 9;
 
+  // -----------------------------------------------------------------
+  // FETCH LIST
+  // -----------------------------------------------------------------
   useEffect(() => {
     const fetchBlogs = async () => {
       setLoading(true);
@@ -45,14 +68,16 @@ export default function Blog() {
         if (searchQuery) params.append("q", searchQuery);
         if (selectedCategory !== "All") params.append("category", selectedCategory);
 
-        const res = await fetch(`https://vite-full-stack.vercel.app/api/blogs?${params.toString()}`);
+        const res = await fetch(
+          `https://vite-full-stack.vercel.app/api/blogs?${params.toString()}`
+        );
         if (!res.ok) throw new Error("Failed to load blogs");
         const json = await res.json();
 
-        setBlogs(json.data || []);
-        setPagination(json.pagination || { page: 1, limit: 9, total: 0, pages: 1 });
+        setBlogs(json.data ?? []);
+        setPagination(json.pagination ?? { page: 1, limit: 9, total: 0, pages: 1 });
       } catch (e: any) {
-        setError(e.message || "Something went wrong");
+        setError(e.message ?? "Something went wrong");
       } finally {
         setLoading(false);
       }
@@ -61,22 +86,25 @@ export default function Blog() {
     fetchBlogs();
   }, [searchQuery, selectedCategory, page]);
 
+  // -----------------------------------------------------------------
+  // FEATURED
+  // -----------------------------------------------------------------
   const featuredPost = blogs.find((p) => p.featured);
   const showFeaturedSection =
     selectedCategory === "All" && !searchQuery && featuredPost;
 
-  const formatReadTime = (readTime: string) => {
-    if (!readTime || readTime === "NaN") return "5 min read";
-    return readTime;
-  };
+  const formatReadTime = (mins: number) => `${mins} min read`;
 
+  // -----------------------------------------------------------------
+  // RENDER
+  // -----------------------------------------------------------------
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
       <Header />
 
-      {/* Hero */}
+      {/* HERO */}
       <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center gap-2 mb-4 justify-center">
             <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
               <span className="text-2xl">Pen</span>
@@ -86,19 +114,18 @@ export default function Blog() {
             </Badge>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             CloserX Blog
           </h1>
 
-          <p className="text-xl text-muted-foreground text-center max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Insights, tips, and stories from the cutting edge of AI voice technology
           </p>
 
-          {/* Search */}
+          {/* SEARCH */}
           <div className="max-w-2xl mx-auto relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
-              type="text"
               placeholder="Search articles..."
               className="pl-12 h-14 text-lg bg-card border-2 focus:border-primary"
               value={searchQuery}
@@ -111,7 +138,7 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Category Filters */}
+      {/* CATEGORIES */}
       <section className="pb-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-2 justify-center">
@@ -135,16 +162,16 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Featured Article */}
+      {/* FEATURED */}
       {showFeaturedSection && (
         <section className="pb-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-2 mb-6">
-              <TrendingUp className="h  h-5 w-5 text-primary" />
+              <TrendingUp className="h-5 w-5 text-primary" />
               <h2 className="text-2xl font-bold">Featured Article</h2>
             </div>
 
-            <Link to={`/blog/${featuredPost._id}`} className="group">
+            <Link to={`/blog/${featuredPost._id}`} className="group block">
               <div className="grid md:grid-cols-2 gap-8 bg-card rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-border">
                 <div className="aspect-video md:aspect-auto overflow-hidden">
                   <img
@@ -153,6 +180,7 @@ export default function Blog() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+
                 <div className="p-8 flex flex-col justify-center">
                   <Badge className="w-fit mb-4">{featuredPost.category}</Badge>
                   <h3 className="text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
@@ -174,7 +202,7 @@ export default function Blog() {
                   </div>
 
                   <div className="flex items-center gap-2 text-primary font-semibold">
-                    Read Article{" "}
+                    Read Article
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -184,16 +212,14 @@ export default function Blog() {
         </section>
       )}
 
-      {/* Blog Grid + Pagination */}
+      {/* GRID + PAGINATION */}
       <section className="pb-20 px-4">
         <div className="max-w-7xl mx-auto">
-          {error && (
-            <p className="text-center text-red-500 py-8">{error}</p>
-          )}
+          {error && <p className="text-center text-red-500 py-8">{error}</p>}
 
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
+              {Array.from({ length: 6 }).map((_, i) => (
                 <Skeleton key={i} className="h-96 rounded-2xl" />
               ))}
             </div>
@@ -210,7 +236,7 @@ export default function Blog() {
                   <Link
                     key={post._id}
                     to={`/blog/${post._id}`}
-                    className="group"
+                    className="group block"
                   >
                     <article className="bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-border h-full flex flex-col">
                       <div className="aspect-video overflow-hidden">
@@ -220,6 +246,7 @@ export default function Blog() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
+
                       <div className="p-6 flex flex-col flex-1">
                         <Badge className="w-fit mb-3">{post.category}</Badge>
                         <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
@@ -228,6 +255,7 @@ export default function Blog() {
                         <p className="text-muted-foreground mb-4 flex-1">
                           {post.excerpt}
                         </p>
+
                         <div className="flex items-center justify-between text-sm text-muted-foreground pt-4 border-t border-border">
                           <div className="flex items-center gap-2">
                             <User className="h-3 w-3" />
@@ -241,7 +269,7 @@ export default function Blog() {
                 ))}
               </div>
 
-              {/* Pagination */}
+              {/* PAGINATION */}
               {pagination.pages > 1 && (
                 <div className="flex justify-center gap-2 mt-12">
                   <button
