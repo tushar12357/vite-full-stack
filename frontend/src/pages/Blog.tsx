@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Search, Calendar, User, ArrowRight, TrendingUp } from "lucide-react";
+import { Search, Calendar, User, ArrowRight, TrendingUp, Pen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -107,7 +107,7 @@ export default function BlogList() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center gap-2 mb-4 justify-center">
             <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-2xl">Pen</span>
+              <span className="text-2xl"><Pen/></span>
             </div>
             <Badge variant="secondary" className="text-xs font-semibold">
               UPDATED DAILY
