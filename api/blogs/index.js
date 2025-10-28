@@ -1,4 +1,4 @@
-// api/blogs/index.js
+// pages/api/blogs/index.js
 import Blog from "../models/Blog.js";
 import { connectDB } from "../db.js";
 import slugify from "slugify";
@@ -17,15 +17,34 @@ export const config = {
   api: { bodyParser: false },
 };
 
-// ---------- Main Handler (GET + POST) ----------
+// ---------- Main Handler ----------
 export default async function handler(req, res) {
   const { method } = req;
+  const url = req.url || "";
 
   try {
     await connectDB();
 
-    // ==================== GET: List Blogs ====================
+    // ==================== GET: List or Single Blog ====================
     if (method === "GET") {
+      // Extract ID/slug from URL: /api/blogs/abc123 → "abc123"
+      const idMatch = url.match(/^\/api\/blogs\/([^/?]+)(\?.*)?$/);
+      const idOrSlug = idMatch ? idMatch[1] : null;
+
+      // ---------- Single Blog ----------
+      if (idOrSlug) {
+        const blog = await Blog.findOne({
+          $or: [{ _id: idOrSlug }, { slug: idOrSlug }],
+        }).lean();
+
+        if (!blog) {
+          return res.status(404).json({ message: "Blog not found" });
+        }
+
+        return res.status(200).json(blog);
+      }
+
+      // ---------- List Blogs with Filters ----------
       const {
         q = "",
         category = "",
@@ -70,7 +89,7 @@ export default async function handler(req, res) {
         title,
         excerpt,
         content,
-        unreadTime,
+        readTime: unreadTime,
         author,
         category,
         featured = "false",
@@ -78,23 +97,12 @@ export default async function handler(req, res) {
 
       const file = files?.image?.[0];
 
-      // // ---------- Validation ----------
-      // const missing = [];
-      // if (!title) missing.push("title");
-      // if (!excerpt) missing.push("excerpt");
-      // if (!content) missing.push("content");
-      // if (!author) missing.push("author");
-      // if (!unreadTime) missing.push("readTime");
-      // if (!category) missing.push("category");
-      // if (!file) missing.push("image");
+      // ---------- Validate Image ----------
+      if (!file) {
+        return res.status(400).json({ message: "Image file is required" });
+      }
 
-      // if (missing.length) {
-      //   return res.status(400).json({
-      //     message: `Missing required fields: ${missing.join(", ")}`,
-      //   });
-      // }
-
-      // ---------- Upload Image to Cloudinary ----------
+      // ---------- Upload to Cloudinary ----------
       const b64 = Buffer.from(file.buffer).toString("base64");
       const dataURI = `data:${file.mimetype};base64,${b64}`;
 
@@ -128,7 +136,7 @@ export default async function handler(req, res) {
         excerpt,
         content,
         author,
-        readTime: Number(unreadTime),
+        readTime: Number(unreadTime?.replace(/[^0-9]/g, "") || 5),
         category,
         featured: featured === "true",
         image: imageUrl,
