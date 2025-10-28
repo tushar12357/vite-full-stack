@@ -17,7 +17,7 @@ export const config = {
   api: { bodyParser: false },
 };
 
-// ---------- Main Handler (GET list, GET by id/slug, POST) ----------
+// ---------- Main Handler (GET + POST) ----------
 export default async function handler(req, res) {
   const { method } = req;
 
@@ -26,20 +26,6 @@ export default async function handler(req, res) {
 
     // ==================== GET: List Blogs ====================
     if (method === "GET") {
-      // If an `id` (or slug) is present → fetch single blog
-      const { id } = req.query;
-      if (id) {
-        const blog = await Blog.findOne({
-          $or: [{ _id: id }, { slug: id }],
-        }).lean();
-
-        if (!blog) {
-          return res.status(404).json({ message: "Blog not found" });
-        }
-        return res.status(200).json(blog);
-      }
-
-      // Otherwise → list with pagination / filters
       const {
         q = "",
         category = "",
@@ -92,11 +78,23 @@ export default async function handler(req, res) {
 
       const file = files?.image?.[0];
 
-      // ---------- Upload Image to Cloudinary ----------
-      if (!file) {
-        return res.status(400).json({ message: "Image file is required" });
-      }
+      // // ---------- Validation ----------
+      // const missing = [];
+      // if (!title) missing.push("title");
+      // if (!excerpt) missing.push("excerpt");
+      // if (!content) missing.push("content");
+      // if (!author) missing.push("author");
+      // if (!unreadTime) missing.push("readTime");
+      // if (!category) missing.push("category");
+      // if (!file) missing.push("image");
 
+      // if (missing.length) {
+      //   return res.status(400).json({
+      //     message: `Missing required fields: ${missing.join(", ")}`,
+      //   });
+      // }
+
+      // ---------- Upload Image to Cloudinary ----------
       const b64 = Buffer.from(file.buffer).toString("base64");
       const dataURI = `data:${file.mimetype};base64,${b64}`;
 
