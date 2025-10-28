@@ -1,6 +1,7 @@
 // api/blogs/index.js
 import Blog from "../models/Blog.js";
 
+import { connectDB } from "../db.js";
 
 
 export default async function handler(req, res) {
