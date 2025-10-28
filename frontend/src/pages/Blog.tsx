@@ -21,16 +21,18 @@ export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [page, setPage] = useState(1);
-  const [blogs, setBlogs] = useState([]);
-  const [pagination, setPagination] = useState({});
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 9,
+    total: 0,
+    pages: 1,
+  });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const limit = 9;
 
-  // -------------------------------------------------
-  // Fetch blogs from API
-  // -------------------------------------------------
   useEffect(() => {
     const fetchBlogs = async () => {
       setLoading(true);
@@ -43,13 +45,14 @@ export default function Blog() {
         if (searchQuery) params.append("q", searchQuery);
         if (selectedCategory !== "All") params.append("category", selectedCategory);
 
-        const res = await fetch(`/api/blogs?${params.toString()}`);
+        const res = await fetch(`https://vite-full-stack.vercel.app/api/blogs?${params.toString()}`);
         if (!res.ok) throw new Error("Failed to load blogs");
         const json = await res.json();
-        setBlogs(json.data);
-        setPagination(json.pagination);
-      } catch (e) {
-        setError(e.message);
+
+        setBlogs(json.data || []);
+        setPagination(json.pagination || { page: 1, limit: 9, total: 0, pages: 1 });
+      } catch (e: any) {
+        setError(e.message || "Something went wrong");
       } finally {
         setLoading(false);
       }
@@ -58,12 +61,14 @@ export default function Blog() {
     fetchBlogs();
   }, [searchQuery, selectedCategory, page]);
 
-  // -------------------------------------------------
-  // Helpers
-  // -------------------------------------------------
   const featuredPost = blogs.find((p) => p.featured);
   const showFeaturedSection =
     selectedCategory === "All" && !searchQuery && featuredPost;
+
+  const formatReadTime = (readTime: string) => {
+    if (!readTime || readTime === "NaN") return "5 min read";
+    return readTime;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
@@ -135,7 +140,7 @@ export default function Blog() {
         <section className="pb-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-2 mb-6">
-              <TrendingUp className="h-5 w-5 text-primary" />
+              <TrendingUp className="h  h-5 w-5 text-primary" />
               <h2 className="text-2xl font-bold">Featured Article</h2>
             </div>
 
@@ -153,7 +158,9 @@ export default function Blog() {
                   <h3 className="text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
                     {featuredPost.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 text-lg">{featuredPost.excerpt}</p>
+                  <p className="text-muted-foreground mb-6 text-lg">
+                    {featuredPost.excerpt}
+                  </p>
 
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                     <div className="flex items-center gap-2">
@@ -167,7 +174,8 @@ export default function Blog() {
                   </div>
 
                   <div className="flex items-center gap-2 text-primary font-semibold">
-                    Read Article <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    Read Article{" "}
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
@@ -225,7 +233,7 @@ export default function Blog() {
                             <User className="h-3 w-3" />
                             {post.author}
                           </div>
-                          <span>{post.readTime}</span>
+                          <span>{formatReadTime(post.readTime)}</span>
                         </div>
                       </div>
                     </article>
@@ -233,7 +241,7 @@ export default function Blog() {
                 ))}
               </div>
 
-              {/* Pagination Controls */}
+              {/* Pagination */}
               {pagination.pages > 1 && (
                 <div className="flex justify-center gap-2 mt-12">
                   <button
