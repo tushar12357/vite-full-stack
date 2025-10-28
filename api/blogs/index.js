@@ -19,8 +19,28 @@ export const config = { api: { bodyParser: false } };
 // MAIN HANDLER
 // -------------------------------------------------------------------
 export default async function handler(req, res) {
-  const { method, query } = req;
+  const { method, query, headers } = req;
+  const origin = headers.origin;
 
+  // Allow specific origins (add your production domain later)
+  const allowedOrigins = ["*"];
+
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    // Or use '*' for full public API (less secure)
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+  // Handle preflight
+  if (method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
   try {
     await connectDB();
 
@@ -28,7 +48,15 @@ export default async function handler(req, res) {
     // GET – LIST OR SINGLE (via query params)
     // ==============================================================
     if (method === "GET") {
-      const { id, slug, q = "", category = "", featured = "", page = 1, limit = 9 } = query;
+      const {
+        id,
+        slug,
+        q = "",
+        category = "",
+        featured = "",
+        page = 1,
+        limit = 9,
+      } = query;
 
       // ---------- SINGLE BLOG ----------
       if (id || slug) {
@@ -147,7 +175,8 @@ async function parseMultipartForm(req) {
   if (!boundary) throw new Error("No boundary");
 
   const parts = parseFormData(buffer, boundary);
-  const fields = {}, files = {};
+  const fields = {},
+    files = {};
 
   for (const p of parts) {
     if (p.filename) {
