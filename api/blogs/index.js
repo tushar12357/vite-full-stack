@@ -23,8 +23,11 @@ export default async function handler(req, res) {
   const origin = headers.origin;
 
   // Allow specific origins (add your production domain later)
-  const allowedOrigins = ["http://localhost:3000,http://localhost:8080",
-    "http://localhost:5173"
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:8080',
+    'http://localhost:5173',
+    'https://vite-full-stack.vercel.app', // ← replace in production
   ];
 
   if (origin && allowedOrigins.includes(origin)) {
