@@ -1,6 +1,40 @@
 // api/blogs/index.js
-import { connectDB } from "../db.js";
 import Blog from "../../models/Blog.js";
+
+
+import mongoose from "mongoose";
+// import dotenv from "dotenv";
+// dotenv.config()
+export async function connectDB() {
+  const MONGODB_URI = "mongodb+srv://tusharcdry_db_user:FOKHA4OcWeCbAOER@blog.nnefllr.mongodb.net/blogs?appName=blog";
+
+  if (!MONGODB_URI) {
+    throw new Error("❌ Missing MONGODB_URI in environment variables");
+  }
+
+  try {
+    // If already connected, reuse connection
+    if (mongoose.connection.readyState === 1) {
+      console.log("✅ Using existing MongoDB connection");
+      return mongoose.connection;
+    }
+
+    const opts = {
+      bufferCommands: false,
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 10000,
+    };
+
+    const conn = await mongoose.connect(MONGODB_URI, opts);
+    console.log("✅ MongoDB Connected:", conn.connection.name);
+    return conn;
+  } catch (error) {
+    console.error("❌ MongoDB connection failed:", error.message);
+    throw error;
+  }
+}
+
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
