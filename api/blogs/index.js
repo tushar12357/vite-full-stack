@@ -5,34 +5,40 @@ import slugify from "slugify";
 import { v2 as cloudinary } from "cloudinary";
 import { Buffer } from "buffer";
 
-// ---------- Cloudinary Config ----------
+// ---------- Cloudinary ----------
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// ---------- Disable bodyParser for POST ----------
-export const config = {
-  api: { bodyParser: false },
-};
+// ---------- Disable body-parser for multipart ----------
+export const config = { api: { bodyParser: false } };
 
-// ---------- Main Handler ----------
+// -------------------------------------------------------------------
+// MAIN HANDLER
+// -------------------------------------------------------------------
 export default async function handler(req, res) {
   const { method } = req;
-  const url = req.url || "";
+
+  // ----- DEBUG LOG (remove in prod if you want) -----
+  console.log("[blogs] method:", method, "url:", req.url);
 
   try {
     await connectDB();
 
-    // ==================== GET: List or Single Blog ====================
+    // ==============================================================
+    // GET – LIST OR SINGLE
+    // ==============================================================
     if (method === "GET") {
-      // Extract ID/slug from URL: /api/blogs/abc123 → "abc123"
-      const idMatch = url.match(/^\/api\/blogs\/([^/?]+)(\?.*)?$/);
-      const idOrSlug = idMatch ? idMatch[1] : null;
+      // req.url on Vercel is **relative** → "/api/blogs/123" or "/api/blogs"
+      const path = req.url.split("?")[0];               // strip query string
+      const match = path.match(/^\/api\/blogs\/(.+)$/); // <-- captures the id/slug
 
-      // ---------- Single Blog ----------
-      if (idOrSlug) {
+      // ---------- SINGLE BLOG ----------
+      if (match) {
+        const idOrSlug = decodeURIComponent(match[1]); // handle %20 etc.
+
         const blog = await Blog.findOne({
           $or: [{ _id: idOrSlug }, { slug: idOrSlug }],
         }).lean();
@@ -40,11 +46,10 @@ export default async function handler(req, res) {
         if (!blog) {
           return res.status(404).json({ message: "Blog not found" });
         }
-
         return res.status(200).json(blog);
       }
 
-      // ---------- List Blogs with Filters ----------
+      // ---------- LIST BLOGS ----------
       const {
         q = "",
         category = "",
@@ -70,18 +75,22 @@ export default async function handler(req, res) {
         .limit(Number(limit))
         .lean();
 
-      return res.status(200).json({
-        data: blogs,
-        pagination: {
-          page: Number(page),
-          limit: Number(limit),
-          total,
-          pages: Math.ceil(total / Number(limit)),
-        },
-      });
+      return res
+        .status(200)
+        .json({
+          data: blogs,
+          pagination: {
+            page: Number(page),
+            limit: Number(limit),
+            total,
+            pages: Math.ceil(total / Number(limit)),
+          },
+        });
     }
 
-    // ==================== POST: Create Blog ====================
+    // ==============================================================
+    // POST – CREATE
+    // ==============================================================
     if (method === "POST") {
       const { fields, files } = await parseMultipartForm(req);
 
@@ -96,137 +105,117 @@ export default async function handler(req, res) {
       } = fields;
 
       const file = files?.image?.[0];
+      if (!file) return res.status(400).json({ message: "Image required" });
 
-      // ---------- Validate Image ----------
-      if (!file) {
-        return res.status(400).json({ message: "Image file is required" });
-      }
-
-      // ---------- Upload to Cloudinary ----------
+      // ---- Cloudinary upload ----
       const b64 = Buffer.from(file.buffer).toString("base64");
       const dataURI = `data:${file.mimetype};base64,${b64}`;
+      const upload = await cloudinary.uploader.upload(dataURI, {
+        folder: "blogs",
+        resource_type: "image",
+      });
+      const imageUrl = upload.secure_url;
 
-      let imageUrl;
-      try {
-        const result = await cloudinary.uploader.upload(dataURI, {
-          folder: "blogs",
-          resource_type: "image",
-          allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
-        });
-        imageUrl = result.secure_url;
-      } catch (cloudErr) {
-        console.error("Cloudinary upload failed:", cloudErr);
-        return res.status(400).json({
-          message: "Image upload failed",
-          error: cloudErr.message,
-        });
-      }
-
-      // ---------- Generate Unique Slug ----------
+      // ---- Unique slug ----
       const baseSlug = slugify(title, { lower: true, strict: true });
       let slug = baseSlug;
-      let counter = 1;
+      let i = 1;
       while (await Blog.findOne({ slug }).lean()) {
-        slug = `${baseSlug}-${counter++}`;
+        slug = `${baseSlug}-${i++}`;
       }
 
-      // ---------- Save Blog ----------
+      // ---- Save ----
       const blog = new Blog({
         title,
         excerpt,
         content,
         author,
-        readTime: Number(unreadTime?.replace(/[^0-9]/g, "") || 5),
+        readTime: Number(unreadTime?.replace(/\D/g, "") || 5),
         category,
         featured: featured === "true",
         image: imageUrl,
         slug,
       });
-
       await blog.save();
 
       return res.status(201).json(blog);
     }
 
-    // ==================== Method Not Allowed ====================
+    // ==============================================================
+    // METHOD NOT ALLOWED
+    // ==============================================================
     return res.status(405).json({ message: "Method Not Allowed" });
   } catch (err) {
-    console.error(`${method} /api/blogs error:`, err);
-
+    console.error("[blogs] error:", err);
     if (err.code === 11000) {
-      return res.status(400).json({ message: "Slug conflict – try a different title" });
+      return res.status(400).json({ message: "Slug already exists" });
     }
-
-    res.status(500).json({
-      message: "Internal Server Error",
+    return res.status(500).json({
+      message: "Server error",
       error: err.message,
-      stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
     });
   }
 }
 
-// ========== Multipart Form Parser (No External Deps) ==========
+// -------------------------------------------------------------------
+// MULTIPART PARSER (no external deps)
+// -------------------------------------------------------------------
 async function parseMultipartForm(req) {
   const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
+  for await (const c of req) chunks.push(c);
   const buffer = Buffer.concat(chunks);
 
   const boundary = req.headers["content-type"]?.split("boundary=")[1];
-  if (!boundary) throw new Error("Missing multipart boundary");
+  if (!boundary) throw new Error("No boundary");
 
   const parts = parseFormData(buffer, boundary);
+  const fields = {}, files = {};
 
-  const fields = {};
-  const files = {};
-
-  for (const part of parts) {
-    if (part.filename) {
-      const name = part.name;
-      if (!files[name]) files[name] = [];
+  for (const p of parts) {
+    if (p.filename) {
+      const name = p.name;
+      files[name] = files[name] || [];
       files[name].push({
-        buffer: part.data,
-        filename: part.filename,
-        mimetype: part["content-type"],
+        buffer: p.data,
+        filename: p.filename,
+        mimetype: p["content-type"],
       });
     } else {
-      fields[part.name] = part.data.toString("utf8").trim();
+      fields[p.name] = p.data.toString("utf8").trim();
     }
   }
-
   return { fields, files };
 }
 
-function parseFormData(buffer, boundary) {
+function parseFormData(buf, boundary) {
   const parts = [];
-  const boundaryBytes = Buffer.from(`--${boundary}`);
-  const endBoundary = Buffer.from(`--${boundary}--`);
+  const bound = Buffer.from(`--${boundary}`);
+  const endBound = Buffer.from(`--${boundary}--`);
 
-  let start = buffer.indexOf(boundaryBytes) + boundaryBytes.length + 2; // skip \r\n
-  const end = buffer.indexOf(endBoundary);
+  let pos = buf.indexOf(bound) + bound.length + 2; // skip \r\n
+  const end = buf.indexOf(endBound);
 
-  while (start > boundaryBytes.length && start < end) {
-    const headerEnd = buffer.indexOf(Buffer.from("\r\n\r\n"), start);
-    const headers = buffer.slice(start, headerEnd).toString("utf8");
-    const contentStart = headerEnd + 4;
-    const nextBoundary = buffer.indexOf(boundaryBytes, contentStart);
-
-    const content = buffer.slice(contentStart, nextBoundary - 2); // remove \r\n
+  while (pos > bound.length && pos < end) {
+    const headerEnd = buf.indexOf(Buffer.from("\r\n\r\n"), pos);
+    const headers = buf.slice(pos, headerEnd).toString("utf8");
+    const dataStart = headerEnd + 4;
+    const next = buf.indexOf(bound, dataStart);
+    const data = buf.slice(dataStart, next - 2); // strip \r\n
 
     const part = {};
-    headers.split("\r\n").forEach((line) => {
-      const [key, value] = line.split(": ");
-      const k = key.toLowerCase();
-      if (k === "content-disposition") {
-        part.name = value.match(/name="([^"]+)"/)?.[1];
-        part.filename = value.match(/filename="([^"]+)"/)?.[1];
+    headers.split("\r\n").forEach((l) => {
+      const [k, v] = l.split(": ");
+      const key = k.toLowerCase();
+      if (key === "content-disposition") {
+        part.name = v.match(/name="([^"]+)"/)?.[1];
+        part.filename = v.match(/filename="([^"]+)"/)?.[1];
       }
-      if (k === "content-type") part["content-type"] = value;
+      if (key === "content-type") part["content-type"] = v;
     });
-    part.data = content;
+    part.data = data;
     parts.push(part);
 
-    start = nextBoundary + boundaryBytes.length + 2;
+    pos = next + bound.length + 2;
   }
-
   return parts;
 }
