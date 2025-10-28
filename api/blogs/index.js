@@ -78,21 +78,21 @@ export default async function handler(req, res) {
 
       const file = files?.image?.[0];
 
-      // ---------- Validation ----------
-      const missing = [];
-      if (!title) missing.push("title");
-      if (!excerpt) missing.push("excerpt");
-      if (!content) missing.push("content");
-      if (!author) missing.push("author");
-      if (!unreadTime) missing.push("readTime");
-      if (!category) missing.push("category");
-      if (!file) missing.push("image");
+      // // ---------- Validation ----------
+      // const missing = [];
+      // if (!title) missing.push("title");
+      // if (!excerpt) missing.push("excerpt");
+      // if (!content) missing.push("content");
+      // if (!author) missing.push("author");
+      // if (!unreadTime) missing.push("readTime");
+      // if (!category) missing.push("category");
+      // if (!file) missing.push("image");
 
-      if (missing.length) {
-        return res.status(400).json({
-          message: `Missing required fields: ${missing.join(", ")}`,
-        });
-      }
+      // if (missing.length) {
+      //   return res.status(400).json({
+      //     message: `Missing required fields: ${missing.join(", ")}`,
+      //   });
+      // }
 
       // ---------- Upload Image to Cloudinary ----------
       const b64 = Buffer.from(file.buffer).toString("base64");
