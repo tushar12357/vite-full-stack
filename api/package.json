@@ -2,9 +2,14 @@
   "name": "api",
   "version": "1.0.0",
   "main": "blogs.js",
+  "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^4.19.0",
+    "mongoose": "^8.6.0",
+    "multer": "^2.0.2",
     "serverless-http": "^3.2.0",
-    "mongoose": "^8.6.0"
+    "slugify": "^1.6.6"
   }
 }
