@@ -171,7 +171,7 @@ export default function BlogList() {
               <h2 className="text-2xl font-bold">Featured Article</h2>
             </div>
 
-            <Link to={`/blog/${featuredPost._id}`} className="group block">
+            <Link to={`/blog/${featuredPost.slug}`} className="group block">
               <div className="grid md:grid-cols-2 gap-8 bg-card rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-border">
                 <div className="aspect-video md:aspect-auto overflow-hidden">
                   <img
@@ -235,7 +235,7 @@ export default function BlogList() {
                 {blogs.map((post) => (
                   <Link
                     key={post._id}
-                    to={`/blog/${post._id}`}
+                    to={`/blog/${post.slug}`}
                     className="group block"
                   >
                     <article className="bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-border h-full flex flex-col">
