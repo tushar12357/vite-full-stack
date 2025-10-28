@@ -20,32 +20,11 @@ export const config = {
 
 // ---------- Get Next Auto-Increment ID ----------
 async function getNextSequence() {
-  const counters = mongoose.connection.db.collection("counters");
-
-  // Atomically increment
-  const result = await counters.findOneAndUpdate(
+  const result = await mongoose.connection.db.collection("counters").findOneAndUpdate(
     { _id: "blogId" },
     { $inc: { seq: 1 } },
-    { upsert: true, returnDocument: "after" }
+    { returnDocument: "after", upsert: true }
   );
-
-  // Fallback for older drivers
-  if (!result?.value?.seq) {
-    // Ensure it exists
-    await counters.updateOne(
-      { _id: "blogId" },
-      { $setOnInsert: { seq: 0 } },
-      { upsert: true }
-    );
-    // Now increment
-    const final = await counters.findOneAndUpdate(
-      { _id: "blogId" },
-      { $inc: { seq: 1 } },
-      { returnDocument: "after" }
-    );
-    return final.value.seq;
-  }
-
   return result.value.seq;
 }
 
