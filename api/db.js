@@ -1,35 +1,42 @@
 import mongoose from "mongoose";
 
-
 let cached = global.mongoose;
+
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null, uri: null };
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
 export async function connectDB() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
   const MONGODB_URI = process.env.MONGODB_URI;
 
-  if (!MONGODB_URI) throw new Error("❌ MONGODB_URI not set");
-
-  // 👇 if URI changed, clear old connection
-  if (cached.uri && cached.uri !== MONGODB_URI) {
-    console.log("🔄 Detected new MongoDB URI, resetting connection...");
-    await mongoose.disconnect();
-    cached.conn = null;
-    cached.promise = null;
+  if (!MONGODB_URI) {
+    throw new Error("❌ Please define MONGODB_URI in .env.local and Vercel environment variables");
   }
-
-  cached.uri = MONGODB_URI;
-
-  if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose
-      .connect(MONGODB_URI, { bufferCommands: false })
-      .then((mongoose) => mongoose);
+    const opts = {
+      bufferCommands: false, // Disable mongoose buffering
+      maxPoolSize: 10,       // Good for serverless
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 10000,
+    };
+
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      console.log("✅ MongoDB Connected:", mongoose.connection.name);
+      return mongoose;
+    });
   }
 
-  cached.conn = await cached.promise;
-  console.log("✅ Connected to MongoDB:", mongoose.connection.name);
-  return cached.conn;
+  try {
+    cached.conn = await cached.promise;
+    return cached.conn;
+  } catch (e) {
+    cached.promise = null; // Reset promise on failure
+    console.error("❌ MongoDB connection error:", e.message);
+    throw e;
+  }
 }
