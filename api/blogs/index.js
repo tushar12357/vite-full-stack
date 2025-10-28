@@ -19,45 +19,27 @@ export const config = { api: { bodyParser: false } };
 // MAIN HANDLER
 // -------------------------------------------------------------------
 export default async function handler(req, res) {
-  const { method } = req;
-
-  // ----- DEBUG LOG (remove in prod if you want) -----
-  console.log("[blogs] method:", method, "url:", req.url);
+  const { method, query } = req;
 
   try {
     await connectDB();
 
     // ==============================================================
-    // GET – LIST OR SINGLE
+    // GET – LIST OR SINGLE (via query params)
     // ==============================================================
     if (method === "GET") {
-      // req.url on Vercel is **relative** → "/api/blogs/123" or "/api/blogs"
-      const path = req.url.split("?")[0];               // strip query string
-      const match = path.match(/^\/api\/blogs\/(.+)$/); // <-- captures the id/slug
+      const { id, slug, q = "", category = "", featured = "", page = 1, limit = 9 } = query;
 
       // ---------- SINGLE BLOG ----------
-      if (match) {
-        const idOrSlug = decodeURIComponent(match[1]); // handle %20 etc.
+      if (id || slug) {
+        const lookup = id ? { _id: id } : { slug };
+        const blog = await Blog.findOne(lookup).lean();
 
-        const blog = await Blog.findOne({
-          $or: [{ _id: idOrSlug }, { slug: idOrSlug }],
-        }).lean();
-
-        if (!blog) {
-          return res.status(404).json({ message: "Blog not found" });
-        }
+        if (!blog) return res.status(404).json({ message: "Blog not found" });
         return res.status(200).json(blog);
       }
 
       // ---------- LIST BLOGS ----------
-      const {
-        q = "",
-        category = "",
-        featured = "",
-        page = 1,
-        limit = 9,
-      } = req.query;
-
       const filter = {};
       if (q) {
         const regex = new RegExp(q.trim(), "i");
@@ -75,17 +57,15 @@ export default async function handler(req, res) {
         .limit(Number(limit))
         .lean();
 
-      return res
-        .status(200)
-        .json({
-          data: blogs,
-          pagination: {
-            page: Number(page),
-            limit: Number(limit),
-            total,
-            pages: Math.ceil(total / Number(limit)),
-          },
-        });
+      return res.status(200).json({
+        data: blogs,
+        pagination: {
+          page: Number(page),
+          limit: Number(limit),
+          total,
+          pages: Math.ceil(total / Number(limit)),
+        },
+      });
     }
 
     // ==============================================================
@@ -120,9 +100,7 @@ export default async function handler(req, res) {
       const baseSlug = slugify(title, { lower: true, strict: true });
       let slug = baseSlug;
       let i = 1;
-      while (await Blog.findOne({ slug }).lean()) {
-        slug = `${baseSlug}-${i++}`;
-      }
+      while (await Blog.findOne({ slug }).lean()) slug = `${baseSlug}-${i++}`;
 
       // ---- Save ----
       const blog = new Blog({
@@ -158,7 +136,7 @@ export default async function handler(req, res) {
 }
 
 // -------------------------------------------------------------------
-// MULTIPART PARSER (no external deps)
+// MULTIPART PARSER (no deps)
 // -------------------------------------------------------------------
 async function parseMultipartForm(req) {
   const chunks = [];
