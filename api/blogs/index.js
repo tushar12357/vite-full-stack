@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         if (!blog) {
           return res.status(404).json({ message: "Blog not found" });
         }
-        return res.status.status(200).json(blog);
+        return res.status(200).json(blog);
       }
 
       // Otherwise → list with pagination / filters
