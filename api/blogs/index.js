@@ -4,6 +4,7 @@ import { connectDB } from "../db.js";
 import slugify from "slugify";
 import { v2 as cloudinary } from "cloudinary";
 import { Buffer } from "buffer";
+import mongoose from "mongoose";
 
 // ---------- Cloudinary Config ----------
 cloudinary.config({
@@ -16,6 +17,16 @@ cloudinary.config({
 export const config = {
   api: { bodyParser: false },
 };
+
+// ---------- Get Next Auto-Increment ID ----------
+async function getNextSequence() {
+  const result = await mongoose.connection.db.collection("counters").findOneAndUpdate(
+    { _id: "blogId" },
+    { $inc: { seq: 1 } },
+    { returnDocument: "after", upsert: true }
+  );
+  return result.value.seq;
+}
 
 // ---------- Main Handler (GET + POST) ----------
 export default async function handler(req, res) {
@@ -78,7 +89,7 @@ export default async function handler(req, res) {
 
       const file = files?.image?.[0];
 
-      // // ---------- Validation ----------
+      // ---------- Validation (Uncomment if needed) ----------
       // const missing = [];
       // if (!title) missing.push("title");
       // if (!excerpt) missing.push("excerpt");
@@ -87,7 +98,6 @@ export default async function handler(req, res) {
       // if (!unreadTime) missing.push("readTime");
       // if (!category) missing.push("category");
       // if (!file) missing.push("image");
-
       // if (missing.length) {
       //   return res.status(400).json({
       //     message: `Missing required fields: ${missing.join(", ")}`,
@@ -95,23 +105,25 @@ export default async function handler(req, res) {
       // }
 
       // ---------- Upload Image to Cloudinary ----------
-      const b64 = Buffer.from(file.buffer).toString("base64");
-      const dataURI = `data:${file.mimetype};base64,${b64}`;
-
       let imageUrl;
-      try {
-        const result = await cloudinary.uploader.upload(dataURI, {
-          folder: "blogs",
-          resource_type: "image",
-          allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
-        });
-        imageUrl = result.secure_url;
-      } catch (cloudErr) {
-        console.error("Cloudinary upload failed:", cloudErr);
-        return res.status(400).json({
-          message: "Image upload failed",
-          error: cloudErr.message,
-        });
+      if (file) {
+        const b64 = Buffer.from(file.buffer).toString("base64");
+        const dataURI = `data:${file.mimetype};base64,${b64}`;
+
+        try {
+          const result = await cloudinary.uploader.upload(dataURI, {
+            folder: "blogs",
+            resource_type: "image",
+            allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
+          });
+          imageUrl = result.secure_url;
+        } catch (cloudErr) {
+          console.error("Cloudinary upload failed:", cloudErr);
+          return res.status(400).json({
+            message: "Image upload failed",
+            error: cloudErr.message,
+          });
+        }
       }
 
       // ---------- Generate Unique Slug ----------
@@ -122,8 +134,12 @@ export default async function handler(req, res) {
         slug = `${baseSlug}-${counter++}`;
       }
 
+      // ---------- Get Next Numeric ID ----------
+      const nextId = await getNextSequence();
+
       // ---------- Save Blog ----------
       const blog = new Blog({
+        id: nextId, // Custom numeric ID
         title,
         excerpt,
         content,
@@ -146,7 +162,10 @@ export default async function handler(req, res) {
     console.error(`${method} /api/blogs error:`, err);
 
     if (err.code === 11000) {
-      return res.status(400).json({ message: "Slug conflict – try a different title" });
+      const field = Object.keys(err.keyValue)[0];
+      return res.status(400).json({
+        message: field === "slug" ? "Slug conflict – try a different title" : "Duplicate entry",
+      });
     }
 
     res.status(500).json({
@@ -210,7 +229,7 @@ function parseFormData(buffer, boundary) {
       const k = key.toLowerCase();
       if (k === "content-disposition") {
         part.name = value.match(/name="([^"]+)"/)?.[1];
-        part.filename = value.match(/filename="([^"]+)"/)?.[1];
+        part.filename = value.match(/filename="([^"]")"/)?.[1];
       }
       if (k === "content-type") part["content-type"] = value;
     });

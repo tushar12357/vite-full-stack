@@ -1,21 +1,36 @@
+// models/Blog.js
 import mongoose from "mongoose";
 
-const BlogSchema = new mongoose.Schema(
-  {
-    title: { type: String, required: true },
-    excerpt: { type: String, required: true },
-    content: { type: String, required: true },
-    author: { type: String, required: true },
-    readTime: { type: String, required: true },   // e.g. "8 min read"
-    category: { type: String, required: true },
-    featured: { type: Boolean, default: false },
-    image: { type: String, required: true },
-    slug: { type: String, unique: true, required: true }, // used in URL
+const blogSchema = new mongoose.Schema({
+  id: { type: Number, unique: true }, // Our custom numeric ID
+  title: { type: String, required: true },
+  slug: { type: String, unique: true },
+  excerpt: String,
+  content: String,
+  author: String,
+  readTime: Number,
+  category: String,
+  featured: { type: Boolean, default: false },
+  image: String,
+}, {
+  timestamps: true,
+  toJSON: { 
+    transform: (doc, ret) => {
+      ret.id = ret.id; // Keep custom id
+      delete ret._id;  // Remove MongoDB _id
+      return ret;
+    }
   },
-  { timestamps: true }
-);
+  toObject: { 
+    transform: (doc, ret) => {
+      ret.id = ret.id;
+      delete ret._id;
+      return ret;
+    }
+  }
+});
 
-// Ensure a unique index on slug
-BlogSchema.index({ slug: 1 });
+// Ensure index on slug
+blogSchema.index({ slug: 1 });
 
-export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema);
+export default mongoose.models.Blog || mongoose.model("Blog", blogSchema);
