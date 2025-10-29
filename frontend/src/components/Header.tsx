@@ -39,11 +39,12 @@ const Header = () => {
     {
       label: "Product",
       dropdown: [
+        // REQUESTED CHANGE: Updated order for Product dropdown
         { label: "Platform Overview", href: "/platform", icon: "🏠" },
-        { label: "AI Voice Agents", href: "/voice-agents", icon: "🎙️" },
         { label: "White-Label Features", href: "/white-label", icon: "🎨", badge: "Popular" },
-        { label: "Call Management", href: "/call-management", icon: "📞" },
+        { label: "AI Voice Agents", href: "/voice-agents", icon: "🎙️" },
         { label: "Workflow Automation", href: "/automation", icon: "⚡" },
+        { label: "Call Management", href: "/call-management", icon: "📞" },
         { label: "Integrations", href: "/integrations", icon: "🔌", badge: "50+" },
         { label: "API Documentation", href: "/api-docs", icon: "📚" },
       ],
@@ -56,56 +57,53 @@ const Header = () => {
       label: "Pricing",
       href: "/pricing",
     },
+    // REQUESTED CHANGE: Added "Success Stories" in place of "Partners"
+    {
+      label: "Success Stories",
+      href: "/success-stories",
+    },
     {
       label: "Resources",
       dropdown: [
-        { label: "Blog", href: "/blog", icon: "📝", badge: "Updated Daily" },
-        { label: "Case Studies", href: "/case-studies", icon: "📊" },
-        { label: "Help Center", href: "/help", icon: "❓" },
+        // REQUESTED CHANGE: Updated Resources content
+        { label: "Blog", href: "/blog", icon: "📝" },
         { label: "Video Tutorials", href: "/videos", icon: "🎥" },
-        { label: "Documentation", href: "/docs", icon: "📖" },
-        { label: "Templates & Tools", href: "/templates", icon: "📦", badge: "50+ Free" },
+        { label: "YouTube", href: "https://www.youtube.com/@CloserXAI", icon: "▶️", badge: "New" }, // Assuming a link to YouTube
         { label: "ROI Calculator", href: "/roi-calculator", icon: "🧮" },
-        { label: "Trust Center", href: "/security", icon: "🔒", badge: "SOC 2" },
-      ],
-    },
-    {
-      label: "Partners",
-      dropdown: [
-        { label: "Become a Partner", href: "/become-partner", icon: "🌟" },
-        { label: "Partner Program", href: "/partner-program", icon: "🏆" },
-        { label: "Affiliate Program", href: "/affiliate", icon: "💰" },
-        { label: "Integration Partners", href: "/integration-partners", icon: "🔗" },
+        { label: "Documentation", href: "/docs", icon: "📖" },
+        { label: "Templates & Tools", href: "/templates", icon: "📦" },
       ],
     },
     {
       label: "Company",
       dropdown: [
+        // REQUESTED CHANGE: Updated and reordered Company content
         { label: "About Us", href: "/about", icon: "ℹ️" },
-        { label: "Careers", href: "/careers", icon: "💼", badge: "We're Hiring!" },
-        { label: "Contact", href: "/contact", icon: "📧" },
+        { label: "Become Our Partners", href: "/partners", icon: "🤝" }, // REQUESTED CHANGE: Moved Partners here
         { label: "Security", href: "/security", icon: "🔒" },
         { label: "Compliance", href: "/compliance", icon: "✅" },
         { label: "Press & Media", href: "/press", icon: "📰" },
+        { label: "Contact Us", href: "/contact", icon: "📧" }, // Changed 'Contact' to 'Contact Us' for clarity
+        { label: "Careers", href: "/careers", icon: "💼", badge: "We're Hiring!" }, // Re-added Careers
       ],
     },
+    // REQUESTED CHANGE: "Partners" removed from here
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200"
           : "bg-white/90 backdrop-blur-sm"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group relative z-50">
-            <img 
-              src={logo} 
-              alt="CloserX.ai Logo" 
+            <img
+              src={logo}
+              alt="CloserX.ai Logo"
               className="h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
@@ -148,9 +146,8 @@ const Header = () => {
                         <Link
                           key={subItem.label}
                           to={subItem.href}
-                          className={`flex items-center gap-3 p-4 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 group transition-all ${
-                            index < item.dropdown.length - 1 ? 'border-b border-slate-100' : ''
-                          }`}
+                          className={`flex items-center gap-3 p-4 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 group transition-all ${index < item.dropdown.length - 1 ? 'border-b border-slate-100' : ''
+                            }`}
                         >
                           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-purple-500/10 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                             {subItem.icon}
@@ -256,18 +253,14 @@ const Header = () => {
               <Play className="w-3.5 h-3.5" />
               <span>Demo</span>
             </button>
-            <button className="flex items-center gap-1.5 px-4 py-2 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary hover:text-white transition-all">
-              <Rocket className="w-3.5 h-3.5" />
-              <span>Start Free</span>
-            </button>
             <Link to="/login" className="ml-2 px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary transition-colors">
               Login
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden p-2 relative z-50 touch-manipulation" 
+          <button
+            className="lg:hidden p-2 relative z-50 touch-manipulation"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -279,8 +272,8 @@ const Header = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <>
-          <div 
-            className="lg:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 animate-in fade-in duration-200" 
+          <div
+            className="lg:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 animate-in fade-in duration-200"
             onClick={() => setMobileMenuOpen(false)}
           />
           <div className="lg:hidden fixed inset-y-0 right-0 w-[85%] max-w-sm bg-white z-40 overflow-y-auto shadow-2xl animate-in slide-in-from-right duration-300">
@@ -288,9 +281,9 @@ const Header = () => {
               {navigation.map((item) => (
                 <div key={item.label} className="border-b border-slate-100 last:border-0">
                   {item.href ? (
-                    <Link 
-                      to={item.href} 
-                      className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]" 
+                    <Link
+                      to={item.href}
+                      className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -370,19 +363,16 @@ const Header = () => {
                   )}
                 </div>
               ))}
-              
+
               <div className="pt-6 space-y-3 px-2">
                 <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-primary to-purple-600 text-white text-base font-semibold rounded-lg shadow-md active:scale-95 touch-manipulation min-h-[48px]">
                   <Play className="w-4 h-4" />
-                  Try Live Demo
+                  Demo 
                 </button>
-                <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-primary text-primary text-base font-semibold rounded-lg active:scale-95 touch-manipulation min-h-[48px]">
-                  <Rocket className="w-4 h-4" />
-                  Start Free Trial
-                </button>
-                <Link 
-                  to="/login" 
-                  className="block text-center py-3 text-base font-semibold text-slate-700 touch-manipulation min-h-[48px] flex items-center justify-center"
+                
+                <Link
+                  to="/login"
+                  className="block text-center py-3 text-base font-semibold text-slate-700 touch-manipulation min-h-[48px] items-center justify-center" // block AND flex
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Login

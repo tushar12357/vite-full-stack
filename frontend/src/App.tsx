@@ -44,6 +44,7 @@ import Templates from "./pages/Templates";
 import TrustCenter from "./pages/TrustCenter";
 import Integrations from "./pages/Integrations";
 import UptimeSLA from "./pages/UptimeSLA";
+import Partners from "./pages/Partners";
 
 const queryClient = new QueryClient();
 
@@ -106,7 +107,7 @@ const App = () => (
           <Route path="/api-docs" element={<ComingSoon />} />
           <Route path="/solutions/*" element={<ComingSoon />} />
           <Route path="/industries/*" element={<ComingSoon />} />
-          <Route path="/become-partner" element={<ComingSoon />} />
+          <Route path="/partners" element={<Partners />} />
           <Route path="/partner-program" element={<ComingSoon />} />
           <Route path="/affiliate" element={<ComingSoon />} />
           <Route path="/integration-partners" element={<ComingSoon />} />

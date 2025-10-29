@@ -38,7 +38,7 @@ const Footer = () => {
       {/* Pre-Footer CTA */}
       <div className="relative overflow-hidden gradient-dark py-20 lg:py-24">
         <div aria-hidden="true" className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4wNSIvPjwvZz48L3N2Zz4=')] opacity-20 pointer-events-none"></div>
-        
+
         <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">
             Ready to Launch Your AI Calling Platform?
@@ -46,7 +46,7 @@ const Footer = () => {
           <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
             Join 500+ agencies building their white-label business
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <Link to="/pricing" className="flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-white text-lg font-bold rounded-xl shadow-2xl hover:scale-105 hover:brightness-110 transition-all">
               🚀 Start Free Trial
@@ -55,7 +55,7 @@ const Footer = () => {
               📅 Schedule a Demo
             </Link>
           </div>
-          
+
           <p className="text-sm text-slate-500">
             No credit card required • 14-day free trial • Cancel anytime
           </p>
@@ -95,27 +95,15 @@ const Footer = () => {
                   <span className="text-2xl font-bold bg-gradient-to-r from-[#6366F1] to-[#06B6D4] bg-clip-text text-transparent">.ai</span>
                 </div>
               </div>
-              
+
               <p className="text-base font-semibold text-slate-400 mb-4">
                 The White-Label AI Calling Platform
               </p>
-              
+
               <p className="text-sm text-slate-500 leading-relaxed mb-8">
                 Empower your business with fully customizable AI voice agents. Launch your branded platform in 24 hours.
               </p>
 
-              {/* Social Media Icons */}
-              <div className="flex items-center gap-3 mb-8">
-                {["LinkedIn", "Twitter", "YouTube", "Facebook", "Instagram"].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg text-slate-400 hover:bg-[#6366F1] hover:text-white hover:-translate-y-1 transition-all"
-                  >
-                    {social[0]}
-                  </a>
-                ))}
-              </div>
 
               {/* Newsletter Signup */}
               <div>
@@ -154,18 +142,13 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/voice-agents" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    AI Voice Agents
-                  </Link>
-                </li>
-                <li>
                   <Link to="/white-label" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
                     White-Label Features
                   </Link>
                 </li>
                 <li>
-                  <Link to="/call-management" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Call Management
+                  <Link to="/voice-agents" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    AI Voice Agents
                   </Link>
                 </li>
                 <li>
@@ -174,8 +157,8 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/docs" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Analytics & Reporting
+                  <Link to="/call-management" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Call Management
                   </Link>
                 </li>
                 <li>
@@ -188,11 +171,7 @@ const Footer = () => {
                     API Documentation
                   </Link>
                 </li>
-                <li>
-                  <Link to="/docs" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Mobile App
-                  </Link>
-                </li>
+
               </ul>
             </div>
 
@@ -211,18 +190,28 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/solutions/appointment-scheduling" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Appointment Scheduling
+                  </Link>
+                </li>
+                <li>
                   <Link to="/solutions/lead-qualification" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
                     Lead Qualification
                   </Link>
                 </li>
                 <li>
+                  <Link to="/solutions/follow-up-automation" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Follow-up Automation
+                  </Link>
+                </li>
+                <li>
                   <Link to="/industries/real-estate" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Real Estate 🏠
+                    Real Estate
                   </Link>
                 </li>
                 <li>
                   <Link to="/industries/healthcare" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Healthcare 🏥
+                    Healthcare
                   </Link>
                 </li>
                 <li>
@@ -236,6 +225,11 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/industries/call-centers" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Call Centers
+                  </Link>
+                </li>
+                <li>
                   <Link to="/solutions/agencies" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
                     For Agencies
                   </Link>
@@ -245,6 +239,12 @@ const Footer = () => {
                     For Enterprises
                   </Link>
                 </li>
+                <li>
+                  <Link to="/solutions/resellers" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    For Resellers
+                  </Link>
+                </li>
+
               </ul>
             </div>
 
@@ -258,13 +258,18 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/case-studies" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Case Studies
+                  <Link to="/videos" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Video Tutorials
                   </Link>
                 </li>
                 <li>
-                  <Link to="/help" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Help Center
+                  <Link to="https://youtube.com" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    YouTube
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/roi-calculator" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    ROI Calculator
                   </Link>
                 </li>
                 <li>
@@ -273,15 +278,11 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/videos" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Video Tutorials
+                  <Link to="/templates" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Templates & Tools
                   </Link>
                 </li>
-                <li>
-                  <Link to="/roi-calculator" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    ROI Calculator
-                  </Link>
-                </li>
+
               </ul>
 
               <h4 className="text-base font-bold text-white mb-6 tracking-tight">Company</h4>
@@ -292,18 +293,8 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/careers" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/partner-program" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
-                    Partners
+                  <Link to="/partners" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Become Our Partners
                   </Link>
                 </li>
                 <li>
@@ -312,9 +303,8 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/uptime-sla" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block flex items-center gap-1.5">
-                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    Uptime & SLA
+                  <Link to="/compliance" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Compliance
                   </Link>
                 </li>
                 <li>
@@ -322,27 +312,54 @@ const Footer = () => {
                     Press & Media
                   </Link>
                 </li>
+                <li>
+                  <Link to="/contact" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/careers" className="text-sm text-slate-300 hover:text-white hover:translate-x-1 transition-all inline-block">
+                    Careers
+                  </Link>
+                </li>
+
               </ul>
 
               {/* Quick Contact */}
               <div className="mt-8 pt-8 border-t border-slate-800">
-                <a href="tel:+16473710602" className="flex items-center gap-2 text-sm text-[#6366F1] hover:underline mb-2">
-                  <Phone className="w-4 h-4" /> +1 (647) 371-0602
+                <a
+                  href="tel:+16505853005"
+                  className="flex items-center gap-2 text-sm text-[#6366F1] hover:underline mb-2"
+                >
+                  <Phone className="w-4 h-4" /> +1 650-585-3005
                 </a>
-                <a href="mailto:info@closerx.ai" className="flex items-center gap-2 text-sm text-[#6366F1] hover:underline mb-2">
+
+                <a
+                  href="mailto:info@closerx.ai"
+                  className="flex items-center gap-2 text-sm text-[#6366F1] hover:underline mb-2"
+                >
                   <Mail className="w-4 h-4" /> info@closerx.ai
                 </a>
-                <p className="text-xs text-slate-500 flex items-center gap-2">
-                  <MapPin className="w-4 h-4" /> San Francisco, CA
-                </p>
-                <button 
+
+                {/* Updated Address Section */}
+                <div className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+                  <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                  <span>
+                    Address: 8 The Green, Suite R, <br />
+                    City of Dover, Delaware 19901 <br />
+                    United States
+                  </span>
+                </div>
+
+                <button
                   onClick={() => window.open('https://tawk.to/chat', '_blank')}
                   className="mt-4 flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-xs font-semibold rounded-full hover:bg-green-700 transition-colors animate-pulse cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  Chat with us - We're online!
+                  Chat with us – We're online!
                 </button>
               </div>
+
             </div>
           </div>
         </div>
