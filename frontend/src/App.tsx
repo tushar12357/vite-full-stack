@@ -50,6 +50,7 @@ import Partners from "./pages/Partners";
 
 // 🧩 Import LunaWidget (the floating chat button)
 import LunaWidget from "@/components/LunaWidget";
+import CallManagement from "./pages/CallManagement";
 
 const queryClient = new QueryClient();
 
@@ -103,7 +104,7 @@ const App = () => (
 
           {/* Coming Soon placeholders */}
           <Route path="/docs" element={<ComingSoon />} />
-          <Route path="/call-management" element={<ComingSoon />} />
+          <Route path="/call-management" element={<CallManagement />} />
           <Route path="/automation" element={<ComingSoon />} />
           <Route path="/api-docs" element={<ComingSoon />} />
           <Route path="/solutions/*" element={<ComingSoon />} />
@@ -111,7 +112,7 @@ const App = () => (
           <Route path="/partners" element={<Partners />} />
           <Route path="/partner-program" element={<ComingSoon />} />
           <Route path="/affiliate" element={<ComingSoon />} />
-          <Route path="/integration-partners" element={<ComingSoon />} />
+          <Route path="/integrations" element={<Integrations />} />
           <Route path="/careers" element={<ComingSoon />} />
           <Route path="/compliance" element={<ComingSoon />} />
           <Route path="/press" element={<ComingSoon />} />
