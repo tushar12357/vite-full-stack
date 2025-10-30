@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, Play, Rocket, Sparkles, Phone, Palette, Workflow, BarChart3 } from "lucide-react";
 import logo from "@/assets/logo.png";
+import DemoModal from "@/components/DemoModal";
+
 
 interface NavItem {
   label: string;
@@ -93,8 +95,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200"
-          : "bg-white/90 backdrop-blur-sm"
+        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200"
+        : "bg-white/90 backdrop-blur-sm"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -249,10 +251,8 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
-            <button className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-primary to-purple-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all">
-              <Play className="w-3.5 h-3.5" />
-              <span>Demo</span>
-            </button>
+            
+            <DemoModal/>
             <Link to="/login" className="ml-2 px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary transition-colors">
               Login
             </Link>
@@ -365,11 +365,9 @@ const Header = () => {
               ))}
 
               <div className="pt-6 space-y-3 px-2">
-                <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-primary to-purple-600 text-white text-base font-semibold rounded-lg shadow-md active:scale-95 touch-manipulation min-h-[48px]">
-                  <Play className="w-4 h-4" />
-                  Demo 
-                </button>
                 
+                <DemoModal/>
+
                 <Link
                   to="/login"
                   className="block text-center py-3 text-base font-semibold text-slate-700 touch-manipulation min-h-[48px] items-center justify-center" // block AND flex
