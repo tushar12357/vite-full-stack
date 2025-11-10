@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, Play, Rocket, Sparkles, Phone, Palette, Workflow, BarChart3 } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-white.png";
 import DemoModal from "@/components/DemoModal";
 
 
@@ -94,19 +94,16 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200"
-        : "bg-white/90 backdrop-blur-sm"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+        <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group relative z-50">
             <img
               src={logo}
               alt="CloserX.ai Logo"
-              className="h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-32 sm:h-40 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -122,7 +119,11 @@ const Header = () => {
                 {item.href ? (
                   <Link
                     to={item.href}
-                    className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors relative group/link"
+                    className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
+                      item.label === "Product" 
+                        ? "text-white" 
+                        : "text-gray-500 hover:text-white"
+                    }`}
                   >
                     {item.label}
                     {item.label === "Pricing" && (
@@ -130,13 +131,17 @@ const Header = () => {
                         New
                       </span>
                     )}
-                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
+                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                   </Link>
                 ) : (
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors relative group/link">
+                  <button className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
+                    item.label === "Product" 
+                      ? "text-white" 
+                      : "text-gray-500 hover:text-white"
+                  }`}>
                     {item.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
-                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
+                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                   </button>
                 )}
 
@@ -253,7 +258,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-2">
             
             <DemoModal/>
-            <Link to="/login" className="ml-2 px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary transition-colors">
+            <Link to="/login" className="ml-2 px-3 py-2 text-sm font-semibold text-white hover:text-gray-300 transition-colors">
               Login
             </Link>
           </div>
@@ -264,7 +269,7 @@ const Header = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
+            {mobileMenuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
           </button>
         </div>
       </div>

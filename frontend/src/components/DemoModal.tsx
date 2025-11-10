@@ -78,7 +78,7 @@ export default function DemoModal() {
       {/* Navbar trigger */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-primary to-purple-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
+        className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#363062] text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
       >
         Demo
       </button>

@@ -47,6 +47,7 @@ import TrustCenter from "./pages/TrustCenter";
 import Integrations from "./pages/Integrations";
 import UptimeSLA from "./pages/UptimeSLA";
 import Partners from "./pages/Partners";
+import WhyChooseCloserX from "./pages/WhyChooseCloserX";
 
 // 🧩 Import LunaWidget (the floating chat button)
 import LunaWidget from "@/components/LunaWidget";
@@ -79,6 +80,7 @@ const App = () => (
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/why-choose-closerx" element={<WhyChooseCloserX />} />
 
           {/* Legal */}
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
