@@ -1,142 +1,106 @@
-import { Clock, Zap, Shield, Target } from "lucide-react";
+import { Clock, Sparkles } from "lucide-react";
+import cardImage from "@/assets/card.png";
 
-export default function FeatureCards() {
-  const cardData = [
+const FeatureCards = () => {
+  const features = [
     {
       icon: Clock,
-      title: "Watch Your Calls in Real-Time",
-      description: "Beautiful analytics that update as your AI agents work",
-      features: [
-        { icon: Clock, title: "Live Call Monitoring" },
-        { icon: Zap, title: "Instant Notifications" },
-        { icon: Shield, title: "Secure Data Handling" },
-      ],
-      gradient: "from-blue-500 to-cyan-500"
+      title: "Digital Signing",
     },
     {
-      icon: Zap,
-      title: "Lightning Fast Performance",
-      description: "Experience blazing fast speeds with our optimized infrastructure",
-      features: [
-        { icon: Zap, title: "99.9% Uptime" },
-        { icon: Target, title: "Global CDN" },
-        { icon: Shield, title: "Auto-scaling" },
-      ],
-      gradient: "from-purple-500 to-pink-500"
+      icon: Clock,
+      title: "Digital Signing",
     },
     {
-      icon: Shield,
-      title: "Enterprise-Grade Security",
-      description: "Your data is protected with industry-leading security measures",
-      features: [
-        { icon: Shield, title: "End-to-End Encryption" },
-        { icon: Clock, title: "24/7 Monitoring" },
-        { icon: Target, title: "Compliance Ready" },
-      ],
-      gradient: "from-green-500 to-emerald-500"
-    },
-    {
-      icon: Target,
-      title: "Smart AI Integration",
-      description: "Powerful AI tools that enhance your workflow automatically",
-      features: [
-        { icon: Target, title: "Smart Routing" },
-        { icon: Zap, title: "Predictive Analytics" },
-        { icon: Clock, title: "Auto-optimization" },
-      ],
-      gradient: "from-orange-500 to-red-500"
+      icon: Clock,
+      title: "Digital Signing",
     },
   ];
 
   return (
-    <section className="relative bg-black w-full">
-      {/* Section Header */}
-      <div className="text-center py-16 px-4">
-        {/* Intelligent Automation Tag */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center px-4 py-2 bg-black border border-white rounded-lg">
-            <span className="text-sm font-semibold text-white">Intelligent Automation</span>
+    <section className="relative bg-black">
+      <div className="max-w-6xl mx-auto px-4 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center py-16">
+          {/* Intelligent Automation Tag */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-black border border-white rounded-lg">
+              <span className="text-sm font-semibold text-white">Intelligent Automation</span>
+            </div>
           </div>
+
+          {/* Main Title */}
+          <h2 className="text-3xl lg:text-5xl font-black text-white mb-6 leading-tight">
+            Everything You Need in One Place
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-lg lg:text-xl text-white max-w-3xl mx-auto leading-relaxed">
+            Powerful features designed to make teamwork seamless
+          </p>
         </div>
 
-        {/* Main Title */}
-        <h2 className="text-3xl lg:text-5xl font-black text-white mb-6 leading-tight">
-          Everything You Need in One Place
-        </h2>
+        {/* Sticky Stacking Cards Container */}
+        <div className="relative">
+          {[1, 2, 3, 4].map((cardIndex) => {
+            const index = cardIndex - 1;
+            
+            return (
+              <div
+                key={cardIndex}
+                className="h-screen snap-start flex items-center justify-center p-8 sticky top-0"
+                style={{ zIndex: 10 + index }}
+              >
+                <div className="grid h-100 p-2 lg:grid-cols-2 border-2 border-white/20 rounded-2xl gap-4 lg:gap-6 items-start w-full max-w-6xl transform transition-all duration-300 bg-black">
+              {/* Left Column - Text Content */}
+              <div className="space-y-2 p-4">
+                {/* Heading */}
+                <div className="mb-48 w-3/4">
+                  <h6 className="text-left lg:text-xl font-bold mb-4 text-white leading-tight">
+                    Watch Your Calls in Real-Time
+                  </h6>
 
-        {/* Subtitle */}
-        <p className="text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Powerful features designed to make teamwork seamless
-        </p>
-      </div>
-
-      {/* Sticky Stacking Cards Container */}
-      <div className="relative w-full">
-        {cardData.map((card, cardIndex) => {
-          const IconComponent = card.icon;
-          
-          return (
-            <div
-              key={cardIndex}
-              className="h-screen flex items-center justify-center p-4 lg:p-8 sticky top-0"
-              style={{ zIndex: 10 + cardIndex }}
-            >
-              <div className="grid lg:grid-cols-2 border-2 border-white/20 rounded-2xl gap-4 lg:gap-8 items-center w-full max-w-6xl transform transition-all duration-300 bg-black p-6 lg:p-8 shadow-2xl">
-                {/* Left Column - Text Content */}
-                <div className="space-y-6">
-                  {/* Heading */}
-                  <div className="mb-8">
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-4 text-white leading-tight">
-                      {card.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-base lg:text-lg text-gray-400 leading-relaxed">
-                      {card.description}
-                    </p>
-                  </div>
-
-                  {/* Feature List */}
-                  <div className="space-y-4">
-                    {card.features.map((feature, index) => {
-                      const FeatureIcon = feature.icon;
-                      return (
-                        <div key={index} className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                            <FeatureIcon className="w-4 h-4 text-white" />
-                          </div>
-                          <span className="text-sm lg:text-base font-medium text-white">{feature.title}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {/* Description */}
+                  <p className="text-small text-white font-thin leading-relaxed">
+                    Beautiful analytics that update as your AI agents work
+                  </p>
                 </div>
 
-                {/* Right Column - Visual Content */}
-                <div className="relative overflow-hidden">
-                  {/* Gradient Card Visual */}
-                  <div className={`relative bg-gradient-to-br ${card.gradient} rounded-2xl p-8 lg:p-12 h-64 lg:h-96 flex items-center justify-center shadow-2xl`}>
-                    <div className="absolute inset-0 bg-black/20 rounded-2xl"></div>
-                    <div className="relative z-10 text-center">
-                      <div className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <IconComponent className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
+                {/* Feature List */}
+                <div className="space-y-4 py-4">
+                  {features.map((feature, index) => (
+                    <div key={index} className="flex items-start gap-2">
+                      <div className="w-5 h-5 rounded-full bg-slate-900 flex items-start justify-center border border-white/20">
+                        <feature.icon className="w-5 h-5 text-white" />
                       </div>
-                      <div className="space-y-2">
-                        <div className="h-2 w-32 lg:w-48 bg-white/30 rounded mx-auto"></div>
-                        <div className="h-2 w-24 lg:w-32 bg-white/30 rounded mx-auto"></div>
-                        <div className="h-2 w-40 lg:w-56 bg-white/30 rounded mx-auto"></div>
-                      </div>
+                      <span className="text-sm font-medium text-white">{feature.title}</span>
                     </div>
-                  </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column - Dashboard Image */}
+              <div className="relative overflow-hidden">
+                {/* Purple Glow Behind Image */}
+                {/* <div className="absolute -left-8 -bottom-8 w-60 h-60 bg-purple-500/30 rounded-full blur-3xl"></div> */}
+                
+                {/* Image Container */}
+                <div className="relative bg-white/10 rounded-lg p-1 overflow-hidden">
+                  <img 
+                    src={cardImage} 
+                    alt="Dashboard Screenshot" 
+                    className="w-full h-auto rounded-lg shadow-2xl"
+                  />
                 </div>
               </div>
             </div>
-          );
-        })}
+              </div>
+            );
+          })}
+        </div>
       </div>
-
-      {/* Bottom Spacing */}
-      <div className="h-20 bg-black"></div>
     </section>
   );
-}
+};
+
+export default FeatureCards;
