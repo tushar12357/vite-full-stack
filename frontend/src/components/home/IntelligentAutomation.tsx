@@ -112,7 +112,7 @@ const IntelligentAutomation = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-black md:py-32 px-4 md:px-6"
+      className="bg-white md:py-32 px-4 md:px-6"
     >
       <div className="max-w-7xl mx-auto">
         {/* Tag */}
