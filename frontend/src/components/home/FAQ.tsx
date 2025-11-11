@@ -53,27 +53,43 @@ const FAQ = () => {
     setOpenItems([faqData[0].id]);
     setCurrentIndex(0);
 
+    let timeoutId: NodeJS.Timeout | null = null;
+    let isTransitioning = false;
+
     const cycleFAQs = () => {
-      setCurrentIndex((prev) => {
-        const currentId = faqData[prev].id;
-        
-        // Close current item
-        setOpenItems([]);
-        
-        // After close animation, open next item
-        setTimeout(() => {
+      // Prevent overlapping cycles
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      // Use requestAnimationFrame for smooth state updates
+      requestAnimationFrame(() => {
+        setCurrentIndex((prev) => {
           const nextIndex = (prev + 1) % faqData.length;
-          setOpenItems([faqData[nextIndex].id]);
-        }, 400); // Wait for close animation to complete
-        
-        return (prev + 1) % faqData.length;
+          
+          // Close current item
+          setOpenItems([]);
+          
+          // After close animation, open next item
+          if (timeoutId) clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+            requestAnimationFrame(() => {
+              setOpenItems([faqData[nextIndex].id]);
+              isTransitioning = false;
+            });
+          }, 400); // Wait for close animation to complete
+          
+          return nextIndex;
+        });
       });
     };
 
     // Start cycling: each FAQ stays open for 3 seconds, then transitions
     const interval = setInterval(cycleFAQs, 3500); // 3s open + 0.5s transition
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [isAutoPlaying]);
 
   const toggleItem = (id: number) => {
