@@ -344,3 +344,12 @@ All colors MUST be HSL.
     background-position: 100% 100%, 0% 0%, 50% 50%;
   }
 }
+
+@keyframes marqueeUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}

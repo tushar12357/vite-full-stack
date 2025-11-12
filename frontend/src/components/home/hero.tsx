@@ -34,7 +34,7 @@ const hero = () => {
               </span>
             </div> */}
 
-            <h1 className="text-6xl lg:text-6xl font-black text-white mb-8 tracking-wide max-w-6xl mx-auto">
+            <h1 className="text-6xl lg:text-9xl font-black text-white mb-8 tracking-wide max-w-6xl mx-auto">
               Launch Your Own
               <br />
               <span className="text-white">
