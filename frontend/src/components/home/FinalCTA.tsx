@@ -9,12 +9,12 @@ const FinalCTA = () => {
             {/* Content */}
             <div className="relative z-10 text-center">
               {/* Main Heading */}
-              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 max-w-4xl mx-auto leading-tight">
+              <h2 className="text-6xl font-bold text-white mb-4 max-w-4xl mx-auto leading-tight">
                 Ready to Launch Your AI Calling Platform?
         </h2>
 
               {/* Subheading */}
-              <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto">
+              <p className="text-base text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto">
                 Join 500+ agencies building their white-label business
         </p>
 

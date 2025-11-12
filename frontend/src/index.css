@@ -102,15 +102,43 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+  h1 {
+    @apply text-6xl font-semibold tracking-tight; /* 48px */
+  }
+  
+  h2 {
+    @apply text-5xl font-semibold tracking-tight; /* 40px */
+  }
+  
+  h3 {
+    @apply text-4xl font-semibold tracking-tight; /* 32px */
+  }
+  
+  h4 {
+    @apply text-3xl font-semibold tracking-tight; /* 28px */
+  }
+  
+  h5 {
+    @apply text-2xl font-semibold tracking-tight; /* 24px */
+  }
+  
+  h6 {
+    @apply text-lg font-semibold tracking-tight; /* 18px */
+  }
+  
+  p {
+    @apply text-base; /* 16px */
+  }
+  
+  small {
+    @apply text-xs; /* 12px */
   }
   
   /* Mobile-specific optimizations */
@@ -136,6 +164,20 @@ All colors MUST be HSL.
   /* Lazy loading images */
   img {
     content-visibility: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Reduce repaints on scroll */
+  [data-scroll-section] {
+    will-change: transform;
+    transform: translateZ(0);
   }
 }
 

@@ -34,15 +34,15 @@ const hero = () => {
               </span>
             </div> */}
 
-            <h4 className="text-5xl lg:text-7xl font-black text-white mb-8 tracking-wide  max-w-6xl mx-auto">
+            <h1 className="text-6xl lg:text-6xl font-black text-white mb-8 tracking-wide max-w-6xl mx-auto">
               Launch Your Own
               <br />
               <span className="text-white">
                 AI Calling Platform
               </span>
-            </h4>
+            </h1>
 
-            <p className="text-x lg:text-xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-base lg:text-lg text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
               White-label AI voice agents that handle{" "}
               <span className="font-bold text-transparent bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] bg-clip-text">
                 10,000+ calls/day

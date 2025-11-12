@@ -23,6 +23,7 @@ const PlugAndPlay = () => {
   useEffect(() => {
     let lastProgress = 0;
     let ticking = false;
+    let scrollTimeout: NodeJS.Timeout | null = null;
     const lastSocketTopRef = { current: undefined };
     const forwardModeRef = { current: true };
 
@@ -266,9 +267,14 @@ const PlugAndPlay = () => {
       }
     };
 
+    // Throttle scroll events for better performance
     const onScroll = () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(update);
+      if (scrollTimeout) return; // Skip if already scheduled
+      scrollTimeout = setTimeout(() => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(update);
+        scrollTimeout = null;
+      }, 8); // ~120fps throttling
     };
 
     update();
@@ -279,6 +285,7 @@ const PlugAndPlay = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, [connected]);
 
