@@ -1,232 +1,266 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Search, Download, Star, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Search, Star, Download } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const TEMPLATES = [
-  {
-    id: "appointment-scheduler",
-    name: "Appointment Scheduler",
-    description: "Automated booking and calendar management for any industry",
-    category: "Scheduling",
-    downloads: "12.5K",
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&q=80",
-    isFree: true,
-    featured: true
-  },
-  {
-    id: "lead-qualifier",
-    name: "Lead Qualification",
-    description: "Intelligent lead screening and qualification with CRM sync",
-    category: "Sales",
-    downloads: "10.2K",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-    isFree: true,
-    featured: true
-  },
-  {
-    id: "customer-support",
-    name: "Customer Support",
-    description: "24/7 support handling with smart ticket routing",
-    category: "Support",
-    downloads: "9.8K",
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
-    isFree: true,
-    featured: false
-  },
-  {
-    id: "order-tracking",
-    name: "Order Tracking",
-    description: "Real-time order status updates and delivery info",
-    category: "E-commerce",
-    downloads: "8.4K",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80",
-    isFree: true,
-    featured: false
-  },
-  {
-    id: "payment-reminders",
-    name: "Payment Reminders",
-    description: "Automated payment follow-ups and collection",
-    category: "Finance",
-    downloads: "7.9K",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80",
-    isFree: true,
-    featured: false
-  },
-  {
-    id: "survey-feedback",
-    name: "Survey & Feedback",
-    description: "Collect customer feedback with conversational surveys",
-    category: "Research",
-    downloads: "6.5K",
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=600&q=80",
-    isFree: true,
-    featured: false
-  }
-];
-
-const CATEGORIES = ["All", "Scheduling", "Sales", "Support", "E-commerce", "Finance", "Research"];
-
+import { templateHeroData, sampleTemplates, templateCategories } from "@/data/templatesData";
+import FinalCTA from "@/components/home/FinalCTA";
 export default function Templates() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All templates");
+  const [displayCount, setDisplayCount] = useState(9);
 
-  const filteredTemplates = TEMPLATES.filter(template => {
+  const displayedTemplates = sampleTemplates.slice(0, displayCount);
+
+  const filteredTemplates = displayedTemplates.filter(template => {
     const matchesSearch = template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          template.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || template.category === selectedCategory;
+    const matchesCategory = 
+      selectedCategory === "All templates" || 
+      selectedCategory === "All" ||
+      template.category.toLowerCase() === selectedCategory.toLowerCase();
     return matchesSearch && matchesCategory;
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
+    <div className="min-h-[50vh] bg-black">
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 mb-4 justify-center">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-2xl">📦</span>
-            </div>
-            <Badge variant="secondary" className="text-xs font-semibold">50+ FREE</Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Templates & Tools
+      <section className="pt-20 px-4 bg-black mt-16">
+        <div className="max-w-5xl mx-auto min-h-screen">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 text-center">
+            {templateHeroData.title}
           </h1>
           
-          <p className="text-xl text-muted-foreground text-center max-w-2xl mx-auto mb-8">
-            Pre-built AI voice agent templates ready to deploy in minutes
+          <p className="text-sm md:text-base text-white/70 text-center max-w-xl mx-auto mb-8">
+            {templateHeroData.subtitle}
           </p>
 
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder="Search templates..."
-              className="pl-12 h-14 text-lg bg-card border-2 focus:border-primary"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Category Filters */}
-      <section className="pb-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {CATEGORIES.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === cat
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-card hover:bg-accent text-foreground"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Templates */}
-      {selectedCategory === "All" && !searchQuery && (
-        <section className="pb-16 px-4">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Most Popular</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {TEMPLATES.filter(t => t.featured).map(template => (
-                <div key={template.id} className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-border">
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={template.image} 
-                      alt={template.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Badge>{template.category}</Badge>
-                      {template.isFree && <Badge variant="outline">FREE</Badge>}
-                      <div className="flex items-center gap-1 ml-auto text-sm">
-                        <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
-                        <span className="font-semibold">{template.rating}</span>
+          {/* Featured Template Card */}
+          <div className="bg-black ">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Left - Application Preview */}
+              <div className="relative">
+                <div className="relative bg-gradient-to-br from-purple-200 to-purple-300 rounded-lg p-6">
+                  {/* Background window (slightly behind) */}
+                  <div className="absolute left-0 top-3 w-[90%] bg-white rounded-lg shadow-2xl transform -rotate-2 opacity-80">
+                    <div className="p-3">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-4 h-4 bg-purple-600 rounded"></div>
+                        <span className="font-semibold text-gray-800 text-sm">Sprint</span>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-xs font-semibold text-gray-600 mb-1">MAIN</div>
+                        <div className="text-xs text-gray-700">Dashboard</div>
+                        <div className="text-xs text-gray-700">Calendar</div>
+                        <div className="text-xs text-gray-700">Time Off</div>
+                        <div className="text-xs text-gray-700">Projects</div>
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">{template.name}</h3>
-                    <p className="text-muted-foreground mb-4">{template.description}</p>
-                    <div className="flex items-center justify-between pt-4 border-t border-border">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Download className="h-4 w-4" />
-                        {template.downloads} downloads
+                  </div>
+                  
+                  {/* Foreground window */}
+                  <div className="relative bg-white rounded-lg shadow-2xl transform rotate-1">
+                    <div className="p-4">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-4 h-4 bg-purple-600 rounded"></div>
+                        <span className="font-semibold text-gray-800 text-sm">Sprint</span>
                       </div>
-                      <Button className="gap-2">
-                        Use Template
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
+                      <div className="grid grid-cols-[150px_1fr] gap-4">
+                        {/* Sidebar */}
+                        <div>
+                          <div className="text-xs font-semibold text-gray-600 mb-2">MAIN</div>
+                          <div className="space-y-1">
+                            <div className="text-xs text-gray-700">Dashboard</div>
+                            <div className="text-xs text-gray-700">Calendar</div>
+                            <div className="text-xs text-gray-700">Time Off</div>
+                            <div className="text-xs text-gray-700">Projects</div>
+                            <div className="text-xs font-semibold text-purple-600 bg-purple-50 px-2 py-1 rounded">Teams</div>
+                            <div className="text-xs text-gray-700">Integrations</div>
+                          </div>
+                        </div>
+                        {/* Main Content */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <div className="text-xs font-semibold text-gray-800">Teams</div>
+                          </div>
+                          <div className="text-xs text-gray-600 mb-3">Manage and...</div>
+                          <div className="text-xs font-semibold text-gray-800 mb-1">Members</div>
+                          <div className="text-xs text-gray-600 mb-3">Display all the team...</div>
+                          <button className="text-xs bg-gray-100 px-2 py-1 rounded mb-3">All</button>
+                          <div className="text-xs text-gray-600 mb-1">Member Na...</div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-5 h-5 bg-orange-400 rounded-full"></div>
+                            <span className="text-xs text-gray-600">Ja...</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Right - Template Information */}
+              <div className="flex flex-col justify-center bg-black">
+                {/* Category Tag */}
+                <Badge className="bg-gray-800 text-white mb-3 w-fit px-2 py-1 rounded-md text-xs">
+                  {templateHeroData.featuredTemplate.category}
+                </Badge>
+                
+                {/* Title */}
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  {templateHeroData.featuredTemplate.name}
+                </h2>
+                
+                {/* Description */}
+                <p className="text-white text-sm leading-relaxed mb-6">
+                  {templateHeroData.featuredTemplate.description}
+                </p>
+                
+                {/* USE TEMPLATE Button */}
+                <div className="mb-6">
+                  <Button className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-md font-semibold text-sm">
+                    USE TEMPLATE
+                  </Button>
+                </div>
+                
+                {/* Ratings and Downloads - Bottom Right */}
+                <div className="flex items-center gap-4">
+                  {templateHeroData.featuredTemplate.rating && (
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4 fill-green-500 text-green-500" />
+                      <span className="text-white font-semibold text-sm">{templateHeroData.featuredTemplate.rating}</span>
+                    </div>
+                  )}
+                  {templateHeroData.featuredTemplate.downloads && (
+                    <div className="flex items-center gap-2">
+                      <Download className="h-4 w-4 text-white" />
+                      <span className="text-white text-sm">{templateHeroData.featuredTemplate.downloads}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* All Templates Grid */}
-      <section className="pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">All Templates</h2>
-          
+      {/* Category Filters with Search */}
+      <section className="sticky top-24 z-40 bg-black py-4 border-b border-gray-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
+            {/* Categories */}
+            <div className="flex items-center gap-2 flex-wrap">
+              {templateCategories.map(category => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id === "all" ? "All templates" : category.label)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    selectedCategory === category.label || (selectedCategory === "All templates" && category.id === "all")
+                      ? "bg-purple-600 text-white"
+                      : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Search */}
+            <div className="relative flex-shrink-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+              <Input
+                placeholder="Search..."
+                className="pl-10 h-10 w-64 bg-gray-800 border-gray-700 text-white placeholder:text-white/60 focus:border-purple-600 rounded-lg"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Templates Grid */}
+      <section className="pb-12 px-4 bg-black">
+        <div className="max-w-5xl mx-auto">
           {filteredTemplates.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-xl text-muted-foreground">No templates found. Try a different search.</p>
+              <p className="text-base text-white/60">No templates found. Try a different search.</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredTemplates.map(template => (
-                <div key={template.id} className="group bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-border h-full flex flex-col">
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={template.image} 
-                      alt={template.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge className="text-xs">{template.category}</Badge>
-                      {template.isFree && <Badge variant="outline" className="text-xs">FREE</Badge>}
+                <div key={template.id} className="bg-black rounded-xl overflow-hidden hover:border-gray-800 transition-all h-full flex flex-col">
+                  {/* Image/Preview Area - White Background */}
+                  <div className="relative aspect-video overflow-hidden bg-white rounded-t-xl">
+                    {/* Badges - Top Left */}
+                    <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
+                      <Badge className="bg-gray-900 text-white text-xs px-2 py-1 rounded-full">
+                        {template.category}
+                      </Badge>
+                      <Badge className="bg-gray-900 text-white text-xs px-2 py-1 rounded-full">
+                        {template.isFree ? "Free" : "Premium"}
+                      </Badge>
                     </div>
-                    <h3 className="text-lg font-bold mb-2">{template.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4 flex-1">{template.description}</p>
-                    <div className="flex items-center justify-between pt-4 border-t border-border">
-                      <div className="flex items-center gap-1 text-sm">
-                        <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
-                        <span className="font-semibold">{template.rating}</span>
+                    {/* Wireframe Globe or Image */}
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-32 h-32 border-2 border-gray-300 rounded-full relative">
+                        {/* Wireframe globe effect */}
+                        <div className="absolute inset-0 border-2 border-gray-300 rounded-full" style={{
+                          background: 'radial-gradient(circle at 30% 30%, rgba(200,200,200,0.3), transparent 50%)',
+                          boxShadow: 'inset 0 0 20px rgba(200,200,200,0.2)'
+                        }}>
+                          {/* Grid lines */}
+                          <svg className="w-full h-full" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#d1d5db" strokeWidth="0.5"/>
+                            <circle cx="50" cy="50" r="30" fill="none" stroke="#d1d5db" strokeWidth="0.5"/>
+                            <circle cx="50" cy="50" r="20" fill="none" stroke="#d1d5db" strokeWidth="0.5"/>
+                            <line x1="10" y1="50" x2="90" y2="50" stroke="#d1d5db" strokeWidth="0.5"/>
+                            <line x1="50" y1="10" x2="50" y2="90" stroke="#d1d5db" strokeWidth="0.5"/>
+                          </svg>
+                        </div>
                       </div>
-                      <Button size="sm" variant="ghost" className="gap-2 text-primary font-semibold">
-                        Use Template
-                        <ArrowRight className="h-3 w-3" />
-                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Content - Black Background */}
+                  <div className="p-5 flex flex-col flex-1 bg-black">
+                    <h3 className="text-lg font-bold text-white mb-2 leading-tight">{template.name}</h3>
+                    <p className="text-sm text-white/70 mb-4 flex-1 leading-relaxed">{template.description}</p>
+                    
+                    {/* Stats - Rating and Downloads */}
+                    <div className="mb-4 flex items-center gap-4">
+                      {template.rating && (
+                        <div className="flex items-center gap-1">
+                          <Star className="h-4 w-4 fill-green-500 text-green-500" />
+                          <span className="text-white text-sm font-semibold">{template.rating}</span>
+                        </div>
+                      )}
+                      {template.downloads && (
+                        <div className="flex items-center gap-1">
+                          <Download className="h-4 w-4 text-white" />
+                          <span className="text-white text-sm">{template.downloads}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Button */}
+                    <div className="pt-2">
+                      <button 
+                        className=" text-white text-xs font-semibold rounded-lg p-3 transition-all uppercase tracking-wider cursor-pointer hover:bg-white hover:text-purple-600 active:bg-black active:text-white focus:outline-none"
+                        style={{
+                          background: 'black',
+                          border: '1px solid white',
+                          outline: 'none',
+                          letterSpacing: '0.08em',
+                          fontFamily: 'sans-serif',
+                        }}
+                      >
+                        USE TEMPLATE
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -236,23 +270,20 @@ export default function Templates() {
         </div>
       </section>
 
-      {/* Custom Template CTA */}
-      <section className="pb-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-primary to-accent text-white rounded-3xl p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Need a Custom Template?</h2>
-            <p className="text-lg mb-6 text-white/90">
-              Our team can create a custom AI voice agent tailored specifically to your business needs
-            </p>
-            <Link to="/contact">
-              <Button size="lg" variant="secondary" className="font-semibold">
-                Request Custom Template
-              </Button>
-            </Link>
+      {/* Load More Button */}
+      {displayCount < sampleTemplates.length && (
+        <section className="pb-12 px-4 bg-black">
+          <div className="max-w-5xl mx-auto flex justify-center">
+            <button 
+              onClick={() => setDisplayCount(prev => Math.min(prev + 9, sampleTemplates.length))}
+              className="px-8 py-3 bg-transparent border border-white/30 text-white font-semibold text-sm rounded-lg hover:bg-white/10 transition-all duration-300"
+            >
+              Load more
+            </button>
           </div>
-        </div>
-      </section>
-
+        </section>
+      )}
+      <FinalCTA/>
       <Footer />
     </div>
   );

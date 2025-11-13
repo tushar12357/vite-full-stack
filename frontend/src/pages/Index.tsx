@@ -47,8 +47,8 @@ const Index = () => {
       <FinalCTA/>
       <Footer/>
 
-      {/* New Homepage Sections */}
-      {/* <TestFreeCall />
+      {/* New Homepage Sections
+       <TestFreeCall />
       <LogoCloud />
       <StatsCounter />
       <FeatureCards />

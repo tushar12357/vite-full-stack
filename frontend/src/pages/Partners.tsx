@@ -2,122 +2,124 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Users, Briefcase, Gift, ArrowRight } from "lucide-react";
+import { partnerPrograms } from "@/data/partnersData";
+import { Button } from "@/components/ui/button";
+import becomeOurPartnerImage from "@/assets/becomeourpartner.png";
+import FinalCTA from "@/components/home/FinalCTA";
 
 const Partners = () => {
-  const programs = [
-    {
-      title: "Become Our Partner",
-      icon: <Users className="w-10 h-10 text-primary" />,
-      description:
-        "Join CloserX.ai as a strategic partner and help companies revolutionize their sales and customer communication using AI voice agents. Work with us to shape the future of automation and customer engagement.",
-      benefits: [
-        "Dedicated partner success manager",
-        "Revenue sharing opportunities",
-        "Joint marketing & co-branding",
-      ],
-      cta: "Apply Now",
-      link: "/contact",
-    },
-    {
-      title: "Partner Program",
-      icon: <Briefcase className="w-10 h-10 text-purple-600" />,
-      description:
-        "Our Partner Program is designed for agencies, consultants, and tech providers who want to resell, integrate, or white-label CloserX.ai. Expand your portfolio with a proven AI solution.",
-      benefits: [
-        "White-label platform access",
-        "API & integration support",
-        "Exclusive partner resources",
-      ],
-      cta: "Learn More",
-      link: "/partner-program",
-    },
-    {
-      title: "Affiliates Program",
-      icon: <Gift className="w-10 h-10 text-pink-500" />,
-      description:
-        "Earn commissions by referring clients to CloserX.ai. Perfect for influencers, creators, and industry professionals who love sharing innovative tech.",
-      benefits: [
-        "High recurring commissions",
-        "Real-time affiliate dashboard",
-        "Marketing materials & tracking links",
-      ],
-      cta: "Join the Program",
-      link: "/affiliates",
-    },
-  ];
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case "Users":
+        return <Users className="w-10 h-10 text-white" />;
+      case "Briefcase":
+        return <Briefcase className="w-10 h-10 text-white" />;
+      case "Gift":
+        return <Gift className="w-10 h-10 text-white" />;
+      default:
+        return <Users className="w-10 h-10 text-white" />;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
+    <div className="min-h-screen bg-black">
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 text-center bg-gradient-to-r from-primary/10 to-purple-100">
-        <div className="max-w-3xl mx-auto px-6">
-          <h1 className="text-5xl font-extrabold text-slate-900 mb-6">
-            Partner with <span className="text-primary">CloserX.ai</span>
+      <section className="pt-32 px-4 bg-black">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-left">
+            Become an partner and earn with every recommendation
           </h1>
-          <p className="text-lg text-slate-600 mb-8">
-            Let’s grow together. Whether you’re an agency, reseller, or affiliate — our partner ecosystem helps you expand your business with powerful AI voice automation.
+          <p className="text-base md:text-xl text-white/80 mb-8 text-left max-w-3xl ">
+            Do you love CloserX.ai? Are you interested in earning money by promoting CloserX.ai products? We're always on the lookout for passionate individuals to partner with us our affiliate program.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all"
-          >
-            Become a Partner
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex justify-start">
+            <Button 
+              variant="outline" 
+              className="border-white text-white px-8 py-3 rounded-lg bg-black"
+            >
+              Become a Partner
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Programs Section */}
-      <section className="py-20 max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-        {programs.map((program, idx) => (
-          <div
-            key={idx}
-            className="bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 p-8 flex flex-col items-start text-left"
-          >
-            <div className="mb-6">{program.icon}</div>
-            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-              {program.title}
-            </h3>
-            <p className="text-slate-600 mb-5 leading-relaxed">
-              {program.description}
+      {/* Become Our Partner Image Section */}
+      <section className=" px-4 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <img 
+            src={becomeOurPartnerImage} 
+            alt="Become Our Partner"
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+      </section>
+
+      {/* Partnership Integration Section */}
+      <section className="py-20 px-4 bg-black">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-left">
+            Work with your partners to integrate CloserX.ai across your business
+          </h2>
+          <p className="text-lg text-white/70 mb-12 text-left max-w-3xl">
+            Your sales team spends most of their time chasing unqualified leads while hot prospects go cold. Manual qualification is slow, inconsistent, and expensive.
+          </p>
+
+          {/* Programs Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {partnerPrograms.map((program, idx) => (
+              <div
+                key={idx}
+                className="bg-black border border-gray-800 rounded-xl p-8 flex flex-col"
+              >
+                <div className="mb-6">{getIcon(program.icon)}</div>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {program.title}
+                </h3>
+                <p className="text-white/70 mb-6 leading-relaxed flex-1">
+                  {program.description}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {program.benefits.map((benefit, i) => (
+                    <li key={i} className="flex items-start gap-2 text-white/80 text-sm">
+                      <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 flex-shrink-0" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to={program.link}
+                  className="mt-auto inline-flex items-center gap-2 text-white font-semibold hover:text-white/80 transition-colors"
+                >
+                  {program.cta} <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mid-Page CTA */}
+      <section className="py-20 px-4 bg-black">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl p-8 md:p-12 text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+              Let's Build the Future Together
+            </h2>
+            <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+              Join our growing network of partners and unlock new opportunities with AI-driven customer engagement.
             </p>
-            <ul className="space-y-2 mb-8">
-              {program.benefits.map((benefit, i) => (
-                <li key={i} className="flex items-center gap-2 text-slate-700 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full" />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-            <Link
-              to={program.link}
-              className="mt-auto inline-flex items-center gap-2 text-primary font-semibold hover:underline"
-            >
-              {program.cta} <ArrowRight className="w-4 h-4" />
+            <Link to="/contact">
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg">
+                Get In Touch
+              </Button>
             </Link>
           </div>
-        ))}
+        </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary/10 to-purple-100 text-center">
-        <h2 className="text-3xl font-bold text-slate-900 mb-4">
-          Let’s Build the Future Together 🚀
-        </h2>
-        <p className="text-slate-700 mb-6 max-w-2xl mx-auto">
-          Join our growing network of partners and unlock new opportunities with AI-driven customer engagement.
-        </p>
-        <Link
-          to="/contact"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all"
-        >
-          Get in Touch
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </section>
-
+      <FinalCTA />
       <Footer />
     </div>
   );

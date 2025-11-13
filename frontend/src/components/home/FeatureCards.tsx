@@ -80,10 +80,10 @@ const FeatureCards = () => {
             const IconComponent = card.icon;
             
             return (
-              <div
+            <div
                 key={cardIndex}
                 className="sticky top-0 w-full flex items-center justify-center p-4 lg:p-8"
-                style={{ 
+              style={{ 
                   zIndex: 10 + cardIndex,
                   minHeight: '100vh'
                 }}
@@ -111,9 +111,9 @@ const FeatureCards = () => {
                           <div key={index} className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
                               <FeatureIcon className="w-4 h-4 text-white" />
-                            </div>
+                      </div>
                             <span className="text-sm lg:text-base font-medium text-white">{feature.title}</span>
-                          </div>
+                      </div>
                         );
                       })}
                     </div>

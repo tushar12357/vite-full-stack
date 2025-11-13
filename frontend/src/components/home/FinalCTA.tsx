@@ -1,15 +1,17 @@
 const FinalCTA = () => {
   return (
-    <section className="bg-white py-20 md:py-32 px-4 md:px-6">
+    <section className="bg-white py-20 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden">
+        <div 
+          className="relative overflow-hidden mx-auto w-full max-w-[1248px] h-auto min-h-[317px] mt-20 rounded-xl border border-gray-200"
+        >
           {/* Purple Background */}
-          <div className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 p-12 md:p-16 lg:p-20">
+          <div className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 w-full h-full p-8 md:p-12 flex items-center justify-center">
 
             {/* Content */}
             <div className="relative z-10 text-center">
               {/* Main Heading */}
-              <h2 className="text-6xl font-bold text-white mb-4 max-w-4xl mx-auto leading-tight">
+              <h2 className="text-5xl font-bold text-white mb-4 max-w-4xl mx-auto leading-tight">
                 Ready to Launch Your AI Calling Platform?
         </h2>
 
