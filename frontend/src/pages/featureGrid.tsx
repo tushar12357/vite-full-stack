@@ -27,7 +27,7 @@ const featureGrid = () => {
   return (
     <>
       {/* Features Grid */}
-      <div className="bg-black py-20 lg:py-32 bg-gradient-to-b from-black to-purple-950">
+      <div className="bg-black py-20 lg:py-32 bg-gradient-to-b from-gray-900 to-purple-950">
         <div className="max-w-7xl mx-auto px-4">
           {/* Intelligent Automation Tag */}
           <div className="flex justify-center mb-6">

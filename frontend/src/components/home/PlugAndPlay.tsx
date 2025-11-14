@@ -10,7 +10,7 @@ const PHASE_4_RISE_START = 0.9;
 const PLUG_STICK_TOP = 12;       // px from viewport top where plug sticks
 const PLUG_INITIAL_OFFSET = 200; // plug starting offset
 const OVERLAP_FACTOR = 0.12;     // overlap fraction between socket & plug
-const AFTER_CONNECT_RISE = 780;
+const AFTER_CONNECT_RISE = 700;
 const NAVBAR_HEIGHT = 80;        // px - navigation bar height to prevent socket from going above
 
 const PlugAndPlay = () => {

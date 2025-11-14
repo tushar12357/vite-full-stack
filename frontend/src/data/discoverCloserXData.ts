@@ -35,17 +35,20 @@ export const discoverCloserXData: DiscoverCloserXData = {
     {
       number: "02",
       title: "Automated Phone Number Rotation",
-      description: "",
+      description:
+        "Automatically rotate through multiple phone numbers to maintain high deliverability rates and avoid spam filters, ensuring your calls always get through.",
     },
     {
       number: "03",
       title: "Intelligent Auto-Dialing",
-      description: "",
+      description:
+        "Smart dialing system that automatically calls leads at optimal times, handles busy signals, and connects only when a human answers to maximize efficiency.",
     },
     {
       number: "04",
       title: "Payment Integration Hub",
-      description: "",
+      description:
+        "Seamlessly integrate with popular payment gateways to process transactions, accept payments, and manage billing all within your AI calling platform.",
     },
   ],
 };

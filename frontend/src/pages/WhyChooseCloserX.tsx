@@ -89,7 +89,7 @@ const WhyChooseCloserX = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black flex flex-col overflow-x-hidden">
+    <div className="min-h-screen bg-black flex flex-col overflow-x-hidden bg-gradient-to-b from-black to-gray-900">
       <Header />
       
       <main className="flex-1 pt-32 pb-20 px-4 sm:px-6 lg:px-8">

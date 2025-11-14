@@ -1,12 +1,26 @@
+import purpleBackgroundVideo from "@/assets/video/purpleBackground.mp4";
+
 const FinalCTA = () => {
   return (
-    <section className="bg-white py-20 px-4 md:px-6">
+    <section className="bg-white pb-16 px-4 md:px-6 ">
       <div className="max-w-7xl mx-auto">
         <div 
-          className="relative overflow-hidden mx-auto w-full max-w-[1248px] h-auto min-h-[317px] mt-20 rounded-xl border border-gray-200"
+          className="relative overflow-hidden mx-auto w-full max-w-[1248px] h-auto min-h-[300px] mt-20 rounded-xl border border-gray-200"
         >
-          {/* Purple Background */}
-          <div className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 w-full h-full p-8 md:p-12 flex items-center justify-center">
+          {/* Video Background */}
+          <div className="relative w-full h-full p-8 md:p-12 flex items-center justify-center">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-150"
+            >
+              <source src={purpleBackgroundVideo} type="video/mp4" />
+            </video>
+            
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-purple-900/60 rounded-xl"></div>
 
             {/* Content */}
             <div className="relative z-10 text-center">

@@ -9,16 +9,25 @@ const StatsCounter = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+        } else {
+          setIsVisible(false);
         }
       },
-      { threshold: 0.2 }
+      { 
+        threshold: 0.1, // Trigger when 10% of component is visible
+        rootMargin: '0px' 
+      }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
   const stats = [
@@ -44,19 +53,33 @@ const StatsCounter = () => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-      if (!isVisible) return;
+      // Reset count when component goes out of view
+      if (!isVisible) {
+        setCount(0);
+        return;
+      }
 
+      // Start counting animation when component comes into view
       let startTime: number;
+      let animationFrameId: number;
+      
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
         const currentCount = progress * end;
         setCount(isDecimal ? parseFloat(currentCount.toFixed(1)) : Math.floor(currentCount));
-        if (progress < 1) {
-          requestAnimationFrame(step);
+        if (progress < 1 && isVisible) {
+          animationFrameId = requestAnimationFrame(step);
         }
       };
-      requestAnimationFrame(step);
+      
+      animationFrameId = requestAnimationFrame(step);
+      
+      return () => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+      };
     }, [isVisible, end, duration, isDecimal]);
 
     return (

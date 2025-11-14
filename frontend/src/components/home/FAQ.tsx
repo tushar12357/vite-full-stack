@@ -101,7 +101,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="bg-white py-20 md:py-32 px-4 md:px-6">
+    <section className="bg-white px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -120,7 +120,7 @@ const FAQ = () => {
         </div>
 
         {/* FAQ Items Container with fixed min-height to prevent layout shift */}
-        <div className="min-h-[800px] md:min-h-[900px] relative">
+        <div className="min-h-[600px] md:min-h-[800px] relative">
           <div className="space-y-0">
           {faqData.map((faq, index) => {
             const isOpen = openItems.includes(faq.id);
