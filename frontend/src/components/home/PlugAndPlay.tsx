@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 const PHASE_1_PLUG_STICK = 0.37;
 const PHASE_2_SOCKET_START = 0.40;
 const PHASE_2_SOCKET_END = 0.9;
-const PHASE_3_CONNECT = 0.62;
+const PHASE_3_CONNECT = 0.78;
 const PHASE_4_RISE_START = 0.9;
 
 const PLUG_STICK_TOP = 12;       // px from viewport top where plug sticks

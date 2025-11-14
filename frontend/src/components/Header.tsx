@@ -148,24 +148,23 @@ const Header = () => {
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && item.dropdown && (
                   <div className="absolute top-full left-0 pt-2 z-[100]">
-                    <div className="w-[320px] bg-white rounded-2xl shadow-2xl border-2 border-slate-100 p-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="w-[320px] bg-black rounded-2xl shadow-xl border border-slate-800 p-2 animate-in fade-in slide-in-from-top-2 duration-200">
                       {item.dropdown.map((subItem, index) => (
                         <Link
                           key={subItem.label}
                           to={subItem.href}
-                          className={`flex items-center gap-3 p-4 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-purple-500/10 group transition-all ${index < item.dropdown.length - 1 ? 'border-b border-slate-100' : ''
-                            }`}
+                          className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
                         >
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-purple-500/10 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                          <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
                             {subItem.icon}
                           </div>
-                          <div className="flex-1">
-                            <div className="text-[15px] font-semibold text-slate-800 group-hover:text-primary transition-colors">
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[15px] font-medium text-white transition-colors">
                               {subItem.label}
                             </div>
                           </div>
                           {subItem.badge && (
-                            <span className="text-[9px] font-bold uppercase bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 py-1 rounded-full">
+                            <span className="text-[10px] font-bold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2.5 py-1 rounded-full flex-shrink-0">
                               {subItem.badge}
                             </span>
                           )}
@@ -178,73 +177,79 @@ const Header = () => {
                 {/* Mega Menu for Solutions */}
                 {item.megaMenu && activeDropdown === item.label && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[100]">
-                    <div className="bg-white rounded-2xl shadow-2xl border-2 border-slate-100 p-8 w-[850px]">
-                      <div className="grid grid-cols-3 gap-6">
-                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-                          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-200">By Use Case</h4>
+                    <div className="bg-black rounded-2xl shadow-xl border border-slate-800 p-8 w-[850px]">
+                      <div className="grid grid-cols-3 gap-8">
+                        <div>
+                          <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">USE CASE</h4>
                           {[
-                            { name: "Outbound Sales", emoji: "📞" },
-                            { name: "Inbound Support", emoji: "🎧" },
+                            { name: "Outbound Sales", emoji: "📊" },
+                            { name: "Inbound Support", emoji: "⚽" },
                             { name: "Appointment Scheduling", emoji: "📅" },
-                            { name: "Lead Qualification", emoji: "✅" },
-                            { name: "Follow-up Automation", emoji: "🔄" }
+                            { name: "Lead Qualification", emoji: "🔍" },
+                            { name: "Follow-up Automation", emoji: "⚙️" }
                           ].map((useCase) => (
                             <Link
                               key={useCase.name}
                               to={`/use-cases/${useCase.name.toLowerCase().replace(/\s+/g, "-")}`}
-                              className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-slate-700 hover:text-primary hover:bg-white/80 transition-all group"
+                              className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-purple-600 transition-all group"
                             >
-                              <span className="text-lg group-hover:scale-110 transition-transform">{useCase.emoji}</span>
-                              <span className="group-hover:translate-x-1 transition-transform">{useCase.name}</span>
+                              <div className="w-10 h-10 rounded-lg bg-black group-hover:bg-purple-600 flex items-center justify-center text-lg flex-shrink-0 transition-colors">
+                                {useCase.emoji}
+                              </div>
+                              <span>{useCase.name}</span>
                             </Link>
                           ))}
                         </div>
-                        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
-                          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 pb-2 border-b-2 border-purple-200">By Industry</h4>
+                        <div>
+                          <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">INDUSTRY</h4>
                           {[
-                            { name: "Real Estate", badge: "🔥", emoji: "🏠" },
-                            { name: "Healthcare", emoji: "🏥" },
-                            { name: "Financial Services", emoji: "💰" },
-                            { name: "E-commerce", emoji: "🛒" },
-                            { name: "Call Centers", emoji: "📞" },
+                            { name: "Real Estate", emoji: "🏢" },
+                            { name: "Healthcare", emoji: "🛡️" },
+                            { name: "Financial Service", emoji: "🏦" },
+                            { name: "E-commerce", emoji: "🛍️" },
+                            { name: "Call Centres", emoji: "🎧" },
                           ].map((industry) => (
                             <Link
                               key={industry.name}
                               to={`/industries/${industry.name.toLowerCase().replace(/\s+/g, "-")}`}
-                              className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-slate-700 hover:text-primary hover:bg-white/80 transition-all group"
+                              className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-purple-600 transition-all group"
                             >
-                              <span className="text-lg group-hover:scale-110 transition-transform">{industry.emoji}</span>
-                              <span className="flex-1 group-hover:translate-x-1 transition-transform">{industry.name}</span>
-                              {industry.badge && (
-                                <span className="text-sm">{industry.badge}</span>
-                              )}
+                              <div className="w-10 h-10 rounded-lg bg-black group-hover:bg-purple-600 flex items-center justify-center text-lg flex-shrink-0 transition-colors">
+                                {industry.emoji}
+                              </div>
+                              <span>{industry.name}</span>
                             </Link>
                           ))}
                         </div>
-                        <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
-                          <h4 className="text-xs font-bold text-white/90 uppercase tracking-wider mb-4 pb-2 border-b-2 border-white/30">By Team</h4>
+                        <div>
+                          <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">TEAM</h4>
                           {[
-                            { name: "For Agencies", badge: "⭐", emoji: "🎨" },
-                            { name: "For Enterprises", emoji: "🏢" },
-                            { name: "For Resellers", emoji: "💼" },
+                            { name: "For Agencies", emoji: "📄" },
+                            { name: "For Enterprises", emoji: "💼" },
+                            { name: "For Resellers", emoji: "▶️" },
                           ].map((team) => (
                             <Link
                               key={team.name}
                               to={`/teams/${team.name.toLowerCase().replace(/^for-/, '').replace(/\s+/g, "-")}`}
-                              className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-white/20 transition-all group"
+                              className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-purple-600 transition-all group"
                             >
-                              <span className="text-lg group-hover:scale-110 transition-transform">{team.emoji}</span>
-                              <span className="flex-1 group-hover:translate-x-1 transition-transform">{team.name}</span>
-                              {team.badge && (
-                                <span className="text-sm">{team.badge}</span>
-                              )}
+                              <div className="w-10 h-10 rounded-lg bg-black group-hover:bg-purple-600 flex items-center justify-center text-lg flex-shrink-0 transition-colors">
+                                {team.emoji}
+                              </div>
+                              <span>{team.name}</span>
                             </Link>
                           ))}
                         </div>
                       </div>
-                      <div className="mt-6 pt-6 border-t-2 border-slate-200 text-center bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-lg p-4 border border-primary/20">
-                        <Link to="/contact" className="text-sm font-bold text-primary hover:underline flex items-center justify-center gap-2">
-                          Can't find what you need? Talk to our team →
+                      <div className="mt-6 pt-6 border-t border-slate-700">
+                        <Link to="/contact" className="flex items-center gap-2 text-sm font-medium text-white hover:text-purple-400 transition-colors">
+                          <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center">
+                            👥
+                          </div>
+                          <div>
+                            <div className="font-semibold">Talk to Our team →</div>
+                            <div className="text-xs text-slate-400">Can't find what you need?</div>
+                          </div>
                         </Link>
                       </div>
                     </div>

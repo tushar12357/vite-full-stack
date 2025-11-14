@@ -49,7 +49,7 @@ const FeatureCards = () => {
   ];
 
   return (
-    <section className="relative bg-black w-full pt-32">
+    <section className="relative bg-black w-full pt-32 bg-gradient-to-b from-purple-950 to-purple-750">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center py-16 px-4 relative">
@@ -65,7 +65,7 @@ const FeatureCards = () => {
 
           {/* Main Title */}
           <h2 className="text-5xl font-black text-white mb-6 leading-tight">
-            Everything You Need in One Place
+            Everything You <br/> Need in One Place
           </h2>
 
           {/* Subtitle */}

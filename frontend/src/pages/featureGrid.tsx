@@ -27,7 +27,7 @@ const featureGrid = () => {
   return (
     <>
       {/* Features Grid */}
-      <div className="bg-black py-20 lg:py-32">
+      <div className="bg-black py-20 lg:py-32 bg-gradient-to-b from-black to-purple-950">
         <div className="max-w-7xl mx-auto px-4">
           {/* Intelligent Automation Tag */}
           <div className="flex justify-center mb-6">
@@ -62,7 +62,7 @@ const featureGrid = () => {
                 ></div>
                 
                 {/* Enhanced Purple Glow at Bottom Right Corner */}
-                <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tl from-purple-600/60 via-purple-500/40 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-1/4 translate-y-1/4"></div>
+                <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-purple-600/60 via-purple-500/40 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-1/4 translate-y-1/4"></div>
                 
                 {/* Icon Container */}
                 <div className="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-white mb-24 relative z-10">

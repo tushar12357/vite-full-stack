@@ -36,10 +36,12 @@ const Index = () => {
       <Header />
       <Hero />
       <WhyChooseCloserX />  
+      <div>
       <FeatureGrid/>
       <FeatureCards/>
       <StatsCounter/>
       <PlugAndPlay/>
+      </div>
       <IntelligentAutomation/>
       <DiscoverCloserX/>
       <Testimonials/>

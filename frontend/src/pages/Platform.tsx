@@ -1,8 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FeatureCards from "@/components/home/FeatureCards";
 import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
+import PlatformOverview from "@/components/home/PlatformOverview";
 
 const Platform = () => {
   return (
@@ -43,7 +43,7 @@ const Platform = () => {
         </div>
       </main>
 
-      <FeatureCards/>
+      <PlatformOverview/>
       <FAQ/>
       <FinalCTA/>
 
