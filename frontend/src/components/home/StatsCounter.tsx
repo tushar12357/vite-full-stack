@@ -90,16 +90,16 @@ const StatsCounter = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-black pt-20 pb-16 lg:pt-32 ">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <section ref={sectionRef} className="relative bg-black pt-20 pb-16 lg:pt-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="border border-purple-500/30 rounded-lg p-8 text-center bg-black"
+              className="flex flex-col items-start justify-between gap-4 border border-[#1f1f1f] bg-gradient-to-b from-purple-500/10 to-transparent p-8 text-left shadow-lg shadow-purple-500/10"
             >
               {/* Large Number */}
-              <div className="text-5xl lg:text-6xl font-bold text-white mb-4">
+              <div className="text-5xl font-bold text-white lg:text-6xl">
                 <Counter 
                   end={stat.value} 
                   suffix={stat.suffix}
@@ -108,12 +108,12 @@ const StatsCounter = () => {
               </div>
 
               {/* Label */}
-              <p className="text-base lg:text-lg font-medium text-white mb-4">
+              <p className="text-base font-medium text-white lg:text-lg">
                 {stat.label}
               </p>
 
               {/* Description */}
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-sm leading-relaxed text-white/70">
                 {description}
               </p>
             </div>

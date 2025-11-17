@@ -101,7 +101,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="bg-white px-4 md:px-6">
+    <section className="bg-white px-4 md:px-6 pt-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">

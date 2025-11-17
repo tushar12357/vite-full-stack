@@ -88,23 +88,23 @@ const FeatureCards = () => {
                   minHeight: '100vh'
                 }}
               >
-                <div className="grid lg:grid-cols-2 border-2 border-white/20 rounded-2xl gap-4 lg:gap-8 items-center w-full max-w-6xl mx-auto transform transition-all duration-300 bg-black p-6 lg:p-8 shadow-2xl">
+                <div className="grid lg:grid-cols-2 border border-white/20 rounded-[12px] gap-4 lg:gap-8 items-start w-[998px] h-[488px] max-w-full mx-auto transform rotate-0 opacity-100 transition-all duration-300 bg-black p-6 lg:p-8 shadow-2xl">
                   {/* Left Column - Text Content */}
-                  <div className="space-y-6">
+                  <div className="space-y-6 ">
                     {/* Heading */}
-                    <div className="mb-8">
-                      <h3 className="text-4xl font-bold mb-4 text-white leading-tight">
+                    <div className="mb-48">
+                      <h3 className="text-[20px] font-normal mb-4 text-white leading-tight">
                         {card.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-base text-gray-400 leading-relaxed">
+                      <p className="text-[16px] text-gray-400 leading-relaxed">
                         {card.description}
                       </p>
                     </div>
 
                     {/* Feature List */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 mt-10">
                       {card.features.map((feature, index) => {
                         const FeatureIcon = feature.icon;
                         return (
@@ -112,7 +112,7 @@ const FeatureCards = () => {
                             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
                               <FeatureIcon className="w-4 h-4 text-white" />
                       </div>
-                            <span className="text-sm lg:text-base font-medium text-white">{feature.title}</span>
+                            <span className="text-[14px] font-normal text-white">{feature.title}</span>
                       </div>
                         );
                       })}
@@ -120,10 +120,10 @@ const FeatureCards = () => {
                   </div>
 
                   {/* Right Column - Visual Content */}
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden h-full">
                     {/* Gradient Card Visual */}
-                    <div className={`relative bg-gradient-to-br ${card.gradient} rounded-2xl p-8 lg:p-12 h-64 lg:h-96 flex items-center justify-center shadow-2xl`}>
-                      <div className="absolute inset-0 bg-black/20 rounded-2xl"></div>
+                    <div className={`relative bg-gradient-to-br ${card.gradient} rounded-[12px] p-8 lg:p-12 h-full flex items-center justify-center shadow-2xl`}>
+                      <div className="absolute inset-0 bg-black/20 rounded-[12px]"></div>
                       <div className="relative z-10 text-center">
                         <div className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                           <IconComponent className="w-10 h-10 lg:w-16 lg:h-16 text-white" />

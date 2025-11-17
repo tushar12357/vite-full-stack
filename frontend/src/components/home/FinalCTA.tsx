@@ -2,7 +2,7 @@ import purpleBackgroundVideo from "@/assets/video/purpleBackground.mp4";
 
 const FinalCTA = () => {
   return (
-    <section className="bg-white pb-16 px-4 md:px-6 ">
+    <section className="bg-white pb-16 px-4 md:px-6 py-4">
       <div className="max-w-7xl mx-auto">
         <div 
           className="relative overflow-hidden mx-auto w-full max-w-[1248px] h-auto min-h-[300px] mt-20 rounded-xl border border-gray-200"

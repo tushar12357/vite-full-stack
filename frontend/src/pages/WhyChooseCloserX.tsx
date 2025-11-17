@@ -90,32 +90,31 @@ const WhyChooseCloserX = () => {
 
   return (
     <div className="min-h-screen bg-black flex flex-col overflow-x-hidden bg-gradient-to-b from-black to-gray-900">
-      <Header />
       
-      <main className="flex-1 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pt-8 pb-20 px-4 sm:px-6 lg:px-8">
         {/* Intelligent Automation Tag */}
         <div className="flex justify-center mb-8">
-          <span className="px-4 py-2 border border-white rounded-full text-sm font-medium text-white">
+          <span className="px-4 py-2 border border-[#1f1f1f] bg-[#121212] rounded-sm text-sm font-medium text-white">
             Intelligent Automation
           </span>
         </div>
 
         {/* Main Title and Subtitle */}
         <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-            Why Leading Teams <br /> Choose CloserX
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold  text-white mb-6">
+            Why Leading Teams <br /> <span className="mt-3 inline-block">Choose CloserX</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm md:text-sm text-gray-300 max-w-sm mx-auto">
             Automate, manage, and scale thousands of calls from one unified Voice AI Operating System.
           </p>
         </div>
 
         {/* Two Content Blocks */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-10 gap-12  p-3">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-10 gap-4 p-3">
           {/* Left Content Block: Chat Interface */}
           <div 
             ref={leftCardRef}
-            className={`flex flex-col border-2 border-purple-500/30 rounded-xl p-3 lg:col-span-7 transition-all duration-1000 ease-out ${
+            className={`flex flex-col border-2 border-[#1f1f1f] rounded-xl p-3 lg:col-span-7 transition-all duration-1000 ease-out ${
               isVisible 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 -translate-x-20'
@@ -169,16 +168,16 @@ const WhyChooseCloserX = () => {
             </div>
             
             {/* Title and Description */}
-            <h3 className="text-3xl font-bold text-white mt-8 mb-2">Launch in 24 Hours</h3>
-            <p className="text-gray-300">
-              From signup to fully branded platform. No technical skills, no setup headaches, no delays.
+            <h3 className="text-2xl font-normal text-white mt-8 mb-2">Launch in 24 Hours</h3>
+            <p className="text-gray-300 text-sm">
+              From signup to fully branded platform.<br /> No technical skills, no setup headaches, no delays.
             </p>
           </div>
 
           {/* Right Content Block: Scale Without Limits */}
           <div 
             ref={rightCardRef}
-            className={`flex flex-col items-center border-2 border-purple-500/30 rounded-xl p-3 lg:col-span-3 transition-all duration-1000 ease-out ${
+            className={`flex flex-col items-center border-2 border-[#1f1f1f] rounded-xl p-3 lg:col-span-3 transition-all duration-1000 ease-out ${
               isVisible 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-20'
@@ -253,129 +252,128 @@ const WhyChooseCloserX = () => {
             </div>
             
             {/* Title and Description */}
-            <h3 className="text-3xl font-bold text-left text-white mt-2 mb-2">Scale Without Limits</h3>
-            <p className="text-gray-300 text-left max-w-sm">
+            <h3 className="text-2xl font-normal text-left text-white mt-2 mb-2">Scale Without Limits</h3>
+            <p className="text-gray-300 text-left text-sm">
               Multi-tenant architecture supporting unlimited clients and 10,000+ concurrent calls. Built for enterprise scale.
             </p>
           </div>
         </div>
 
         {/* Three Feature Boxes */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-          {/* Integrations Box */}
-          <div 
-            ref={featureBox1Ref}
-            className={`border-2 border-purple-500/30 rounded-xl p-6 bg-black/50 transition-all duration-1000 ease-out ${
-              areFeaturesVisible 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 -translate-x-20'
-            }`}
-          >
-            <div className="bg-white rounded-lg p-4 mb-6">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm font-semibold text-gray-800">Change mode</span>
-                <ChevronDown className="w-4 h-4 text-gray-600" />
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                  <span className="text-gray-800">Customized</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>Chat with assistant</span>
-                  <span className="text-xs">Free</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>Generate image</span>
-                  <span className="text-xs">500 Credits</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>Web search</span>
-                  <span className="text-xs">Unlimited</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 mb-2">
-              <Plug className="w-5 h-5 text-purple-400" />
-              <h3 className="text-xl font-bold text-white">Integrations</h3>
-            </div>
-            <p className="text-gray-300 text-sm">CRMs, calendars, and business tools. All connected.</p>
+        <div className="max-w-6xl mx-32 mt-10">
+  {/* Outer grid: first two cards combined = 70% (lg:col-span-7), last card = 30% (lg:col-span-3) */}
+  <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 items-stretch">
+    {/* LEFT: container for the first two cards (combined 70% on lg) */}
+    <div className="col-span-1 lg:col-span-7  grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Integrations Box (first card) */}
+      <div
+        ref={featureBox1Ref}
+        className={`border-2 border-[#1f1f1f] rounded-xl p-8 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
+          areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+        }`}
+      >
+        <div className="bg-white rounded-lg p-4 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-semibold text-gray-800">Change mode</span>
+            <ChevronDown className="w-4 h-4 text-gray-600" />
           </div>
-
-          {/* Enterprise Security Box */}
-          <div 
-            ref={featureBox2Ref}
-            className={`border-2 border-purple-500/30 rounded-xl p-6 bg-black/50 transition-all duration-1000 ease-out ${
-              areFeaturesVisible 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 -translate-x-20'
-            }`}
-          >
-            <div className="bg-white rounded-lg p-4 mb-6">
-              <div className="space-y-2">
-                <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">our above recommendations {'{'} temp</div>
-                <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">te two [ define technology ] tests for the above</div>
-                <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">write the above text to be more verbose and inclu</div>
-                <div className="flex gap-2 mt-3">
-                  <button className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded">ESLinter prompt</button>
-                  <button className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded">Find array la</button>
-                </div>
-              </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 text-sm">
+              <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+              <span className="text-gray-800">Customized</span>
             </div>
-            <div className="flex items-center gap-2 mb-2">
-              <Shield className="w-5 h-5 text-purple-400" />
-              <h3 className="text-xl font-bold text-white">Enterprise Security</h3>
+            <div className="flex items-center justify-between text-sm text-gray-600">
+              <span>Chat with assistant</span>
+              <span className="text-xs">Free</span>
             </div>
-            <p className="text-gray-300 text-sm">Bank-level encryption with industry-leading compliance</p>
-          </div>
-
-          {/* 24/7 Support Box */}
-          <div 
-            ref={featureBox3Ref}
-            className={`border-2 border-purple-500/30 rounded-xl p-6 bg-black/50 transition-all duration-1000 ease-out ${
-              areFeaturesVisible 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 translate-x-20'
-            }`}
-          >
-            <div className="bg-white rounded-lg p-4 mb-6 flex items-center justify-center h-[200px] relative">
-              {/* Wireframe Head Illustration */}
-              <svg
-                width="120"
-                height="120"
-                viewBox="0 0 120 120"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute"
-              >
-                {/* Head outline */}
-                <path
-                  d="M60 20 C45 20, 30 30, 30 50 C30 70, 40 85, 60 90 C80 85, 90 70, 90 50 C90 30, 75 20, 60 20"
-                  stroke="#3B82F6"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                {/* Maze-like lines inside head */}
-                <path d="M45 35 L55 45 L50 55 L60 60" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-                <path d="M75 35 L65 45 L70 55 L60 60" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-                <path d="M50 70 L60 75 L55 80 L60 85" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-                <path d="M70 70 L60 75 L65 80 L60 85" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-                {/* Additional maze lines */}
-                <circle cx="50" cy="40" r="2" fill="#3B82F6" opacity="0.4" />
-                <circle cx="70" cy="40" r="2" fill="#3B82F6" opacity="0.4" />
-                <path d="M45 50 Q60 55 75 50" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.4" />
-              </svg>
-              {/* Speech bubbles */}
-              <div className="absolute top-8 left-4 bg-purple-500 text-white text-xs px-2 py-1 rounded-lg">Kate</div>
-              <div className="absolute bottom-8 right-4 bg-blue-500 text-white text-xs px-2 py-1 rounded-lg">Jake</div>
+            <div className="flex items-center justify-between text-sm text-gray-600">
+              <span>Generate image</span>
+              <span className="text-xs">500 Credits</span>
             </div>
-            <div className="flex items-center gap-2 mb-2">
-              <Clock className="w-5 h-5 text-purple-400" />
-              <h3 className="text-xl font-bold text-white">24/7</h3>
+            <div className="flex items-center justify-between text-sm text-gray-600">
+              <span>Web search</span>
+              <span className="text-xs">Unlimited</span>
             </div>
-            <p className="text-gray-300 text-sm">Dedicated success manager, technical support, and exclusive partner community access.</p>
           </div>
         </div>
+
+        <div className="flex items-center gap-2 mb-2">
+          <Plug className="w-5 h-5 text-purple-400" />
+          <h3 className="text-xl font-bold text-white">Integrations</h3>
+        </div>
+        <p className="text-gray-300 text-sm">CRMs, calendars, and business tools. All connected.</p>
+      </div>
+
+      {/* Enterprise Security Box (second card) */}
+      <div
+        ref={featureBox2Ref}
+        className={`border-2 border-[#1f1f1f] rounded-xl p-6 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
+          areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+        }`}
+      >
+        <div className="bg-white rounded-lg p-4 mb-6">
+          <div className="space-y-2">
+            <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">our above recommendations {'{'} temp</div>
+            <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">te two [ define technology ] tests for the above</div>
+            <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">write the above text to be more verbose and inclu</div>
+            <div className="flex gap-2 mt-3">
+              <button className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded">ESLinter prompt</button>
+              <button className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded">Find array la</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 mb-2">
+          <Shield className="w-5 h-5 text-purple-400" />
+          <h3 className="text-xl font-bold text-white">Enterprise Security</h3>
+        </div>
+        <p className="text-gray-300 text-sm">Bank-level encryption with industry-leading compliance</p>
+      </div>
+    </div>
+
+    {/* RIGHT: single card that takes 30% on large screens */}
+    <div
+      ref={featureBox3Ref}
+      className={`col-span-1 lg:col-span-3 border-2 border-[#1f1f1f] rounded-xl p-3 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
+        areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+      }`}
+    >
+      <div className="bg-white rounded-lg p-2 mb-6 flex items-center justify-center h-[200px] relative">
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 120 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute"
+        >
+          <path
+            d="M60 20 C45 20, 30 30, 30 50 C30 70, 40 85, 60 90 C80 85, 90 70, 90 50 C90 30, 75 20, 60 20"
+            stroke="#3B82F6"
+            strokeWidth="1.5"
+            fill="none"
+          />
+          <path d="M45 35 L55 45 L50 55 L60 60" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
+          <path d="M75 35 L65 45 L70 55 L60 60" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
+          <path d="M50 70 L60 75 L55 80 L60 85" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
+          <path d="M70 70 L60 75 L65 80 L60 85" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
+          <circle cx="50" cy="40" r="2" fill="#3B82F6" opacity="0.4" />
+          <circle cx="70" cy="40" r="2" fill="#3B82F6" opacity="0.4" />
+          <path d="M45 50 Q60 55 75 50" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.4" />
+        </svg>
+        <div className="absolute top-8 left-4 bg-purple-500 text-white text-xs px-2 py-1 rounded-lg">Kate</div>
+        <div className="absolute bottom-8 right-4 bg-blue-500 text-white text-xs px-2 py-1 rounded-lg">Jake</div>
+      </div>
+
+      <div className="flex items-center gap-2 mb-2">
+        <Clock className="w-5 h-5 text-purple-400" />
+        <h3 className="text-xl font-bold text-white">24/7</h3>
+      </div>
+      <p className="text-gray-300 text-sm">Dedicated success manager, technical support, and exclusive partner community access.</p>
+    </div>
+  </div>
+</div>
+
       </main>
 
     </div>

@@ -35,8 +35,8 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
-      <WhyChooseCloserX />  
       <div>
+      <WhyChooseCloserX />  
       <FeatureGrid/>
       <FeatureCards/>
       <StatsCounter/>

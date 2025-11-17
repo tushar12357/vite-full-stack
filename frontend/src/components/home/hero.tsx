@@ -61,7 +61,7 @@ const hero = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
                 <button className="group relative flex items-center gap-0 px-0 py-0 bg-purple-600 text-white text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all overflow-hidden">
                   <span className="px-6 py-3">Try Live Demo</span>
-                  <span className="w-10 h-10 flex items-center justify-center bg-purple-700 rounded-full">
+                  <span className="w-10 h-10 flex m-2 items-center justify-center bg-purple-700 rounded-full">
                     <ArrowUpRight className="w-5 h-5" />
                   </span>
                 </button>
