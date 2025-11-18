@@ -1,5 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BorderedButton from "@/components/BorderedButton";
+import ContentCarouselSection from "@/components/ContentCarouselSection";
+import ContentCarouselSectionWithButton from "@/components/ContentCarouselSectionWithButton";
 import { 
   FileText, 
   Shield, 
@@ -9,13 +12,32 @@ import {
   Circle, 
   Triangle,
   Check,
-  ArrowRight
+  ArrowRight,
+  Palette,
+  Globe,
+  TrendingUp,
+  Target,
+  AudioWaveform,
+  RefreshCw,
+  Sparkles
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import dashboardImage from "@/assets/image.png";
+
+interface WhatWeDoItem {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface CoreValueItem {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
 
 const About = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +47,52 @@ const About = () => {
     console.log("Subscribed:", email);
     setEmail("");
   };
+
+  const whatWeDoItems: WhatWeDoItem[] = [
+    {
+      number: "01",
+      title: "Design",
+      description: "We work with you to design AI agents that align with your business goals and customer needs, ensuring seamless integration with your existing workflows."
+    },
+    {
+      number: "02",
+      title: "Build",
+      description: "Our team of experts builds robust and scalable AI agents using the latest technologies and best practices in artificial intelligence."
+    },
+    {
+      number: "03",
+      title: "Launch",
+      description: "We help you launch your AI agents quickly and efficiently, ensuring they are ready to handle real-world interactions from day one."
+    },
+    {
+      number: "04",
+      title: "Scale",
+      description: "As your business grows, we provide the infrastructure and support needed to scale your AI agents to handle increasing volumes of interactions."
+    }
+  ];
+
+  const coreValuesItems: CoreValueItem[] = [
+    {
+      icon: <AudioWaveform className="w-6 h-6 text-white" />,
+      title: "Ethical AI",
+      description: "Built-in transparency features with AI disclosure at call start, ensuring honest communication with end users"
+    },
+    {
+      icon: <RefreshCw className="w-6 h-6 text-white" />,
+      title: "Innovation",
+      description: "Quarterly updates with new features and enhancements based on user feedback and technological advancements"
+    },
+    {
+      icon: <Sparkles className="w-6 h-6 text-white" />,
+      title: "Excellence",
+      description: "Enterprise-grade capabilities at accessible pricing points with proven templates and comprehensive training"
+    },
+    {
+      icon: <Shield className="w-6 h-6 text-white" />,
+      title: "Reliability",
+      description: "99.9% uptime with centralized dashboard for effortless management of multiple client accounts"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -63,32 +131,42 @@ const About = () => {
         {/* About Us Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 rounded-xl border-2 border-gray-800 bg-[#121212] lg:gap-16 items-center">
+            <div 
+              className="grid md:grid-cols-2 gap-12 bg-[#121212] lg:gap-16 items-center"
+              style={{
+                width: '1131px',
+                height: '620px',
+                opacity: 1,
+                transform: 'rotate(0deg)',
+                borderRadius: '12px',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: '#1F1F1F'
+              }}
+            >
               {/* Left Column - Text */}
               <div className="p-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 ">
+                <h2 className="text-4xl md:text-5xl font-normal text-white mb-8 ">
                   About us
                 </h2>
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-4">
+                <p className="text-lg md:text-[16px] font-medium text-white/80 leading-relaxed mb-4">
                   Founded in 2021, CloserX.ai has emerged as a pioneering force in the AI-powered business communications industry, revolutionizing how agencies and businesses approach sales automation and customer engagement.
                 </p>
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
+                <p className="text-lg md:text-[16px] text-white/80 leading-relaxed mb-16">
                   Born from the vision to democratize advanced AI calling technology, CloserX.ai has grown to serve over 5000+ agency partners worldwide, helping them transform their operations with cutting-edge artificial intelligence solutions.
                 </p>
                 <Link to="/contact">
-                  <button className="px-6 py-3 bg-black border-2 border-dashed border-white text-white text-sm uppercase tracking-wide rounded-lg hover:bg-white hover:text-black transition-colors">
-                    CONTACT US
-                  </button>
+                  <BorderedButton text="CONTACT US" />
                 </Link>
               </div>
               
               {/* Right Column - Dashboard Screenshot */}
-              <div className="relative h-[280px] sm:h-[400px] md:h-[450px] lg:h-[450px] xl:h-[550px]">
+              <div className="relative h-[280px] sm:h-[400px] md:h-[620px] lg:h-[620px] xl:h-[620px]">
                 <div className="bg-white rounded-xl overflow-hidden border border-gray-200 h-full">
                   <img 
                     src={dashboardImage} 
                     alt="Dashboard Screenshot" 
-                    className="w-full h-full object-cover"
+                    className="w-[603px] h-[604px] object-cover"
                   />
                 </div>
               </div>
@@ -99,408 +177,570 @@ const About = () => {
         {/* Our Mission Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Our Mission
-            </h2>
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-              Our mission is to democratize access to advanced AI technology and empower businesses to create, deploy, and manage their own AI-powered agents. We believe that every organization, regardless of size, should have access to cutting-edge AI solutions that drive innovation and growth.
-            </p>
+            <div 
+              className="flex flex-col"
+              style={{
+                width: '839px',
+                height: '143px',
+                opacity: 1,
+                transform: 'rotate(0deg)',
+                gap: '20px',
+                margin: '0 auto'
+              }}
+            >
+              <h2 className="text-4xl md:text-5xl font-normal text-white">
+                Our Mission
+              </h2>
+              <p className="text-[14px] md:text-[14px] font-medium text-white/80 leading-relaxed">
+                Our mission is to democratize access to advanced AI technology and empower businesses to create, deploy, and manage their own AI-powered agents. We believe that every organization, regardless of size, should have access to cutting-edge AI solutions that drive innovation and growth.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* The White-Label Advantage Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
-              {/* Left Column - Text */}
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  The White-Label Advantage
-                </h2>
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
-                  Our white-label solution allows you to fully customize and brand the platform according to your business needs. Seamlessly integrate our technology into your existing infrastructure while maintaining complete control over your brand identity and customer experience.
-                </p>
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg">
-                  Read More
-                </Button>
-              </div>
-              
-              {/* Right Column - Three Feature Cards */}
-              <div className="grid grid-cols-1 gap-6">
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center">
-                      <FileText className="w-6 h-6 text-purple-400" />
+            {/* Cards Grid - 3 cards per row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Card 1 - The White-Label Advantage Header */}
+                <div 
+                  className="bg-transparent p-6 flex flex-col gap-2"
+                  style={{
+                    width: '400px',
+                    height: '346px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
+                  <h2 className="text-[40px] font-normal mb-6 text-white leading-tight">
+                    The White-Label Advantage
+                  </h2>
+                  <p 
+                    className="text-sm text-[#6B6B6B] leading-relaxed mb-10"
+                    style={{
+                      width: '334px',
+                      height: '72px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)'
+                    }}
+                  >
+                    Unlike traditional SaaS platforms, CloserX.ai empowers agencies to completely rebrand our AI calling platform with your own logo, colors, and custom domain.
+                  </p>
+                  <BorderedButton text="UNDERSTAND MORE" />
+                </div>
+                
+                {/* Card 2 - Professional Custom Domain */}
+                <div 
+                  className="bg-transparent border border-gray-800 p-6"
+                  style={{
+                    width: '400px',
+                    height: '346px',
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
+                  <div 
+                    className="flex flex-col gap-3 mb-4"
+                    style={{
+                      width: '256px',
+                      height: '113px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)'
+                    }}
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
+                      <Globe className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Full brand control</h3>
+                    <h3 className="text-xl font-medium text-white">Professional Custom Domain</h3>
                   </div>
-                  <p className="text-white/70">
-                    Customize every aspect of the platform to match your brand identity and create a seamless experience for your customers.
+                  <p 
+                    className="text-sm text-gray-400 leading-relaxed"
+                    style={{
+                      width: '334px',
+                      height: '72px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)',
+                      marginTop: '100px',
+                      
+                    }}
+                  >
+                    Launch under your own domain to reinforce brand identity and build client trust
                   </p>
                 </div>
                 
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-purple-400" />
+                {/* Card 3 - Predictable Revenue Streams */}
+                <div 
+                  className="bg-transparent border border-gray-800 p-6"
+                  style={{
+                    width: '400px',
+                    height: '346px',
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                    
+                  }}
+                >
+                  <div 
+                    className="flex flex-col gap-3 mb-4"
+                    style={{
+                      width: '256px',
+                      height: '113px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)'
+                    }}
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
+                      <TrendingUp className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Secure and private</h3>
+                    <h3 className="text-xl font-medium text-white">Predictable Revenue Streams</h3>
                   </div>
-                  <p className="text-white/70">
-                    Enterprise-grade security ensures your data and your customers' information remain protected and private at all times.
+                  <p 
+                    className="text-sm text-gray-400 leading-relaxed"
+                    style={{
+                      width: '334px',
+                      height: '72px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)',
+                      marginTop: '100px',
+
+                    }}
+                  >
+                    $10,000-$15,000 monthly recurring revenue potential within your first two months
                   </p>
                 </div>
                 
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center">
-                      <DollarSign className="w-6 h-6 text-purple-400" />
+                {/* Card 4 - Set Your Own Pricing */}
+                <div 
+                  className="bg-transparent border border-gray-800 p-6"
+                  style={{
+                    width: '400px',
+                    height: '346px',
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
+                  <div 
+                    className="flex flex-col gap-3 mb-4"
+                    style={{
+                      width: '256px',
+                      height: '113px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)'
+                    }}
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
+                      <DollarSign className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">Cost-effective</h3>
+                    <h3 className="text-xl font-medium text-white">Set Your Own Pricing</h3>
                   </div>
-                  <p className="text-white/70">
-                    Reduce development costs and time-to-market by leveraging our proven platform instead of building from scratch.
+                  <p 
+                    className="text-sm text-gray-400 leading-relaxed"
+                    style={{
+                      width: '334px',
+                      height: '72px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)',
+                      marginTop: '100px',
+                    }}
+                  >
+                    Establish margins on subscription fees and calling credits with complete control
                   </p>
                 </div>
-              </div>
+                
+                {/* Card 5 - Unique Market Position */}
+                <div 
+                  className="bg-transparent border border-gray-800 p-6"
+                  style={{
+                    width: '400px',
+                    height: '346px',
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
+                  <div 
+                    className="flex flex-col gap-3 mb-4"
+                    style={{
+                      width: '256px',
+                      height: '113px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)'
+                    }}
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
+                      <Target className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-medium text-white">Unique Market Position</h3>
+                  </div>
+                  <p 
+                    className="text-sm text-gray-400 leading-relaxed"
+                    style={{
+                      width: '334px',
+                      height: '72px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)',
+                      marginTop: '100px',
+                    }}
+                  >
+                    Present as proprietary solution, creating competitive advantage in crowded marketplace
+                  </p>
+                </div>
+                
+                {/* Card 6 - Additional Feature */}
+                <div 
+                  className="bg-transparent border border-gray-800 p-6"
+                  style={{
+                    width: '400px',
+                    height: '346px',
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
+                  <div 
+                    className="flex flex-col gap-3 mb-4"
+                    style={{
+                      width: '256px',
+                      height: '113px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)'
+                    }}
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
+                      <Shield className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-medium text-white">Enterprise Support</h3>
+                  </div>
+                  <p 
+                    className="text-sm text-gray-400 leading-relaxed"
+                    style={{
+                      width: '334px',
+                      height: '72px',
+                      opacity: 1,
+                      transform: 'rotate(0deg)',
+                      marginTop: '100px',
+                    }}
+                  >
+                    Dedicated support team to help you succeed with implementation and ongoing optimization
+                  </p>
+                </div>
             </div>
           </div>
         </section>
+        
 
         {/* What We Do Section - First Instance (Design, Build, Launch, Scale) */}
-        <section className="bg-white py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-                What We Do
-              </h2>
-              <p className="text-lg text-black/70">
-                We provide end-to-end solutions for creating and managing AI-powered agents.
-              </p>
+        <ContentCarouselSectionWithButton
+          title="What We Do"
+          description="CloserX.ai provides an AI-powered voice calling platform that operates 24/7, 365 days a year with ultra-realistic voice agents"
+          buttonText="UNDERSTAND MORE"
+          items={whatWeDoItems}
+          itemsPerView={4}
+          showNavigation={true}
+          backgroundColor="bg-black"
+          renderItem={(item) => (
+            <div 
+              className="bg-transparent border border-gray-800 p-8 flex flex-col "
+              style={{
+                width: '321px',
+                height: '376px',
+                opacity: 1,
+                transform: 'rotate(0deg)',
+                borderRadius: '12px',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: '#1F1F1F'
+              }}
+            >
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-20">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              
+              {/* Title */}
+              <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
+              
+              {/* Description */}
+              <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
             </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div>
-                <div className="text-3xl font-bold text-gray-400 mb-4">01</div>
-                <h3 className="text-2xl font-bold text-black mb-4">Design</h3>
-                <p className="text-black/70 leading-relaxed">
-                  We work with you to design AI agents that align with your business goals and customer needs, ensuring seamless integration with your existing workflows.
-                </p>
-              </div>
-              
-              <div>
-                <div className="text-3xl font-bold text-gray-400 mb-4">02</div>
-                <h3 className="text-2xl font-bold text-black mb-4">Build</h3>
-                <p className="text-black/70 leading-relaxed">
-                  Our team of experts builds robust and scalable AI agents using the latest technologies and best practices in artificial intelligence.
-                </p>
-              </div>
-              
-              <div>
-                <div className="text-3xl font-bold text-gray-400 mb-4">03</div>
-                <h3 className="text-2xl font-bold text-black mb-4">Launch</h3>
-                <p className="text-black/70 leading-relaxed">
-                  We help you launch your AI agents quickly and efficiently, ensuring they are ready to handle real-world interactions from day one.
-                </p>
-              </div>
-              
-              <div>
-                <div className="text-3xl font-bold text-gray-400 mb-4">04</div>
-                <h3 className="text-2xl font-bold text-black mb-4">Scale</h3>
-                <p className="text-black/70 leading-relaxed">
-                  As your business grows, we provide the infrastructure and support needed to scale your AI agents to handle increasing volumes of interactions.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+          )}
+        />
 
         {/* Pricing Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 mb-16">
-              {/* Left Column - Text */}
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Pricing
+            <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start">
+              {/* Left Column - Header with Decorative Element */}
+              <div className="relative">
+                <p className="text-sm text-gray-400 mb-2 border border-gray-700 rounded-full px-4 py-2 inline-block">Choose Your Plan</p>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  Pay only for what you use
                 </h2>
-                <p className="text-lg md:text-xl text-white/80 mb-4">
-                  Pay only for what you use.
+                <p className="text-base text-gray-400">
+                  Plans built for creators and business of all sizes
                 </p>
-                <p className="text-lg text-white/70 leading-relaxed">
-                  Our flexible pricing model ensures you only pay for the resources you need, with the ability to scale up or down as your business requirements change.
-                </p>
+                
+
               </div>
-              
+
               {/* Right Column - Pricing Cards */}
               <div className="grid md:grid-cols-3 gap-6">
-                {/* Basic Plan */}
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col">
-                  <h3 className="text-xl font-bold text-white mb-2">Basic</h3>
-                  <div className="text-3xl font-bold text-white mb-4">€200</div>
-                  <ul className="space-y-3 mb-6 flex-grow">
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">10 agents</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">10 stories</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">10 knowledge bases</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Basic support</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full bg-gray-800 hover:bg-gray-700 text-white">
-                    Select Plan
-                  </Button>
+              {/* Starter Plan */}
+              <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                <h3 className="text-[18px] font-medium text-white mb-2">Starter</h3>
+                <p className="text-sm text-gray-400 mb-16">For startups and publishers</p>
+                <p className="text-xs text-gray-500 mb-2">UP TO 05 Sub-Accounts</p>
+                <div className="mb-6 flex items-baseline gap-1">
+                  <span className="text-5xl font-bold text-white">$29</span>
+                  <span className="text-base text-gray-400">Per Month</span>
                 </div>
-                
-                {/* Pro Plan - Highlighted */}
-                <div className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl p-6 flex flex-col relative transform scale-105 z-10">
-                  <h3 className="text-xl font-bold text-white mb-2">Pro</h3>
-                  <div className="text-3xl font-bold text-white mb-4">€700</div>
-                  <ul className="space-y-3 mb-6 flex-grow">
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">50 agents</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">50 stories</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">50 knowledge bases</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">Advanced support</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">Custom integrations</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">API access</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/90">Analytics</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full bg-white hover:bg-gray-100 text-purple-600 font-semibold">
-                    Select Plan
-                  </Button>
-                </div>
-                
-                {/* Enterprise Plan */}
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col">
-                  <h3 className="text-xl font-bold text-white mb-2">Enterprise</h3>
-                  <div className="text-3xl font-bold text-white mb-4">€2000</div>
-                  <ul className="space-y-3 mb-6 flex-grow">
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Unlimited agents</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Unlimited stories</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Unlimited knowledge bases</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Dedicated support</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">On-premise deployment</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Custom development</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">SLA</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/70">Training</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full bg-gray-800 hover:bg-gray-700 text-white">
-                    Select Plan
-                  </Button>
-                </div>
+                <button className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all">
+                  Get Started
+                </button>
+                <ul className="space-y-3 flex-grow mt-8">
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Basic dashboard</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Limited API access</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Email Support</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Up to 05 sub-accounts</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Basic analytics</span>
+                  </li>
+                </ul>
               </div>
+              
+              {/* Professional Plan - Highlighted */}
+              <div className="bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 rounded-2xl p-8 flex flex-col relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 px-4 py-2 rounded-full">
+                  <span className="text-xs font-semibold text-white tracking-wide">MOST POPULAR</span>
+                </div>
+                <h3 className="text-[18px] font-medium text-white mb-2">Professional</h3>
+                <p className="text-sm text-white/90 mb-12">For rapidly scaling startups and publishers</p>
+                <p className="text-xs text-white/80 mb-2">UP TO 20 Sub-Accounts</p>
+                <div className="mb-6 flex items-baseline gap-1">
+                  <span className="text-5xl font-bold text-white">$99</span>
+                  <span className="text-base text-white/90">Per Month</span>
+                </div>
+                <button className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all">
+                  Get Started
+                </button>
+                <ul className="space-y-3 flex-grow mt-8">
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Advanced dashboard</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Priority API access</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Live chat support</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Up to 20 sub-accounts</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Advanced analytics</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Custom branding</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-white">Call recording</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Growing Plan */}
+              <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                <h3 className="text-[18px] font-medium text-white mb-2">Growing</h3>
+                <p className="text-sm text-gray-400 mb-6">For enterprises that need volume based discounts and custom terms</p>
+                <p className="text-xs text-gray-500 mb-2">Unlimited Sub-Accounts</p>
+                <div className="mb-6 flex items-baseline gap-1">
+                  <span className="text-5xl font-bold text-white">$297</span>
+                  <span className="text-base text-gray-400">Per Month</span>
+                </div>
+                <button className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all">
+                  Get Started
+                </button>
+                <ul className="space-y-3 flex-grow mt-8">
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Full-featured dashboard</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Unlimited API calls</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">24/7 dedicated support</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Unlimited sub-accounts</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Advanced analytics</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Custom AI models</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">SLA guarantee</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-300">Priority processing</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
             </div>
           </div>
         </section>
 
-        {/* What We Do Section - Second Instance (Integrations, Knowledge Bases, Bots & Agents, Analytics) */}
-        <section className="bg-white py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-                What We Do
-              </h2>
-              <p className="text-lg text-black/70">
-                Comprehensive solutions for modern AI-powered businesses.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-                  <Plus className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-black mb-4">Integrations</h3>
-                <p className="text-black/70 leading-relaxed">
-                  Connect seamlessly with your existing tools and platforms through our extensive integration ecosystem, enabling smooth data flow and workflow automation.
-                </p>
+        {/* Core Values Section */}
+        <ContentCarouselSection
+          tag="What We Do"
+          title="What We Do"
+          description="CloserX.ai provides an AI-powered voice calling platform that operates 24/7, 365 days a year with ultra-realistic voice agents"
+          items={coreValuesItems}
+          itemsPerView={4}
+          showNavigation={false}
+          backgroundColor="bg-black"
+          renderItem={(item) => (
+            <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 h-full flex flex-col">
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 flex items-center justify-center mb-6">
+                {item.icon}
               </div>
-              
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-                  <Square className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-black mb-4">Knowledge Bases</h3>
-                <p className="text-black/70 leading-relaxed">
-                  Create and manage comprehensive knowledge bases that power your AI agents with accurate, up-to-date information from your organization.
-                </p>
-              </div>
-              
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-                  <Circle className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-black mb-4">Bots & Agents</h3>
-                <p className="text-black/70 leading-relaxed">
-                  Develop intelligent bots and agents that can handle complex interactions, learn from conversations, and provide exceptional customer experiences.
-                </p>
-              </div>
-              
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-                  <Triangle className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-black mb-4">Analytics</h3>
-                <p className="text-black/70 leading-relaxed">
-                  Monitor and analyze the performance of your AI agents with comprehensive analytics and insights that help you optimize and improve continuously.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Careers Section */}
+              {/* Title */}
+              <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
+
+              {/* Description */}
+              <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
+            </div>
+          )}
+        />
+
+
+        {/* We Are Hiring Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Left Column - Text */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Text Content */}
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Careers
+                <div className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium mb-8">
+                  WE ARE HIRING
+                </div>
+                
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+                  Join our team, we're building the future of enterprise.
                 </h2>
-                <p className="text-lg md:text-xl text-white/80 mb-4">
-                  Join our team, we're exploring the future of enterprise.
+                
+                <p className="text-base text-gray-400 mb-6 leading-relaxed">
+                  Today, CloserX.ai stands as the trusted AI calling solution for thousands of agencies worldwide, helping them differentiate their offerings, increase revenue streams, and deliver exceptional value to their clients. With proven templates, comprehensive training, and a 30-day money-back guarantee (terms and conditions applied), we provide everything needed to launch and scale a profitable AI calling agency.
                 </p>
-                <p className="text-lg text-white/70 leading-relaxed mb-6">
-                  We're building the next generation of AI-powered solutions and we're looking for talented individuals who share our passion for innovation. Our team is composed of experts in AI, machine learning, software engineering, and product design who work together to create cutting-edge solutions.
+                
+                <p className="text-base text-gray-400 mb-10 leading-relaxed">
+                  Whether you're an established marketing agency looking to expand your service portfolio or an entrepreneur ready to enter the AI space, CloserX.ai provides the complete toolkit for success in the rapidly evolving world of AI-powered business communications.
                 </p>
-                <p className="text-lg text-white/70 leading-relaxed mb-8">
-                  We offer a collaborative environment where creativity thrives, ideas are valued, and every team member has the opportunity to make a significant impact. If you're excited about pushing the boundaries of what's possible with AI, we'd love to hear from you.
-                </p>
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg">
-                  Learn More
-                </Button>
-          </div>
+                
+                <BorderedButton text="CONTACT US" />
+              </div>
 
-              {/* Right Column - Screenshot */}
+              {/* Right Column - Dashboard Image */}
               <div className="relative">
-                <div className="bg-gray-900 rounded-xl p-4 border border-gray-800">
-                  <div className="bg-black rounded-lg overflow-hidden">
-                    {/* Mock Dashboard UI */}
-                    <div className="p-6">
-                      <div className="flex gap-4 mb-6">
-                        <div className="text-white/60 text-sm">Dashboard</div>
-                        <div className="text-white text-sm font-semibold">Agents</div>
-                        <div className="text-white/60 text-sm">Stories</div>
-                        <div className="text-white/60 text-sm">Knowledge</div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 rounded-full bg-purple-600"></div>
-                            <div>
-                              <div className="text-white font-semibold">Agent 1</div>
-                              <div className="text-white/60 text-sm">AI Assistant</div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 rounded-full bg-purple-600"></div>
-                            <div>
-                              <div className="text-white font-semibold">Agent 2</div>
-                              <div className="text-white/60 text-sm">Customer Support</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={dashboardImage} 
+                    alt="CloserX.ai Dashboard" 
+                    className="w-full h-auto"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Newsletter Section */}
+        {/* CTA Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Left Column - Text */}
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Start using AI to agent today!
-                </h2>
-                <p className="text-lg md:text-xl text-white/80">
-                  Join our newsletter to stay up to date with our latest news and features.
-                </p>
+            <div 
+              className="bg-[#121212] border border-gray-800 p-12 md:p-16 relative"
+              style={{
+                width: '1247px',
+                height: '213px',
+                left: '96px',
+                borderRadius: '24px',
+                opacity: 1,
+                transform: 'rotate(0deg)'
+              }}
+            >
+              <div className="flex flex-col justify-center h-full">
+                <div
+                  className="flex flex-col"
+                  style={{
+                    width: '503px',
+                    height: '108px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)',
+                    gap: '12px'
+                  }}
+                >
+                  <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-white">
+                    Start using an AI agent today
+                  </h2>
+                  <p className="text-base md:text-base text-white/70">
+                    Join our growing network of partners and unlock new opportunities with AI-driven customer engagement.
+                  </p>
+                </div>
+                <button 
+                  className="bg-purple-600 text-[14px] p-2 hover:bg-purple-700 text-white rounded-full font-normal transition-colors"
+                  style={{
+                    width: '120px',
+                    height: '41px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)',
+                    marginTop: '12px'
+
+                  }}
+                >
+                  Get In Touch
+                </button>
               </div>
-              
-              {/* Right Column - Newsletter Form */}
-              <div>
-                <form onSubmit={handleSubscribe} className="flex gap-4">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 bg-gray-900 border-gray-800 text-white placeholder:text-white/50 h-12 px-4 rounded-lg"
-                    required
-                  />
-                  <Button 
-                    type="submit"
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg h-12"
-                  >
-                    Subscribe
-                  </Button>
-                </form>
-              </div>
+            </div>
           </div>
-        </div>
         </section>
       </main>
 

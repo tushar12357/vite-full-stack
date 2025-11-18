@@ -71,7 +71,7 @@ const testimonials: Testimonial[] = [
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
+    <div className="bg-[#F9FAFB] rounded-2xl p-6 shadow-sm border border-[#E5E7EB] hover:shadow-md transition-shadow duration-300">
       <div className="flex items-start gap-4 mb-4">
         {/* Profile Circle */}
         <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center">
@@ -82,17 +82,17 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
         
         {/* Name and Role */}
         <div className="flex-1 min-w-0">
-          <h4 className="font-bold text-gray-900 text-base mb-0.5">
+          <h4 className="font-normal text-gray-900 text-[14px] mb-0.5">
             {testimonial.name}
           </h4>
           {testimonial.role && (
-            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            <p className="text-[12px] text-[#6B7280] font-medium">{testimonial.role}</p>
           )}
         </div>
       </div>
       
       {/* Testimonial Text */}
-      <p className="text-gray-700 leading-relaxed text-sm">
+      <p className="text-[#6B7280] leading-relaxed text-[12px] font-medium">
         "{testimonial.text}"
       </p>
     </div>
@@ -105,14 +105,14 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <p className="text-sm md:text-base font-semibold text-gray-500 uppercase tracking-wider mb-4">
+          <span className="inline-block px-2 py-1 rounded-[6px] bg-[#F9FAFB] border text-[12px] border-gray-200 md:text-[12px] text-[#111827] ">
             Testimonials
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 max-w-4xl mx-auto leading-tight">
-            Don't take it from us, hear it from our users
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-semibold poppins text-[#111827] my-4 max-w-4xl mx-auto leading-3">
+            Don&apos;t take it from us,<br/> hear it from our users
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            A selection of feedback from our incredible community
+          <p className="text-[12px] md:text-[14px] text-gray-600 max-w-2xl mx-auto font-medium">
+          At CloserX, we believe in the power of<br/> connection and collaboration.
           </p>
         </div>
 

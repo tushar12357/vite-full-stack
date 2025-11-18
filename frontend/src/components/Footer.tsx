@@ -48,7 +48,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-r from-purple-900 via-purple-800 to-purple-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-r from-[#9333EA] via-purple-800 to-[#A855F7] text-white overflow-hidden">
       {/* Main Footer Content */}
       <div className="py-16 lg:py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4">

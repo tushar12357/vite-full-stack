@@ -80,18 +80,42 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
       <div className="max-w-5xl mx-auto">
         {/* Tag */}
         <div className="flex justify-center mb-6">
-          <span className="inline-block px-4 py-1.5 bg-gray-800 rounded-full text-sm md:text-base text-white font-medium">
+          <span className="inline-block px-3 py-1 bg-gray-50 border border-gray-200 rounded text-xs text-gray-800 font-medium">
             {tag}
           </span>
         </div>
 
         {/* Main Title */}
-        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black text-center mb-4 max-w-3xl mx-auto leading-tight">
+        <h2 
+          className="text-black text-center mb-4 mx-auto"
+          style={{
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 600,
+            fontSize: '48px',
+            lineHeight: '100%',
+            letterSpacing: '0%',
+            width: '600px',
+            height: '120px',
+            opacity: 1,
+          }}
+        >
           {mainTitle}
         </h2>
 
         {/* Subtitle */}
-        <p className="text-small md:text-base lg:text-base text-black text-center mb-8 md:mb-12 max-w-xl mx-auto">
+        <p 
+          className="text-black text-center mb-8 md:mb-12 mx-auto"
+          style={{
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 200,
+            fontSize: '14px',
+            lineHeight: '100%',
+            letterSpacing: '0%',
+            width: '400px',
+            height: '42px',
+            opacity: 1,
+          }}
+        >
           {subtitle}
         </p>
 
@@ -99,11 +123,11 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
         <div className="grid grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-8 items-start relative">
           {/* Left Column - Features */}
           <div className="relative">
-            <h3 className="text-3xl md:text-4xl font-bold text-black mb-2">
+            <h3 className="text-5xl md:text-[40px] font-semibold text-black mb-2">
               {leftColumn.title}{" "}
               <span className="text-purple-600">{leftColumn.titleHighlight}</span>
             </h3>
-            <p className="text-lg md:text-xl text-black mb-12">
+            <p className="text-5xl md:text-[40px] text-black mb-12">
               {leftColumn.description}
             </p>
 
@@ -114,22 +138,19 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
                 return (
                   <div key={index}>
                     <div className="flex gap-4 py-4">
-                      <div className="flex-shrink-0">
-                        <span className="text-2xl md:text-3xl font-bold text-gray-500">
-                          {feature.number}
-                        </span>
-                      </div>
+                     
                       <div className="flex-1">
                         <button
                           onClick={() => toggleFeature(index)}
                           className="text-left w-full"
                         >
-                          <h4 className="text-xl md:text-2xl font-bold text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer">
-                            {feature.title}
+                          
+                          <h4 className="text-[18px] md:text-[18px] font-medium text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer">
+                           {feature.number} {feature.title}
                           </h4>
                         </button>
                         {feature.description && isExpanded && (
-                          <p className="text-base md:text-lg text-black leading-relaxed mt-2">
+                          <p className="text-[14px] md:text-[14px] font-thin text-black leading-relaxed mt-2">
                             {feature.description}
                           </p>
                         )}

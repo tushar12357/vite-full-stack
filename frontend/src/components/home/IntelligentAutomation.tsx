@@ -108,13 +108,25 @@ const IntelligentAutomation = () => {
         </div>
 
         {/* Main Title */}
-        <h2 className="text-6xl font-bold text-black text-center mb-3 max-w-3xl mx-auto leading-tight">
+        <h2 className="text-6xl font-semibold text-black text-center mb-3 max-w-3xl mx-auto leading-tight">
           Build Powerful Workflows Without Writing Code
         </h2>
 
         {/* Subtitle */}
-        <p className="text-base text-gray-400 text-center mb-12 md:mb-16 max-w-xl mx-auto leading-relaxed">
-          Automate your entire sales process, from lead capture to follow-up, with AI-powered workflows that adapt to your business needs.
+        <p 
+          className="text-center mb-12 md:mb-16 mx-auto"
+          style={{
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 500,
+            fontSize: '14px',
+            lineHeight: '100%',
+            letterSpacing: '0%',
+            width: '228.0404052734375px',
+            height: '42px',
+            opacity: 1,
+          }}
+        >
+          Drag, drop, and connect. Your automation is live in minutes.
         </p>
 
         <div className="relative pt-10 pb-10">

@@ -106,15 +106,15 @@ const FAQ = () => {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <div className="flex justify-center mb-4">
-            <span className="inline-block px-4 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm md:text-base text-gray-700 font-medium uppercase">
-              FAQ's
+            <span className="inline-block px-4 py-1.5 bg-gray-100 border border-gray-200 rounded-[6px] text-[12px] md:text-[12px] text-gray-700 font-medium uppercase">
+              FAQ&apos;s
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 max-w-3xl mx-auto leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl text-gray-900 font-semibold mb-4 max-w-3xl mx-auto leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            Find quick answers about our services. Reach out to us directly for
+          <p className="text-[12px] md:text-[14px] text-gray-600 max-w-2xl mx-auto font-medium">
+            Find quick answers about our services. Reach <br/> out to us directly for
             more information!
           </p>
         </div>
@@ -130,7 +130,7 @@ const FAQ = () => {
                   onClick={() => toggleItem(faq.id)}
                   className="w-full flex items-center justify-between py-6 text-left border-b border-gray-200 hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 pr-8">
+                  <h3 className="text-[14px] md:text-[16px] font-medium text-gray-900 pr-8">
                     {faq.question}
                   </h3>
                   <div className="flex-shrink-0">
@@ -149,9 +149,9 @@ const FAQ = () => {
                   }`}
                 >
                   <div className="pb-6 pt-2 border-b border-gray-200">
-                    <p className="text-base md:text-lg text-gray-600 leading-relaxed pr-12">
+                    <p className="text-[12px] md:text-[14px] text-gray-600 leading-relaxed pr-12 font-medium">
                       {faq.answer}
-                    </p>
+                    </p>  
                   </div>
                 </div>
               </div>

@@ -1,14 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Shield, Lock, FileCheck, AlertCircle, CheckCircle2, Globe, Server, Key } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Shield, Lock, FileCheck, Globe, Server, Key, CheckCircle2, Star, AudioWaveform, Activity, Database } from "lucide-react";
+import dashboardImage from "@/assets/image.png";
 
 const CERTIFICATIONS = [
   {
     name: "SOC 2 Type II",
     description: "Independently audited security controls",
-    icon: Shield,
+    icon: AudioWaveform,
     status: "Certified"
   },
   {
@@ -20,13 +19,13 @@ const CERTIFICATIONS = [
   {
     name: "HIPAA Ready",
     description: "Healthcare data security standards",
-    icon: FileCheck,
+    icon: Star,
     status: "Ready"
   },
   {
     name: "ISO 27001",
     description: "Information security management",
-    icon: Lock,
+    icon: Shield,
     status: "Certified"
   }
 ];
@@ -35,27 +34,27 @@ const SECURITY_FEATURES = [
   {
     title: "End-to-End Encryption",
     description: "All data is encrypted in transit and at rest using AES-256 encryption",
-    icon: Lock
+    icon: Shield
   },
   {
     title: "Regular Security Audits",
     description: "Third-party penetration testing and security assessments quarterly",
-    icon: AlertCircle
+    icon: Shield
   },
   {
     title: "Access Controls",
     description: "Role-based access control (RBAC) and multi-factor authentication",
-    icon: Key
+    icon: Shield
   },
   {
     title: "Data Residency",
     description: "Choose where your data is stored with multi-region support",
-    icon: Server
+    icon: Shield
   },
   {
     title: "Compliance Monitoring",
     description: "Continuous compliance monitoring and automated alerts",
-    icon: FileCheck
+    icon: Shield
   },
   {
     title: "Incident Response",
@@ -73,208 +72,202 @@ const PRIVACY_PRACTICES = [
   "Dedicated data protection officer"
 ];
 
+const INFRASTRUCTURE_ITEMS = [
+  {
+    title: "99.9% Uptime SLA",
+    description: "Enterprise-grade infrastructure with redundancy across multiple regions",
+    icon: Shield
+  },
+  {
+    title: "Global CDN",
+    description: "Low-latency voice delivery with edge computing in 50+ locations worldwide",
+    icon: Shield
+  },
+  {
+    title: "Daily Backups",
+    description: "Automated backups with point-in-time recovery and disaster recovery protocols",
+    icon: Shield
+  }
+];
+
+const DOCUMENTATION_ITEMS = [
+  {
+    title: "Security White Paper",
+    description: "Detailed overview of our security architecture",
+    icon: Star
+  },
+  {
+    title: "Privacy Policy",
+    description: "How we collect and process data",
+    icon: Globe
+  },
+  {
+    title: "Penetration Test Results",
+    description: "Summary of recent security assessments",
+    icon: Star
+  },
+  {
+    title: "Compliance Reports",
+    description: "Access to our latest audit reports",
+    icon: Shield
+  }
+];
+
 export default function TrustCenter() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
+    <div className="min-h-screen bg-black text-white">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center gap-2 mb-4 justify-center">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-2xl">🔒</span>
-            </div>
-            <Badge variant="secondary" className="text-xs font-semibold">SOC 2</Badge>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Trust & Security
-          </h1>
-          
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Your data security and privacy are our top priorities. We maintain the highest standards of security, compliance, and transparency.
-          </p>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Certifications</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CERTIFICATIONS.map((cert, i) => {
-              const Icon = cert.icon;
-              return (
-                <Card key={i} className="text-center border-2">
-                  <CardHeader>
-                    <div className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4">
-                      <Icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{cert.name}</CardTitle>
-                    <CardDescription>{cert.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Badge className="bg-green-500/10 text-green-700 border-green-500/20">
-                      {cert.status}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Security Features */}
-      <section className="pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Enterprise-Grade Security</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Multiple layers of security protect your data at every stage
-          </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SECURITY_FEATURES.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <Card key={i} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg mb-2">{feature.title}</CardTitle>
-                        <CardDescription>{feature.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Privacy Practices */}
-      <section className="pb-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-card rounded-3xl p-8 md:p-12 border border-border">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Shield className="h-6 w-6 text-primary" />
-              </div>
-              <h2 className="text-3xl font-bold">Our Privacy Promise</h2>
-            </div>
-            
-            <p className="text-lg text-muted-foreground mb-8">
-              We believe in complete transparency about how we handle your data. Here's our commitment:
+      <main className="pt-28">
+        {/* Hero Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Trust & Security
+            </h1>
+            <p className="text-xl text-white max-w-3xl mx-auto">
+              Your data security and privacy are our top priorities. We maintain the highest standards of security, compliance, and transparency.
             </p>
+          </div>
+        </section>
 
-            <div className="grid md:grid-cols-2 gap-4">
-              {PRIVACY_PRACTICES.map((practice, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground">{practice}</span>
-                </div>
-              ))}
+        {/* Our Certifications Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Certifications</h2>
+            <p className="text-base text-gray-400 mb-12 max-w-3xl">
+              We maintain industry-leading certifications and compliance standards to ensure your data is protected.
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {CERTIFICATIONS.map((cert, i) => {
+                const Icon = cert.icon;
+                return (
+                  <div key={i} className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                    <div className="w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 flex items-center justify-center mb-6">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-xs text-gray-500 mb-2">{cert.status}</div>
+                    <h3 className="text-xl font-semibold text-white mb-2">{cert.name}</h3>
+                    <p className="text-sm text-gray-400">{cert.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Infrastructure */}
-      <section className="pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Infrastructure & Reliability</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardHeader className="text-center">
-                <div className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center mb-4">
-                  <Server className="h-8 w-8 text-blue-600" />
-                </div>
-                <CardTitle>99.9% Uptime SLA</CardTitle>
-                <CardDescription className="mt-2">
-                  Enterprise-grade infrastructure with redundancy across multiple regions
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader className="text-center">
-                <div className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-green-500/20 to-green-600/20 flex items-center justify-center mb-4">
-                  <Globe className="h-8 w-8 text-green-600" />
-                </div>
-                <CardTitle>Global CDN</CardTitle>
-                <CardDescription className="mt-2">
-                  Low-latency voice delivery with edge computing in 50+ locations worldwide
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader className="text-center">
-                <div className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center mb-4">
-                  <Lock className="h-8 w-8 text-purple-600" />
-                </div>
-                <CardTitle>Daily Backups</CardTitle>
-                <CardDescription className="mt-2">
-                  Automated backups with point-in-time recovery and disaster recovery protocols
-                </CardDescription>
-              </CardHeader>
-            </Card>
+        {/* How It Works Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium mb-4">
+              Intelligent Automation
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How It Works</h2>
+            <p className="text-base text-gray-400 mb-12 max-w-3xl">
+              Multiple layers of security protect your data at every stage of processing and storage.
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {SECURITY_FEATURES.map((feature, i) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={i} className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                    <div className="w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 flex items-center justify-center mb-6">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
+                    <p className="text-sm text-gray-400">{feature.description}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Documentation Links */}
-      <section className="pb-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Security Documentation</CardTitle>
-              <CardDescription className="text-center mt-2">
-                Access detailed documentation about our security practices
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
-                <a 
-                  href="#" 
-                  className="p-4 bg-card rounded-xl border border-border hover:shadow-lg transition-all group"
-                >
-                  <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">Security White Paper</h3>
-                  <p className="text-sm text-muted-foreground">Detailed overview of our security architecture</p>
-                </a>
-                <a 
-                  href="#" 
-                  className="p-4 bg-card rounded-xl border border-border hover:shadow-lg transition-all group"
-                >
-                  <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">Privacy Policy</h3>
-                  <p className="text-sm text-muted-foreground">How we collect and process data</p>
-                </a>
-                <a 
-                  href="#" 
-                  className="p-4 bg-card rounded-xl border border-border hover:shadow-lg transition-all group"
-                >
-                  <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">Compliance Reports</h3>
-                  <p className="text-sm text-muted-foreground">Access to our latest audit reports</p>
-                </a>
-                <a 
-                  href="#" 
-                  className="p-4 bg-card rounded-xl border border-border hover:shadow-lg transition-all group"
-                >
-                  <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">Penetration Test Results</h3>
-                  <p className="text-sm text-muted-foreground">Summary of recent security assessments</p>
-                </a>
+        {/* Our Privacy Promise Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Privacy Promise</h2>
+            <p className="text-base text-gray-400 mb-12 max-w-3xl">
+              We believe in complete transparency about how we handle your data. Here's our commitment to you.
+            </p>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Privacy Practices */}
+              <div className="space-y-4">
+                {PRIVACY_PRACTICES.map((practice, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-base text-white">{practice}</span>
+                  </div>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+
+              {/* Right Column - Dashboard Image */}
+              <div className="relative">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={dashboardImage} 
+                    alt="Privacy Dashboard" 
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Infrastructure & Reliability Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Infrastructure & Reliability</h2>
+            <p className="text-base text-gray-400 mb-12 max-w-3xl">
+              Built on enterprise-grade infrastructure designed for reliability, performance, and global scale.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              {INFRASTRUCTURE_ITEMS.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                    <div className="w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 flex items-center justify-center mb-6">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-4">{item.title}</h3>
+                    <p className="text-sm text-gray-400">{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Security Documentation Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Security Documentation</h2>
+            <p className="text-base text-gray-400 mb-12 max-w-3xl">
+              Access detailed documentation about our security practices, compliance, and audit reports.
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {DOCUMENTATION_ITEMS.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                    <div className="w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 flex items-center justify-center mb-6">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-4">{item.title}</h3>
+                    <p className="text-sm text-gray-400">{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
