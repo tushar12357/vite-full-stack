@@ -71,11 +71,12 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
   return (
     <section 
       ref={sectionRef}
-      className={`bg-white py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 transition-all duration-[1500ms] ease-in-out font-poppins ${
+      className={`bg-white py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 transition-all ease-in-out font-poppins ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
       }`}
+      style={{ transitionDuration: '1500ms' }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Tag */}
