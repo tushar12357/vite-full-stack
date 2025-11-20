@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure Poppins font is loaded and applied globally */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Global Poppins font application - outside layers for maximum priority */
+html, body, #root {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -193,6 +201,21 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Force Poppins Font */
+  .font-poppins,
+  .font-poppins *,
+  .font-poppins h1,
+  .font-poppins h2,
+  .font-poppins h3,
+  .font-poppins h4,
+  .font-poppins h5,
+  .font-poppins h6,
+  .font-poppins p,
+  .font-poppins span,
+  .font-poppins button {
+    font-family: 'Poppins', sans-serif !important;
+  }
+  
   /* Mobile Performance Optimizations */
   .touch-manipulation {
     touch-action: manipulation;

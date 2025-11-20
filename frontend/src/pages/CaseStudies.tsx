@@ -1,262 +1,228 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Search, TrendingUp, ArrowRight, Building2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
+import globePlaceholder from "@/assets/placeholder.svg";
 
-const CASE_STUDIES = [
+const FEATURED_STORIES = [
   {
-    id: "real-estate-empire",
-    company: "Empire Realty Group",
-    industry: "Real Estate",
-    title: "How Empire Realty Automated 1,000+ Monthly Showings",
-    challenge: "Manual appointment scheduling consuming 40+ hours weekly",
-    result: "95% automation rate, 40 hours saved per week, 23% increase in bookings",
-    metrics: {
-      timeSaved: "40 hrs/week",
-      roi: "430%",
-      automation: "95%"
-    },
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-    featured: true
+    title: "Adopted agentic RAG to strengthen self-service offerings",
+    description:
+      "CloserX Voice Agents helped SprintX unify their customer support flows, boosting containment and response times across 2M+ conversations per month.",
+    cta: "View Success Story",
+    image:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    id: "healthcare-clinic",
-    company: "MediCare Plus",
-    industry: "Healthcare",
-    title: "Reducing No-Shows by 67% with AI Reminders",
-    challenge: "High patient no-show rates and manual reminder calls",
-    result: "67% reduction in no-shows, 98% patient satisfaction",
-    metrics: {
-      noShowReduction: "67%",
-      satisfaction: "98%",
-      callsAutomated: "5,000/mo"
-    },
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-    featured: true
+    title: "Scaled AI phone teams in less than 30 days",
+    description:
+      "XO Assist deployed multilingual voice agents across sales, support, and renewals to unlock 24/7 coverage without increasing headcount.",
+    cta: "Read Success Story",
+    image:
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    id: "ecommerce-scale",
-    company: "TechGear Direct",
-    industry: "E-commerce",
-    title: "Scaling Customer Support from 100 to 10,000 Calls",
-    challenge: "Unable to handle rapid growth in support inquiries",
-    result: "10x increase in call capacity, 45% reduction in support costs",
-    metrics: {
-      capacity: "10,000 calls/mo",
-      costReduction: "45%",
-      responseTime: "<30 sec"
-    },
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    featured: false
+    title: "Transformed onboarding with AI-driven IVR automation",
+    description:
+      "Delta Care automated 80% of repetitive intake calls, freeing teams to focus on complex patient journeys and premium service moments.",
+    cta: "Explore Story",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80",
   },
-  {
-    id: "financial-advisory",
-    company: "WealthPath Advisors",
-    industry: "Financial Services",
-    title: "Qualifying 500 Leads Monthly with Zero Manual Effort",
-    challenge: "Lead qualification taking 30+ hours per week",
-    result: "100% lead qualification automation, 3x more qualified meetings",
-    metrics: {
-      leadsQualified: "500/mo",
-      meetingsBooked: "3x increase",
-      timeToQualify: "2 min avg"
-    },
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    featured: false
-  },
-  {
-    id: "agency-whitelabel",
-    company: "Digital Growth Agency",
-    industry: "Marketing Agency",
-    title: "Building a $50K/Month AI Voice Division in 90 Days",
-    challenge: "Wanted to add new revenue stream without hiring",
-    result: "$50K monthly recurring revenue, 12 active clients",
-    metrics: {
-      mrr: "$50K",
-      clients: "12",
-      profitMargin: "73%"
-    },
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    featured: false
-  },
-  {
-    id: "automotive-dealership",
-    company: "AutoMax Motors",
-    industry: "Automotive",
-    title: "Doubling Test Drive Bookings with AI Follow-Ups",
-    challenge: "Losing leads due to slow manual follow-up",
-    result: "2x test drive bookings, 89% lead response rate",
-    metrics: {
-      bookingIncrease: "2x",
-      responseRate: "89%",
-      followUpTime: "<5 min"
-    },
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80",
-    featured: false
-  }
 ];
 
-const INDUSTRIES = ["All", "Real Estate", "Healthcare", "E-commerce", "Financial Services", "Marketing Agency", "Automotive"];
+const LOGOS = ["Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum"];
+
+const STORIES = Array.from({ length: 12 }).map((_, i) => ({
+  id: `story-${i + 1}`,
+  industry: "Healthcare",
+  title: "Transforming voice at scale with AI-driven IVR automation",
+  action: "Read Now",
+}));
 
 export default function CaseStudies() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedIndustry, setSelectedIndustry] = useState("All");
+  const [storyIdx, setStoryIdx] = useState(0);
+  const [query, setQuery] = useState("");
 
-  const filteredStudies = CASE_STUDIES.filter(study => {
-    const matchesSearch = study.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         study.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesIndustry = selectedIndustry === "All" || study.industry === selectedIndustry;
-    return matchesSearch && matchesIndustry;
-  });
+  const featuredStory = FEATURED_STORIES[storyIdx];
+
+  const filteredStories = useMemo(() => {
+    if (!query.trim()) return STORIES;
+    return STORIES.filter((story) =>
+      story.title.toLowerCase().includes(query.toLowerCase()),
+    );
+  }, [query]);
+
+  const changeStory = (dir: "prev" | "next") => {
+    setStoryIdx((prev) => {
+      const max = FEATURED_STORIES.length - 1;
+      if (dir === "prev") {
+        return prev === 0 ? max : prev - 1;
+      }
+      return prev === max ? 0 : prev + 1;
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-accent/5">
+    <div className="min-h-screen bg-black text-white">
       <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 mb-4 justify-center">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-2xl">📊</span>
-            </div>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Case Studies
-          </h1>
-          
-          <p className="text-xl text-muted-foreground text-center max-w-2xl mx-auto mb-8">
-            Real results from real companies using CloserX AI voice technology
-          </p>
 
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder="Search case studies..."
-              className="pl-12 h-14 text-lg bg-card border-2 focus:border-primary"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Industry Filters */}
-      <section className="pb-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {INDUSTRIES.map(industry => (
-              <button
-                key={industry}
-                onClick={() => setSelectedIndustry(industry)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedIndustry === industry
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-card hover:bg-accent text-foreground"
-                }`}
-              >
-                {industry}
+      <main className="pt-28 pb-24 space-y-20">
+        {/* Hero */}
+        <section className="px-4">
+          <div className="relative max-w-6xl mx-auto bg-[#0B0B0B] border border-white/10 rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden">
+            <div className="flex-1 space-y-6">
+              <p className="text-sm text-white/60 uppercase tracking-[0.35em]">
+                Featured Success Story
+              </p>
+              <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+                {featuredStory.title}
+              </h1>
+              <p className="text-white/70 text-base leading-relaxed">
+                {featuredStory.description}
+              </p>
+              <button className="mt-4 inline-flex items-center gap-3 bg-[#8B5CF6] hover:bg-[#7C3AED] px-6 py-3 rounded-full text-sm font-semibold transition-colors w-fit">
+                {featuredStory.cta}
+                <ArrowRight className="w-4 h-4" />
               </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Case Studies */}
-      {selectedIndustry === "All" && !searchQuery && (
-        <section className="pb-16 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center gap-2 mb-6">
-              <TrendingUp className="h-5 w-5 text-primary" />
-              <h2 className="text-2xl font-bold">Featured Success Stories</h2>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {CASE_STUDIES.filter(s => s.featured).map(study => (
-                <Link key={study.id} to={`/case-studies/${study.id}`} className="group">
-                  <div className="bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-border h-full">
-                    <div className="aspect-video overflow-hidden">
-                      <img 
-                        src={study.image} 
-                        alt={study.company}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <Building2 className="h-5 w-5 text-muted-foreground" />
-                        <span className="font-semibold">{study.company}</span>
-                        <Badge variant="outline" className="ml-auto">{study.industry}</Badge>
-                      </div>
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                        {study.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-4">{study.result}</p>
-                      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-                        {Object.entries(study.metrics).map(([key, value]) => (
-                          <div key={key}>
-                            <div className="text-2xl font-bold text-primary">{value}</div>
-                            <div className="text-xs text-muted-foreground capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+            <div className="flex-1 w-full">
+              <div className="relative rounded-[28px] overflow-hidden border border-white/10">
+                <img
+                  src={featuredStory.image}
+                  alt="Featured story visual"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <button
+              onClick={() => changeStory("prev")}
+              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full p-3 transition-colors"
+              aria-label="Previous story"
+            >
+              <ChevronLeft className="w-5 h-5 text-white" />
+            </button>
+            <button
+              onClick={() => changeStory("next")}
+              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full p-3 transition-colors"
+              aria-label="Next story"
+            >
+              <ChevronRight className="w-5 h-5 text-white" />
+            </button>
+          </div>
+        </section>
+
+        {/* Logo Marquee */}
+        <section className="px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex justify-between items-center gap-4 flex-wrap">
+              {LOGOS.map((logo, idx) => (
+                <div
+                  key={`${logo}-${idx}`}
+                  className="text-white/70 text-lg font-semibold tracking-wide"
+                >
+                  {logo}
+                </div>
               ))}
             </div>
           </div>
         </section>
-      )}
 
-      {/* All Case Studies Grid */}
-      <section className="pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">All Case Studies</h2>
-          
-          {filteredStudies.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-xl text-muted-foreground">No case studies found. Try a different search.</p>
+        {/* Stories grid */}
+        <section className="px-4 space-y-10">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-semibold mb-2">
+                Our customers, their stories
+              </h2>
+              <p className="text-white/60">
+                Explore how teams across industries launch with CloserX Voice.
+              </p>
             </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredStudies.map(study => (
-                <Link key={study.id} to={`/case-studies/${study.id}`} className="group">
-                  <article className="bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-border h-full flex flex-col">
-                    <div className="aspect-video overflow-hidden">
-                      <img 
-                        src={study.image} 
-                        alt={study.company}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Badge variant="outline">{study.industry}</Badge>
-                      </div>
-                      <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                        {study.company}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-4 flex-1">
-                        {study.title}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm text-primary font-semibold pt-4 border-t border-border">
-                        Read Case Study <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
+            <div className="w-full md:w-auto">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+                <Input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search"
+                  className="bg-[#0F0F0F] border border-white/10 text-white rounded-full pl-10 py-2"
+                />
+              </div>
             </div>
+          </div>
+
+          <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
+            {filteredStories.map((story) => (
+              <article
+                key={story.id}
+                className="rounded-[28px] overflow-hidden border border-white/5 flex flex-col bg-transparent"
+              >
+                <div className="bg-white flex items-center justify-center py-10">
+                  <img
+                    src={globePlaceholder}
+                    alt=""
+                    className="w-32 h-32 opacity-60"
+                  />
+                </div>
+                <div className="bg-[#101010] p-6 flex flex-col gap-4 flex-1">
+                  <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.25em] text-white bg-white/10 w-fit">
+                    {story.industry}
+                  </span>
+                  <p className="text-lg font-semibold text-white leading-snug flex-1">
+                    {story.title}
+                  </p>
+                  <button className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white inline-flex items-center gap-2">
+                    {story.action}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {filteredStories.length === 0 && (
+            <div className="text-center text-white/60">No stories found.</div>
           )}
-        </div>
-      </section>
+
+          <div className="flex justify-center">
+            <button className="px-6 py-3 border border-white/10 rounded-full text-sm text-white/80 hover:bg-white/5">
+              Show More +
+            </button>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="px-4">
+          <div className="max-w-6xl mx-auto bg-[#0B001A] rounded-[32px] overflow-hidden border border-[#7C3AED]/40 relative">
+            <div className="absolute inset-0 opacity-60">
+              <img
+                src="https://images.unsplash.com/photo-1527449992864-7fc6f6f5550a?auto=format&fit=crop&w=1200&q=80"
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="relative z-10 p-10 text-center space-y-6">
+              <h3 className="text-3xl font-semibold">
+                Ready to Launch Your AI Calling Platform?
+              </h3>
+              <p className="text-white/70">
+                Join 500+ agencies building their white-label business.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="px-6 py-3 rounded-full bg-white text-black font-semibold">
+                  Get Stories
+                </button>
+                <button className="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10">
+                  Book Demo
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

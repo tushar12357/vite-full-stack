@@ -48,6 +48,7 @@ import Integrations from "./pages/Integrations";
 import UptimeSLA from "./pages/UptimeSLA";
 import Partners from "./pages/Partners";
 import WhyChooseCloserX from "./pages/WhyChooseCloserX";
+import Careers from "./pages/Careers";
 
 // 🧩 Import LunaWidget (the floating chat button)
 import LunaWidget from "@/components/LunaWidget";
@@ -92,8 +93,8 @@ const App = () => (
           {/* Resources */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/case-studies/:id" element={<CaseStudy />} />
+          <Route path="/success-stories" element={<CaseStudies />} />
+          <Route path="/success-stories/:id" element={<CaseStudy />} />
           <Route path="/help" element={<HelpCenter />} />
           <Route path="/help/:category" element={<HelpCenter />} />
           <Route path="/help/article/:id" element={<HelpArticle />} />
@@ -115,7 +116,7 @@ const App = () => (
           <Route path="/partner-program" element={<ComingSoon />} />
           <Route path="/affiliate" element={<ComingSoon />} />
           <Route path="/integrations" element={<Integrations />} />
-          <Route path="/careers" element={<ComingSoon />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/compliance" element={<ComingSoon />} />
           <Route path="/press" element={<ComingSoon />} />
           <Route path="/login" element={<ComingSoon />} />

@@ -5,6 +5,7 @@ export interface BlogHeroData {
   buttonText: string;
   author?: string;
   createdAt?: string;
+  image?: string;
 }
 
 export interface BlogPost {

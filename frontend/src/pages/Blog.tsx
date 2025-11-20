@@ -8,19 +8,9 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import BlogHero from "@/components/BlogHero";
 import BlogArticleCard from "@/components/BlogArticleCard";
-import { blogHeroData, sampleBlogPosts, blogCategories } from "@/data/blogData";
+import { blogHeroData, blogCategories } from "@/data/blogData";
 import uiScreenshot from "@/assets/image copy.png";
 import FinalCTA from "@/components/home/FinalCTA";
-
-const CATEGORIES = [
-  "All Blogs",
-  "Industry Insights",
-  "Success Stories",
-  "Best Practices",
-  "Technical",
-  "Case Studies",
-  "Research",
-];
 
 interface Blog {
   _id: string;
@@ -97,49 +87,41 @@ export default function BlogList() {
   }, [searchQuery, selectedCategory]);
 
   // -----------------------------------------------------------------
-  // FEATURED POST FOR HERO
+  // LATEST POST FOR HERO
   // -----------------------------------------------------------------
-  const featuredPost = blogs.find((p) => p.featured);
+  const latestPost = [...blogs]
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )[0];
 
-  // Use featured post data if available, otherwise use static data
-  const heroData = featuredPost
+  const heroData = latestPost
     ? {
-        tag: featuredPost.category || blogHeroData.tag,
-        title: featuredPost.title,
-        description: featuredPost.excerpt,
+        tag: latestPost.category || blogHeroData.tag,
+        title: latestPost.title,
+        description: latestPost.excerpt,
         buttonText: blogHeroData.buttonText,
-        author: featuredPost.author,
-        createdAt: featuredPost.createdAt,
+        author: latestPost.author,
+        createdAt: latestPost.createdAt,
+        image: latestPost.image,
       }
-    : blogHeroData;
+    : null;
 
-  // Get all available posts (non-featured blogs + sample posts)
-  const nonFeaturedBlogs = blogs.filter((p) => !p.featured);
-  const allAvailablePosts = [...nonFeaturedBlogs, ...sampleBlogPosts];
-
-  // Filter posts based on category and search
-  const filteredPosts = allAvailablePosts.filter((post) => {
-    const matchesCategory = 
-      selectedCategory === "All" || 
-      post.category === selectedCategory;
-    
-    const matchesSearch = 
-      !searchQuery || 
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.author.toLowerCase().includes(searchQuery.toLowerCase());
-
-    return matchesCategory && matchesSearch;
-  });
-
-  // Pagination: 10 posts per page (5 rows × 2 columns)
-  const postsPerPage = 10;
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-  const startIndex = (page - 1) * postsPerPage;
-  const endIndex = startIndex + postsPerPage;
-  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
-
-  const formatReadTime = (mins: number) => `${mins} min read`;
+  const postsWithoutHero = latestPost
+    ? blogs.filter((post) =>
+        post._id && latestPost._id
+          ? post._id !== latestPost._id
+          : post.slug !== latestPost.slug
+      )
+    : blogs;
+  const normalize = (value: string) => value?.trim().toLowerCase();
+  const visiblePosts =
+    selectedCategory === "All"
+      ? postsWithoutHero
+      : postsWithoutHero.filter(
+          (post) => normalize(post.category) === normalize(selectedCategory)
+        );
+  const totalPages = Math.max(pagination.pages ?? 1, 1);
 
   // -----------------------------------------------------------------
   // RENDER
@@ -149,11 +131,29 @@ export default function BlogList() {
       <Header />
 
       {/* HERO SECTION */}
-      <BlogHero
-        hero={heroData}
-        uiScreenshot={uiScreenshot}
-        featuredPostSlug={featuredPost?.slug}
-      />
+      {heroData ? (
+        <BlogHero
+          hero={heroData}
+          uiScreenshot={uiScreenshot}
+          featuredPostSlug={latestPost?.slug}
+        />
+      ) : (
+        <section className="relative bg-black py-16 md:py-16 overflow-hidden min-h-screen mt-16 flex items-center justify-center">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+              <div>
+                <Skeleton className="h-6 w-32 mb-4 bg-gray-900" />
+                <Skeleton className="h-12 w-3/4 mb-4 bg-gray-900" />
+                <Skeleton className="h-24 w-full max-w-md mb-6 bg-gray-900" />
+                <Skeleton className="h-11 w-36 bg-gray-900" />
+              </div>
+              <div className="relative">
+                <Skeleton className="w-full h-80 rounded-2xl bg-gray-900" />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CATEGORY SECTION WITH SEARCH */}
       <section className="sticky top-24 z-40 bg-black py-3 mt-8">
@@ -213,7 +213,7 @@ export default function BlogList() {
                 <Skeleton key={i} className="h-80 rounded-xl bg-gray-900" />
               ))}
             </div>
-          ) : filteredPosts.length === 0 ? (
+          ) : visiblePosts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-base text-white/60">
                 No articles found. Try a different search.
@@ -222,9 +222,9 @@ export default function BlogList() {
           ) : (
             <>
               <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
-                {paginatedPosts.map((post) => (
+                {visiblePosts.map((post) => (
                   <BlogArticleCard
-                    key={post.slug || post._id}
+                    key={post._id || post.slug}
                     post={post}
                     uiScreenshot={uiScreenshot}
                   />
