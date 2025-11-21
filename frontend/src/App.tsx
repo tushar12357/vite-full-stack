@@ -49,6 +49,8 @@ import UptimeSLA from "./pages/UptimeSLA";
 import Partners from "./pages/Partners";
 import WhyChooseCloserX from "./pages/WhyChooseCloserX";
 import Careers from "./pages/Careers";
+import Compliance from "./pages/Compliance";
+import Press from "./pages/Press";
 
 // 🧩 Import LunaWidget (the floating chat button)
 import LunaWidget from "@/components/LunaWidget";
@@ -124,7 +126,7 @@ const App = () => (
           <Route path="/uptime-sla" element={<UptimeSLA />} />
 
           {/* Coming Soon placeholders */}
-          <Route path="/docs" element={<ComingSoon />} />
+          <Route path="/docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
           <Route path="/call-management" element={<CallManagement />} />
           <Route path="/automation" element={<Automation />} />
           <Route path="/api-docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
@@ -135,8 +137,8 @@ const App = () => (
           <Route path="/affiliate" element={<ComingSoon />} />
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/compliance" element={<ComingSoon />} />
-          <Route path="/press" element={<ComingSoon />} />
+          <Route path="/compliance" element={<Compliance />} />
+          <Route path="/press" element={<Press />} />
           <Route path="/login" element={<ComingSoon />} />
 
           {/* Use Cases */}
@@ -149,14 +151,14 @@ const App = () => (
           {/* Industries */}
           <Route path="/industries/real-estate" element={<RealEstate />} />
           <Route path="/industries/healthcare" element={<Healthcare />} />
-          <Route path="/industries/financial-services" element={<FinancialServices />} />
-          <Route path="/industries/ecommerce" element={<Ecommerce />} />
-          <Route path="/industries/call-centers" element={<CallCenters />} />
+          <Route path="/industries/financial-service" element={<FinancialServices />} />
+          <Route path="/industries/e-commerce" element={<Ecommerce />} />
+          <Route path="/industries/call-centres" element={<CallCenters />} />
 
           {/* Teams */}
-          <Route path="/teams/agencies" element={<ForAgencies />} />
-          <Route path="/teams/enterprises" element={<ForEnterprises />} />
-          <Route path="/teams/resellers" element={<ForResellers />} />
+          <Route path="/teams/for-agencies" element={<ForAgencies />} />
+          <Route path="/teams/for-enterprises" element={<ForEnterprises />} />
+          <Route path="/teams/for-resellers" element={<ForResellers />} />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />

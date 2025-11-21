@@ -25,13 +25,14 @@ interface TwoColumnFeatureSectionProps {
   data: TwoColumnFeatureSectionData;
   rightContent?: React.ReactNode;
   className?: string;
+  disableAnimation?: boolean;
 }
 
-const TwoColumnFeatureSection = ({ data, rightContent, className = "" }: TwoColumnFeatureSectionProps) => {
+const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAnimation = false }: TwoColumnFeatureSectionProps) => {
   const { tag, mainTitle, subtitle, leftColumn, features, rightImage, rightImageAlt } = data;
   // Track which feature is expanded (null means none are expanded)
   const [expandedFeature, setExpandedFeature] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(disableAnimation);
   const sectionRef = useRef<HTMLElement>(null);
 
   const toggleFeature = (index: number) => {
@@ -45,6 +46,8 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "" }: TwoColu
 
   // Intersection Observer for rise-in animation
   useEffect(() => {
+    if (disableAnimation) return;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -67,23 +70,23 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "" }: TwoColu
         observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [disableAnimation]);
 
   const baseBgClass = className.includes('bg-') ? '' : 'bg-white';
   const hasBlackBg = className.includes('bg-black') || className.includes('!bg-black');
   const sectionStyle = {
-    transitionDuration: '1500ms',
+    ...(!disableAnimation && { transitionDuration: '1500ms' }),
     ...(hasBlackBg && { backgroundColor: '#000000' })
   };
+  
+  const animationClasses = disableAnimation 
+    ? 'opacity-100 translate-y-0' 
+    : `transition-all ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
   
   return (
     <section 
       ref={sectionRef}
-      className={`${baseBgClass} py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 transition-all ease-in-out font-poppins ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      } ${className}`}
+      className={`${baseBgClass} py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 font-poppins ${animationClasses} ${className}`}
       style={sectionStyle}
     >
       <div className="max-w-5xl mx-auto">

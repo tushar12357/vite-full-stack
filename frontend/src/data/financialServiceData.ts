@@ -1,0 +1,141 @@
+import { DollarSign, XCircle, CheckCircle2 } from "lucide-react";
+import type { SolutionData } from "./solutionDataTypes";
+import uiScreenshot from "@/assets/image copy.png";
+import workflowImage from "@/assets/image.png";
+
+export const financialServiceData: SolutionData = {
+  hero: {
+    tag: "Industry • Financial Services",
+    title: "Enhance Financial Services with",
+    titleHighlight: "AI Voice Automation",
+    description: "Automate customer onboarding, account inquiries, loan applications, and compliance calls with secure, compliant AI voice agents. Reduce wait times, improve customer satisfaction, and scale your operations.",
+    primaryButton: {
+      text: "Start Free Trial",
+      variant: "primary",
+    },
+    secondaryButton: {
+      text: "See Financial Services Demo",
+      variant: "secondary",
+    },
+  },
+  stats: [
+    { value: "90%", label: "faster response time" },
+    { value: "24/7", label: "customer support" },
+    { value: "SOC 2", label: "Compliant" },
+    { value: "85%", label: "call resolution rate" },
+  ],
+  problems: [
+    {
+      icon: XCircle,
+      title: "Long Wait Times",
+      description: "Customers wait 15+ minutes to speak with a representative during peak hours.",
+    },
+    {
+      icon: XCircle,
+      title: "After-Hours Support",
+      description: "No support available outside business hours, losing potential customers.",
+    },
+    {
+      icon: XCircle,
+      title: "High Operational Costs",
+      description: "Call centers cost $40K+ per agent annually with high turnover rates.",
+    },
+    {
+      icon: XCircle,
+      title: "Compliance Challenges",
+      description: "Manual processes make it difficult to ensure regulatory compliance.",
+    },
+  ],
+  solutions: [
+    {
+      icon: CheckCircle2,
+      title: "Instant Response",
+      description: "AI answers every call in under 3 seconds, 24/7",
+    },
+    {
+      icon: CheckCircle2,
+      title: "Compliance Built-In",
+      description: "Automated compliance checks and secure data handling",
+    },
+    {
+      icon: CheckCircle2,
+      title: "Cost Reduction",
+      description: "Reduce call center costs by up to 95%",
+    },
+    {
+      icon: CheckCircle2,
+      title: "Scalable Operations",
+      description: "Handle unlimited call volume without hiring",
+    },
+  ],
+  steps: [
+    { number: "01", title: "Customer Calls", description: "AI answers immediately, verifies identity" },
+    { number: "02", title: "Understands Request", description: "Identifies account inquiry, loan application, or support need" },
+    { number: "03", title: "Accesses Secure Data", description: "Retrieves account information with proper authentication" },
+    { number: "04", title: "Resolves or Routes", description: "Handles request or escalates to human agent with context" },
+    { number: "05", title: "Compliance Logging", description: "Automatically logs all interactions for compliance" },
+  ],
+  features: [
+    { icon: "💳", title: "Account Inquiries", description: "Balance checks, transaction history, statements" },
+    { icon: "📋", title: "Loan Applications", description: "Collect information and pre-qualify applicants" },
+    { icon: "🔐", title: "Identity Verification", description: "Secure multi-factor authentication" },
+    { icon: "📞", title: "Customer Onboarding", description: "Guide new customers through setup process" },
+    { icon: "⚖️", title: "Compliance Logging", description: "Automatic audit trails and reporting" },
+    { icon: "📊", title: "Financial Analytics", description: "Track customer interactions and satisfaction" },
+  ],
+  problemSection: {
+    title: "Financial Services Challenges",
+    description: "Financial institutions face increasing customer expectations for instant, 24/7 support while managing compliance requirements and operational costs. Traditional call centers struggle to scale and maintain service quality.",
+  },
+  solutionSection: {
+    title: "CloserX for Financial Services",
+    description: "AI-powered solutions built for financial institutions",
+  },
+  howItWorks: {
+    tag: "How It Works",
+    title: "From Customer Call to Resolution",
+    subtitle: "Secure and compliant workflow",
+    steps: [
+      { title: "Customer Calls", description: "AI answers immediately, verifies identity" },
+      { title: "Understands Request", description: "Identifies account inquiry, loan application, or support need" },
+      { title: "Accesses Secure Data", description: "Retrieves account information with proper authentication" },
+      { title: "Resolves or Routes", description: "Handles request or escalates to human agent with context" },
+    ],
+  },
+  featuresSection: {
+    title: "Features for Financial Services",
+    description: "Everything you need to enhance customer service while maintaining compliance. SOC 2 compliant and designed for financial workflows.",
+  },
+  customerStorySection: {
+    tag: "Success Story",
+    title: "Regional Bank Results",
+    stats: {
+      left: {
+        value: "15 min",
+        label: "average wait time (before)",
+      },
+      right: {
+        value: "< 3 sec",
+        label: "wait time (with AI)",
+      },
+    },
+    primaryButton: {
+      text: "Start Free Trial",
+    },
+    secondaryButton: {
+      text: "See Financial Services Demo",
+    },
+  },
+  cta: {
+    title: "Transform Financial Services Today",
+    description: "Join financial institutions improving customer experience with AI. SOC 2 compliant and ready to deploy.",
+    buttonText: "Start Free Trial",
+    disclaimer: "No credit card required • SOC 2 compliant • Setup in 10 minutes",
+  },
+};
+
+export const financialServiceImages = {
+  uiScreenshot,
+  workflowImage,
+};
+

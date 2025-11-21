@@ -1,49 +1,57 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import globePlaceholder from "@/assets/placeholder.svg";
+import { CASE_STUDIES_DATA, getAllCaseStudyIds } from "@/data/caseStudiesData";
 
+// Featured stories - using real case studies
 const FEATURED_STORIES = [
   {
-    title: "Adopted agentic RAG to strengthen self-service offerings",
+    id: "mike-craft-tradeshow",
+    title: "1,500 Daily Calls & 30% Increase in Vendor Participation",
     description:
-      "CloserX Voice Agents helped SprintX unify their customer support flows, boosting containment and response times across 2M+ conversations per month.",
+      "Mike Craft's trade show company client achieved remarkable success, making 1,500 daily calls and increasing vendor participation by 30% year-over-year with CloserX.",
     cta: "View Success Story",
-    image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1000&q=80",
+    image: CASE_STUDIES_DATA["mike-craft-tradeshow"]?.image || "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    title: "Scaled AI phone teams in less than 30 days",
+    id: "bill-data-agency",
+    title: "From Setup to Essential Tool: AI Agency Launches in 30 Minutes",
     description:
-      "XO Assist deployed multilingual voice agents across sales, support, and renewals to unlock 24/7 coverage without increasing headcount.",
+      "Bill Data, an AI agency for car dealerships, set up their first AI agent in just 30 minutes. CloserX AI became an essential cornerstone of their technology stack.",
     cta: "Read Success Story",
-    image:
-      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1000&q=80",
+    image: CASE_STUDIES_DATA["bill-data-agency"]?.image || "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1000&q=80",
   },
   {
-    title: "Transformed onboarding with AI-driven IVR automation",
+    id: "enix-ai-whitelabel",
+    title: "Building a White-Label AI Calling Service with Unmatched Support",
     description:
-      "Delta Care automated 80% of repetitive intake calls, freeing teams to focus on complex patient journeys and premium service moments.",
+      "Enix AI successfully launched their white-label AI calling service with CloserX's unmatched customer service, earning a solid five stars and 100% recommendation.",
     cta: "Explore Story",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80",
+    image: CASE_STUDIES_DATA["enix-ai-whitelabel"]?.image || "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80",
   },
 ];
 
-const LOGOS = ["Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum"];
+const LOGOS = ["Bill Data", "Enix AI", "WebNamaste", "Mike Craft", "German Terado"];
 
-const STORIES = Array.from({ length: 12 }).map((_, i) => ({
-  id: `story-${i + 1}`,
-  industry: "Healthcare",
-  title: "Transforming voice at scale with AI-driven IVR automation",
+// Convert case studies data to stories format
+const STORIES = getAllCaseStudyIds().map((id) => {
+  const study = CASE_STUDIES_DATA[id];
+  return {
+    id: study.id,
+    industry: study.industry,
+    title: study.title,
   action: "Read Now",
-}));
+  };
+});
 
 export default function CaseStudies() {
   const [storyIdx, setStoryIdx] = useState(0);
   const [query, setQuery] = useState("");
+  const [showAllStories, setShowAllStories] = useState(false);
 
   const featuredStory = FEATURED_STORIES[storyIdx];
 
@@ -53,6 +61,10 @@ export default function CaseStudies() {
       story.title.toLowerCase().includes(query.toLowerCase()),
     );
   }, [query]);
+
+  // Show only 9 stories initially, or all if showAllStories is true
+  const displayedStories = showAllStories ? filteredStories : filteredStories.slice(0, 9);
+  const hasMoreStories = filteredStories.length > 9;
 
   const changeStory = (dir: "prev" | "next") => {
     setStoryIdx((prev) => {
@@ -82,10 +94,13 @@ export default function CaseStudies() {
               <p className="text-white/70 text-base leading-relaxed">
                 {featuredStory.description}
               </p>
-              <button className="mt-4 inline-flex items-center gap-3 bg-[#8B5CF6] hover:bg-[#7C3AED] px-6 py-3 rounded-full text-sm font-semibold transition-colors w-fit">
+              <Link 
+                to={`/success-stories/${featuredStory.id}`}
+                className="mt-4 inline-flex items-center gap-3 bg-[#8B5CF6] hover:bg-[#7C3AED] px-6 py-3 rounded-full text-sm font-semibold transition-colors w-fit"
+              >
                 {featuredStory.cta}
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
             <div className="flex-1 w-full">
               <div className="relative rounded-[28px] overflow-hidden border border-white/10">
@@ -155,43 +170,52 @@ export default function CaseStudies() {
           </div>
 
           <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
-            {filteredStories.map((story) => (
-              <article
-                key={story.id}
-                className="rounded-[28px] overflow-hidden border border-white/5 flex flex-col bg-transparent"
-              >
-                <div className="bg-white flex items-center justify-center py-10">
-                  <img
-                    src={globePlaceholder}
-                    alt=""
-                    className="w-32 h-32 opacity-60"
-                  />
-                </div>
-                <div className="bg-[#101010] p-6 flex flex-col gap-4 flex-1">
-                  <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.25em] text-white bg-white/10 w-fit">
-                    {story.industry}
-                  </span>
-                  <p className="text-lg font-semibold text-white leading-snug flex-1">
-                    {story.title}
-                  </p>
-                  <button className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white inline-flex items-center gap-2">
-                    {story.action}
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </article>
-            ))}
+            {displayedStories.map((story) => {
+              const caseStudy = CASE_STUDIES_DATA[story.id];
+              return (
+                <Link
+                  key={story.id}
+                  to={`/success-stories/${story.id}`}
+                  className="rounded-[28px] overflow-hidden border border-white/5 flex flex-col bg-transparent hover:border-white/20 transition-colors"
+                >
+                  <div className="bg-white flex items-center justify-center py-10">
+                    <img
+                      src={caseStudy?.image || globePlaceholder}
+                      alt={caseStudy?.company || story.title}
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+                  <div className="bg-[#101010] p-6 flex flex-col gap-4 flex-1">
+                    <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.25em] text-white bg-white/10 w-fit">
+                      {story.industry}
+                    </span>
+                    <p className="text-lg font-semibold text-white leading-snug flex-1">
+                      {story.title}
+                    </p>
+                    <span className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70 hover:text-white inline-flex items-center gap-2">
+                      {story.action}
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
-          {filteredStories.length === 0 && (
+          {displayedStories.length === 0 && (
             <div className="text-center text-white/60">No stories found.</div>
           )}
 
-          <div className="flex justify-center">
-            <button className="px-6 py-3 border border-white/10 rounded-full text-sm text-white/80 hover:bg-white/5">
-              Show More +
-            </button>
-          </div>
+          {hasMoreStories && !showAllStories && (
+            <div className="flex justify-center">
+              <button 
+                onClick={() => setShowAllStories(true)}
+                className="px-6 py-3 border border-white/10 rounded-full text-sm text-white/80 hover:bg-white/5 transition-colors"
+              >
+                Show More +
+              </button>
+            </div>
+          )}
         </section>
 
         {/* CTA */}

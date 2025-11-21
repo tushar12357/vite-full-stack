@@ -65,6 +65,7 @@ const LeadQualification = () => {
             rightImage: workflowImage,
           }}
           className="!bg-black [&_*]:!text-white [&_span]:!bg-gray-800 [&_span]:!border-gray-700 [&_span]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_h4]:!text-white [&_p]:!text-white/80 [&_h4:hover]:!text-purple-400"
+          disableAnimation={true}
         />
       )}
 

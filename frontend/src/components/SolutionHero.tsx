@@ -4,6 +4,7 @@ interface SolutionHeroProps {
   hero: {
     tag: string;
     title: string;
+    titleHighlight?: string;
     description: string;
     primaryButton: {
       text: string;
@@ -34,7 +35,7 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
 
             {/* Main Title */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              {hero.title}
+              {hero.title} {hero.titleHighlight && <span className="text-purple-400">{hero.titleHighlight}</span>}
             </h1>
 
             {/* Description */}
@@ -46,14 +47,14 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap"
               >
                 {hero.primaryButton.text}
               </Button>
               <Button 
-                size="lg" 
+                size="lg"
                 variant="outline"
-                className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300"
+                className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300 whitespace-nowrap"
               >
                 {hero.secondaryButton.text}
               </Button>
