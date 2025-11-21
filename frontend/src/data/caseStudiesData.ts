@@ -826,6 +826,585 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     }
   },
 
+  "bill-data-agency": {
+    id: "bill-data-agency",
+    company: "Bill Data",
+    industry: "AI Agency",
+    title: "From Setup to Essential Tool: AI Agency Launches in 30 Minutes",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    overview: "Bill Data is a specialized AI and automation agency founded by Eric Gale, exclusively serving the automotive retail sector. The agency helps car dealerships streamline customer communications, automate lead follow-ups, and enhance sales processes using cutting-edge AI technology. As a member of the AI Agency Vault School Community, Bill Data bridges the technology gap in automotive retail, delivering enterprise-level AI capabilities that drive efficiency and accelerate sales cycles.",
+    challenge: {
+      title: "The Challenge",
+      context: "Eric Gale needed to rapidly deploy AI voice technology for his car dealership clients without lengthy technical implementation. He required human-sounding AI to maintain dealership customer trust, but lacked confidence in technical support and AI intelligence capabilities. Speed and simplicity were critical to serve his automotive retail clients effectively.",
+      problems: [
+        "Needed rapid deployment without lengthy technical implementation",
+        "Required human-sounding AI to maintain dealership customer trust",
+        "Lacked confidence in technical support and AI intelligence capabilities",
+        "Uncertain about platform quality and authenticity",
+        "Operational concerns about reliability and performance"
+      ]
+    },
+    solution: {
+      title: "The Solution",
+      description: "Eric discovered CloserX AI and was immediately impressed by the platform's remarkably natural voice technology. After setting up his first AI agent in just 30 minutes and receiving instant support when needed, Eric found the intelligent conversation capabilities perfect for his dealership clients.",
+      features: [
+        "30-minute setup time for first AI agent",
+        "Remarkably natural voice technology indistinguishable from humans",
+        "Intelligent, context-aware AI that captures and uses customer information dynamically",
+        "Exceptional support experience with instant problem resolution",
+        "Perfect fit for automotive retail sector requirements"
+      ],
+      implementation: "Eric set up his first AI agent in just 30 minutes, receiving instant support when needed. The platform's intelligent conversation capabilities proved perfect for his dealership clients, becoming an essential cornerstone of his technology stack."
+    },
+    results: {
+      title: "The Results",
+      metrics: [
+        { 
+          label: "Setup Time", 
+          value: "30 min", 
+          description: "First AI agent deployed in under 30 minutes" 
+        },
+        { 
+          label: "Voice Quality", 
+          value: "100%", 
+          description: "Human-quality conversations indistinguishable from real people" 
+        },
+        { 
+          label: "Tech Stack", 
+          value: "Essential", 
+          description: "CloserX AI became essential to agency's technology stack" 
+        },
+        { 
+          label: "Support Quality", 
+          value: "Instant", 
+          description: "Immediate problem resolution when technical issues emerged" 
+        }
+      ],
+      testimonial: {
+        quote: "This is exactly what my car dealership client needs... CloserX AI will become an essential tool in my technology stack.",
+        author: "Eric Gale",
+        role: "Founder, Bill Data - AI Agency for Car Dealerships"
+      },
+      additionalBenefits: [
+        "Intelligent AI captures and uses customer information dynamically",
+        "Perfect fit for automotive retail sector requirements",
+        "Seamless integration into agency's service offerings",
+        "Enhanced ability to serve dealership clients effectively"
+      ]
+    },
+    implementation: {
+      title: "Implementation Timeline",
+      steps: [
+        { 
+          phase: "Day 1", 
+          activity: "Platform Discovery", 
+          description: "Eric discovered CloserX AI and was immediately impressed by the platform's remarkably natural voice technology.",
+          duration: "Same day"
+        },
+        { 
+          phase: "Day 1", 
+          activity: "First Agent Setup", 
+          description: "Set up first AI agent in just 30 minutes with instant support when needed.",
+          duration: "30 minutes"
+        },
+        { 
+          phase: "Week 3", 
+          activity: "Integration Complete", 
+          description: "CloserX AI became an essential cornerstone of Bill Data's technology stack, serving automotive retail clients effectively.",
+          duration: "3 weeks"
+        }
+      ]
+    },
+    technicalDetails: {
+      title: "Technical Implementation",
+      integrations: [
+        "AI Agency Vault School Community platform",
+        "Automotive retail CRM systems",
+        "Dealership management platforms"
+      ],
+      features: [
+        "Natural voice technology with human-like quality",
+        "Intelligent conversation capabilities",
+        "Context-aware AI that uses customer information dynamically",
+        "Instant support and problem resolution"
+      ]
+    },
+    futureGoals: {
+      title: "Future Plans",
+      plans: [
+        "Expand AI voice solutions to more dealership clients",
+        "Leverage CloserX AI as core technology offering",
+        "Build comprehensive automotive retail automation suite",
+        "Scale agency operations with proven AI technology"
+      ]
+    }
+  },
+
+  "enix-ai-whitelabel": {
+    id: "enix-ai-whitelabel",
+    company: "Enix AI",
+    industry: "White-Label AI Service",
+    title: "Building a White-Label AI Calling Service with Unmatched Support",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    overview: "Enix AI is a white-label AI calling service founded by Christian Rivera, specializing in delivering high-quality AI voice solutions to businesses. The company leverages advanced conversational AI technology to provide clients with professional-grade automated calling capabilities. Built on the foundation of cutting-edge AI platforms, Enix AI focuses on helping businesses enhance their customer communication strategies through intelligent, scalable voice automation.",
+    challenge: {
+      title: "The Challenge",
+      context: "Christian Rivera needed to create a complete white-label AI calling service from scratch. He required guidance through unfamiliar account setup and customization processes, lacked clarity on how to properly configure platform features, and was uncertain about implementing payment processing for client services. He needed reassurance and step-by-step assistance to feel comfortable with the platform.",
+      problems: [
+        "Needed to create a complete white-label AI calling service from scratch",
+        "Required guidance through unfamiliar account setup and customization processes",
+        "Lacked clarity on how to properly configure and customize platform features",
+        "Uncertain about implementing payment processing for client services",
+        "Needed reassurance and step-by-step assistance to feel comfortable with the platform"
+      ]
+    },
+    solution: {
+      title: "The Solution",
+      description: "CloserX AI made it possible for Christian to create his own white-label AI calling service. While the platform is both user-friendly and powerful, what truly stands out is the unmatched customer service. The CloserX AI team guided him step by step through account setup, customization, and payment processing, answering every question and ensuring he felt comfortable throughout.",
+      features: [
+        "Platform proved both accessible and robust for building white-label services",
+        "Unmatched customer service with step-by-step guidance",
+        "Complete onboarding support from account setup to payment processing",
+        "Hands-on support ensuring comfort with each part of the process",
+        "User-friendly yet powerful platform capabilities"
+      ],
+      implementation: "The CloserX AI team provided hands-on support throughout the entire setup process, guiding Christian through account setup, customization, and payment processing. This comprehensive support enabled Enix AI to successfully launch and deliver high-quality solutions to clients."
+    },
+    results: {
+      title: "The Results",
+      metrics: [
+        { 
+          label: "Recommendation", 
+          value: "100%", 
+          description: "Solid five stars and 100% recommendation as a game changer" 
+        },
+        { 
+          label: "Rating", 
+          value: "5/5", 
+          description: "Perfect rating for platform and support" 
+        },
+        { 
+          label: "Service Quality", 
+          value: "High", 
+          description: "Enix AI now delivers high-quality AI calling solutions to clients" 
+        },
+        { 
+          label: "Support Quality", 
+          value: "Unmatched", 
+          description: "Customer service described as truly unmatched" 
+        }
+      ],
+      testimonial: {
+        quote: "Their customer service is truly unmatched... This hands-on support made all the difference for me, allowing my company, Enix AI, to deliver high quality AI calling solutions to our clients.",
+        author: "Christian Rivera",
+        role: "Founder, Enix AI - White-Label AI Calling Service"
+      },
+      additionalBenefits: [
+        "Successfully launched white-label AI calling service",
+        "Platform accessibility combined with powerful capabilities",
+        "Complete confidence in platform through comprehensive support",
+        "Ability to deliver professional-grade solutions to clients"
+      ]
+    },
+    implementation: {
+      title: "Implementation Timeline",
+      steps: [
+        { 
+          phase: "Initial Setup", 
+          activity: "Account Setup & Guidance", 
+          description: "CloserX AI team guided Christian step by step through account setup, answering every question.",
+          duration: "Ongoing support"
+        },
+        { 
+          phase: "Customization", 
+          activity: "Platform Customization", 
+          description: "Received comprehensive guidance on customizing and configuring platform features for white-label service.",
+          duration: "Ongoing support"
+        },
+        { 
+          phase: "Payment Processing", 
+          activity: "Payment Integration", 
+          description: "Team assisted with payment processing setup, ensuring Christian felt comfortable with each part of the process.",
+          duration: "Ongoing support"
+        },
+        { 
+          phase: "Launch", 
+          activity: "Service Launch", 
+          description: "Successfully launched Enix AI and now delivers high-quality AI calling solutions to clients.",
+          duration: "Complete"
+        }
+      ]
+    },
+    technicalDetails: {
+      title: "Technical Implementation",
+      integrations: [
+        "White-label platform infrastructure",
+        "Payment processing systems",
+        "Client management systems"
+      ],
+      features: [
+        "User-friendly yet powerful platform",
+        "Complete white-label capabilities",
+        "Customizable features and configurations",
+        "Comprehensive support throughout setup"
+      ]
+    },
+    futureGoals: {
+      title: "Future Plans",
+      plans: [
+        "Scale white-label AI calling service to more clients",
+        "Expand service offerings using CloserX platform",
+        "Build comprehensive AI voice solutions portfolio",
+        "Leverage unmatched support for continued growth"
+      ]
+    }
+  },
+
+  "webnamaste-agency": {
+    id: "webnamaste-agency",
+    company: "WebNamaste",
+    industry: "Marketing Agency",
+    title: "Creating Inbound AI Voice Agent in 8 Minutes",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    overview: "WebNamaste is a specialized marketing agency founded by Radha Krishnan that helps agencies and professional service providers double their revenue without raising costs. The agency specializes in marketing automation on the GoHighLevel platform, focusing on generating qualified leads, closing more deals, and building scalable sales and marketing processes.",
+    challenge: {
+      title: "The Challenge",
+      context: "Radha needed to quickly implement AI voice calling for agency clients. He required guidance to understand workflows and setup processes, needed fast deployment to serve clients efficiently, and was unclear how to set up inbound and outbound calling systems. He was also uncertain about platform capabilities and possibilities.",
+      problems: [
+        "Needed to quickly implement AI voice calling for agency clients",
+        "Required guidance to understand workflows and setup processes",
+        "Time-to-market pressure to serve clients efficiently",
+        "Unclear how to set up inbound and outbound calling systems",
+        "Uncertain about platform capabilities and possibilities"
+      ]
+    },
+    solution: {
+      title: "The Solution",
+      description: "Radha was guided through all the essential workflows and how to set up the inbound and outbound calling with AI on the CloserX platform. He was able to create an inbound AI voice agent in eight minutes—it was that easy. He discovered the possibilities are endless, and under the hood of CloserX, there are so many things you can do.",
+      features: [
+        "Created fully functional inbound AI voice agent in just 8 minutes",
+        "Complete setup clarity for both inbound and outbound AI calling",
+        "Endless possibilities discovered with extensive platform capabilities",
+        "Easy workflow guidance through all essential processes",
+        "Extensive features available 'under the hood'"
+      ],
+      implementation: "Radha was guided through all essential workflows and setup processes. He created an inbound AI voice agent in eight minutes, discovering the extensive capabilities available in the CloserX platform."
+    },
+    results: {
+      title: "The Results",
+      metrics: [
+        { 
+          label: "Setup Time", 
+          value: "8 min", 
+          description: "Inbound AI voice agent created in just 8 minutes" 
+        },
+        { 
+          label: "Rating", 
+          value: "5/5", 
+          description: "Highly recommends platform with five out of five rating" 
+        },
+        { 
+          label: "Capabilities", 
+          value: "Endless", 
+          description: "Possibilities are endless with extensive platform features" 
+        },
+        { 
+          label: "Ease of Use", 
+          value: "Easy", 
+          description: "Platform setup described as 'that easy'" 
+        }
+      ],
+      testimonial: {
+        quote: "I was able to create an inbound AI agent, AI voice agent, in eight minutes. So it was that easy... I think the possibilities are endless.",
+        author: "Radha Krishnan",
+        role: "Founder, WebNamaste - Marketing Agency"
+      },
+      additionalBenefits: [
+        "Complete understanding of inbound and outbound calling workflows",
+        "Extensive platform capabilities discovered",
+        "Fast deployment for client services",
+        "Excitement about future possibilities with CloserX"
+      ]
+    },
+    implementation: {
+      title: "Implementation Timeline",
+      steps: [
+        { 
+          phase: "Initial Setup", 
+          activity: "Workflow Guidance", 
+          description: "Guided through all essential workflows and how to set up inbound and outbound calling with AI.",
+          duration: "Initial session"
+        },
+        { 
+          phase: "Agent Creation", 
+          activity: "8-Minute Setup", 
+          description: "Created fully functional inbound AI voice agent in just 8 minutes.",
+          duration: "8 minutes"
+        },
+        { 
+          phase: "Discovery", 
+          activity: "Platform Exploration", 
+          description: "Discovered endless possibilities and extensive capabilities available in the platform.",
+          duration: "Ongoing"
+        }
+      ]
+    },
+    technicalDetails: {
+      title: "Technical Implementation",
+      integrations: [
+        "GoHighLevel platform integration",
+        "Inbound and outbound calling systems",
+        "Marketing automation workflows"
+      ],
+      features: [
+        "Rapid 8-minute setup for AI voice agents",
+        "Both inbound and outbound calling capabilities",
+        "Extensive features and customization options",
+        "Easy workflow configuration"
+      ]
+    },
+    futureGoals: {
+      title: "Future Plans",
+      plans: [
+        "Explore extensive platform capabilities",
+        "Create more AI voice solutions for clients",
+        "Build comprehensive automation workflows",
+        "Leverage platform for agency growth"
+      ]
+    }
+  },
+
+  "german-terado-business": {
+    id: "german-terado-business",
+    company: "German Terado",
+    industry: "Business Owner",
+    title: "Smooth Onboarding Experience with Dedicated Support",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    overview: "German Terado is a forward-thinking business owner who partnered with CloserX AI to implement advanced AI voice technology into their operations. Recognizing the transformative potential of conversational AI, they sought to enhance customer communications and streamline their business processes. Their onboarding experience highlights the comprehensive support CloserX AI provides to businesses at every stage of their AI adoption journey—from initial setup through full implementation and optimization.",
+    challenge: {
+      title: "The Challenge",
+      context: "German faced complex technical setup with configuration issues requiring dedicated troubleshooting. They were worried about smooth integration and proper functionality, needed extensive guidance to navigate new AI technology, and anticipated a lengthy, complicated onboarding process.",
+      problems: [
+        "Faced complex technical setup with configuration issues requiring dedicated troubleshooting",
+        "Worried about smooth integration and proper functionality",
+        "Needed extensive guidance to navigate new AI technology",
+        "Anticipated lengthy, complicated onboarding process",
+        "Concerns about implementation complexity"
+      ]
+    },
+    solution: {
+      title: "The Solution",
+      description: "German shares an enthusiastic testimonial praising the onboarding team, particularly Ankit, who has been outstanding throughout the process. Ankit dedicated three consecutive days on calls, working through issues and ensuring everything functioned properly. The entire team made the onboarding experience easy and smooth, providing support throughout the process.",
+      features: [
+        "Team worked through issues systematically until everything functioned properly",
+        "Comprehensive onboarding with support throughout the entire process",
+        "Easy and smooth experience despite complex implementation",
+        "Dedicated support team member (Ankit) providing outstanding assistance",
+        "Three consecutive days of dedicated support calls"
+      ],
+      implementation: "The CloserX AI team, particularly Ankit, dedicated three consecutive days working through issues and ensuring everything functioned properly. The entire team made the onboarding experience easy and smooth, providing support throughout the process."
+    },
+    results: {
+      title: "The Results",
+      metrics: [
+        { 
+          label: "Support Days", 
+          value: "3 days", 
+          description: "Three consecutive days of dedicated support calls" 
+        },
+        { 
+          label: "Satisfaction", 
+          value: "100%", 
+          description: "Client feels team deserves recognition for amazing service" 
+        },
+        { 
+          label: "Experience", 
+          value: "Smooth", 
+          description: "Onboarding described as very easy and smooth" 
+        },
+        { 
+          label: "Recommendation", 
+          value: "Strong", 
+          description: "Client strongly recommends based on amazing service" 
+        }
+      ],
+      testimonial: {
+        quote: "They've been helping me out throughout the entire process, throughout my entire onboarding and made it very easy and smooth.",
+        author: "German Terado",
+        role: "Business Owner"
+      },
+      additionalBenefits: [
+        "Exceeded expectations with exceptional service",
+        "Complex implementation made simple and stress-free",
+        "Strong recommendation based on service quality",
+        "Confidence in platform through comprehensive support"
+      ]
+    },
+    implementation: {
+      title: "Implementation Timeline",
+      steps: [
+        { 
+          phase: "Days 1-3", 
+          activity: "Dedicated Support", 
+          description: "Ankit dedicated three consecutive days on calls, working through issues and ensuring everything functioned properly.",
+          duration: "3 consecutive days"
+        },
+        { 
+          phase: "Throughout", 
+          activity: "Comprehensive Onboarding", 
+          description: "Entire team provided support throughout the entire onboarding process, making it easy and smooth.",
+          duration: "Ongoing"
+        },
+        { 
+          phase: "Complete", 
+          activity: "Successful Implementation", 
+          description: "Complex implementation completed successfully with everything functioning properly.",
+          duration: "Complete"
+        }
+      ]
+    },
+    technicalDetails: {
+      title: "Technical Implementation",
+      integrations: [
+        "Business operations systems",
+        "Customer communication platforms",
+        "Workflow automation tools"
+      ],
+      features: [
+        "Dedicated support throughout implementation",
+        "Systematic issue resolution",
+        "Comprehensive onboarding process",
+        "Easy and smooth setup experience"
+      ]
+    },
+    futureGoals: {
+      title: "Future Plans",
+      plans: [
+        "Continue leveraging AI voice technology for business growth",
+        "Expand AI implementation to additional use cases",
+        "Optimize operations with proven AI solutions",
+        "Recommend CloserX AI to other business owners"
+      ]
+    }
+  },
+
+  "mike-craft-tradeshow": {
+    id: "mike-craft-tradeshow",
+    company: "Mike Craft - Trade Show Company",
+    industry: "Trade Shows",
+    title: "1,500 Daily Calls & 30% Increase in Vendor Participation",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    overview: "Mike Craft is an entrepreneur pursuing conversational AI full-time. He serves clients with high-volume communication needs, including a trade show company making 1,500 calls daily, and has achieved impressive results. Mike left his corporate career in 2023 to pursue conversational AI full-time and has been with CloserX since near its inception as a beta tester.",
+    challenge: {
+      title: "The Challenge",
+      context: "Mike faced the challenge of choosing the right conversational AI platform from multiple available options in the market. He needed a solution reliable enough to stake his career transition on, required seamless integration with GHL (GoHighLevel) for workflow automation, needed a platform that could work within their existing tech stack, and was concerned about finding realistic-sounding AI voices that wouldn't compromise customer experience or brand perception. His client also required capability to handle high-volume calling (1,500+ calls daily) with a platform that could reliably support large-scale outreach campaigns.",
+      problems: [
+        "Platform selection uncertainty from multiple available options",
+        "Needed a solution reliable enough to stake career transition on",
+        "Required seamless integration with GHL (GoHighLevel) for workflow automation",
+        "Needed a platform that could work within existing tech stack",
+        "Concern about finding realistic-sounding AI voices",
+        "Client required capability to handle high-volume calling (1,500+ calls daily)",
+        "Needed platform that could reliably support large-scale outreach campaigns"
+      ]
+    },
+    solution: {
+      title: "The Solution",
+      description: "After thorough evaluation of multiple platforms, Mike chose CloserX for its GHL integration, superior voice quality, and outstanding customer support. The platform proved reliable for high-volume operations, with realistic-sounding AI voices that enhanced customer engagement and met professional standards for business communications.",
+      features: [
+        "Seamless GHL integration enabling automated workflows",
+        "Superior voice technology with realistic-sounding AI voices",
+        "Outstanding customer support throughout implementation and scaling",
+        "Platform stability supporting high-volume operations without technical issues",
+        "Reliable infrastructure for large-scale outreach campaigns"
+      ],
+      implementation: "Mike chose CloserX after thorough evaluation, leveraging its GHL integration, superior voice quality, and outstanding customer support. The platform successfully handled his client's high-volume calling needs with consistent reliability."
+    },
+    results: {
+      title: "The Results",
+      metrics: [
+        { 
+          label: "Daily Calls", 
+          value: "1,500", 
+          description: "Successfully executing 1,500 calls per day consistently and reliably" 
+        },
+        { 
+          label: "Vendor Participation", 
+          value: "30%", 
+          description: "30% increase in vendor participation compared to previous year" 
+        },
+        { 
+          label: "Voice Quality", 
+          value: "Superior", 
+          description: "Realistic-sounding AI voices enhanced customer engagement" 
+        },
+        { 
+          label: "Reliability", 
+          value: "100%", 
+          description: "Platform stability supporting high-volume operations" 
+        }
+      ],
+      testimonial: {
+        quote: "They're pioneers in the industry. Their founders are down-to-earth people with genuine interest in helping their customers be successful. So, I highly recommend CloserX and you won't be disappointed.",
+        author: "Mike Craft",
+        role: "Entrepreneur - Trade Show Company Client"
+      },
+      additionalBenefits: [
+        "Dramatic performance improvement with 30% vendor participation increase",
+        "Seamless technical integration with GHL enabling automated workflows",
+        "Superior voice technology meeting professional standards",
+        "Exceptional ongoing support throughout implementation and scaling",
+        "Career transition success with reliable platform choice"
+      ]
+    },
+    implementation: {
+      title: "Implementation Timeline",
+      steps: [
+        { 
+          phase: "Evaluation", 
+          activity: "Platform Selection", 
+          description: "After thorough evaluation of multiple platforms, chose CloserX for GHL integration, superior voice quality, and outstanding customer support.",
+          duration: "Evaluation period"
+        },
+        { 
+          phase: "Integration", 
+          activity: "GHL Integration", 
+          description: "Achieved smooth GHL integration enabling automated workflows for trade show operations.",
+          duration: "Setup period"
+        },
+        { 
+          phase: "Scaling", 
+          activity: "High-Volume Deployment", 
+          description: "Successfully scaled to 1,500 daily calls with consistent reliability and platform stability.",
+          duration: "Ongoing"
+        }
+      ]
+    },
+    technicalDetails: {
+      title: "Technical Implementation",
+      integrations: [
+        "GoHighLevel (GHL) for workflow automation",
+        "Trade show management systems",
+        "Vendor management platforms"
+      ],
+      features: [
+        "Superior voice quality with realistic-sounding AI",
+        "High-volume calling capability (1,500+ daily calls)",
+        "Platform stability for large-scale operations",
+        "Seamless workflow automation integration"
+      ]
+    },
+    futureGoals: {
+      title: "Future Plans",
+      plans: [
+        "Continue scaling high-volume calling operations",
+        "Expand to additional clients with similar needs",
+        "Leverage CloserX for full-time conversational AI career",
+        "Build comprehensive AI voice solutions portfolio"
+      ]
+    }
+  },
+
   "automotive-dealership": {
     id: "automotive-dealership",
     company: "AutoMax Motors",

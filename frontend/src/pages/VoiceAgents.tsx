@@ -1,42 +1,51 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mic, Brain, Languages, MessageSquare } from "lucide-react";
+import Products from "@/components/home/Products";
+import { voiceAgentProductCards, voiceAgentHero } from "@/data/voiceAgentData";
 
 const VoiceAgents = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black">
       <Header />
       
-      <main className="pt-32 pb-20 pattern-dots-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-1.5 bg-secondary/10 rounded-full text-secondary text-sm font-semibold mb-6">
-              🎙️ AI Voice Technology
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Human-Like AI Voice Agents
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Deploy intelligent voice agents that sound natural, understand context, and deliver exceptional customer experiences.
+      <main className="pt-40 pb-32 px-4 sm:px-6 lg:px-6 ">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center my-20">
+             {/* Main Title - H1: Larger size */}
+             <h1 className="text-9xl font-bold text-white mb-6 leading-tight">
+               {voiceAgentHero.titleLines[0]}
+               <br />
+               {voiceAgentHero.titleLines[1]}
+             </h1>
+
+            {/* Subtitle - Body: 16px */}
+            <p className="text-base text-white mb-12 max-w-4xl mx-auto leading-relaxed">
+              {voiceAgentHero.description}
             </p>
+
+             {/* Call-to-Action Buttons */}
+             <div className="flex flex-row items-center justify-center gap-6">
+               {/* Talk To Sales Button - Pill-shaped with purple background */}
+              <a
+                href={voiceAgentHero.primaryCta.href}
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                {voiceAgentHero.primaryCta.label}
+              </a>
+
+              {/* Create an AI Agent - Text link (not a button) */}
+              <a href={voiceAgentHero.secondaryCta.href} className="text-purple-400 hover:text-purple-500 font-bold text-base transition-colors duration-300">
+                {voiceAgentHero.secondaryCta.label}
+              </a>
+             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-            {[
-              { icon: Mic, title: "Natural Voice", desc: "Ultra-realistic speech synthesis" },
-              { icon: Brain, title: "Smart AI", desc: "GPT-4 powered conversations" },
-              { icon: Languages, title: "Multilingual", desc: "50+ languages supported" },
-              { icon: MessageSquare, title: "Context Aware", desc: "Remembers conversation history" },
-            ].map((feature, idx) => (
-              <div key={idx} className="bg-card p-6 rounded-xl border border-border hover:shadow-lg transition-all text-center">
-                <feature.icon className="w-10 h-10 text-secondary mx-auto mb-3" />
-                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
+          
         </div>
       </main>
+
+      <Products data={voiceAgentProductCards} showHeader={false} />
 
       <Footer />
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, CSSProperties } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MessageSquare, Image, Globe, Send, ChevronDown, Plug, Shield, Clock } from "lucide-react";
@@ -12,6 +12,23 @@ const WhyChooseCloserX = () => {
   const featureBox2Ref = useRef<HTMLDivElement>(null);
   const featureBox3Ref = useRef<HTMLDivElement>(null);
   const [areFeaturesVisible, setAreFeaturesVisible] = useState(false);
+
+  const featureGridLayout: CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gridTemplateRows: "auto auto",
+    gap: "1.5rem",
+    gridTemplateAreas: `"div1 div1 div2"
+                        "div3 div4 div5"`,
+  };
+
+  const gridAreaStyles: Record<string, CSSProperties> = {
+    div1: { gridArea: "div1" },
+    div2: { gridArea: "div2" },
+    div3: { gridArea: "div3" },
+    div4: { gridArea: "div4" },
+    div5: { gridArea: "div5" },
+  };
 
   useEffect(() => {
     document.title = "Why Leading Teams Choose CloserX | CloserX.ai";
@@ -183,7 +200,7 @@ const WhyChooseCloserX = () => {
                 : 'opacity-0 translate-x-20'
             }`}
           >
-            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex items-center justify-center h-[350px]">
+            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex items-center justify-center h-[250px] md:h-[320px]">
               {/* Wireframe Globe Graphic */}
               <svg
                 width="100%"
@@ -191,7 +208,7 @@ const WhyChooseCloserX = () => {
                 viewBox="0 0 200 200"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-gray-300"
+                className="text-gray-300 scale-110"
               >
                 {/* Main circle */}
                 <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="1.5" />
@@ -260,7 +277,7 @@ const WhyChooseCloserX = () => {
         </div>
 
         {/* Three Feature Boxes */}
-        <div className="max-w-6xl mx-32 mt-10">
+        <div className="max-w-6xl mt-10 mx-auto">
   {/* Outer grid: first two cards combined = 70% (lg:col-span-7), last card = 30% (lg:col-span-3) */}
   <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 items-stretch">
     {/* LEFT: container for the first two cards (combined 70% on lg) */}

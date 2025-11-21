@@ -14,7 +14,7 @@ export default function CaseStudy() {
 
   // If case study not found, redirect to case studies page
   if (!caseStudy) {
-    return <Navigate to="/case-studies" replace />;
+    return <Navigate to="/success-stories" replace />;
   }
 
   return (
@@ -24,7 +24,7 @@ export default function CaseStudy() {
       <article className="pt-32 pb-20 px-4">
         <div className="max-w-5xl mx-auto">
           {/* Back Link */}
-          <Link to="/case-studies" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
+          <Link to="/success-stories" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
             <ArrowLeft className="h-4 w-4" />
             Back to Case Studies
           </Link>

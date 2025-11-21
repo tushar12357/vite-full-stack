@@ -92,7 +92,7 @@ const ContentCarouselSection = <T,>({
           {/* Cards Grid with Carousel */}
           <div className="relative overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex items-stretch transition-transform duration-500 ease-in-out"
               style={{
                 transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
                 willChange: "transform",
@@ -103,13 +103,15 @@ const ContentCarouselSection = <T,>({
                 return (
                   <div
                     key={idx}
-                    className="flex-shrink-0 px-4"
+                    className="flex-shrink-0 px-4 flex"
                     style={{
                       width: `${cardWidth}%`,
                       minWidth: `${cardWidth}%`,
                     }}
                   >
-                    {renderItem(item, idx)}
+                    <div className="w-full">
+                      {renderItem(item, idx)}
+                    </div>
                   </div>
                 );
               })}

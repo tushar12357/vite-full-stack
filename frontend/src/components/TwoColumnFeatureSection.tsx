@@ -24,13 +24,15 @@ export interface TwoColumnFeatureSectionData {
 interface TwoColumnFeatureSectionProps {
   data: TwoColumnFeatureSectionData;
   rightContent?: React.ReactNode;
+  className?: string;
+  disableAnimation?: boolean;
 }
 
-const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSectionProps) => {
+const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAnimation = false }: TwoColumnFeatureSectionProps) => {
   const { tag, mainTitle, subtitle, leftColumn, features, rightImage, rightImageAlt } = data;
   // Track which feature is expanded (null means none are expanded)
   const [expandedFeature, setExpandedFeature] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(disableAnimation);
   const sectionRef = useRef<HTMLElement>(null);
 
   const toggleFeature = (index: number) => {
@@ -44,6 +46,8 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
 
   // Intersection Observer for rise-in animation
   useEffect(() => {
+    if (disableAnimation) return;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -66,30 +70,37 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
         observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [disableAnimation]);
 
+  const baseBgClass = className.includes('bg-') ? '' : 'bg-white';
+  const hasBlackBg = className.includes('bg-black') || className.includes('!bg-black');
+  const sectionStyle = {
+    ...(!disableAnimation && { transitionDuration: '1500ms' }),
+    ...(hasBlackBg && { backgroundColor: '#000000' })
+  };
+  
+  const animationClasses = disableAnimation 
+    ? 'opacity-100 translate-y-0' 
+    : `transition-all ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
+  
   return (
     <section 
       ref={sectionRef}
-      className={`bg-white py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 transition-all duration-[1500ms] ease-in-out ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
+      className={`${baseBgClass} py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 font-poppins ${animationClasses} ${className}`}
+      style={sectionStyle}
     >
       <div className="max-w-5xl mx-auto">
         {/* Tag */}
         <div className="flex justify-center mb-6">
-          <span className="inline-block px-3 py-1 bg-gray-50 border border-gray-200 rounded text-xs text-gray-800 font-medium">
+          <span className="inline-block px-3 py-1 bg-gray-50 border border-gray-200 rounded text-xs text-gray-800 font-medium font-poppins">
             {tag}
           </span>
         </div>
 
         {/* Main Title */}
         <h2 
-          className="text-black text-center mb-4 mx-auto"
+          className="text-black text-center mb-4 mx-auto font-poppins"
           style={{
-            fontFamily: 'Poppins, sans-serif',
             fontWeight: 600,
             fontSize: '48px',
             lineHeight: '100%',
@@ -104,9 +115,8 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
 
         {/* Subtitle */}
         <p 
-          className="text-black text-center mb-8 md:mb-12 mx-auto"
+          className="text-black text-center mb-8 md:mb-12 mx-auto font-poppins"
           style={{
-            fontFamily: 'Poppins, sans-serif',
             fontWeight: 200,
             fontSize: '14px',
             lineHeight: '100%',
@@ -120,14 +130,14 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
         </p>
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-8 items-start relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-center justify-items-center relative">
           {/* Left Column - Features */}
-          <div className="relative">
-            <h3 className="text-5xl md:text-[40px] font-semibold text-black mb-2">
+          <div className="relative font-poppins">
+            <h3 className="text-5xl md:text-[40px] font-semibold text-black mb-2 font-poppins">
               {leftColumn.title}{" "}
-              <span className="text-purple-600">{leftColumn.titleHighlight}</span>
+              <span className="text-purple-600 font-poppins">{leftColumn.titleHighlight}</span>
             </h3>
-            <p className="text-5xl md:text-[40px] text-black mb-12">
+            <p className="text-5xl md:text-[40px] text-black mb-12 font-poppins">
               {leftColumn.description}
             </p>
 
@@ -142,15 +152,15 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
                       <div className="flex-1">
                         <button
                           onClick={() => toggleFeature(index)}
-                          className="text-left w-full"
+                          className="text-left w-full font-poppins"
                         >
                           
-                          <h4 className="text-[18px] md:text-[18px] font-medium text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer">
+                          <h4 className="text-[18px] md:text-[18px] font-medium text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer font-poppins">
                            {feature.number} {feature.title}
                           </h4>
                         </button>
                         {feature.description && isExpanded && (
-                          <p className="text-[14px] md:text-[14px] font-thin text-black leading-relaxed mt-2">
+                          <p className="text-[14px] md:text-[14px] font-thin text-black leading-relaxed mt-2 font-poppins">
                             {feature.description}
                           </p>
                         )}
@@ -163,15 +173,15 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
           </div>
 
           {/* Right Column - Image or Custom Content */}
-          <div className="relative lg:sticky lg:top-20">
+          <div className="relative lg:sticky lg:top-20 flex justify-center">
             {rightContent ? (
               rightContent
             ) : rightImage ? (
-              <div className="relative w-full h-full overflow-hidden">
+              <div className="relative w-full overflow-hidden min-h-[500px] lg:min-h-[600px]">
                 <img
                   src={rightImage}
                   alt={rightImageAlt || "Feature Image"}
-                  className="w-full max-w-[100%] h-auto object-contain"
+                  className="w-full h-full min-h-[500px] lg:min-h-[600px] object-contain"
                 />
               </div>
             ) : null}

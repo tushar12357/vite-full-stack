@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-interface LeadQualificationHeroProps {
+interface SolutionHeroProps {
   hero: {
     tag: string;
     title: string;
+    titleHighlight?: string;
     description: string;
     primaryButton: {
       text: string;
@@ -15,9 +16,10 @@ interface LeadQualificationHeroProps {
     };
   };
   uiScreenshot: string;
+  imageAlt?: string;
 }
 
-const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProps) => {
+const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: SolutionHeroProps) => {
   return (
     <section className="relative bg-black py-20 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -33,7 +35,7 @@ const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProp
 
             {/* Main Title */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              {hero.title}
+              {hero.title} {hero.titleHighlight && <span className="text-purple-400">{hero.titleHighlight}</span>}
             </h1>
 
             {/* Description */}
@@ -45,14 +47,14 @@ const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProp
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300"
+                className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap"
               >
                 {hero.primaryButton.text}
               </Button>
               <Button 
-                size="lg" 
+                size="lg"
                 variant="outline"
-                className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300"
+                className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300 whitespace-nowrap"
               >
                 {hero.secondaryButton.text}
               </Button>
@@ -64,7 +66,7 @@ const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProp
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
               <img
                 src={uiScreenshot}
-                alt="Lead Qualification Dashboard"
+                alt={imageAlt}
                 className="w-full h-auto object-contain rounded-2xl"
               />
             </div>
@@ -75,5 +77,5 @@ const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProp
   );
 };
 
-export default LeadQualificationHero;
+export default SolutionHero;
 

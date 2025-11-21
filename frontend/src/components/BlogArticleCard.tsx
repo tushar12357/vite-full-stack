@@ -10,6 +10,7 @@ interface BlogArticleCardProps {
     excerpt: string;
     author: string;
     createdAt: string;
+    image?: string;
   };
   uiScreenshot: string;
 }
@@ -34,7 +35,7 @@ const BlogArticleCard = ({ post, uiScreenshot }: BlogArticleCardProps) => {
         <div className="px-4 pb-3">
           <div className="relative w-full rounded-xl overflow-hidden shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 max-h-96">
             <img
-              src={uiScreenshot}
+              src={post.image || uiScreenshot}
               alt={post.title}
               className="w-full h-full object-cover rounded-xl"
             />

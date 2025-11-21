@@ -49,7 +49,7 @@ const FeatureCards = () => {
   ];
 
   return (
-    <section className="relative bg-black w-full pt-32 bg-gradient-to-b from-purple-950 to-purple-750">
+    <section className="relative bg-black w-full pt-32 bg-gradient-to-b from-purple-950 to-purple-750 font-poppins">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center py-16 px-4 relative">
@@ -58,18 +58,18 @@ const FeatureCards = () => {
 
           {/* Intelligent Automation Tag */}
           <div className="flex justify-center mb-6">
-          <span className="px-4 py-2 border border-[#1f1f1f] bg-[#121212] rounded-sm text-sm font-medium text-white">
+          <span className="px-4 py-2 border border-[#1f1f1f] bg-[#121212] rounded-sm text-sm font-medium text-white font-poppins">
             Intelligent Automation
           </span>
           </div>
 
           {/* Main Title */}
-          <h2 className="text-5xl font-black text-white mb-6 leading-tight">
+          <h2 className="text-5xl font-black text-white mb-6 leading-tight font-poppins">
             Everything You <br/> Need in One Place
           </h2>
 
           {/* Subtitle */}
-          <p className="text-base text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base text-gray-400 max-w-3xl mx-auto leading-relaxed font-poppins">
             Powerful features designed to make teamwork seamless
           </p>
         </div>
@@ -90,15 +90,15 @@ const FeatureCards = () => {
               >
                 <div className="grid lg:grid-cols-2 border border-white/20 rounded-[12px] gap-4 lg:gap-8 items-start w-[998px] h-[488px] max-w-full mx-auto transform rotate-0 opacity-100 transition-all duration-300 bg-black p-6 lg:p-8 shadow-2xl">
                   {/* Left Column - Text Content */}
-                  <div className="space-y-6 ">
+                  <div className="space-y-6 font-poppins">
                     {/* Heading */}
                     <div className="mb-48">
-                      <h3 className="text-[20px] font-normal mb-4 text-white leading-tight">
+                      <h3 className="text-[20px] font-normal mb-4 text-white leading-tight font-poppins">
                         {card.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-[16px] text-gray-400 leading-relaxed">
+                      <p className="text-[16px] text-gray-400 leading-relaxed font-poppins">
                         {card.description}
                       </p>
                     </div>
@@ -112,7 +112,7 @@ const FeatureCards = () => {
                             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
                               <FeatureIcon className="w-4 h-4 text-white" />
                       </div>
-                            <span className="text-[14px] font-normal text-white">{feature.title}</span>
+                            <span className="text-[14px] font-normal text-white font-poppins">{feature.title}</span>
                       </div>
                         );
                       })}
