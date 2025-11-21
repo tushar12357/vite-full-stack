@@ -1,6 +1,7 @@
 export interface Integration {
   name: string;
-  logo: string;
+  logo: string; // Can be emoji or image path
+  logoImage?: string; // Optional image path for actual logo files
   category: "crm" | "payment" | "automation" | "communication" | "scheduling" | "analytics";
   description: string;
   popular?: boolean;
@@ -35,7 +36,8 @@ export const integrations: Integration[] = [
   },
   { 
     name: "PayPal", 
-    logo: "💰", 
+    logo: "💰",
+    logoImage: "/integrations/PayPal/logo.svg",
     category: "payment", 
     description: "Process payments securely with PayPal", 
     popular: true, 
@@ -51,17 +53,19 @@ export const integrations: Integration[] = [
   },
   { 
     name: "Zoho CRM", 
-    logo: "📋", 
+    logo: "📋",
+    logoImage: "/integrations/Zoho/logo.svg",
     category: "crm", 
     description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.", 
     popular: true, 
     featured: true 
   },
   { 
-    name: "Cal.com", 
-    logo: "🕒", 
+    name: "Calendly", 
+    logo: "📆",
+    logoImage: "/integrations/Calendly/logo.svg",
     category: "scheduling", 
-    description: "Open-source scheduling platform for teams", 
+    description: "Automated scheduling for meetings", 
     popular: true, 
     featured: true 
   },
@@ -69,66 +73,35 @@ export const integrations: Integration[] = [
   // CRM Integrations
   { 
     name: "HubSpot", 
-    logo: "📊", 
+    logo: "📊",
+    logoImage: "/integrations/HubSpot/logo.svg",
     category: "crm", 
     description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.", 
     popular: true 
   },
   { 
     name: "Salesforce", 
-    logo: "☁️", 
+    logo: "☁️",
+    logoImage: "/integrations/Salesforce/logo.svg",
     category: "crm", 
     description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.", 
     popular: true 
   },
   { 
     name: "Pipedrive", 
-    logo: "📈", 
+    logo: "📈",
+    logoImage: "/integrations/Pipedrive/logo.svg",
     category: "crm", 
     description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding." 
   },
   { 
     name: "Monday.com", 
-    logo: "🎯", 
+    logo: "🎯",
+    logoImage: "/integrations/Monday.com/logo.svg",
     category: "crm", 
     description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding." 
   },
-  { 
-    name: "Microsoft Dynamics", 
-    logo: "🔷", 
-    category: "crm", 
-    description: "Enterprise-grade CRM integration" 
-  },
-  { 
-    name: "Keap", 
-    logo: "🔑", 
-    category: "crm", 
-    description: "CRM and sales automation for small business" 
-  },
-  { 
-    name: "Close", 
-    logo: "📞", 
-    category: "crm", 
-    description: "Sales CRM built for high-velocity teams" 
-  },
-  { 
-    name: "Copper", 
-    logo: "🥉", 
-    category: "crm", 
-    description: "CRM for Google Workspace" 
-  },
-  { 
-    name: "Nimble", 
-    logo: "🤸", 
-    category: "crm", 
-    description: "Simple CRM and prospecting tool" 
-  },
-  { 
-    name: "Insightly", 
-    logo: "👁️", 
-    category: "crm", 
-    description: "CRM and project management" 
-  },
+
 
   // Automation Integrations
   { 
@@ -146,7 +119,8 @@ export const integrations: Integration[] = [
   },
   { 
     name: "Make (Integromat)", 
-    logo: "🔧", 
+    logo: "🔧",
+    logoImage: "/integrations/Make/logo.svg",
     category: "automation", 
     description: "Visual automation platform with advanced logic" 
   },
@@ -164,13 +138,15 @@ export const integrations: Integration[] = [
   },
   { 
     name: "Notion", 
-    logo: "📝", 
+    logo: "📝",
+    logoImage: "/integrations/Notion/logo.svg",
     category: "automation", 
     description: "All-in-one workspace" 
   },
   { 
     name: "Trello", 
-    logo: "📌", 
+    logo: "📌",
+    logoImage: "/integrations/Trello/logo.svg",
     category: "automation", 
     description: "Visual project management boards" 
   },
@@ -182,27 +158,11 @@ export const integrations: Integration[] = [
   },
 
   // Payment Integrations
-  { 
-    name: "FreshBooks", 
-    logo: "💼", 
-    category: "payment", 
-    description: "Accounting and invoicing software" 
-  },
-  { 
-    name: "QuickBooks", 
-    logo: "📚", 
-    category: "payment", 
-    description: "Complete accounting solution" 
-  },
-  { 
-    name: "Xero", 
-    logo: "💵", 
-    category: "payment", 
-    description: "Cloud-based accounting platform" 
-  },
+
   { 
     name: "Square", 
-    logo: "⬜", 
+    logo: "⬜",
+    logoImage: "/integrations/Square/logo.svg",
     category: "payment", 
     description: "Payment processing and POS system" 
   },
@@ -210,61 +170,84 @@ export const integrations: Integration[] = [
   // Communication Integrations
   { 
     name: "Slack", 
-    logo: "💬", 
+    logo: "💬",
+    logoImage: "/integrations/Slack/logo.svg",
     category: "communication", 
     description: "Team messaging and notifications" 
   },
   { 
-    name: "Microsoft Teams", 
+    name: "Google Meet", 
     logo: "👥", 
+    logoImage: "/integrations/GoogleMeet/logo.svg",
     category: "communication", 
     description: "Collaborate and communicate in real-time" 
   },
   { 
     name: "Gmail", 
-    logo: "📧", 
+    logo: "📧",
+    logoImage: "/integrations/Gmail/logo.svg",
     category: "communication", 
     description: "Email integration with automatic threading" 
   },
   { 
     name: "Twilio", 
-    logo: "📱", 
+    logo: "📱",
+    logoImage: "/integrations/Twilio/logo.svg",
     category: "communication", 
     description: "SMS and voice communication APIs" 
   },
   { 
-    name: "SendGrid", 
-    logo: "✉️", 
+    name: "Telnyx", 
+    logo: "✉️",
+    logoImage: "/integrations/Telnyx/logo.svg",
     category: "communication", 
     description: "Email delivery and marketing automation" 
   },
   { 
-    name: "Mailchimp", 
+    name: "Whatsapp", 
     logo: "🐵", 
     category: "communication", 
-    description: "Email marketing and audience management" 
-  },
-  { 
-    name: "Zoom", 
-    logo: "🎥", 
-    category: "communication", 
-    description: "Video conferencing integration" 
+    description: "Whatsapp marketing and audience management" 
   },
   { 
     name: "Discord", 
-    logo: "🎮", 
+    logo: "🎮",
+    logoImage: "/integrations/Discord/logo.svg",
     category: "communication", 
     description: "Community and voice chat platform" 
   },
   { 
     name: "Intercom", 
-    logo: "💭", 
+    logo: "💭",
+    logoImage: "/integrations/Intercom/logo.svg",
     category: "communication", 
     description: "Customer messaging platform" 
   },
   { 
-    name: "Drift", 
-    logo: "💨", 
+    name: "Skool Community", 
+    logo: "💨",
+    logoImage: "/integrations/SkoolCommunity/logo.svg",
+    category: "communication", 
+    description: "Conversational marketing platform" 
+  },
+  { 
+    name: "Botim", 
+    logo: "🎮",
+    logoImage: "/integrations/Discord/logo.svg",
+    category: "communication", 
+    description: "Community and voice chat platform" 
+  },
+  { 
+    name: "GoChat", 
+    logo: "💭",
+    logoImage: "/integrations/GoChat/logo.svg",
+    category: "communication", 
+    description: "Customer messaging platform" 
+  },
+  { 
+    name: "Tawasal", 
+    logo: "💨",
+    logoImage: "/integrations/Tawasal/logo.svg",
     category: "communication", 
     description: "Conversational marketing platform" 
   },
@@ -272,13 +255,15 @@ export const integrations: Integration[] = [
   // Scheduling Integrations
   { 
     name: "Google Calendar", 
-    logo: "📅", 
+    logo: "📅",
+    logoImage: "/integrations/GoogleCalendar/logo.svg",
     category: "scheduling", 
     description: "Schedule appointments and sync calendars" 
   },
   { 
     name: "Calendly", 
-    logo: "📆", 
+    logo: "📆",
+    logoImage: "/integrations/Calendly/logo.svg",
     category: "scheduling", 
     description: "Automated scheduling for meetings" 
   },
@@ -316,19 +301,22 @@ export const integrations: Integration[] = [
   },
   { 
     name: "Mixpanel", 
-    logo: "📈", 
+    logo: "📈",
+    logoImage: "/integrations/Mixpanel/logo.svg",
     category: "analytics", 
     description: "Product analytics and user insights" 
   },
   { 
     name: "Segment", 
-    logo: "🎯", 
+    logo: "🎯",
+    logoImage: "/integrations/Segment/logo.svg",
     category: "analytics", 
     description: "Customer data platform and analytics" 
   },
   { 
     name: "Amplitude", 
-    logo: "📉", 
+    logo: "📉",
+    logoImage: "/integrations/Amplitude/logo.svg",
     category: "analytics", 
     description: "Product intelligence platform" 
   },
@@ -346,7 +334,8 @@ export const integrations: Integration[] = [
   },
   { 
     name: "Tableau", 
-    logo: "📊", 
+    logo: "📊",
+    logoImage: "/integrations/Tableau/logo.svg",
     category: "analytics", 
     description: "Visual analytics platform" 
   },
@@ -359,12 +348,12 @@ export const integrations: Integration[] = [
 ];
 
 // Marquee integrations list (for hero section)
-export const marqueeIntegrations = [
-  { name: "PayPal", logo: "💰" },
-  { name: "Salesforce", logo: "☁️" },
+export const marqueeIntegrations: Array<{ name: string; logo: string; logoImage?: string }> = [
+  { name: "PayPal", logo: "💰", logoImage: "/integrations/PayPal/logo.svg" },
+  { name: "Salesforce", logo: "☁️", logoImage: "/integrations/Salesforce/logo.svg" },
   { name: "Go High Level", logo: "🚀" },
   { name: "Stripe", logo: "💳" },
   { name: "n8n", logo: "🔗" },
-  { name: "Twilio", logo: "📱" },
+  { name: "Twilio", logo: "📱", logoImage: "/integrations/Twilio/logo.svg" },
 ];
 

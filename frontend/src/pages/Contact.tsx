@@ -301,9 +301,9 @@ const Contact = () => {
                   Join our growing network of partners and unlock new opportunities with AI‑driven customer engagement.
                 </p>
               </div>
-              <button className="mt-8 inline-flex items-center justify-center bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white text-base font-semibold px-8 py-3 rounded-full shadow-[0_10px_30px_rgba(124,58,237,0.35)] hover:scale-[1.01] transition-transform">
+              <a href="/contact" className="mt-8 inline-flex items-center justify-center bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white text-base font-semibold px-8 py-3 rounded-full shadow-[0_10px_30px_rgba(124,58,237,0.35)] hover:scale-[1.01] transition-transform">
                 Get In Touch
-              </button>
+              </a>
             </div>
           </div>
         </section>

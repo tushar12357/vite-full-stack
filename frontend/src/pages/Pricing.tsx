@@ -187,24 +187,34 @@ const Pricing = () => {
                     </div>
 
                     <div className="relative z-10">
-                      <button
-                        className={`w-full rounded-full px-6 py-3 text-sm font-semibold ${
-                          plan.popular
-                            ? "border border-white/20 text-white"
-                            : plan.enterprise
-                              ? "bg-white text-black hover:bg-white/90"
+                      {plan.enterprise ? (
+                        <a
+                          href="/contact"
+                          className="w-full rounded-full px-6 py-3 text-sm font-semibold bg-white text-black hover:bg-white/90 block text-center"
+                        >
+                          {plan.cta}
+                        </a>
+                      ) : (
+                        <a
+                          href={`https://offer.closerx.ai${plan.price === "$29" ? "?plan=starter" : plan.price === "$297" ? "?plan=professional" : ""}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full rounded-full px-6 py-3 text-sm font-semibold block text-center ${
+                            plan.popular
+                              ? "border border-white/20 text-white"
                               : "bg-[#0F0F0F] text-white border border-white/15 hover:bg-white/10"
-                        }`}
-                        style={
-                          plan.popular
-                            ? {
-                                background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
-                              }
-                            : undefined
-                        }
-                      >
-                        {plan.cta}
-                      </button>
+                          }`}
+                          style={
+                            plan.popular
+                              ? {
+                                  background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
+                                }
+                              : undefined
+                          }
+                        >
+                          {plan.cta}
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -50,12 +50,12 @@ const Integrations = () => {
               
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-xl transition-all duration-300">
+                <a href="/integrations" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
                   Check Integrations
-                </button>
-                <button className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300">
+                </a>
+                <a href="/contact" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
                   Talk To Sales
-                </button>
+                </a>
               </div>
             </div>
             
@@ -73,7 +73,17 @@ const Integrations = () => {
                     key={`first-${index}`}
                     className="flex items-center gap-4 bg-gray-800 rounded-xl p-4 border border-gray-700"
                   >
-                    <div className="text-2xl">{integration.logo}</div>
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5">
+                      {integration.logoImage ? (
+                        <img 
+                          src={integration.logoImage} 
+                          alt={integration.name}
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <div className="text-2xl">{integration.logo}</div>
+                      )}
+                    </div>
                     <div className="text-white font-semibold text-base">{integration.name}</div>
                   </div>
                 ))}
@@ -83,7 +93,17 @@ const Integrations = () => {
                     key={`second-${index}`}
                     className="flex items-center gap-4 bg-gray-800 rounded-xl p-4 border border-gray-700"
                   >
-                    <div className="text-2xl">{integration.logo}</div>
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5">
+                      {integration.logoImage ? (
+                        <img 
+                          src={integration.logoImage} 
+                          alt={integration.name}
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <div className="text-2xl">{integration.logo}</div>
+                      )}
+                    </div>
                     <div className="text-white font-semibold text-base">{integration.name}</div>
                   </div>
                 ))}
@@ -212,8 +232,16 @@ const IntegrationCard = ({ integration, onConnect }) => {
     >
       {/* Logo - Square icon with rounded corners, dark background, centered */}
       <div className="mb-4 flex justify-center">
-        <div className="w-16 h-16 bg-black rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-          <div className="text-4xl">{integration.logo}</div>
+        <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform p-2">
+          {integration.logoImage ? (
+            <img 
+              src={integration.logoImage} 
+              alt={integration.name}
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <div className="text-4xl">{integration.logo}</div>
+          )}
         </div>
       </div>
 

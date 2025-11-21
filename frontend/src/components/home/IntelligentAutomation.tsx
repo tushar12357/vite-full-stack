@@ -20,12 +20,12 @@ const IntelligentAutomation = () => {
     },
     {
       number: 2,
-      title: "AI Calls",
+      title: "CRM Sync",
       description: "Instant trigger to captured lead captured lead",
     },
     {
       number: 3,
-      title: "CRM Sync",
+      title: "AI Calls",
       description: "Instant trigger to captured lead captured lead",
     },
     {

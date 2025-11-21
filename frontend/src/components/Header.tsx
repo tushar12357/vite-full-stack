@@ -263,9 +263,9 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-2">
             
             <DemoModal/>
-            <Link to="/login" className="ml-2 px-3 py-2 text-sm font-semibold text-white hover:text-gray-300 transition-colors">
+            <a href="https://app.closerx.ai" target="_blank" rel="noopener noreferrer" className="ml-2 px-3 py-2 text-sm font-semibold text-white hover:text-gray-300 transition-colors">
               Login
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -378,13 +378,15 @@ const Header = () => {
                 
                 <DemoModal/>
 
-                <Link
-                  to="/login"
-                  className="block text-center py-3 text-base font-semibold text-slate-700 touch-manipulation min-h-[48px] items-center justify-center" // block AND flex
+                <a
+                  href="https://app.closerx.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center py-3 text-base font-semibold text-slate-700 touch-manipulation min-h-[48px] items-center justify-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Login
-                </Link>
+                </a>
               </div>
             </div>
           </div>

@@ -320,7 +320,7 @@ export const leadQualificationData: LeadQualificationData = {
       text: "More Customer Stories",
     },
     secondaryButton: {
-      text: "Work with US",
+      text: "", // Disabled - not live
     },
   },
   results: {

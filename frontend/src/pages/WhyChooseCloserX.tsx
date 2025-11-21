@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, CSSProperties } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MessageSquare, Image, Globe, Send, ChevronDown, Plug, Shield, Clock } from "lucide-react";
+import { Plug, Shield, Clock } from "lucide-react";
 
 const WhyChooseCloserX = () => {
   const leftCardRef = useRef<HTMLDivElement>(null);
@@ -138,50 +138,11 @@ const WhyChooseCloserX = () => {
             }`}
           >
             <div className="bg-white rounded-xl shadow-lg p-6 w-full">
-              {/* Tabs */}
-              <div className="flex border-b border-gray-200 mb-4">
-                <div className="flex items-center gap-2 px-4 py-2 text-blue-600 border-b-2 border-blue-600">
-                  <MessageSquare className="w-5 h-5" />
-                  <span className="font-semibold text-sm">Chat with assistant</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 text-gray-500">
-                  <Image className="w-5 h-5" />
-                  <span className="text-sm">Generate photos</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 text-gray-500">
-                  <Globe className="w-5 h-5" />
-                  <span className="text-sm">Web search</span>
-                </div>
-              </div>
-              
-              {/* Chat Messages */}
-              <div className="flex flex-col gap-4 mb-6">
-                <div className="flex justify-end">
-                  <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg max-w-[70%] text-sm">
-                    Wow, thank you!
-                  </div>
-                </div>
-                <div className="flex justify-start">
-                  <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg max-w-[70%] text-sm">
-                    You're welcome! If you need any more help or have any other questions, feel free to ask.
-                  </div>
-                </div>
-              </div>
-              
-              {/* Input Field */}
-              <div className="border-t border-gray-200 pt-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Ask something..."
-                    className="w-full px-4 py-2 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 text-sm"
-                  />
-                  <Send className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  ChatGPT can make mistakes. Consider checking important information.
-                </p>
-              </div>
+              <img 
+                src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a782965fa23dfc3dc78.png" 
+                alt="CloserX Platform Interface" 
+                className="w-full h-auto rounded-lg"
+              />
             </div>
             
             {/* Title and Description */}
@@ -200,72 +161,12 @@ const WhyChooseCloserX = () => {
                 : 'opacity-0 translate-x-20'
             }`}
           >
-            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex items-center justify-center h-[250px] md:h-[320px]">
-              {/* Wireframe Globe Graphic */}
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 200 200"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-gray-300 scale-110"
-              >
-                {/* Main circle */}
-                <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="1.5" />
-                
-                {/* Horizontal ellipses */}
-                {Array.from({ length: 10 }).map((_, i) => {
-                  const angle = (i / 10) * Math.PI / 2;
-                  const rx = 90 * Math.cos(angle);
-                  return (
-                    <ellipse
-                      key={`h-ellipse-${i}`}
-                      cx="100"
-                      cy="100"
-                      rx={rx}
-                      ry="90"
-                      transform={`rotate(${i * 18} 100 100)`}
-                      stroke="currentColor"
-                      strokeWidth="0.5"
-                      opacity="0.6"
-                    />
-                  );
-                })}
-                
-                {/* Vertical ellipses */}
-                {Array.from({ length: 10 }).map((_, i) => {
-                  const angle = (i / 10) * Math.PI / 2;
-                  const ry = 90 * Math.cos(angle);
-                  return (
-                    <ellipse
-                      key={`v-ellipse-${i}`}
-                      cx="100"
-                      cy="100"
-                      rx="90"
-                      ry={ry}
-                      transform={`rotate(${i * 18} 100 100)`}
-                      stroke="currentColor"
-                      strokeWidth="0.5"
-                      opacity="0.6"
-                    />
-                  );
-                })}
-                
-                {/* Additional grid lines for more detail */}
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <line
-                    key={`line-${i}`}
-                    x1="100"
-                    y1="10"
-                    x2="100"
-                    y2="190"
-                    stroke="currentColor"
-                    strokeWidth="0.5"
-                    opacity="0.4"
-                    transform={`rotate(${i * 36} 100 100)`}
-                  />
-                ))}
-              </svg>
+            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex items-center justify-center">
+              <img 
+                src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a79f8fa3b2a122580a4.png" 
+                alt="Scale Without Limits" 
+                className="w-full h-auto rounded-lg"
+              />
             </div>
             
             {/* Title and Description */}
@@ -290,28 +191,11 @@ const WhyChooseCloserX = () => {
         }`}
       >
         <div className="bg-white rounded-lg p-4 mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-gray-800">Change mode</span>
-            <ChevronDown className="w-4 h-4 text-gray-600" />
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-              <span className="text-gray-800">Customized</span>
-            </div>
-            <div className="flex items-center justify-between text-sm text-gray-600">
-              <span>Chat with assistant</span>
-              <span className="text-xs">Free</span>
-            </div>
-            <div className="flex items-center justify-between text-sm text-gray-600">
-              <span>Generate image</span>
-              <span className="text-xs">500 Credits</span>
-            </div>
-            <div className="flex items-center justify-between text-sm text-gray-600">
-              <span>Web search</span>
-              <span className="text-xs">Unlimited</span>
-            </div>
-          </div>
+          <img 
+            src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78f8fa3b84dc258091.jpg" 
+            alt="Integrations" 
+            className="w-full h-auto rounded-lg"
+          />
         </div>
 
         <div className="flex items-center gap-2 mb-2">
@@ -329,15 +213,11 @@ const WhyChooseCloserX = () => {
         }`}
       >
         <div className="bg-white rounded-lg p-4 mb-6">
-          <div className="space-y-2">
-            <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">our above recommendations {'{'} temp</div>
-            <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">te two [ define technology ] tests for the above</div>
-            <div className="text-xs text-gray-400 p-2 bg-gray-50 rounded">write the above text to be more verbose and inclu</div>
-            <div className="flex gap-2 mt-3">
-              <button className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded">ESLinter prompt</button>
-              <button className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded">Find array la</button>
-            </div>
-          </div>
+          <img 
+            src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a7847e103bc535ef2cb.png" 
+            alt="Enterprise Security" 
+            className="w-full h-auto rounded-lg"
+          />
         </div>
 
         <div className="flex items-center gap-2 mb-2">
@@ -355,31 +235,12 @@ const WhyChooseCloserX = () => {
         areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
       }`}
     >
-      <div className="bg-white rounded-lg p-2 mb-6 flex items-center justify-center h-[200px] relative">
-        <svg
-          width="100"
-          height="100"
-          viewBox="0 0 120 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute"
-        >
-          <path
-            d="M60 20 C45 20, 30 30, 30 50 C30 70, 40 85, 60 90 C80 85, 90 70, 90 50 C90 30, 75 20, 60 20"
-            stroke="#3B82F6"
-            strokeWidth="1.5"
-            fill="none"
-          />
-          <path d="M45 35 L55 45 L50 55 L60 60" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-          <path d="M75 35 L65 45 L70 55 L60 60" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-          <path d="M50 70 L60 75 L55 80 L60 85" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-          <path d="M70 70 L60 75 L65 80 L60 85" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.6" />
-          <circle cx="50" cy="40" r="2" fill="#3B82F6" opacity="0.4" />
-          <circle cx="70" cy="40" r="2" fill="#3B82F6" opacity="0.4" />
-          <path d="M45 50 Q60 55 75 50" stroke="#3B82F6" strokeWidth="1" fill="none" opacity="0.4" />
-        </svg>
-        <div className="absolute top-8 left-4 bg-purple-500 text-white text-xs px-2 py-1 rounded-lg">Kate</div>
-        <div className="absolute bottom-8 right-4 bg-blue-500 text-white text-xs px-2 py-1 rounded-lg">Jake</div>
+      <div className="bg-white rounded-lg p-2 mb-6 flex items-center justify-center">
+        <img 
+          src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78393741a9e06eab56.jpg" 
+          alt="24/7 Support" 
+          className="w-full h-auto rounded-lg"
+        />
       </div>
 
       <div className="flex items-center gap-2 mb-2">
