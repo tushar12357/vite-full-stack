@@ -14,29 +14,22 @@ import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
 
 const Index = () => {
-
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
-      <div>
-      <WhyChooseCloserX />  
-      <FeatureGrid/>
-      <FeatureCards/>
-      <StatsCounter/>
-      <PlugAndPlay/>
-      </div>
-      <IntelligentAutomation/>
-      <DiscoverCloserX/>
-      <Testimonials/>
-      <FAQ/>
-      <FinalCTA/>
-      <Footer/>
+      <WhyChooseCloserX />
+      <FeatureGrid />
+      <FeatureCards />
+      <StatsCounter />
+      <PlugAndPlay />
+      <IntelligentAutomation />
+      <DiscoverCloserX />
+      <Testimonials />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
 
-
-
-      
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }

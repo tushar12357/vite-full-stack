@@ -24,9 +24,10 @@ export interface TwoColumnFeatureSectionData {
 interface TwoColumnFeatureSectionProps {
   data: TwoColumnFeatureSectionData;
   rightContent?: React.ReactNode;
+  className?: string;
 }
 
-const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSectionProps) => {
+const TwoColumnFeatureSection = ({ data, rightContent, className = "" }: TwoColumnFeatureSectionProps) => {
   const { tag, mainTitle, subtitle, leftColumn, features, rightImage, rightImageAlt } = data;
   // Track which feature is expanded (null means none are expanded)
   const [expandedFeature, setExpandedFeature] = useState<number | null>(null);
@@ -68,15 +69,22 @@ const TwoColumnFeatureSection = ({ data, rightContent }: TwoColumnFeatureSection
     };
   }, []);
 
+  const baseBgClass = className.includes('bg-') ? '' : 'bg-white';
+  const hasBlackBg = className.includes('bg-black') || className.includes('!bg-black');
+  const sectionStyle = {
+    transitionDuration: '1500ms',
+    ...(hasBlackBg && { backgroundColor: '#000000' })
+  };
+  
   return (
     <section 
       ref={sectionRef}
-      className={`bg-white py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 transition-all ease-in-out font-poppins ${
+      className={`${baseBgClass} py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 transition-all ease-in-out font-poppins ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
-      }`}
-      style={{ transitionDuration: '1500ms' }}
+      } ${className}`}
+      style={sectionStyle}
     >
       <div className="max-w-5xl mx-auto">
         {/* Tag */}

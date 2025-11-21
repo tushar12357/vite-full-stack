@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-interface LeadQualificationHeroProps {
+interface SolutionHeroProps {
   hero: {
     tag: string;
     title: string;
@@ -15,9 +15,10 @@ interface LeadQualificationHeroProps {
     };
   };
   uiScreenshot: string;
+  imageAlt?: string;
 }
 
-const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProps) => {
+const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: SolutionHeroProps) => {
   return (
     <section className="relative bg-black py-20 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -64,7 +65,7 @@ const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProp
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
               <img
                 src={uiScreenshot}
-                alt="Lead Qualification Dashboard"
+                alt={imageAlt}
                 className="w-full h-auto object-contain rounded-2xl"
               />
             </div>
@@ -75,5 +76,5 @@ const LeadQualificationHero = ({ hero, uiScreenshot }: LeadQualificationHeroProp
   );
 };
 
-export default LeadQualificationHero;
+export default SolutionHero;
 

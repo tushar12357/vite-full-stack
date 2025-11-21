@@ -7,7 +7,7 @@ import { ArrowRight, FileText } from "lucide-react";
 import { leadQualificationData } from "@/data/leadQualificationData";
 import uiScreenshot from "@/assets/image copy.png";
 import workflowImage from "@/assets/image.png";
-import LeadQualificationHero from "@/components/LeadQualificationHero";
+import SolutionHero from "@/components/SolutionHero";
 import ProblemCard from "@/components/ProblemCard";
 import CriteriaCard from "@/components/CriteriaCard";
 import FeatureCard from "@/components/FeatureCard";
@@ -37,7 +37,7 @@ const LeadQualification = () => {
       <Header />
 
       {/* Hero Section - Two Column Layout */}
-      <LeadQualificationHero hero={hero} uiScreenshot={uiScreenshot} />
+      <SolutionHero hero={hero} uiScreenshot={uiScreenshot} imageAlt="Lead Qualification Dashboard" />
 
 
       {/* Problem Section */}
@@ -64,27 +64,11 @@ const LeadQualification = () => {
             ...twoColumnSection,
             rightImage: workflowImage,
           }}
+          className="!bg-black [&_*]:!text-white [&_span]:!bg-gray-800 [&_span]:!border-gray-700 [&_span]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_h4]:!text-white [&_p]:!text-white/80 [&_h4:hover]:!text-purple-400"
         />
       )}
 
-      {/* Solution Section */}
-      {/* <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">{solutionSection.title}</h2>
-            <p className="text-xl text-muted-foreground">{solutionSection.description}</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {solutions.map((solution, idx) => (
-              <div key={idx} className="bg-card border border-primary/20 rounded-xl p-6 hover-scale animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
-                <solution.icon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-display font-bold mb-3">{solution.title}</h3>
-                <p className="text-muted-foreground">{solution.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
+ 
 
       {/* How It Works */}
       <HowItWorksSection data={howItWorks} />

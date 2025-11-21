@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 // 🧩 Import your pages
@@ -53,6 +53,7 @@ import Careers from "./pages/Careers";
 // 🧩 Import LunaWidget (the floating chat button)
 import LunaWidget from "@/components/LunaWidget";
 import CallManagement from "./pages/CallManagement";
+import Automation from "./pages/Automation";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,23 @@ const ScrollToTop = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
+};
+
+const ExternalRedirect = ({ to }: { to: string }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.open(to, "_blank", "noopener,noreferrer");
+      navigate("/", { replace: true });
+    }
+  }, [navigate, to]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      Opening CloserX API docs in a new tab...
+    </div>
+  );
 };
 
 const App = () => (
@@ -108,8 +126,8 @@ const App = () => (
           {/* Coming Soon placeholders */}
           <Route path="/docs" element={<ComingSoon />} />
           <Route path="/call-management" element={<CallManagement />} />
-          <Route path="/automation" element={<ComingSoon />} />
-          <Route path="/api-docs" element={<ComingSoon />} />
+          <Route path="/automation" element={<Automation />} />
+          <Route path="/api-docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
           <Route path="/solutions/*" element={<ComingSoon />} />
           <Route path="/industries/*" element={<ComingSoon />} />
           <Route path="/partners" element={<Partners />} />
