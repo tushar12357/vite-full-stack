@@ -5,6 +5,7 @@ export const productsData = [
     icon: Clock,
     title: "Watch Your Calls in Real-Time",
     description: "Beautiful analytics that update as your AI agents work",
+    image: "",
     features: [
       {
         icon: Clock,
@@ -28,6 +29,7 @@ export const productsData = [
     icon: Zap,
     title: "Lightning Fast Performance",
     description: "Experience blazing fast speeds with our optimized infrastructure",
+    image: "/images/fast-performance.jpg",
     features: [
       {
         icon: Zap,
@@ -51,6 +53,7 @@ export const productsData = [
     icon: Shield,
     title: "Enterprise-Grade Security",
     description: "Your data is protected with industry-leading security measures",
+    image: "/images/enterprise-security.jpg",
     features: [
       {
         icon: Shield,
@@ -74,6 +77,7 @@ export const productsData = [
     icon: Target,
     title: "Smart AI Integration",
     description: "Powerful AI tools that enhance your workflow automatically",
+    image: "/images/ai-integration.jpg",
     features: [
       {
         icon: Target,

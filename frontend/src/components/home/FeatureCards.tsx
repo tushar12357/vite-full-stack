@@ -126,7 +126,7 @@ const FeatureCards = () => {
                       <img 
                         src={card.imageUrl} 
                         alt={card.title}
-                        className="w-full h-full object-cover rounded-[12px]"
+                        className="w-full h-full object-contain rounded-[12px]"
                       />
                     </div>
                   </div>

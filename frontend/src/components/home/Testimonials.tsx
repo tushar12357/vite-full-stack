@@ -107,9 +107,9 @@ const Testimonials = () => {
         </div>
 
         {/* Mosaic Grid - Masonry Layout */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 md:gap-8 space-y-6 md:space-y-8">
+        <div className="columns-1 md:columns-2 gap-8 md:gap-10 space-y-8 md:space-y-10">
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="break-inside-avoid mb-6 md:mb-8">
+            <div key={testimonial.id} className="break-inside-avoid mb-8 md:mb-10">
               <TestimonialCard testimonial={testimonial} />
             </div>
           ))}

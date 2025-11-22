@@ -184,7 +184,7 @@ const Integrations = () => {
       </section>
 
       {/* ⚡ CTA SECTION */}
-      <section className="bg-gradient-to-br from-black to-purple-600 py-20">
+      {/* <section className="bg-gradient-to-br from-black to-purple-600 py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Zap className="w-16 h-16 text-white mx-auto mb-6" />
           <h2 className="text-4xl font-extrabold text-white mb-4">Don't See Your Tool?</h2>
@@ -203,7 +203,7 @@ const Integrations = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
       <FAQ/>
       <FinalCTA/>
       <Footer />
