@@ -1,7 +1,7 @@
 import { Target, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/images/outboundcall/handshake.png";
+import workflowImage from "@/assets/images/outboundcall/handshake.png";
 
 export const outboundSalesData: SolutionData = {
   hero: {

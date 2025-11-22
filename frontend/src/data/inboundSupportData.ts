@@ -1,7 +1,7 @@
 import { Headphones, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/images/inboundcall/customer call.png";
+import workflowImage from "@/assets/images/inboundcall/webnamaste.png";
 
 export const inboundSupportData: SolutionData = {
   hero: {

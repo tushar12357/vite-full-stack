@@ -43,10 +43,10 @@ const Products = ({
             return (
               <div key={cardIndex} className="space-y-8">
                 <div
-                  className="grid lg:grid-cols-2 rounded-2xl overflow-hidden w-full transform transition-all duration-300 shadow-2xl hover:shadow-purple-500/20"
+                  className="grid lg:grid-cols-2 gap-6 w-full"
                 >
                   {/* Left Column - Dark Text Content */}
-                  <div className="bg-black p-8 lg:p-12 flex flex-col justify-center space-y-4">
+                  <div className="bg-black p-8 lg:p-12 flex flex-col justify-center space-y-4 rounded-2xl min-h-[600px]">
                     {/* Small Category Label */}
                     <div className="text-sm text-white">
                       {card.title.split(' ').slice(0, 2).join(' ')}
@@ -86,56 +86,24 @@ const Products = ({
                     </div>
                   </div>
 
-                  {/* Right Column - Light UI Mockup */}
-                  <div className="bg-black rounded-r-2xl p-6 lg:p-8 shadow-xl">
-                    <div className="bg-white rounded-xl p-6 h-full flex flex-col">
-                      {/* Mockup Header */}
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                          <IconComponent className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-gray-900">Dashboard</div>
-                          <div className="text-xs text-gray-500">Manage your platform</div>
-                        </div>
-                      </div>
-                      
-                      {/* Mockup Content */}
-                      <div className="space-y-4 flex-1">
-                        <div className="space-y-2">
-                          <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                          <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3 mt-4">
-                          <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
-                            <div className="h-2 bg-gray-300 rounded w-full mb-2"></div>
-                            <div className="h-2 bg-gray-300 rounded w-2/3"></div>
-                          </div>
-                          <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-200">
-                            <div className="h-2 bg-gray-300 rounded w-full mb-2"></div>
-                            <div className="h-2 bg-gray-300 rounded w-2/3"></div>
-                          </div>
-                        </div>
-                        <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 mt-4">
-                          <div className="space-y-2">
-                            <div className="flex items-center gap-2">
-                              <div className="w-6 h-6 bg-purple-100 rounded-full"></div>
-                              <div className="flex-1">
-                                <div className="h-2 bg-gray-300 rounded w-1/2 mb-1"></div>
-                                <div className="h-2 bg-gray-200 rounded w-3/4"></div>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-6 h-6 bg-blue-100 rounded-full"></div>
-                              <div className="flex-1">
-                                <div className="h-2 bg-gray-300 rounded w-1/2 mb-1"></div>
-                                <div className="h-2 bg-gray-200 rounded w-3/4"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Right Column - Product Image/Video */}
+                  <div className="bg-black rounded-2xl p-6 lg:p-8 flex items-center justify-center min-h-[600px]">
+                    {card.image?.endsWith('.webm') || card.image?.endsWith('.mp4') ? (
+                      <video 
+                        src={card.image} 
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-contain rounded-xl"
+                      />
+                    ) : (
+                      <img 
+                        src={card.image || "/placeholder-product.jpg"} 
+                        alt={card.title}
+                        className="w-full h-full object-contain rounded-xl"
+                      />
+                    )}
                   </div>
                 </div>
                 

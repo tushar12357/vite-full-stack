@@ -230,7 +230,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
               <div className="relative lg:sticky lg:top-20">
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
                   <img
-                    src={images.uiScreenshot}
+                    src={images.workflowImage}
                     alt="Customer Story Dashboard"
                     className="w-full h-auto object-contain rounded-2xl"
                   />

@@ -131,49 +131,53 @@ const WhyChooseCloserX = () => {
           {/* Left Content Block: Chat Interface */}
           <div 
             ref={leftCardRef}
-            className={`flex flex-col border-2 border-[#1f1f1f] rounded-xl p-3 lg:col-span-7 transition-all duration-1000 ease-out ${
+            className={`flex flex-col border-2 border-[#1f1f1f] rounded-xl overflow-hidden lg:col-span-7 transition-all duration-1000 ease-out ${
               isVisible 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 -translate-x-20'
             }`}
           >
-            <div className="bg-white rounded-xl shadow-lg p-6 w-full">
+            <div className="w-full">
               <img 
                 src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a782965fa23dfc3dc78.png" 
                 alt="CloserX Platform Interface" 
-                className="w-full h-auto rounded-lg"
+                className="w-full h-auto"
               />
             </div>
             
             {/* Title and Description */}
-            <h3 className="text-2xl font-normal text-white mt-8 mb-2">Launch in 24 Hours</h3>
-            <p className="text-gray-300 text-sm">
-              From signup to fully branded platform.<br /> No technical skills, no setup headaches, no delays.
-            </p>
+            <div className="p-6">
+              <h3 className="text-2xl font-normal text-white mb-2">Launch in 24 Hours</h3>
+              <p className="text-gray-300 text-sm">
+                From signup to fully branded platform.<br /> No technical skills, no setup headaches, no delays.
+              </p>
+            </div>
           </div>
 
           {/* Right Content Block: Scale Without Limits */}
           <div 
             ref={rightCardRef}
-            className={`flex flex-col items-center border-2 border-[#1f1f1f] rounded-xl p-3 lg:col-span-3 transition-all duration-1000 ease-out ${
+            className={`flex flex-col border-2 border-[#1f1f1f] rounded-xl overflow-hidden lg:col-span-3 transition-all duration-1000 ease-out ${
               isVisible 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-20'
             }`}
           >
-            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex items-center justify-center">
+            <div className="w-full">
               <img 
                 src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a79f8fa3b2a122580a4.png" 
                 alt="Scale Without Limits" 
-                className="w-full h-auto rounded-lg"
+                className="w-full h-auto"
               />
             </div>
             
             {/* Title and Description */}
-            <h3 className="text-2xl font-normal text-left text-white mt-2 mb-2">Scale Without Limits</h3>
-            <p className="text-gray-300 text-left text-sm">
-              Multi-tenant architecture supporting unlimited clients and 10,000+ concurrent calls. Built for enterprise scale.
-            </p>
+            <div className="p-6">
+              <h3 className="text-2xl font-normal text-left text-white mb-2">Scale Without Limits</h3>
+              <p className="text-gray-300 text-left text-sm">
+                Multi-tenant architecture supporting unlimited clients and 10,000+ concurrent calls. Built for enterprise scale.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -182,19 +186,19 @@ const WhyChooseCloserX = () => {
   {/* Outer grid: first two cards combined = 70% (lg:col-span-7), last card = 30% (lg:col-span-3) */}
   <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 items-stretch">
     {/* LEFT: container for the first two cards (combined 70% on lg) */}
-    <div className="col-span-1 lg:col-span-7  grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="col-span-1 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Integrations Box (first card) */}
       <div
         ref={featureBox1Ref}
-        className={`border-2 border-[#1f1f1f] rounded-xl p-8 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
+        className={`border-2 border-[#1f1f1f] rounded-xl p-6 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
           areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
         }`}
       >
-        <div className="bg-white rounded-lg p-4 mb-6">
+        <div className="rounded-lg mb-6 flex items-center justify-center h-[250px]">
           <img 
             src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78f8fa3b84dc258091.jpg" 
             alt="Integrations" 
-            className="w-full h-auto rounded-lg"
+            className="w-full h-full object-contain rounded-lg"
           />
         </div>
 
@@ -212,11 +216,11 @@ const WhyChooseCloserX = () => {
           areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
         }`}
       >
-        <div className="bg-white rounded-lg p-4 mb-6">
+        <div className="rounded-lg mb-6 flex items-center justify-center h-[250px]">
           <img 
             src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a7847e103bc535ef2cb.png" 
             alt="Enterprise Security" 
-            className="w-full h-auto rounded-lg"
+            className="w-full h-full object-contain rounded-lg"
           />
         </div>
 
@@ -231,15 +235,15 @@ const WhyChooseCloserX = () => {
     {/* RIGHT: single card that takes 30% on large screens */}
     <div
       ref={featureBox3Ref}
-      className={`col-span-1 lg:col-span-3 border-2 border-[#1f1f1f] rounded-xl p-3 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
+      className={`col-span-1 lg:col-span-3 border-2 border-[#1f1f1f] rounded-xl p-6 bg-gray-900 transition-all duration-1000 ease-out h-full flex flex-col ${
         areFeaturesVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
       }`}
     >
-      <div className="bg-white rounded-lg p-2 mb-6 flex items-center justify-center">
+      <div className="rounded-lg mb-6 flex items-center justify-center h-[250px]">
         <img 
           src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78393741a9e06eab56.jpg" 
           alt="24/7 Support" 
-          className="w-full h-auto rounded-lg"
+          className="w-full h-full object-contain rounded-lg"
         />
       </div>
 
