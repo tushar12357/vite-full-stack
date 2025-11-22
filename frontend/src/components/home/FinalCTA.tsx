@@ -35,12 +35,12 @@ const FinalCTA = () => {
 
         {/* CTA Buttons */}
               <div className="flex flex-col mx-auto sm:flex-row items-center mb-8 justify-center mt-8" style={{ width: '212.0092010498047px', height: '41.003543853759766px', gap: '12px', opacity: 1 }}>
-                <button className="w-full sm:w-40 md:p-2 py-3 md:py-4 bg-[#8B5CF6] hover:bg-[#4F46E5] text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:shadow-lg hover:scale-100">
+                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full sm:w-40 md:p-2 py-3 md:py-4 bg-[#8B5CF6] hover:bg-[#4F46E5] text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:shadow-lg hover:scale-100 text-center">
                   Get Started
-                </button>
-                <button className="w-full sm:w-40 p-2 bg-transparent  hover:border-[#A1A1AA] text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:bg-white/10">
+                </a>
+                <a href="https://luna.closerx.ai/talk" target="_blank" rel="noopener noreferrer" className="w-full sm:w-40 p-2 bg-transparent  hover:border-[#A1A1AA] text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:bg-white/10 text-center">
                   Book Demo
-                </button>
+                </a>
               </div>
             </div>
           </div>

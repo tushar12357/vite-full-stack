@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import AgencyMarque from "./AgencyMarque";
-import heroBackgroundVideo from "@/assets/video/herobackground.mov";
+import heroBackgroundVideo from "@/assets/video/herobackground.mp4";
 
 const hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5; // Set playback speed to 50% (slow)
+      videoRef.current.playbackRate = 0.4; // Set playback speed to 30% (slower)
     }
   }, []);
 
@@ -50,16 +50,16 @@ const hero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
-                  <button className="group relative flex items-center gap-0 px-0 py-0 bg-purple-600 text-white text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all overflow-hidden">
+                  <a href="https://luna.closerx.ai/talk" target="_blank" rel="noopener noreferrer" className="group relative flex items-center gap-0 px-0 py-0 bg-purple-600 text-white text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all overflow-hidden">
                     <span className="px-6 py-3">Try Live Demo</span>
                     <span className="w-10 h-10 flex m-2 items-center justify-center bg-purple-700 rounded-full">
                       <ArrowUpRight className="w-5 h-5" />
                     </span>
-                  </button>
-                  <button className="flex items-center gap-2 px-0 py-0 bg-transparent text-white text-base font-semibold hover:text-white/80 transition-colors">
+                  </a>
+                  <a href="https://luna.closerx.ai/talk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-0 py-0 bg-transparent text-white text-base font-semibold hover:text-white/80 transition-colors">
                     <span>Schedule a Demo</span>
                     <ArrowUpRight className="w-5 h-5" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

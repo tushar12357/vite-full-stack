@@ -1,9 +1,17 @@
+import testimonial1 from "@/assets/testimonial/1.png";
+import testimonial2 from "@/assets/testimonial/2.png";
+import testimonial3 from "@/assets/testimonial/3.png";
+import testimonial4 from "@/assets/testimonial/4.png";
+import testimonial5 from "@/assets/testimonial/5.png";
+import testimonial6 from "@/assets/testimonial/6.png";
+import testimonial7 from "@/assets/testimonial/7.png";
+import testimonial8 from "@/assets/testimonial/8.png";
 
 interface Testimonial {
   id: number;
   name: string;
   role?: string;
-  profileInitial: string;
+  profileImage: string;
   text: string;
 }
 
@@ -11,90 +19,72 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Hannah Reed",
-    profileInitial: "H",
+    profileImage: testimonial1,
     text: "Well, simply amazing! My team loves it.",
   },
   {
     id: 2,
     name: "Sarah Johnson",
     role: "CEO",
-    profileInitial: "S",
+    profileImage: testimonial2,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 3,
     name: "Michael Chen",
-    profileInitial: "M",
+    profileImage: testimonial3,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 4,
     name: "Emily Davis",
     role: "Marketing Director",
-    profileInitial: "E",
+    profileImage: testimonial4,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 5,
     name: "David Wilson",
-    profileInitial: "D",
+    profileImage: testimonial5,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 6,
     name: "Jessica Martinez",
     role: "Operations Manager",
-    profileInitial: "J",
+    profileImage: testimonial6,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 7,
     name: "Hannah Ward",
     role: "Freelance",
-    profileInitial: "H",
+    profileImage: testimonial7,
     text: "Using Flowline gave us a polished SaaS homepage in less than a week. The layout is clear and conversion-focused.",
   },
   {
     id: 8,
     name: "Robert Taylor",
-    profileInitial: "R",
+    profileImage: testimonial8,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 9,
     name: "Lisa Anderson",
     role: "Product Manager",
-    profileInitial: "L",
+    profileImage: testimonial1,
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <div className="bg-[#F9FAFB] rounded-2xl p-6 shadow-sm border border-[#E5E7EB] hover:shadow-md transition-shadow duration-300">
-      <div className="flex items-start gap-4 mb-4">
-        {/* Profile Circle */}
-        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center">
-          <span className="text-white font-bold text-lg">
-            {testimonial.profileInitial}
-          </span>
-        </div>
-        
-        {/* Name and Role */}
-        <div className="flex-1 min-w-0">
-          <h4 className="font-normal text-gray-900 text-[14px] mb-0.5">
-            {testimonial.name}
-          </h4>
-          {testimonial.role && (
-            <p className="text-[12px] text-[#6B7280] font-medium">{testimonial.role}</p>
-          )}
-        </div>
-      </div>
-      
-      {/* Testimonial Text */}
-      <p className="text-[#6B7280] leading-relaxed text-[12px] font-medium">
-        "{testimonial.text}"
-      </p>
+    <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <img 
+        src={testimonial.profileImage} 
+        alt={testimonial.name}
+        className="w-full h-auto object-cover"
+      />
     </div>
   );
 };

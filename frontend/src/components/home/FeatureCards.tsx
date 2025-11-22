@@ -11,7 +11,7 @@ const FeatureCards = () => {
         { icon: Zap, title: "Instant Notifications" },
         { icon: Shield, title: "Secure Data Handling" },
       ],
-      gradient: "from-blue-500 to-cyan-500"
+      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78ce816c851d5707d4.png"
     },
     {
       icon: Zap,
@@ -22,7 +22,7 @@ const FeatureCards = () => {
         { icon: Target, title: "Global CDN" },
         { icon: Shield, title: "Auto-scaling" },
       ],
-      gradient: "from-purple-500 to-pink-500"
+      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78ce816c4d2d5707c7.png"
     },
     {
       icon: Shield,
@@ -33,7 +33,7 @@ const FeatureCards = () => {
         { icon: Clock, title: "24/7 Monitoring" },
         { icon: Target, title: "Compliance Ready" },
       ],
-      gradient: "from-green-500 to-emerald-500"
+      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a7847e103bc535ef2cb.png"
     },
     {
       icon: Target,
@@ -44,7 +44,7 @@ const FeatureCards = () => {
         { icon: Zap, title: "Predictive Analytics" },
         { icon: Clock, title: "Auto-optimization" },
       ],
-      gradient: "from-orange-500 to-red-500"
+      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78f8fa3b84dc258091.jpg"
     },
   ];
 
@@ -121,19 +121,13 @@ const FeatureCards = () => {
 
                   {/* Right Column - Visual Content */}
                   <div className="relative overflow-hidden h-full">
-                    {/* Gradient Card Visual */}
-                    <div className={`relative bg-gradient-to-br ${card.gradient} rounded-[12px] p-8 lg:p-12 h-full flex items-center justify-center shadow-2xl`}>
-                      <div className="absolute inset-0 bg-black/20 rounded-[12px]"></div>
-                      <div className="relative z-10 text-center">
-                        <div className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                          <IconComponent className="w-10 h-10 lg:w-16 lg:h-16 text-white" />
-                        </div>
-                        <div className="space-y-2">
-                          <div className="h-2 w-32 lg:w-48 bg-white/30 rounded mx-auto"></div>
-                          <div className="h-2 w-24 lg:w-32 bg-white/30 rounded mx-auto"></div>
-                          <div className="h-2 w-40 lg:w-56 bg-white/30 rounded mx-auto"></div>
-                        </div>
-                      </div>
+                    {/* Image Card Visual */}
+                    <div className="relative rounded-[12px] h-full flex items-center justify-center shadow-2xl bg-white">
+                      <img 
+                        src={card.imageUrl} 
+                        alt={card.title}
+                        className="w-full h-full object-cover rounded-[12px]"
+                      />
                     </div>
                   </div>
                 </div>

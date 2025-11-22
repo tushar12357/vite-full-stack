@@ -76,12 +76,14 @@ export default function DemoModal() {
   return (
     <>
       {/* Navbar trigger */}
-      <button
-        onClick={() => setOpen(true)}
+      <a
+        href="https://luna.closerx.ai/talk"
+        target="_blank"
+        rel="noopener noreferrer"
         className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#363062] text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
       >
         Demo
-      </button>
+      </a>
 
       {/* Render modal through a portal */}
       {open && createPortal(modal, document.body)}

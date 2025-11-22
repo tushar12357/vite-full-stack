@@ -157,19 +157,41 @@ const LeadQualification = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300"
-                >
-                  {customerStorySection.primaryButton.text}
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300"
-                >
-                  {customerStorySection.secondaryButton.text}
-                </Button>
+                {customerStorySection.primaryButton.text === "Try For Free" ? (
+                  <a
+                    href="https://luna.closerx.ai/talk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 text-center block"
+                  >
+                    {customerStorySection.primaryButton.text}
+                  </a>
+                ) : (
+                  <Button 
+                    size="lg" 
+                    className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300"
+                  >
+                    {customerStorySection.primaryButton.text}
+                  </Button>
+                )}
+                {customerStorySection.secondaryButton.text && customerStorySection.secondaryButton.text !== "" && (
+                  customerStorySection.secondaryButton.text === "Talk To Sales" ? (
+                    <a
+                      href="/contact"
+                      className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 text-center block"
+                    >
+                      {customerStorySection.secondaryButton.text}
+                    </a>
+                  ) : (
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300"
+                    >
+                      {customerStorySection.secondaryButton.text}
+                    </Button>
+                  )
+                )}
               </div>
             </div>
 

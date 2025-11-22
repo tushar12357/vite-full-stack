@@ -502,9 +502,9 @@ const About = () => {
                   <span className="text-5xl font-bold text-white">$29</span>
                   <span className="text-base text-gray-400">Per Month</span>
                 </div>
-                <button className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all">
+                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
                   Get Started
-                </button>
+                </a>
                 <ul className="space-y-3 flex-grow mt-8">
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
@@ -541,9 +541,9 @@ const About = () => {
                   <span className="text-5xl font-bold text-white">$99</span>
                   <span className="text-base text-white/90">Per Month</span>
                 </div>
-                <button className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all">
+                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all text-center block">
                   Get Started
-                </button>
+                </a>
                 <ul className="space-y-3 flex-grow mt-8">
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
@@ -585,9 +585,9 @@ const About = () => {
                   <span className="text-5xl font-bold text-white">$297</span>
                   <span className="text-base text-gray-400">Per Month</span>
                 </div>
-                <button className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all">
+                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
                   Get Started
-                </button>
+                </a>
                 <ul className="space-y-3 flex-grow mt-8">
                   <li className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
@@ -736,7 +736,7 @@ const About = () => {
 
                   }}
                 >
-                  Get In Touch
+                  <a href="/contact" className="inline-block">Get In Touch</a>
                 </button>
               </div>
             </div>
