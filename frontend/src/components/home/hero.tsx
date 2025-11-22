@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import AgencyMarque from "./AgencyMarque";
-import heroBackgroundVideo from "@/assets/video/herobackground.mov";
+import heroBackgroundVideo from "@/assets/video/herobackground.mp4";
 
 const hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5; // Set playback speed to 50% (slow)
+      videoRef.current.playbackRate = 0.4; // Set playback speed to 30% (slower)
     }
   }, []);
 
