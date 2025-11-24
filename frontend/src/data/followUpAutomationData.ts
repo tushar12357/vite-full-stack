@@ -1,7 +1,8 @@
 import { RefreshCw, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/solution/foloowup/1.png";
+import workflowImage from "@/assets/solution/foloowup/2.png";
+import tirado from "@/assets/solution/foloowup/3.png";
 
 export const followUpAutomationData: SolutionData = {
   hero: {
@@ -138,5 +139,8 @@ export const followUpAutomationData: SolutionData = {
 export const followUpAutomationImages = {
   uiScreenshot,
   workflowImage,
+  calendar: uiScreenshot,
+  calendar1: workflowImage,
+  tirado,
 };
 

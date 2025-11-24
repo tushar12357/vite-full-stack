@@ -2,6 +2,9 @@ import { Headphones, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
 import uiScreenshot from "@/assets/images/inboundcall/customer call.png";
 import workflowImage from "@/assets/images/inboundcall/webnamaste.png";
+import calendar from "@/assets/images/appointment/schedule.png";
+import calendar1 from "@/assets/images/appointment/schedule.png";
+import tirado from "@/assets/images/appointment/tirado.jpeg";
 
 export const inboundSupportData: SolutionData = {
   hero: {
@@ -139,5 +142,8 @@ export const inboundSupportData: SolutionData = {
 export const inboundSupportImages = {
   uiScreenshot,
   workflowImage,
+  calendar,
+  calendar1,
+  tirado,
 };
 

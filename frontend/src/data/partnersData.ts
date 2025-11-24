@@ -31,6 +31,8 @@ export const partnerMetrics: PartnerMetric[] = [
   },
 ];
 
+const AFFILIATE_URL = "https://affiliate.closerx.ai/home975572-1328-2226-4154";
+
 export const partnerPrograms: PartnerProgram[] = [
   {
     title: "Become Our Partner",
@@ -42,7 +44,7 @@ export const partnerPrograms: PartnerProgram[] = [
       "Joint marketing & co-branding",
     ],
     cta: "Apply Now",
-    link: "/contact",
+    link: AFFILIATE_URL,
   },
   {
     title: "Partner Program",
@@ -54,7 +56,7 @@ export const partnerPrograms: PartnerProgram[] = [
       "Exclusive partner resources",
     ],
     cta: "Learn More",
-    link: "/partner-program",
+    link: AFFILIATE_URL,
   },
   {
     title: "Affiliates Partner",
@@ -66,7 +68,7 @@ export const partnerPrograms: PartnerProgram[] = [
       "Marketing materials & tracking links",
     ],
     cta: "Join Our Program",
-    link: "/affiliates",
+    link: AFFILIATE_URL,
   },
 ];
 

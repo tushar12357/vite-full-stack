@@ -118,6 +118,82 @@ export default function ROICalculator() {
 
   const fmt = (n: number) => formatMoney(n, currency, currencyCfg.locale);
 
+  const exportRows = useMemo(() => {
+    const baseRows =
+      mode === "simple"
+        ? [
+            { label: "Mode", value: "Simple" },
+            { label: "Currency", value: currency },
+            { label: "Number of Clients", value: simpleClients },
+            { label: "Selling Price Per Client", value: fmt(simplePrice) },
+            { label: "Platform Cost", value: fmt(simplePlatform) },
+            { label: "Total Monthly Revenue", value: fmt(simpleRevenue) },
+            { label: "Net Monthly Profit", value: fmt(simpleProfit) },
+          ]
+        : [
+            { label: "Mode", value: "Advanced" },
+            { label: "Currency", value: currency },
+            { label: "Number of Clients", value: advancedClients },
+            { label: "Selling Price Per Client", value: fmt(advancedPricePerClient) },
+            { label: "Average Clients", value: avgClients },
+            { label: "Sell Rate", value: sellRate },
+            { label: "Base Cost", value: baseCost },
+            { label: "CloserX Tier", value: TIERS.find((t) => t.key === tierKey)?.name ?? tierKey },
+            { label: "Other Fixed Costs", value: fmt(otherFixedCosts) },
+            { label: "Include Theme", value: includeTheme ? "Yes" : "No" },
+            { label: "Subscription Revenue", value: fmt(advancedRevenue) },
+            { label: "Usage Revenue", value: fmt(usageRevenue) },
+            { label: "Total Revenue", value: fmt(totalRevenue) },
+            { label: "Platform & Add-ons", value: fmt(platformCost) },
+            { label: "Credit Cost", value: fmt(creditCost) },
+            { label: "Total Costs", value: fmt(totalCosts) },
+            { label: "Net Monthly Profit", value: fmt(advancedProfit) },
+          ];
+
+    return baseRows;
+  }, [
+    mode,
+    currency,
+    simpleClients,
+    simplePrice,
+    simplePlatform,
+    simpleRevenue,
+    simpleProfit,
+    advancedClients,
+    advancedPricePerClient,
+    avgClients,
+    sellRate,
+    baseCost,
+    tierKey,
+    otherFixedCosts,
+    includeTheme,
+    advancedRevenue,
+    usageRevenue,
+    totalRevenue,
+    platformCost,
+    creditCost,
+    totalCosts,
+    advancedProfit,
+  ]);
+
+  const handleExport = () => {
+    const csvRows = exportRows
+      .map(({ label, value }) => `${label.replace(/"/g, '""')},"${String(value).replace(/"/g, '""')}"`)
+      .join("\r\n");
+
+    const csvContent = `Metric,Value\r\n${csvRows}`;
+
+    const blob = new Blob(["\ufeff", csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `roi-calculation-${mode}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
@@ -388,7 +464,11 @@ export default function ROICalculator() {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-2xl font-bold text-white">Your ROI Breakdown</h3>
-                      <button className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-semibold rounded-lg transition-colors">
+                      <button
+                        type="button"
+                        onClick={handleExport}
+                        className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-semibold rounded-lg transition-colors"
+                      >
                         Export
                       </button>
                     </div>

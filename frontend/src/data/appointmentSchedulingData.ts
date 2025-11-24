@@ -2,6 +2,9 @@ import { Calendar, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
 import uiScreenshot from "@/assets/image copy.png";
 import workflowImage from "@/assets/image.png";
+import calendar from "@/assets/solution/appointment/1.png";
+import calendar1 from "@/assets/solution/appointment/2.png";
+import tirado from "@/assets/solution/appointment/3.jpg";
 
 export const appointmentSchedulingData: SolutionData = {
   hero: {
@@ -141,5 +144,8 @@ export const appointmentSchedulingData: SolutionData = {
 export const appointmentSchedulingImages = {
   uiScreenshot,
   workflowImage,
+  calendar,
+  calendar1,
+  tirado,
 };
 

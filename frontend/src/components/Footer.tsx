@@ -4,7 +4,7 @@ import { Twitter, Linkedin, Youtube } from "lucide-react";
 const Footer = () => {
   const companyLinks = [
     { label: "About Us", to: "/about" },
-    { label: "Become Our Partners", to: "/partners" },
+    { label: "Become Our Partners", to: "https://affiliate.closerx.ai/home975572-1328-2226-4154" },
     { label: "Security", to: "/security" },
     { label: "Compliance", to: "/compliance" },
     { label: "Press & Media", to: "/press" },
@@ -111,12 +111,23 @@ const Footer = () => {
               <ul className="space-y-3">
                 {companyLinks.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="text-sm text-white hover:text-white/80 transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
+                    {/^(https?:)?\/\//.test(link.to) ? (
+                      <a
+                        href={link.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white hover:text-white/80 transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.to}
+                        className="text-sm text-white hover:text-white/80 transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -145,12 +156,23 @@ const Footer = () => {
               <ul className="space-y-3">
                 {resourcesLinks.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="text-sm text-white hover:text-white/80 transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
+                    {/^(https?:)?\/\//.test(link.to) ? (
+                      <a
+                        href={link.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white hover:text-white/80 transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.to}
+                        className="text-sm text-white hover:text-white/80 transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
