@@ -22,7 +22,7 @@ const plans = [
     name: "Professional",
     tagline: "For rapidly scaling startups and publishers",
     subAccounts: "UP TO 20 Sub-Accounts",
-    price: "$99",
+    price: "$97",
     cadence: "Per Month",
     cta: "Get Started",
     popular: true,

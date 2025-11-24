@@ -1,7 +1,7 @@
 import { Users, Palette, DollarSign, Rocket, TrendingUp, XCircle, CheckCircle2, Zap } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/solution/agencies/1.png";
+import workflowImage from "@/assets/solution/agencies/2.png";
 
 export const forAgenciesData: SolutionData = {
   hero: {
@@ -139,5 +139,8 @@ export const forAgenciesData: SolutionData = {
 export const forAgenciesImages = {
   uiScreenshot,
   workflowImage,
+  calendar: uiScreenshot,
+  calendar1: workflowImage,
+  tirado: workflowImage,
 };
 

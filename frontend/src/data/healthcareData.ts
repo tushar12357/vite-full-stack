@@ -1,7 +1,8 @@
 import { Heart, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/solution/health/1.png";
+import workflowImage from "@/assets/solution/health/2.png";
+import tirado from "@/assets/solution/health/3.png";
 
 export const healthcareData: SolutionData = {
   hero: {
@@ -137,5 +138,8 @@ export const healthcareData: SolutionData = {
 export const healthcareImages = {
   uiScreenshot,
   workflowImage,
+  calendar: uiScreenshot,
+  calendar1: workflowImage,
+  tirado,
 };
 

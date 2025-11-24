@@ -1,7 +1,8 @@
 import { DollarSign, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/solution/financial/shiloh_fr_une_bannire_reprsentant_le_mtier_de_la_finance_sur_un_3d0cfe22-f912-4240-b54d-968de2b0541e.png";
+import workflowImage from "@/assets/solution/financial/adnanshafi5036_structured_finance_--v_7_9e818114-0c19-45ea-a7c4-0aab44ee1397.png";
+import tirado from "@/assets/solution/financial/basketsinatree_Isometric_data_visualization_illustration_busine_c98efdf4-ba9c-4a86-b1b8-f21a7d09aaf7.png";
 
 export const financialServiceData: SolutionData = {
   hero: {
@@ -137,5 +138,8 @@ export const financialServiceData: SolutionData = {
 export const financialServiceImages = {
   uiScreenshot,
   workflowImage,
+  calendar: uiScreenshot,
+  calendar1: workflowImage,
+  tirado,
 };
 

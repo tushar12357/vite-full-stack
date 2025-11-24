@@ -299,7 +299,7 @@ const PlugAndPlay = () => {
     >
       <div className="relative w-full max-w-4xl mx-auto px-4 py-10 text-center pointer-events-none">
         <p className={`text-lg lg:text-xl mb-12 ${connected ? "text-gray-800" : "text-gray-400"}`}>
-          {connected ? "⚡ Connected!" : "Scroll to connect..."}
+          {connected ? "⚡ Connected!" : ""}
         </p>
 
         <div className="relative h-[1000px] w-full">

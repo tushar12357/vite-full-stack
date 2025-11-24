@@ -1,7 +1,8 @@
 import { Phone, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/solution/callcenters/1.png";
+import workflowImage from "@/assets/solution/callcenters/2.png";
+import tirado from "@/assets/solution/callcenters/3.png";
 
 export const callCenterData: SolutionData = {
   hero: {
@@ -137,5 +138,8 @@ export const callCenterData: SolutionData = {
 export const callCenterImages = {
   uiScreenshot,
   workflowImage,
+  calendar: uiScreenshot,
+  calendar1: workflowImage,
+  tirado,
 };
 

@@ -19,6 +19,9 @@ interface SolutionPageProps {
   images: {
     uiScreenshot: string;
     workflowImage: string;
+    calendar : string;
+    calendar1 : string;
+    tirado : string;
   };
   pageTitle: string;
   metaDescription: string;
@@ -52,7 +55,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
       <Header />
 
       {/* Hero Section - Two Column Layout */}
-      <SolutionHero hero={hero} uiScreenshot={images.uiScreenshot} imageAlt={`${hero.title} Dashboard`} />
+      <SolutionHero hero={hero} uiScreenshot={images.calendar} imageAlt={`${hero.title} Dashboard`} />
 
       {/* Problem Section */}
       <ContentCarouselSection
@@ -73,7 +76,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
         <TwoColumnFeatureSection
           data={{
             ...twoColumnSection,
-            rightImage: images.workflowImage,
+            rightImage: images.calendar1,
           }}
           className="!bg-black [&_*]:!text-white [&_span]:!bg-gray-800 [&_span]:!border-gray-700 [&_span]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_h4]:!text-white [&_p]:!text-white/80 [&_h4:hover]:!text-purple-400"
           disableAnimation={true}
@@ -230,7 +233,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
               <div className="relative lg:sticky lg:top-20">
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
                   <img
-                    src={images.workflowImage}
+                    src={images.tirado}
                     alt="Customer Story Dashboard"
                     className="w-full h-auto object-contain rounded-2xl"
                   />

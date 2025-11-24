@@ -81,7 +81,7 @@ const Header = () => {
       dropdown: [
         // REQUESTED CHANGE: Updated and reordered Company content
         { label: "About Us", href: "/about", icon: "ℹ️" },
-        { label: "Become Our Partners", href: "/partners", icon: "🤝" }, // REQUESTED CHANGE: Moved Partners here
+        { label: "Become Our Partners", href: "https://affiliate.closerx.ai/home975572-1328-2226-4154", icon: "🤝" }, // REQUESTED CHANGE: Moved Partners here
         { label: "Security", href: "/security", icon: "🔒" },
         { label: "Compliance", href: "/compliance", icon: "✅" },
         { label: "Press & Media", href: "/press", icon: "📰" },
@@ -117,22 +117,43 @@ const Header = () => {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {item.href ? (
-                  <Link
-                    to={item.href}
-                    className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
-                      item.label === "Product" 
-                        ? "text-white" 
-                        : "text-gray-500 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    {item.label === "Pricing" && (
-                      <span className="ml-1 text-[9px] px-1.5 py-0.5 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-full font-bold">
-                        New
-                      </span>
-                    )}
-                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
-                  </Link>
+                  /^https?:\/\//.test(item.href) ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
+                        item.label === "Product" 
+                          ? "text-white" 
+                          : "text-gray-500 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                      {item.label === "Pricing" && (
+                        <span className="ml-1 text-[9px] px-1.5 py-0.5 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-full font-bold">
+                          New
+                        </span>
+                      )}
+                      <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
+                        item.label === "Product" 
+                          ? "text-white" 
+                          : "text-gray-500 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                      {item.label === "Pricing" && (
+                        <span className="ml-1 text-[9px] px-1.5 py-0.5 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-full font-bold">
+                          New
+                        </span>
+                      )}
+                      <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
+                    </Link>
+                  )
                 ) : (
                   <button className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
                     item.label === "Product" 
@@ -291,14 +312,27 @@ const Header = () => {
               {navigation.map((item) => (
                 <div key={item.label} className="border-b border-slate-100 last:border-0">
                   {item.href ? (
-                    <Link
-                      to={item.href}
-                      className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                      <ChevronDown className="w-4 h-4 -rotate-90" />
-                    </Link>
+                    /^https?:\/\//.test(item.href) ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                        <ChevronDown className="w-4 h-4 -rotate-90" />
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.href}
+                        className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                        <ChevronDown className="w-4 h-4 -rotate-90" />
+                      </Link>
+                    )
                   ) : (
                     <>
                       <button

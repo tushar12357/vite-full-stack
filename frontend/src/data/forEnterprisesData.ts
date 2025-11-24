@@ -1,7 +1,7 @@
 import { Award, Shield, Globe, Lock, XCircle, CheckCircle2, Users, Zap, TrendingUp } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
-import uiScreenshot from "@/assets/image copy.png";
-import workflowImage from "@/assets/image.png";
+import uiScreenshot from "@/assets/solution/enterprise/1.png";
+import workflowImage from "@/assets/solution/enterprise/2.png";
 
 export const forEnterprisesData: SolutionData = {
   hero: {
@@ -136,5 +136,8 @@ export const forEnterprisesData: SolutionData = {
 export const forEnterprisesImages = {
   uiScreenshot,
   workflowImage,
+  calendar: uiScreenshot,
+  calendar1: workflowImage,
+  tirado: workflowImage,
 };
 
