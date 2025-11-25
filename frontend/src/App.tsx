@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { LunaProvider } from "@/contexts/LunaContext";
 
 // 🧩 Import your pages
 import Index from "./pages/Index";
@@ -85,87 +86,89 @@ const ExternalRedirect = ({ to }: { to: string }) => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          {/* Main pages */}
-          <Route path="/" element={<Index />} />
-          <Route path="/platform" element={<Platform />} />
-          <Route path="/voice-agents" element={<VoiceAgents />} />
-          <Route path="/white-label" element={<WhiteLabel />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/why-choose-closerx" element={<WhyChooseCloserX />} />
+    <LunaProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            {/* Main pages */}
+            <Route path="/" element={<Index />} />
+            <Route path="/platform" element={<Platform />} />
+            <Route path="/voice-agents" element={<VoiceAgents />} />
+            <Route path="/white-label" element={<WhiteLabel />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/why-choose-closerx" element={<WhyChooseCloserX />} />
 
-          {/* Legal */}
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/acceptable-use" element={<AcceptableUse />} />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
+            {/* Legal */}
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/acceptable-use" element={<AcceptableUse />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
 
-          {/* Resources */}
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/success-stories" element={<CaseStudies />} />
-          <Route path="/success-stories/:id" element={<CaseStudy />} />
-          <Route path="/help" element={<HelpCenter />} />
-          <Route path="/help/:category" element={<HelpCenter />} />
-          <Route path="/help/article/:id" element={<HelpArticle />} />
-          <Route path="/videos" element={<VideoTutorials />} />
-          <Route path="/videos/:id" element={<VideoDetail />} />
-          <Route path="/templates" element={<Templates />} />
-          <Route path="/roi-calculator" element={<ROICalculator />} />
-          <Route path="/security" element={<TrustCenter />} />
-          <Route path="/uptime-sla" element={<UptimeSLA />} />
+            {/* Resources */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/success-stories" element={<CaseStudies />} />
+            <Route path="/success-stories/:id" element={<CaseStudy />} />
+            <Route path="/help" element={<HelpCenter />} />
+            <Route path="/help/:category" element={<HelpCenter />} />
+            <Route path="/help/article/:id" element={<HelpArticle />} />
+            <Route path="/videos" element={<VideoTutorials />} />
+            <Route path="/videos/:id" element={<VideoDetail />} />
+            <Route path="/templates" element={<Templates />} />
+            <Route path="/roi-calculator" element={<ROICalculator />} />
+            <Route path="/security" element={<TrustCenter />} />
+            <Route path="/uptime-sla" element={<UptimeSLA />} />
 
-          {/* Coming Soon placeholders */}
-          <Route path="/docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
-          <Route path="/call-management" element={<CallManagement />} />
-          <Route path="/automation" element={<Automation />} />
-          <Route path="/api-docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
-          <Route path="/solutions/*" element={<ComingSoon />} />
-          <Route path="/industries/*" element={<ComingSoon />} />
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/partner-program" element={<ComingSoon />} />
-          <Route path="/affiliate" element={<ComingSoon />} />
-          <Route path="/integrations" element={<Integrations />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/compliance" element={<ComingSoon />} />
-          <Route path="/press" element={<ComingSoon />} />
-          <Route path="/login" element={<ComingSoon />} />
+            {/* Coming Soon placeholders */}
+            <Route path="/docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
+            <Route path="/call-management" element={<CallManagement />} />
+            <Route path="/automation" element={<Automation />} />
+            <Route path="/api-docs" element={<ExternalRedirect to="https://docs.closerx.ai/api-reference/introduction" />} />
+            <Route path="/solutions/*" element={<ComingSoon />} />
+            <Route path="/industries/*" element={<ComingSoon />} />
+            <Route path="/partners" element={<Partners />} />
+            <Route path="/partner-program" element={<ComingSoon />} />
+            <Route path="/affiliate" element={<ComingSoon />} />
+            <Route path="/integrations" element={<Integrations />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/compliance" element={<ComingSoon />} />
+            <Route path="/press" element={<ComingSoon />} />
+            <Route path="/login" element={<ComingSoon />} />
 
-          {/* Use Cases */}
-          <Route path="/use-cases/outbound-sales" element={<OutboundSales />} />
-          <Route path="/use-cases/inbound-support" element={<InboundSupport />} />
-          <Route path="/use-cases/appointment-scheduling" element={<AppointmentScheduling />} />
-          <Route path="/use-cases/lead-qualification" element={<LeadQualification />} />
-          <Route path="/use-cases/follow-up-automation" element={<FollowUpAutomation />} />
+            {/* Use Cases */}
+            <Route path="/use-cases/outbound-sales" element={<OutboundSales />} />
+            <Route path="/use-cases/inbound-support" element={<InboundSupport />} />
+            <Route path="/use-cases/appointment-scheduling" element={<AppointmentScheduling />} />
+            <Route path="/use-cases/lead-qualification" element={<LeadQualification />} />
+            <Route path="/use-cases/follow-up-automation" element={<FollowUpAutomation />} />
 
-          {/* Industries */}
-          <Route path="/industries/real-estate" element={<RealEstate />} />
-          <Route path="/industries/healthcare" element={<Healthcare />} />
-          <Route path="/industries/financial-service" element={<FinancialServices />} />
-          <Route path="/industries/e-commerce" element={<Ecommerce />} />
-          <Route path="/industries/call-centres" element={<CallCenters />} />
+            {/* Industries */}
+            <Route path="/industries/real-estate" element={<RealEstate />} />
+            <Route path="/industries/healthcare" element={<Healthcare />} />
+            <Route path="/industries/financial-service" element={<FinancialServices />} />
+            <Route path="/industries/e-commerce" element={<Ecommerce />} />
+            <Route path="/industries/call-centres" element={<CallCenters />} />
 
-          {/* Teams */}
-          <Route path="/teams/for-agencies" element={<ForAgencies />} />
-          <Route path="/teams/for-enterprises" element={<ForEnterprises />} />
-          <Route path="/teams/for-resellers" element={<ForResellers />} />
+            {/* Teams */}
+            <Route path="/teams/for-agencies" element={<ForAgencies />} />
+            <Route path="/teams/for-enterprises" element={<ForEnterprises />} />
+            <Route path="/teams/for-resellers" element={<ForResellers />} />
 
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
 
-      {/* 🟣 Luna floating widget */}
-      <LunaWidget />
-    </TooltipProvider>
+        {/* 🟣 Luna floating widget */}
+        <LunaWidget />
+      </TooltipProvider>
+    </LunaProvider>
   </QueryClientProvider>
 );
 

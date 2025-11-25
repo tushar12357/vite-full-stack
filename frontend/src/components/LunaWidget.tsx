@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { X, Send } from "lucide-react";
+import { useLuna } from "@/contexts/LunaContext";
 
 export default function LunaWidget() {
-  const [open, setOpen] = useState(false);
+  const { isOpen: open, openLuna, closeLuna } = useLuna();
 
   return (
     <>
       {/* Floating Button */}
       {!open && (
         <button
-          onClick={() => setOpen(true)}
+          onClick={openLuna}
           className="fixed bottom-6 right-6 z-[10000] rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform duration-200 border border-white"
           aria-label="Open Luna Assistant"
         >
@@ -38,7 +39,7 @@ export default function LunaWidget() {
               </div>
             </div>
             <button
-              onClick={() => setOpen(false)}
+              onClick={closeLuna}
               className="text-white/80 hover:text-white"
               aria-label="Close chat"
             >

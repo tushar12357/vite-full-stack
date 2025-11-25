@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Youtube } from "lucide-react";
 import logoCloserx from "@/assets/logoCloserx.png";
+import { useLuna } from "@/contexts/LunaContext";
 
 const Footer = () => {
+  const { openLuna } = useLuna();
+
   const companyLinks = [
     { label: "About Us", to: "/about" },
     { label: "Become Our Partners", to: "https://affiliate.closerx.ai/home975572-1328-2226-4154" },
@@ -12,19 +15,19 @@ const Footer = () => {
   ];
 
   const solutionsLinks = [
-    { label: "Outbound Sales", to: "/solutions/outbound-sales" },
-    { label: "Inbound Support", to: "/solutions/inbound-support" },
-    { label: "Appointment Scheduling", to: "/solutions/appointment-scheduling" },
-    { label: "Lead Qualification", to: "/solutions/lead-qualification" },
-    { label: "Follow-up Automation", to: "/solutions/follow-up-automation" },
+    { label: "Outbound Sales", to: "/use-cases/outbound-sales" },
+    { label: "Inbound Support", to: "/use-cases/inbound-support" },
+    { label: "Appointment Scheduling", to: "/use-cases/appointment-scheduling" },
+    { label: "Lead Qualification", to: "/use-cases/lead-qualification" },
+    { label: "Follow-up Automation", to: "/use-cases/follow-up-automation" },
     { label: "Real Estate", to: "/industries/real-estate" },
     { label: "Healthcare", to: "/industries/healthcare" },
-    { label: "Financial Services", to: "/industries/financial-services" },
-    { label: "E-commerce", to: "/industries/ecommerce" },
-    { label: "Call Centres", to: "/industries/call-centers" },
-    { label: "For Agencies", to: "/solutions/agencies" },
-    { label: "For Enterprises", to: "/solutions/enterprises" },
-    { label: "For Resellers", to: "/solutions/resellers" },
+    { label: "Financial Services", to: "/industries/financial-service" },
+    { label: "E-commerce", to: "/industries/e-commerce" },
+    { label: "Call Centres", to: "/industries/call-centres" },
+    { label: "For Agencies", to: "/teams/for-agencies" },
+    { label: "For Enterprises", to: "/teams/for-enterprises" },
+    { label: "For Resellers", to: "/teams/for-resellers" },
   ];
 
   const resourcesLinks = [
@@ -32,7 +35,7 @@ const Footer = () => {
     { label: "Video Tutorials", to: "/videos" },
     { label: "YouTube", to: "https://youtube.com" },
     { label: "ROI Calculator", to: "/roi-calculator" },
-    { label: "Documentation", to: "/docs" },
+    { label: "Documentation", to: "https://docs.closerx.ai/api-reference/introduction" },
     { label: "Templates & Tools", to: "/templates" },
   ];
 
@@ -43,7 +46,7 @@ const Footer = () => {
     { label: "Workflow Automation", to: "/automation" },
     { label: "Call Management", to: "/call-management" },
     { label: "Integrations", to: "/integrations" },
-    { label: "API Documentation", to: "/api-docs" },
+    { label: "API Documentation", to: "https://docs.closerx.ai/api-reference/auth/login" },
   ];
 
   return (
@@ -72,6 +75,14 @@ const Footer = () => {
               <p className="text-sm md:text-base text-white/90 leading-relaxed mb-8 max-w-lg">
                 Our AI voice agents automate phone conversations at scale — replacing manual call handling with fast, reliable, and human-like interactions. Using AI, we're transforming how businesses manage calls, making customer support scalable, cost-efficient, and easy to deploy in weeks.
               </p>
+
+              {/* Create an AI Agent Button */}
+              <button
+                onClick={openLuna}
+                className="mb-8 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200"
+              >
+                Create an AI Agent
+              </button>
 
               {/* Social Media Icons */}
               <div className="flex items-center gap-4">
