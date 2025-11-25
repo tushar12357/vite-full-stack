@@ -1,4 +1,5 @@
 import purpleBackgroundVideo from "@/assets/video/purpleBackground.mp4";
+import DemoModal from "@/components/DemoModal";
 
 const FinalCTA = () => {
   return (
@@ -38,9 +39,7 @@ const FinalCTA = () => {
                 <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full sm:w-40 md:p-2 py-3 md:py-4 bg-[#8B5CF6] hover:bg-[#4F46E5] text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:shadow-lg hover:scale-100 text-center">
                   Get Started
                 </a>
-                <a href="https://luna.closerx.ai/talk" target="_blank" rel="noopener noreferrer" className="w-full sm:w-40 p-2 bg-transparent  hover:border-[#A1A1AA] text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:bg-white/10 text-center">
-                  Book Demo
-                </a>
+                <DemoModal buttonClassName="w-full sm:w-40 p-2 bg-transparent border border-white/50 hover:border-white text-white font-normal text-sm md:text-[14px] rounded-full transition-all duration-300 hover:bg-white/10 text-center" />
               </div>
             </div>
           </div>

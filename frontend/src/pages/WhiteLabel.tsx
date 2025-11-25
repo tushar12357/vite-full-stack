@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Products from "@/components/home/Products";
 import { whiteLabelHero, whiteLabelProductCards } from "@/data/whiteLabelData";
+import FAQ from "@/components/home/FAQ";
 
 const WhiteLabel = () => {
   return (
@@ -45,7 +46,7 @@ const WhiteLabel = () => {
       </main>
 
       <Products data={whiteLabelProductCards} showHeader={false} />
-
+      <FAQ/>
       <Footer />
     </div>
   );

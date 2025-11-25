@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Products from "@/components/home/Products";
 import { voiceAgentProductCards, voiceAgentHero } from "@/data/voiceAgentData";
+import FAQ from "@/components/home/FAQ";
 
 const VoiceAgents = () => {
   return (
@@ -46,7 +47,7 @@ const VoiceAgents = () => {
       </main>
 
       <Products data={voiceAgentProductCards} showHeader={false} />
-
+      <FAQ/>
       <Footer />
     </div>
   );

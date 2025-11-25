@@ -28,112 +28,86 @@ export const videoHeroData: VideoHeroData = {
   buttonText: "READ ARTICLE",
 };
 
+const toEmbedUrl = (url: string) => {
+  const [, id] = url.split("youtu.be/");
+  return `https://www.youtube.com/embed/${id.split("?")[0]}`;
+};
+
+const tutorialSources = [
+  "https://youtu.be/dfi5YTc3_xE?si=1-UgYAyDXAfABFav",
+  "https://youtu.be/NQn7KwU-D-4?si=MMs4vuJpAHWzNF6i",
+  "https://youtu.be/ImKas8iysQc?si=hjpeQxWJ-99o3fvw",
+  "https://youtu.be/gQlAqiZB-bA?si=0cmkH2O-R-v15c0N",
+  "https://youtu.be/dn9X693B34Y?si=ZJo38HmocE1nJGpF",
+  "https://youtu.be/pD9LKqfYiFI?si=KE2PaD86JXAiFNcf",
+  "https://youtu.be/_0hGcUhFySE?si=jEqlpVvKykY2zJj2",
+];
+
+const tutorialEmbeds = tutorialSources.map(toEmbedUrl);
+
 export const videoCategories = [
-  { id: "all", label: "All Videos", count: 12 },
-  { id: "getting-started", label: "Getting Started", count: 5 },
-  { id: "demo", label: "Demo", count: 3 },
-  { id: "advanced", label: "Advanced", count: 2 },
-  { id: "integrations", label: "Integrations", count: 2 },
+  { id: "all", label: "All Videos", count: tutorialSources.length },
+  { id: "getting-started", label: "Getting Started", count: 3 },
+  { id: "demo", label: "Demo", count: 2 },
+  { id: "advanced", label: "Advanced", count: 1 },
+  { id: "integrations", label: "Integrations", count: 1 },
 ];
 
 export const sampleVideos: Video[] = [
   {
-    id: "closerx-overview",
-    title: "CloserX Overview",
-    description: "Get a complete walkthrough of how CloserX works and how you can get started in minutes.",
-    embedUrl: "https://www.youtube.com/embed/2Vv-BfVoq4g",
+    id: "tutorial-1",
+    title: "CloserX Tutorial 1",
+    description: "Overview of how to get started with CloserX in minutes.",
+    embedUrl: tutorialEmbeds[0],
     category: "Getting Started",
     featured: true,
   },
   {
-    id: "ai-call-demo",
-    title: "CloserX AI Call Demo",
-    description: "Watch a real AI-powered sales conversation handled by CloserX's intelligent voice agent.",
-    embedUrl: "https://www.youtube.com/embed/L_jWHffIx5E",
+    id: "tutorial-2",
+    title: "CloserX Tutorial 2",
+    description: "Live demo of CloserX AI handling real customer calls.",
+    embedUrl: tutorialEmbeds[1],
     category: "Demo",
     featured: true,
   },
   {
-    id: "getting-started-1",
-    title: "Getting Started with CloserX",
-    description: "Learn the basics of setting up your first AI agent and making your first call.",
-    embedUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+    id: "tutorial-3",
+    title: "CloserX Tutorial 3",
+    description: "Configuring voice agents and setting up the first campaign.",
+    embedUrl: tutorialEmbeds[2],
     category: "Getting Started",
-    featured: false,
   },
   {
-    id: "getting-started-2",
-    title: "Voice Agent Configuration",
-    description: "Step-by-step guide to configuring your voice agent settings and preferences.",
-    embedUrl: "https://www.youtube.com/embed/kJQP7kiw5Fk",
+    id: "tutorial-4",
+    title: "CloserX Tutorial 4",
+    description: "Scheduling appointments automatically with CloserX.",
+    embedUrl: tutorialEmbeds[3],
     category: "Getting Started",
-    featured: false,
   },
   {
-    id: "getting-started-3",
-    title: "First Call Tutorial",
-    description: "Watch how to make your first AI-powered call and test your agent setup.",
-    embedUrl: "https://www.youtube.com/embed/fJ9rUzIMcZQ",
-    category: "Getting Started",
-    featured: false,
-  },
-  {
-    id: "demo-1",
-    title: "Sales Call Demo",
-    description: "See a complete sales call demonstration with real-time AI responses.",
-    embedUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+    id: "tutorial-5",
+    title: "CloserX Tutorial 5",
+    description: "Advanced follow-up workflows powered by AI.",
+    embedUrl: tutorialEmbeds[4],
     category: "Demo",
-    featured: false,
   },
   {
-    id: "demo-2",
-    title: "Customer Support Demo",
-    description: "Watch how AI handles customer support inquiries and resolves issues.",
-    embedUrl: "https://www.youtube.com/embed/OPf0YbXqDm0",
-    category: "Demo",
-    featured: false,
-  },
-  {
-    id: "demo-3",
-    title: "Appointment Booking Demo",
-    description: "Learn how AI agents can schedule appointments automatically.",
-    embedUrl: "https://www.youtube.com/embed/M7FIvfx5J10",
-    category: "Demo",
-    featured: false,
-  },
-  {
-    id: "advanced-1",
-    title: "Advanced Customization",
-    description: "Deep dive into advanced customization options for your AI agents.",
-    embedUrl: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+    id: "tutorial-6",
+    title: "CloserX Tutorial 6",
+    description: "Deep dive on reporting, analytics, and optimization.",
+    embedUrl: tutorialEmbeds[5],
     category: "Advanced",
-    featured: false,
   },
   {
-    id: "advanced-2",
-    title: "API Integration Guide",
-    description: "Learn how to integrate CloserX with your existing systems via API.",
-    embedUrl: "https://www.youtube.com/embed/4u8IxN0u3z4",
-    category: "Advanced",
-    featured: false,
-  },
-  {
-    id: "integrations-1",
-    title: "CRM Integration",
-    description: "Connect CloserX with popular CRM systems like Salesforce and HubSpot.",
-    embedUrl: "https://www.youtube.com/embed/5qap5aO4i9A",
+    id: "tutorial-7",
+    title: "CloserX Tutorial 7",
+    description: "Integrating CloserX with your CRM and calendars.",
+    embedUrl: tutorialEmbeds[6],
     category: "Integrations",
-    featured: false,
-  },
-  {
-    id: "integrations-2",
-    title: "Calendar Integration",
-    description: "Sync your calendar with CloserX for automatic appointment scheduling.",
-    embedUrl: "https://www.youtube.com/embed/5YbK0J8Z5X4",
-    category: "Integrations",
-    featured: false,
   },
 ];
+
+const getEmbedByIndex = (index: number) => tutorialEmbeds[index % tutorialEmbeds.length];
 
 export const problemSectionData = {
   title: "The Lead Qualification Problem",
@@ -144,7 +118,7 @@ export const problemSectionData = {
       title: "Unqualified Leads",
       subtitle: "VIDEO",
       date: "4 March 2025",
-      videoUrl: "https://www.youtube.com/embed/2Vv-BfVoq4g",
+      videoUrl: getEmbedByIndex(0),
     },
     {
       id: "time-wasting",
@@ -152,7 +126,7 @@ export const problemSectionData = {
       title: "Time Wasting",
       subtitle: "VIDEO",
       date: "4 March 2025",
-      videoUrl: "https://www.youtube.com/embed/L_jWHffIx5E",
+      videoUrl: getEmbedByIndex(1),
     },
     {
       id: "low-conversion",
@@ -160,7 +134,7 @@ export const problemSectionData = {
       title: "Low Conversion Rates",
       subtitle: "VIDEO",
       date: "4 March 2025",
-      videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+      videoUrl: getEmbedByIndex(2),
     },
     {
       id: "manual-process",
@@ -168,7 +142,7 @@ export const problemSectionData = {
       title: "Manual Process",
       subtitle: "VIDEO",
       date: "4 March 2025",
-      videoUrl: "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      videoUrl: getEmbedByIndex(3),
     },
     {
       id: "inconsistent-data",
@@ -176,7 +150,7 @@ export const problemSectionData = {
       title: "Inconsistent Data",
       subtitle: "VIDEO",
       date: "4 March 2025",
-      videoUrl: "https://www.youtube.com/embed/fJ9rUzIMcZQ",
+      videoUrl: getEmbedByIndex(4),
     },
     {
       id: "poor-tracking",
@@ -184,7 +158,7 @@ export const problemSectionData = {
       title: "Poor Tracking",
       subtitle: "VIDEO",
       date: "4 March 2025",
-      videoUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+      videoUrl: getEmbedByIndex(5),
     },
   ],
 };
@@ -198,7 +172,7 @@ export const solutionSectionData = {
       title: "AI Qualification",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/2Vv-BfVoq4g",
+      videoUrl: getEmbedByIndex(0),
     },
     {
       id: "automated-scoring",
@@ -206,7 +180,7 @@ export const solutionSectionData = {
       title: "Automated Scoring",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/L_jWHffIx5E",
+      videoUrl: getEmbedByIndex(1),
     },
     {
       id: "real-time-insights",
@@ -214,7 +188,7 @@ export const solutionSectionData = {
       title: "Real-time Insights",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+      videoUrl: getEmbedByIndex(2),
     },
     {
       id: "seamless-integration",
@@ -222,7 +196,7 @@ export const solutionSectionData = {
       title: "Seamless Integration",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/kJQP7kiw5Fk",
+      videoUrl: getEmbedByIndex(3),
     },
     {
       id: "smart-routing",
@@ -230,7 +204,7 @@ export const solutionSectionData = {
       title: "Smart Routing",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/fJ9rUzIMcZQ",
+      videoUrl: getEmbedByIndex(4),
     },
     {
       id: "advanced-analytics",
@@ -238,7 +212,7 @@ export const solutionSectionData = {
       title: "Advanced Analytics",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/ScMzIvxBSi4",
+      videoUrl: getEmbedByIndex(5),
     },
     {
       id: "intelligent-filtering",
@@ -246,7 +220,7 @@ export const solutionSectionData = {
       title: "Intelligent Filtering",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/OPf0YbXqDm0",
+      videoUrl: getEmbedByIndex(6),
     },
     {
       id: "automated-workflows",
@@ -254,7 +228,7 @@ export const solutionSectionData = {
       title: "Automated Workflows",
       subtitle: "VIDEO",
       date: "5 March 2025",
-      videoUrl: "https://www.youtube.com/embed/M7FIvfx5J10",
+      videoUrl: getEmbedByIndex(1),
     },
   ],
 };
@@ -268,7 +242,7 @@ export const benefitsSectionData = {
       title: "Increased Efficiency",
       subtitle: "VIDEO",
       date: "6 March 2025",
-      videoUrl: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+      videoUrl: getEmbedByIndex(0),
     },
     {
       id: "better-results",
@@ -276,7 +250,7 @@ export const benefitsSectionData = {
       title: "Better Results",
       subtitle: "VIDEO",
       date: "6 March 2025",
-      videoUrl: "https://www.youtube.com/embed/4u8IxN0u3z4",
+      videoUrl: getEmbedByIndex(1),
     },
     {
       id: "cost-savings",
@@ -284,7 +258,7 @@ export const benefitsSectionData = {
       title: "Cost Savings",
       subtitle: "VIDEO",
       date: "6 March 2025",
-      videoUrl: "https://www.youtube.com/embed/5qap5aO4i9A",
+      videoUrl: getEmbedByIndex(2),
     },
     {
       id: "scalability",
@@ -292,7 +266,7 @@ export const benefitsSectionData = {
       title: "Scalability",
       subtitle: "VIDEO",
       date: "6 March 2025",
-      videoUrl: "https://www.youtube.com/embed/5YbK0J8Z5X4",
+      videoUrl: getEmbedByIndex(3),
     },
     {
       id: "time-optimization",
@@ -300,7 +274,7 @@ export const benefitsSectionData = {
       title: "Time Optimization",
       subtitle: "VIDEO",
       date: "6 March 2025",
-      videoUrl: "https://www.youtube.com/embed/2Vv-BfVoq4g",
+      videoUrl: getEmbedByIndex(4),
     },
     {
       id: "improved-accuracy",
@@ -308,7 +282,7 @@ export const benefitsSectionData = {
       title: "Improved Accuracy",
       subtitle: "VIDEO",
       date: "6 March 2025",
-      videoUrl: "https://www.youtube.com/embed/L_jWHffIx5E",
+      videoUrl: getEmbedByIndex(5),
     },
   ],
 };

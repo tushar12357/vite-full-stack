@@ -22,19 +22,19 @@ interface SolutionHeroProps {
 const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: SolutionHeroProps) => {
   return (
     <section className="relative bg-black py-20 md:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <div className="text-left">
             {/* Tag */}
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium">
+              <span className="inline-block px-4 py-1 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium">
                 {hero.tag}
               </span>
             </div>
 
             {/* Main Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               {hero.title} {hero.titleHighlight && <span className="text-purple-400">{hero.titleHighlight}</span>}
             </h1>
 

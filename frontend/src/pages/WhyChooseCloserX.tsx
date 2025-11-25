@@ -2,6 +2,9 @@ import { useEffect, useRef, useState, CSSProperties } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Plug, Shield, Clock } from "lucide-react";
+import imageOne from "@/assets/whyChooseCloserX/1.png";
+import imageTwo from "@/assets/whyChooseCloserX/2.png";
+import imageThree from "@/assets/whyChooseCloserX/3.png";
 
 const WhyChooseCloserX = () => {
   const leftCardRef = useRef<HTMLDivElement>(null);
@@ -196,7 +199,7 @@ const WhyChooseCloserX = () => {
       >
         <div className="rounded-lg mb-6 flex items-center justify-center h-[250px]">
           <img 
-            src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78f8fa3b84dc258091.jpg" 
+            src={imageOne} 
             alt="Integrations" 
             className="w-full h-full object-contain rounded-lg"
           />
@@ -218,7 +221,7 @@ const WhyChooseCloserX = () => {
       >
         <div className="rounded-lg mb-6 flex items-center justify-center h-[250px]">
           <img 
-            src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a7847e103bc535ef2cb.png" 
+            src={imageTwo} 
             alt="Enterprise Security" 
             className="w-full h-full object-contain rounded-lg"
           />
@@ -241,7 +244,7 @@ const WhyChooseCloserX = () => {
     >
       <div className="rounded-lg mb-6 flex items-center justify-center h-[250px]">
         <img 
-          src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78393741a9e06eab56.jpg" 
+          src={imageThree} 
           alt="24/7 Support" 
           className="w-full h-full object-contain rounded-lg"
         />

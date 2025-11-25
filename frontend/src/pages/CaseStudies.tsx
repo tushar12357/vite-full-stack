@@ -6,6 +6,8 @@ import { ArrowRight, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import globePlaceholder from "@/assets/placeholder.svg";
 import { CASE_STUDIES_DATA, getAllCaseStudyIds } from "@/data/caseStudiesData";
+import video from '../assets/video/purpleBackground.mp4'
+import DemoModal from "@/components/DemoModal";
 
 // Featured stories - using real case studies
 const FEATURED_STORIES = [
@@ -222,26 +224,30 @@ export default function CaseStudies() {
         <section className="px-4">
           <div className="max-w-6xl mx-auto bg-[#0B001A] rounded-[32px] overflow-hidden border border-[#7C3AED]/40 relative">
             <div className="absolute inset-0 opacity-60">
-              <img
-                src="https://images.unsplash.com/photo-1527449992864-7fc6f6f5550a?auto=format&fit=crop&w=1200&q=80"
-                alt=""
-                className="w-full h-full object-cover"
-              />
+                <video  
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src={video} type="video/mp4" />
+                </video>
             </div>
-            <div className="relative z-10 p-10 text-center space-y-6">
+            <div className="relative z-10 p-10 text-left space-y-6">
               <h3 className="text-3xl font-semibold">
                 Ready to Launch Your AI Calling Platform?
               </h3>
-              <p className="text-white/70">
+              <p className="text-white/70 max-w-2xl">
                 Join 500+ agencies building their white-label business.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-6 py-3 rounded-full bg-white text-black font-semibold">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="px-6 py-3 rounded-full bg-white text-black font-semibold w-full sm:w-auto">
                   Get Stories
                 </button>
-                <button className="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10">
-                  Book Demo
-                </button>
+                  <DemoModal buttonClassName="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
+                    Book Demo
+                  </DemoModal>
               </div>
             </div>
           </div>

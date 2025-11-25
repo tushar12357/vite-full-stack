@@ -35,17 +35,17 @@ const Partners = () => {
             Do you love CloserX.ai? Are you interested in earning money by promoting CloserX.ai products? We're always on the lookout for passionate individuals to partner with us our affiliate program.
           </p>
           <div className="flex justify-start">
-            <Button
+            <Button 
               asChild
-              variant="outline"
+              variant="outline" 
               className="border-white text-white px-8 py-3 rounded-lg bg-black"
             >
               <a
                 href="https://affiliate.closerx.ai/home975572-1328-2226-4154"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                Become a Partner
+            >
+              Become a Partner
               </a>
             </Button>
           </div>
@@ -105,12 +105,12 @@ const Partners = () => {
                     {program.cta} <ArrowRight className="w-4 h-4" />
                   </a>
                 ) : (
-                  <Link
-                    to={program.link}
-                    className="mt-auto inline-flex items-center gap-2 text-white font-semibold hover:text-white/80 transition-colors"
-                  >
-                    {program.cta} <ArrowRight className="w-4 h-4" />
-                  </Link>
+                <Link
+                  to={program.link}
+                  className="mt-auto inline-flex items-center gap-2 text-white font-semibold hover:text-white/80 transition-colors"
+                >
+                  {program.cta} <ArrowRight className="w-4 h-4" />
+                </Link>
                 )}
               </div>
             ))}

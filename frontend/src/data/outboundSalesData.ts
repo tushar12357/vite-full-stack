@@ -2,6 +2,9 @@ import { Target, XCircle, CheckCircle2 } from "lucide-react";
 import type { SolutionData } from "./solutionDataTypes";
 import uiScreenshot from "@/assets/images/outboundcall/handshake.png";
 import workflowImage from "@/assets/images/outboundcall/handshake.png";
+import calendar from "@/assets/images/outboundcall/handshake.png";
+import calendar1 from "@/assets/images/outboundcall/handshake.png";
+import tirado from "@/assets/images/outboundcall/handshake.png";
 
 export const outboundSalesData: SolutionData = {
   hero: {
@@ -139,5 +142,8 @@ export const outboundSalesData: SolutionData = {
 export const outboundSalesImages = {
   uiScreenshot,
   workflowImage,
+  calendar,
+  calendar1,
+  tirado,
 };
 

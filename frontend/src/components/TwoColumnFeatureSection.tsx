@@ -86,7 +86,7 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
   return (
     <section 
       ref={sectionRef}
-      className={`${baseBgClass} py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24 font-poppins ${animationClasses} ${className}`}
+      className={`${baseBgClass} py-16 md:py-24 px-4 sm:px-6 lg:px-16 xl:px-24 font-poppins ${animationClasses} ${className}`}
       style={sectionStyle}
     >
       <div className="max-w-5xl mx-auto">
@@ -99,32 +99,14 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
 
         {/* Main Title */}
         <h2 
-          className="text-black text-center mb-4 mx-auto font-poppins"
-          style={{
-            fontWeight: 600,
-            fontSize: '48px',
-            lineHeight: '100%',
-            letterSpacing: '0%',
-            width: '600px',
-            height: '120px',
-            opacity: 1,
-          }}
+          className="text-black text-center mb-4 mx-auto font-poppins text-3xl sm:text-4xl lg:text-[48px] font-semibold leading-tight max-w-[600px]"
         >
           {mainTitle}
         </h2>
 
         {/* Subtitle */}
         <p 
-          className="text-black text-center mb-8 md:mb-12 mx-auto font-poppins"
-          style={{
-            fontWeight: 200,
-            fontSize: '14px',
-            lineHeight: '100%',
-            letterSpacing: '0%',
-            width: '400px',
-            height: '42px',
-            opacity: 1,
-          }}
+          className="text-black text-center mb-8 md:mb-12 mx-auto font-poppins text-sm sm:text-base font-light leading-relaxed max-w-[480px]"
         >
           {subtitle}
         </p>
@@ -132,12 +114,12 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-center justify-items-center relative">
           {/* Left Column - Features */}
-          <div className="relative font-poppins">
-            <h3 className="text-5xl md:text-[40px] font-semibold text-black mb-2 font-poppins">
+          <div className="relative font-poppins text-center lg:text-left">
+            <h3 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-black mb-2 font-poppins">
               {leftColumn.title}{" "}
               <span className="text-purple-600 font-poppins">{leftColumn.titleHighlight}</span>
             </h3>
-            <p className="text-5xl md:text-[40px] text-black mb-12 font-poppins">
+            <p className="text-3xl sm:text-4xl lg:text-[40px] text-black mb-8 lg:mb-12 font-poppins">
               {leftColumn.description}
             </p>
 
@@ -147,7 +129,7 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
                 const isExpanded = shouldShowDescription(index);
                 return (
                   <div key={index}>
-                    <div className="flex gap-4 py-4">
+                    <div className="flex gap-4 py-4 flex-col lg:flex-row items-start">
                      
                       <div className="flex-1">
                         <button
@@ -155,7 +137,7 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
                           className="text-left w-full font-poppins"
                         >
                           
-                          <h4 className="text-[18px] md:text-[18px] font-medium text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer font-poppins">
+                          <h4 className="text-[18px] font-medium text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer font-poppins">
                            {feature.number} {feature.title}
                           </h4>
                         </button>
@@ -173,15 +155,15 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
           </div>
 
           {/* Right Column - Image or Custom Content */}
-          <div className="relative lg:sticky lg:top-20 flex justify-center">
+          <div className="relative lg:sticky lg:top-20 flex justify-center w-full">
             {rightContent ? (
               rightContent
             ) : rightImage ? (
-              <div className="relative w-full overflow-hidden min-h-[500px] lg:min-h-[600px]">
+              <div className="relative w-full overflow-hidden min-h-[320px] sm:min-h-[420px] lg:min-h-[500px]">
                 <img
                   src={rightImage}
                   alt={rightImageAlt || "Feature Image"}
-                  className="w-full h-full min-h-[500px] lg:min-h-[600px] object-contain"
+                  className="w-full h-full object-contain rounded-3xl"
                 />
               </div>
             ) : null}

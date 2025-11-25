@@ -2,6 +2,9 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin, Phone, Mail, MessageSquare, ArrowRight } from "lucide-react";
+import delawareImage from "@/assets/locations/delware.jpeg";
+import torontoImage from "@/assets/locations/toranto.jpg";
+import dubaiImage from "@/assets/locations/dubai.jpg";
 
 type Location = {
   code: string;
@@ -12,6 +15,7 @@ type Location = {
   phone: string;
   email: string;
   availability: string;
+  image: string;
 };
 
 const LOCATIONS: Location[] = [
@@ -24,6 +28,7 @@ const LOCATIONS: Location[] = [
     phone: "+1650-585-3005",
     email: "info@closerx.ai",
     availability: "Available 24/7",
+    image: delawareImage,
   },
   {
     code: "CA",
@@ -34,6 +39,7 @@ const LOCATIONS: Location[] = [
     phone: "+1416-915-9005",
     email: "ca@closerx.ai",
     availability: "Mon–Fri · 9am–7pm EST",
+    image: torontoImage,
   },
   {
     code: "AE",
@@ -44,6 +50,7 @@ const LOCATIONS: Location[] = [
     phone: "+9714-269-9980",
     email: "me@closerx.ai",
     availability: "Sun–Thu · 9am–6pm GST",
+    image: dubaiImage,
   },
 ];
 
@@ -243,10 +250,12 @@ const Contact = () => {
 
             {/* Contact Information Box */}
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-gray-900 rounded-2xl overflow-hidden">
-                <div className="w-full h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <div className="text-6xl">🏢</div>
-                </div>
+              <div className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
+                <img
+                  src={activeLocation.image}
+                  alt={`${activeLocation.city} office`}
+                  className="w-full h-64 object-cover"
+                />
               </div>
 
               <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8">

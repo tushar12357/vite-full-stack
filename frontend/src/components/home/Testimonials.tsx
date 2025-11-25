@@ -77,6 +77,15 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+const testimonialVideos: Array<{ id: number; url: string }> = [
+  { id: 1, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4eb10143a9cf36e32.mov" },
+  { id: 2, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef446b2e755937dd94c.mov" },
+  { id: 3, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe5124388f85.mp4" },
+  { id: 4, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe2a4c388f84.mov" },
+  { id: 5, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a5fc8d9567c1cbb7.mov" },
+  { id: 6, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4c61b110c7b085e59.mp4" },
+];
+
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
     <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -88,6 +97,20 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
     </div>
   );
 };
+
+const TestimonialVideoCard = ({ url }: { url: string }) => (
+  <div className="rounded-3xl overflow-hidden shadow-xl bg-black/80 border border-white/10">
+    <div className="relative w-full" style={{ paddingTop: "177.78%" }}>
+      <video
+        src={url}
+        controls
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        poster=""
+      />
+    </div>
+  </div>
+);
 
 const Testimonials = () => {
   return (
@@ -113,6 +136,18 @@ const Testimonials = () => {
               <TestimonialCard testimonial={testimonial} />
             </div>
           ))}
+        </div>
+
+        {/* Testimonial Videos */}
+        <div className="mt-16">
+          <h3 className="text-xl md:text-2xl font-semibold text-[#111827] text-center mb-8">
+            Watch their stories
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonialVideos.map((video) => (
+              <TestimonialVideoCard key={video.id} url={video.url} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

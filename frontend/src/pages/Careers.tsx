@@ -1,6 +1,7 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/image copy.png";
+import heroImage from "@/assets/hiring.jpg";
 import { Button } from "@/components/ui/button";
 import {
   ArrowUpRight,
@@ -13,64 +14,41 @@ import {
 
 const jobGroups = [
   {
-    label: "XO Assist Solutions",
+    label: "Engineering",
     countLabel: "· 1",
     roles: [
       {
-        title: "Product Designer – Senior",
-        location: "Dubai, UAE",
-        workplace: "On site",
-      },
-    ],
-  },
-  {
-    label: "XO Assist Solutions",
-    countLabel: "· 2",
-    roles: [
-      {
-        title: "Product Designer – Senior",
+        title: "Senior Django Developer",
         location: "Toronto, Canada",
-        workplace: "On site",
-      },
-      {
-        title: "Product Designer – Senior",
-        location: "Dubai, UAE",
-        workplace: "On site",
+        workplace: "Hybrid",
+        description:
+          "Lead backend architecture for our AI agent platform using Django and PostgreSQL. Mentor junior engineers, own API performance, and collaborate with product on new voice automation features.",
       },
     ],
   },
   {
-    label: "XO Assist Solutions",
+    label: "Product & Design",
     countLabel: "· 1",
     roles: [
       {
-        title: "Product Designer – Senior",
+        title: "Junior Frontend Developer",
         location: "Dubai, UAE",
         workplace: "On site",
+        description:
+          "Build responsive dashboards with React and Tailwind. Work closely with senior designers to ship delightful customer experiences for agencies launching CloserX AI agents.",
       },
     ],
   },
   {
-    label: "XO Assist Solutions",
-    countLabel: "· 7",
-    roles: [
-      { title: "Product Designer – Senior", location: "Dubai, UAE", workplace: "On site" },
-      { title: "Product Designer – Senior", location: "Delaware, USA", workplace: "On site" },
-      { title: "Product Designer – Senior", location: "Dubai, UAE", workplace: "On site" },
-      { title: "Product Designer – Senior", location: "Delaware, USA", workplace: "On site" },
-      { title: "Product Designer – Senior", location: "Delaware, USA", workplace: "On site" },
-      { title: "Product Designer – Senior", location: "Delaware, USA", workplace: "On site" },
-      { title: "Product Designer – Senior", location: "Dubai, UAE", workplace: "On site" },
-    ],
-  },
-  {
-    label: "XO Assist Solutions",
+    label: "Creative Studio",
     countLabel: "· 1",
     roles: [
       {
-        title: "Product Designer – Senior",
-        location: "Dubai, UAE",
-        workplace: "On site",
+        title: "Video Editor",
+        location: "Remote",
+        workplace: "Remote",
+        description:
+          "Produce high-conversion video tutorials, product explainers, and customer stories. Own editing, motion graphics, and storytelling to highlight CloserX success.",
       },
     ],
   },
@@ -82,6 +60,12 @@ const quickFacts = [
 ];
 
 const Careers = () => {
+  const [expandedRole, setExpandedRole] = useState<string | null>(null);
+
+  const toggleRole = (title: string) => {
+    setExpandedRole((prev) => (prev === title ? null : title));
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-white">
       <Header />
@@ -131,12 +115,12 @@ const Careers = () => {
                   of our partnerships team will contact you to schedule a discovery call.
                 </h2>
                 <div className="flex flex-wrap gap-3">
-                  <button className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 hover:bg-white/10">
+                  <button className="flex w-full sm:w-auto items-center justify-between gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
                     <MapPin className="w-4 h-4" />
                     All locations
                     <ChevronDown className="w-4 h-4" />
                   </button>
-                  <button className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 hover:bg-white/10">
+                  <button className="flex w-full sm:w-auto items-center justify-between gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
                     <Building2 className="w-4 h-4" />
                     All functions
                     <ChevronDown className="w-4 h-4" />
@@ -181,10 +165,22 @@ const Careers = () => {
                             </span>
                           </div>
                         </div>
-                        <button className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition">
-                          View role
-                          <ChevronRight className="w-4 h-4" />
-                        </button>
+                        <div className="space-y-3">
+                          <button
+                            onClick={() => toggleRole(role.title)}
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition"
+                          >
+                            {expandedRole === role.title ? "Hide details" : "View role"}
+                            <ChevronRight
+                              className={`w-4 h-4 transition-transform ${expandedRole === role.title ? "rotate-90" : ""}`}
+                            />
+                          </button>
+                          {expandedRole === role.title && (
+                            <p className="text-sm text-white/70 leading-relaxed border-t border-white/10 pt-3">
+                              {role.description}
+                            </p>
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -301,5 +297,6 @@ const Careers = () => {
 };
 
 export default Careers;
+
 
 

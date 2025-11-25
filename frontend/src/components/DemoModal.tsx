@@ -16,7 +16,13 @@ declare global {
   }
 }
 
-export default function DemoModal() {
+export default function DemoModal({
+  buttonClassName = "flex items-center gap-1.5 px-4 py-2 bg-white text-[#363062] text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all",
+  children = "Demo",
+}: {
+  buttonClassName?: string;
+  children?: React.ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("us");
@@ -120,12 +126,8 @@ export default function DemoModal() {
   return (
     <>
       {/* Navbar trigger */}
-      <button
-        type="button"
-        onClick={handleDemoClick}
-        className="flex items-center gap-1.5 px-4 py-2 bg-white text-[#363062] text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
-      >
-        Demo
+      <button type="button" onClick={handleDemoClick} className={buttonClassName}>
+        {children}
       </button>
 
       {/* Render modal through a portal */}
