@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -12,29 +11,8 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/blogs",
-      "methods": ["GET"],
-      "dest": "/api/blogs/get.js"
-    },
-    {
-      "src": "/api/blogs",
-      "methods": ["POST"],
-      "dest": "/api/blogs/post.js"
-    },
-
-    {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|xml|webmanifest))",
-      "dest": "/dist/$1"
-    },
-
-    {
-      "handle": "filesystem"
-    },
-
-    {
-      "src": "/(.*)",
-      "dest": "/dist/index.html"
-    }
+    { "src": "/api/blogs", "methods": ["GET"], "dest": "/api/blogs/get.js" },
+    { "src": "/api/blogs", "methods": ["POST"], "dest": "/api/blogs/post.js" },
+    { "src": "/(.*)", "dest": "/frontend/$1" }
   ]
 }
