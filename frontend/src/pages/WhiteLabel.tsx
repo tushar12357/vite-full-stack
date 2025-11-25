@@ -3,12 +3,14 @@ import Footer from "@/components/Footer";
 import Products from "@/components/home/Products";
 import { whiteLabelHero, whiteLabelProductCards } from "@/data/whiteLabelData";
 import FAQ from "@/components/home/FAQ";
+import { useLuna } from "@/contexts/LunaContext";
 
 const WhiteLabel = () => {
+  const { openLuna } = useLuna();
   return (
     <div className="min-h-screen bg-black">
       <Header />
-      
+
       <main className="pt-40 pb-32 px-4 sm:px-6 lg:px-6 ">
         <div className="max-w-7xl mx-auto">
           {/* Hero Section */}
@@ -25,9 +27,9 @@ const WhiteLabel = () => {
               {whiteLabelHero.description}
             </p>
 
-             {/* Call-to-Action Buttons */}
-             <div className="flex flex-row items-center justify-center gap-6">
-               {/* Talk To Sales Button - Pill-shaped with purple background */}
+            {/* Call-to-Action Buttons */}
+            <div className="flex flex-row items-center justify-center gap-6">
+              {/* Talk To Sales Button - Pill-shaped with purple background */}
               <a
                 href={whiteLabelHero.primaryCta.href}
                 className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
@@ -36,17 +38,17 @@ const WhiteLabel = () => {
               </a>
 
               {/* Create an AI Agent - Text link (not a button) */}
-              <a href={whiteLabelHero.secondaryCta.href} className="text-purple-400 hover:text-purple-500 font-bold text-base transition-colors duration-300">
+              <button onClick={openLuna} className="text-purple-400 hover:text-purple-500 font-bold text-base transition-colors duration-300">
                 {whiteLabelHero.secondaryCta.label}
-              </a>
-             </div>
+              </button>
+            </div>
           </div>
 
         </div>
       </main>
 
       <Products data={whiteLabelProductCards} showHeader={false} />
-      <FAQ/>
+      <FAQ />
       <Footer />
     </div>
   );
