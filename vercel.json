@@ -13,6 +13,9 @@
   "routes": [
     { "src": "/api/blogs", "methods": ["GET"], "dest": "/api/blogs/get.js" },
     { "src": "/api/blogs", "methods": ["POST"], "dest": "/api/blogs/post.js" },
-    { "src": "/(.*)", "dest": "/frontend/$1" }
+     {
+      "src": "^(?!/api/).*",
+      "dest": "/frontend/dist/index.html"
+    }
   ]
 }
