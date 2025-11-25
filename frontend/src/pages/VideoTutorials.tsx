@@ -12,7 +12,6 @@ import FinalCTA from "@/components/home/FinalCTA";
 export default function VideoTutorials() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [showMore, setShowMore] = useState(false);
 
   // Get featured video for hero
   const featuredVideo = sampleVideos.find(v => v.featured);
@@ -48,6 +47,32 @@ export default function VideoTutorials() {
         videoId={featuredVideo?.id}
         videoUrl={featuredVideo?.embedUrl}
       />
+
+      {/* Featured Tutorials */}
+      <section className="bg-black py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-white text-lg font-semibold mb-6 text-center">Watch Featured Tutorials</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {sampleVideos.map((video) => (
+              <div key={video.id} className="space-y-3">
+                <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl" style={{ paddingTop: "56.25%" }}>
+                  <iframe
+                    src={video.embedUrl}
+                    title={video.title}
+                    className="absolute inset-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="text-white">
+                  <h3 className="text-lg font-semibold">{video.title}</h3>
+                  <p className="text-white/70 text-sm">{video.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CATEGORY SECTION WITH SEARCH */}
       <section className="sticky top-24 z-40 bg-black py-4 mt-8">
@@ -110,100 +135,6 @@ export default function VideoTutorials() {
         problems={benefitsSectionData.benefits}
       />
 
-      {/* SHOW MORE Button */}
-      <section className="bg-black py-8 px-4">
-        <div className="max-w-5xl mx-auto flex justify-center">
-          <button 
-            onClick={() => setShowMore(!showMore)}
-            className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm rounded-lg border border-gray-700 transition-all duration-300"
-          >
-            {showMore ? "SHOW LESS -" : "SHOW MORE +"}
-          </button>
-        </div>
-      </section>
-
-      {/* Additional Content When Show More is Clicked */}
-      {showMore && (
-        <>
-          {/* Additional Problem Section */}
-          <ProblemSection
-            title="More Problems"
-            problems={[
-              {
-                id: "data-quality",
-                tag: "Analytics & ROI",
-                title: "Data Quality Issues",
-                subtitle: "VIDEO",
-                date: "7 March 2025",
-                videoUrl: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
-              },
-              {
-                id: "lack-insights",
-                tag: "Analytics & ROI",
-                title: "Lack of Insights",
-                subtitle: "VIDEO",
-                date: "7 March 2025",
-                videoUrl: "https://www.youtube.com/embed/4u8IxN0u3z4",
-              },
-              {
-                id: "inefficient-process",
-                tag: "Analytics & ROI",
-                title: "Inefficient Process",
-                subtitle: "VIDEO",
-                date: "7 March 2025",
-                videoUrl: "https://www.youtube.com/embed/5qap5aO4i9A",
-              },
-              {
-                id: "poor-segmentation",
-                tag: "Analytics & ROI",
-                title: "Poor Segmentation",
-                subtitle: "VIDEO",
-                date: "7 March 2025",
-                videoUrl: "https://www.youtube.com/embed/5YbK0J8Z5X4",
-              },
-            ]}
-          />
-
-          {/* Additional Solution Section */}
-          <ProblemSection
-            title="More Solutions"
-            problems={[
-              {
-                id: "predictive-analytics",
-                tag: "AI Automation",
-                title: "Predictive Analytics",
-                subtitle: "VIDEO",
-                date: "8 March 2025",
-                videoUrl: "https://www.youtube.com/embed/2Vv-BfVoq4g",
-              },
-              {
-                id: "machine-learning",
-                tag: "AI Automation",
-                title: "Machine Learning",
-                subtitle: "VIDEO",
-                date: "8 March 2025",
-                videoUrl: "https://www.youtube.com/embed/L_jWHffIx5E",
-              },
-              {
-                id: "automated-reporting",
-                tag: "AI Automation",
-                title: "Automated Reporting",
-                subtitle: "VIDEO",
-                date: "8 March 2025",
-                videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
-              },
-              {
-                id: "data-visualization",
-                tag: "AI Automation",
-                title: "Data Visualization",
-                subtitle: "VIDEO",
-                date: "8 March 2025",
-                videoUrl: "https://www.youtube.com/embed/kJQP7kiw5Fk",
-              },
-            ]}
-          />
-        </>
-      )}
 
       {/* ALL VIDEOS GRID */}
       <FinalCTA/>

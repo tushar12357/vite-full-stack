@@ -1,11 +1,15 @@
 import { Clock, Zap, Shield, Target } from "lucide-react";
+import imageOne from "@/assets/whyChooseCloserX/1.png";
+import imageTwo from "@/assets/whyChooseCloserX/2.png";
+import imageThree from "@/assets/whyChooseCloserX/3.png";
+import imageFour from "@/assets/whyChooseCloserX/4.png";
 
 export const productsData = [
   {
     icon: Clock,
     title: "Watch Your Calls in Real-Time",
     description: "Beautiful analytics that update as your AI agents work",
-    image: "",
+    image: imageOne,
     features: [
       {
         icon: Clock,
@@ -29,7 +33,7 @@ export const productsData = [
     icon: Zap,
     title: "Lightning Fast Performance",
     description: "Experience blazing fast speeds with our optimized infrastructure",
-    image: "/images/fast-performance.jpg",
+    image: imageTwo,
     features: [
       {
         icon: Zap,
@@ -53,7 +57,7 @@ export const productsData = [
     icon: Shield,
     title: "Enterprise-Grade Security",
     description: "Your data is protected with industry-leading security measures",
-    image: "/images/enterprise-security.jpg",
+    image: imageThree,
     features: [
       {
         icon: Shield,
@@ -77,7 +81,7 @@ export const productsData = [
     icon: Target,
     title: "Smart AI Integration",
     description: "Powerful AI tools that enhance your workflow automatically",
-    image: "/images/ai-integration.jpg",
+    image: imageFour,
     features: [
       {
         icon: Target,

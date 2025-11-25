@@ -44,7 +44,7 @@ const ContentCarouselSection = <T,>({
 
   return (
     <section className={`py-20 ${backgroundColor}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto  lg:px-2">
         <div className="relative mb-16">
           {/* Tag */}
           <div className="flex justify-start mb-6">
@@ -56,8 +56,8 @@ const ContentCarouselSection = <T,>({
           {/* Title and Description with Navigation */}
           <div className="flex items-start justify-between gap-8 mb-12">
             <div className="flex-1">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">{title}</h2>
-              <p className="text-base md:text-lg text-white/80 max-w-3xl leading-relaxed">{description}</p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">{title}</h2>
+              <p className="text-base md:text-sm text-white/80 max-w-3xl leading-relaxed">{description}</p>
             </div>
 
             {/* Navigation Arrows */}
@@ -103,7 +103,7 @@ const ContentCarouselSection = <T,>({
                 return (
                   <div
                     key={idx}
-                    className="flex-shrink-0 px-4 flex"
+                    className="flex-shrink-0 p-1 flex"
                     style={{
                       width: `${cardWidth}%`,
                       minWidth: `${cardWidth}%`,

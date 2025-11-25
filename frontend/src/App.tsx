@@ -49,8 +49,6 @@ import UptimeSLA from "./pages/UptimeSLA";
 import Partners from "./pages/Partners";
 import WhyChooseCloserX from "./pages/WhyChooseCloserX";
 import Careers from "./pages/Careers";
-import Compliance from "./pages/Compliance";
-import Press from "./pages/Press";
 
 // 🧩 Import LunaWidget (the floating chat button)
 import LunaWidget from "@/components/LunaWidget";
@@ -137,8 +135,8 @@ const App = () => (
           <Route path="/affiliate" element={<ComingSoon />} />
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/compliance" element={<Compliance />} />
-          <Route path="/press" element={<Press />} />
+          <Route path="/compliance" element={<ComingSoon />} />
+          <Route path="/press" element={<ComingSoon />} />
           <Route path="/login" element={<ComingSoon />} />
 
           {/* Use Cases */}

@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Shield, Lock, FileCheck, Globe, Server, Key, CheckCircle2, Star, AudioWaveform, Activity, Database } from "lucide-react";
-import dashboardImage from "@/assets/image.png";
+import dashboardImage from "@/assets/security/security.png";
 
 const CERTIFICATIONS = [
   {
@@ -133,7 +133,7 @@ export default function TrustCenter() {
 
         {/* Our Certifications Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Certifications</h2>
             <p className="text-base text-gray-400 mb-12 max-w-3xl">
               We maintain industry-leading certifications and compliance standards to ensure your data is protected.
@@ -159,7 +159,7 @@ export default function TrustCenter() {
 
         {/* How It Works Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium mb-4">
               Intelligent Automation
             </div>
@@ -187,7 +187,7 @@ export default function TrustCenter() {
 
         {/* Our Privacy Promise Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Privacy Promise</h2>
             <p className="text-base text-gray-400 mb-12 max-w-3xl">
               We believe in complete transparency about how we handle your data. Here's our commitment to you.
@@ -220,7 +220,7 @@ export default function TrustCenter() {
 
         {/* Infrastructure & Reliability Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Infrastructure & Reliability</h2>
             <p className="text-base text-gray-400 mb-12 max-w-3xl">
               Built on enterprise-grade infrastructure designed for reliability, performance, and global scale.
@@ -245,7 +245,7 @@ export default function TrustCenter() {
 
         {/* Security Documentation Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+            <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Security Documentation</h2>
             <p className="text-base text-gray-400 mb-12 max-w-3xl">
               Access detailed documentation about our security practices, compliance, and audit reports.

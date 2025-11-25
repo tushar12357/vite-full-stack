@@ -54,7 +54,7 @@ const VideoHero = ({ hero, uiScreenshot, videoId, videoUrl }: VideoHeroProps) =>
           {/* Right Column - Video or UI Screenshot */}
           <div className="relative">
             {videoUrl ? (
-              <div className="relative w-full rounded-xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300" style={{ height: '500px' }}>
+              <div className="relative w-full rounded-xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300" style={{ height: '360px' }}>
                 <iframe
                   width="100%"
                   height="100%"

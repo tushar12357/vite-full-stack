@@ -51,7 +51,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
   } = data;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen  flex flex-col bg-background">
       <Header />
 
       {/* Hero Section - Two Column Layout */}
@@ -122,30 +122,30 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
       {/* Customer Story Section */}
       {customerStorySection && (
         <section className="py-20 bg-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left Column - Text Content */}
               <div className="text-left">
                 {/* Tag */}
                 <div className="mb-6">
-                  <span className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium">
+                  <span className="inline-block p-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium">
                     {customerStorySection.tag}
                   </span>
                 </div>
 
                 {/* Main Title */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-8 leading-tight">
                   {customerStorySection.title}
                 </h2>
 
                 {/* Testimonial Quote */}
                 {customerStorySection.testimonial && (
                   <div className="mb-8">
-                    <blockquote className="text-xl md:text-2xl text-white/90 italic leading-relaxed mb-4">
+                    <blockquote className="text-base md:text-sm text-white/90 italic leading-relaxed mb-4">
                       "{customerStorySection.testimonial}"
                     </blockquote>
                     {(customerStorySection.author || customerStorySection.company) && (
-                      <div className="text-base text-white/70">
+                      <div className="text-sm text-white/70">
                         {customerStorySection.author && <span className="font-semibold">{customerStorySection.author}</span>}
                         {customerStorySection.author && customerStorySection.company && <span> — </span>}
                         {customerStorySection.company && <span>{customerStorySection.company}</span>}
@@ -158,7 +158,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                 <div className="flex items-center gap-8 mb-8">
                   {/* Left Stat */}
                   <div className="flex-1">
-                    <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+                    <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-2">
                       {customerStorySection.stats.left.value}
                     </div>
                     <div className="text-base text-white/80">
@@ -167,14 +167,14 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                   </div>
 
                   {/* Vertical Divider */}
-                  <div className="h-16 w-px bg-white/20"></div>
+                    <div className="h-8 w-px bg-white/20"></div>
 
                   {/* Right Stat */}
                   <div className="flex-1">
-                    <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+                      <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-2">
                       {customerStorySection.stats.right.value}
                     </div>
-                    <div className="text-base text-white/80">
+                    <div className="text-sm text-white/80">
                       {customerStorySection.stats.right.label}
                     </div>
                   </div>

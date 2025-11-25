@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { productsData, type ProductCard } from "@/data/productsData";
+import FAQ from "./FAQ";
 
 interface ProductsProps {
   data?: ProductCard[];
@@ -25,7 +26,7 @@ const Products = ({
   };
 
   return (
-    <section className={`relative bg-black w-full pt-32 bg-gradient-to-b from-black to-purple-750 ${sectionClassName}`}>
+    <section className={`relative bg-black w-full max-w-5xl mx-auto pt-32 bg-gradient-to-b from-black to-purple-750 ${sectionClassName}`}>
       <div className={`max-w-7xl mx-auto px-4 ${className}`}>
         {/* Section Header */}
         {showHeader && (
@@ -36,7 +37,7 @@ const Products = ({
         )}
 
         {/* Cards Grid Container */}
-        <div className="grid grid-cols-1 gap-6 lg:gap-8 pb-20">
+        <div className="grid grid-cols-1 gap-6 lg:gap-4 pb-20">
           {data.map((card, cardIndex) => {
             const IconComponent = card.icon;
             
@@ -63,7 +64,7 @@ const Products = ({
                     </p>
 
                     {/* Feature List */}
-                    <div className="space-y-4 pt-[230px]">
+                    <div className="space-y-4 pt-20">
                       {card.features.map((feature, index) => {
                         const isOpen = openFeature?.card === cardIndex && openFeature?.feature === index;
                         return (
@@ -126,6 +127,7 @@ const Products = ({
           })}
         </div>
       </div>
+
     </section>
   );
 };

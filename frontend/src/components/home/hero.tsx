@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import AgencyMarque from "./AgencyMarque";
 import heroBackgroundVideo from "@/assets/video/herobackground.mp4";
+import DemoModal from "@/components/DemoModal";
 
 const hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -50,16 +51,20 @@ const hero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
-                  <a href="https://luna.closerx.ai/talk" target="_blank" rel="noopener noreferrer" className="group relative flex items-center gap-0 px-0 py-0 bg-purple-600 text-white text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all overflow-hidden">
+                  <DemoModal
+                    buttonClassName="group relative flex items-center gap-0 px-0 py-0 bg-purple-600 text-white text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all overflow-hidden"
+                  >
                     <span className="px-6 py-3">Try Live Demo</span>
                     <span className="w-10 h-10 flex m-2 items-center justify-center bg-purple-700 rounded-full">
                       <ArrowUpRight className="w-5 h-5" />
                     </span>
-                  </a>
-                  <a href="https://luna.closerx.ai/talk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-0 py-0 bg-transparent text-white text-base font-semibold hover:text-white/80 transition-colors">
+                  </DemoModal>
+                  <DemoModal
+                    buttonClassName="flex items-center gap-2 px-0 py-0 bg-transparent text-white text-base font-semibold hover:text-white/80 transition-colors"
+                  >
                     <span>Schedule a Demo</span>
                     <ArrowUpRight className="w-5 h-5" />
-                  </a>
+                  </DemoModal>
                 </div>
               </div>
             </div>

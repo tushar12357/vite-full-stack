@@ -121,34 +121,34 @@ export default function ROICalculator() {
   const exportRows = useMemo(() => {
     const baseRows =
       mode === "simple"
-        ? [
-            { label: "Mode", value: "Simple" },
-            { label: "Currency", value: currency },
-            { label: "Number of Clients", value: simpleClients },
-            { label: "Selling Price Per Client", value: fmt(simplePrice) },
-            { label: "Platform Cost", value: fmt(simplePlatform) },
-            { label: "Total Monthly Revenue", value: fmt(simpleRevenue) },
-            { label: "Net Monthly Profit", value: fmt(simpleProfit) },
-          ]
-        : [
-            { label: "Mode", value: "Advanced" },
-            { label: "Currency", value: currency },
-            { label: "Number of Clients", value: advancedClients },
-            { label: "Selling Price Per Client", value: fmt(advancedPricePerClient) },
-            { label: "Average Clients", value: avgClients },
-            { label: "Sell Rate", value: sellRate },
-            { label: "Base Cost", value: baseCost },
-            { label: "CloserX Tier", value: TIERS.find((t) => t.key === tierKey)?.name ?? tierKey },
-            { label: "Other Fixed Costs", value: fmt(otherFixedCosts) },
-            { label: "Include Theme", value: includeTheme ? "Yes" : "No" },
-            { label: "Subscription Revenue", value: fmt(advancedRevenue) },
-            { label: "Usage Revenue", value: fmt(usageRevenue) },
-            { label: "Total Revenue", value: fmt(totalRevenue) },
-            { label: "Platform & Add-ons", value: fmt(platformCost) },
-            { label: "Credit Cost", value: fmt(creditCost) },
-            { label: "Total Costs", value: fmt(totalCosts) },
-            { label: "Net Monthly Profit", value: fmt(advancedProfit) },
-          ];
+      ? [
+          { label: "Mode", value: "Simple" },
+          { label: "Currency", value: currency },
+          { label: "Number of Clients", value: simpleClients },
+          { label: "Selling Price Per Client", value: fmt(simplePrice) },
+          { label: "Platform Cost", value: fmt(simplePlatform) },
+          { label: "Total Monthly Revenue", value: fmt(simpleRevenue) },
+          { label: "Net Monthly Profit", value: fmt(simpleProfit) },
+        ]
+      : [
+          { label: "Mode", value: "Advanced" },
+          { label: "Currency", value: currency },
+          { label: "Number of Clients", value: advancedClients },
+          { label: "Selling Price Per Client", value: fmt(advancedPricePerClient) },
+          { label: "Average Clients", value: avgClients },
+          { label: "Sell Rate", value: sellRate },
+          { label: "Base Cost", value: baseCost },
+          { label: "CloserX Tier", value: TIERS.find((t) => t.key === tierKey)?.name ?? tierKey },
+          { label: "Other Fixed Costs", value: fmt(otherFixedCosts) },
+          { label: "Include Theme", value: includeTheme ? "Yes" : "No" },
+          { label: "Subscription Revenue", value: fmt(advancedRevenue) },
+          { label: "Usage Revenue", value: fmt(usageRevenue) },
+          { label: "Total Revenue", value: fmt(totalRevenue) },
+          { label: "Platform & Add-ons", value: fmt(platformCost) },
+          { label: "Credit Cost", value: fmt(creditCost) },
+          { label: "Total Costs", value: fmt(totalCosts) },
+          { label: "Net Monthly Profit", value: fmt(advancedProfit) },
+        ];
 
     return baseRows;
   }, [

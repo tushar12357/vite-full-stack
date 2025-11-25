@@ -25,7 +25,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
-import dashboardImage from "@/assets/image.png";
+import dashboardImage from "@/assets/aboutus/1.png";
 
 interface WhatWeDoItem {
   number: string;
@@ -104,9 +104,11 @@ const About = () => {
           <div className="max-w-5xl mx-auto text-center">
             {/* Circular Purple Icon */}
             <div className="flex justify-center mb-8">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
-                <span className="text-4xl md:text-5xl font-bold text-white">O</span>
-              </div>
+              <img
+                src="/favicon.png"
+                alt="CloserX Logo"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover"
+              />
             </div>
             
             {/* Why We Are Here Button */}
@@ -161,7 +163,7 @@ const About = () => {
               </div>
               
               {/* Right Column - Dashboard Screenshot */}
-              <div className="relative h-[280px] sm:h-[400px] md:h-[620px] lg:h-[620px] xl:h-[620px]">
+              <div className="relative h-[280px] sm:h-[400px] md:h-[620px] lg:h-[580px] xl:h-[580px]">
                 <div className="bg-white rounded-xl overflow-hidden border border-gray-200 h-full">
                   <img 
                     src={dashboardImage} 
@@ -538,7 +540,7 @@ const About = () => {
                 <p className="text-sm text-white/90 mb-12">For rapidly scaling startups and publishers</p>
                 <p className="text-xs text-white/80 mb-2">UP TO 20 Sub-Accounts</p>
                 <div className="mb-6 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold text-white">$99</span>
+                  <span className="text-5xl font-bold text-white">$97</span>
                   <span className="text-base text-white/90">Per Month</span>
                 </div>
                 <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all text-center block">
@@ -656,7 +658,7 @@ const About = () => {
 
         {/* We Are Hiring Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <div>

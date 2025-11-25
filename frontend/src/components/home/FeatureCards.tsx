@@ -1,4 +1,8 @@
 import { Clock, Zap, Shield, Target } from "lucide-react";
+import imageOne from "@/assets/whyChooseCloserX/1.png";
+import imageTwo from "@/assets/whyChooseCloserX/2.png";
+import imageThree from "@/assets/whyChooseCloserX/3.png";
+import imageFour from "@/assets/whyChooseCloserX/4.png";
 
 const FeatureCards = () => {
   const cardData = [
@@ -11,7 +15,7 @@ const FeatureCards = () => {
         { icon: Zap, title: "Instant Notifications" },
         { icon: Shield, title: "Secure Data Handling" },
       ],
-      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78ce816c851d5707d4.png"
+      imageUrl: imageOne
     },
     {
       icon: Zap,
@@ -22,7 +26,7 @@ const FeatureCards = () => {
         { icon: Target, title: "Global CDN" },
         { icon: Shield, title: "Auto-scaling" },
       ],
-      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78ce816c4d2d5707c7.png"
+      imageUrl: imageTwo
     },
     {
       icon: Shield,
@@ -33,7 +37,7 @@ const FeatureCards = () => {
         { icon: Clock, title: "24/7 Monitoring" },
         { icon: Target, title: "Compliance Ready" },
       ],
-      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a7847e103bc535ef2cb.png"
+      imageUrl: imageThree
     },
     {
       icon: Target,
@@ -44,7 +48,7 @@ const FeatureCards = () => {
         { icon: Zap, title: "Predictive Analytics" },
         { icon: Clock, title: "Auto-optimization" },
       ],
-      imageUrl: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a78f8fa3b84dc258091.jpg"
+      imageUrl: imageFour
     },
   ];
 
@@ -82,29 +86,29 @@ const FeatureCards = () => {
             return (
             <div
                 key={cardIndex}
-                className="sticky top-0 w-full flex items-center justify-center p-4 lg:p-8"
+                className="sticky top-0 w-full flex items-center justify-center p-4 sm:p-6 lg:p-8"
               style={{ 
                   zIndex: 10 + cardIndex,
                   minHeight: '100vh'
                 }}
               >
-                <div className="grid lg:grid-cols-2 border border-white/20 rounded-[12px] gap-4 lg:gap-8 items-start w-[998px] h-[488px] max-w-full mx-auto transform rotate-0 opacity-100 transition-all duration-300 bg-black p-6 lg:p-8 shadow-2xl">
+                <div className="grid lg:grid-cols-2 border border-white/20 rounded-[16px] gap-6 lg:gap-8 items-start w-full max-w-[998px] min-h-[520px] lg:h-[488px] mx-auto transform rotate-0 opacity-100 transition-all duration-300 bg-black p-6 lg:p-8 shadow-2xl">
                   {/* Left Column - Text Content */}
                   <div className="space-y-6 font-poppins">
                     {/* Heading */}
-                    <div className="mb-48">
-                      <h3 className="text-[20px] font-normal mb-4 text-white leading-tight font-poppins">
+                    <div className="mb-8 lg:mb-48">
+                      <h3 className="text-[20px] sm:text-[24px] font-normal mb-4 text-white leading-tight font-poppins">
                         {card.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-[16px] text-gray-400 leading-relaxed font-poppins">
+                      <p className="text-[15px] sm:text-[16px] text-gray-400 leading-relaxed font-poppins">
                         {card.description}
                       </p>
                     </div>
 
                     {/* Feature List */}
-                    <div className="space-y-4 mt-10">
+                    <div className="space-y-4 lg:mt-10">
                       {card.features.map((feature, index) => {
                         const FeatureIcon = feature.icon;
                         return (
@@ -120,13 +124,13 @@ const FeatureCards = () => {
                   </div>
 
                   {/* Right Column - Visual Content */}
-                  <div className="relative overflow-hidden h-full">
+                  <div className="relative overflow-hidden w-full h-[230px] sm:h-[320px] lg:h-full flex items-center justify-center">
                     {/* Image Card Visual */}
-                    <div className="relative rounded-[12px] h-full flex items-center justify-center shadow-2xl bg-white">
+                    <div className="relative rounded-[12px] w-full h-full flex items-center justify-center shadow-2xl bg-white overflow-hidden">
                       <img 
                         src={card.imageUrl} 
                         alt={card.title}
-                        className="w-full h-full object-contain rounded-[12px]"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                   </div>

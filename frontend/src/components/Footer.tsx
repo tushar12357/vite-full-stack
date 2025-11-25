@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Youtube } from "lucide-react";
+import logoCloserx from "@/assets/logoCloserx.png";
 
 const Footer = () => {
   const companyLinks = [
     { label: "About Us", to: "/about" },
     { label: "Become Our Partners", to: "https://affiliate.closerx.ai/home975572-1328-2226-4154" },
     { label: "Security", to: "/security" },
-    { label: "Compliance", to: "/compliance" },
-    { label: "Press & Media", to: "/press" },
     { label: "Contact Us", to: "/contact" },
     { label: "Careers", to: "/careers" },
   ];
@@ -56,11 +55,12 @@ const Footer = () => {
             {/* Column 1: Brand & Description */}
             <div className="lg:col-span-2">
               {/* Logo */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-3xl md:text-4xl font-bold text-white">CloserX</span>
-                <span className="text-2xl md:text-3xl font-bold text-white">
-                  <span className="text-3xl md:text-4xl">X</span>.ai
-                </span>
+              <div className="flex items-center gap-2">
+                <img
+                  src={logoCloserx}
+                  alt="CloserX.ai"
+                  className="h-8 mb-4 w-32 object-contain"
+                />
               </div>
 
               {/* Tagline */}
