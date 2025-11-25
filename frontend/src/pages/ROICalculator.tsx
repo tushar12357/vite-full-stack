@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Calculator, TrendingUp, Users, DollarSign, ArrowUpRight, Zap, Target, PieChart } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 // Helper: currency formatting
 const formatMoney = (n: number, currency = "USD", locale = "en-US") =>
@@ -20,13 +20,6 @@ const CURRENCY_DEFAULTS: Record<Currency, { symbol: string; locale: string }> = 
   GBP: { symbol: "£", locale: "en-GB" },
 };
 
-// Subscription tiers
-const TIERS = [
-  { key: "starter", name: "Starter", monthly: 29 },
-  { key: "standard", name: "Standard", monthly: 97 },
-  { key: "professional", name: "Professional", monthly: 297 },
-];
-
 // Default constants
 const DEFAULTS = {
   simple: {
@@ -35,20 +28,26 @@ const DEFAULTS = {
     platformMonthly: 297,
   },
   advanced: {
-    clients: 25,
-    pricePerClientMonthly: 297,
-    avgMinutesPerClient: 200,
-    sellRatePerMinute: 0.25,
-    baseCostPerMinute: 0.1,
-    subscriptionTier: "professional" as const,
-    includeThemeAddOn: false,
-    otherFixedMonthlyCosts: 0,
+    clients: 100,
+    pricePerClient: 100,
+    avgClients: 200,
+    sellRate: 0.25,
+    baseCost: 0.1,
+    tier: "professional",
+    otherFixedCosts: 0.2,
+    includeTheme: false,
   },
 };
 
+const TIERS = [
+  { key: "starter", name: "Starter", monthly: 29 },
+  { key: "standard", name: "Standard", monthly: 97 },
+  { key: "professional", name: "Professional", monthly: 297 },
+];
+
 export default function ROICalculator() {
   const [mode, setMode] = useState<"simple" | "advanced">("simple");
-  const [currency, setCurrency] = useState<Currency>("USD");
+  const [currency, setCurrency] = useState<Currency>("INR");
   const currencyCfg = CURRENCY_DEFAULTS[currency];
 
   // Simple state
@@ -57,31 +56,14 @@ export default function ROICalculator() {
   const [simplePlatform, setSimplePlatform] = useState<number>(DEFAULTS.simple.platformMonthly);
 
   // Advanced state
-  const [clients, setClients] = useState<number>(DEFAULTS.advanced.clients);
-  const [pricePerClientMonthly, setPricePerClientMonthly] = useState<number>(
-    DEFAULTS.advanced.pricePerClientMonthly
-  );
-  const [avgMinutesPerClient, setAvgMinutesPerClient] = useState<number>(
-    DEFAULTS.advanced.avgMinutesPerClient
-  );
-  const [sellRatePerMinute, setSellRatePerMinute] = useState<number>(
-    DEFAULTS.advanced.sellRatePerMinute
-  );
-  const [baseCostPerMinute, setBaseCostPerMinute] = useState<number>(
-    DEFAULTS.advanced.baseCostPerMinute
-  );
-  const [tierKey, setTierKey] = useState<string>(DEFAULTS.advanced.subscriptionTier);
-  const [includeTheme, setIncludeTheme] = useState<boolean>(
-    DEFAULTS.advanced.includeThemeAddOn
-  );
-  const [otherFixedMonthlyCosts, setOtherFixedMonthlyCosts] = useState<number>(
-    DEFAULTS.advanced.otherFixedMonthlyCosts
-  );
-
-  const tierMonthly = useMemo(() => {
-    const t = TIERS.find((t) => t.key === tierKey);
-    return t ? t.monthly : 0;
-  }, [tierKey]);
+  const [advancedClients, setAdvancedClients] = useState<number>(DEFAULTS.advanced.clients);
+  const [advancedPricePerClient, setAdvancedPricePerClient] = useState<number>(DEFAULTS.advanced.pricePerClient);
+  const [avgClients, setAvgClients] = useState<number>(DEFAULTS.advanced.avgClients);
+  const [sellRate, setSellRate] = useState<number>(DEFAULTS.advanced.sellRate);
+  const [baseCost, setBaseCost] = useState<number>(DEFAULTS.advanced.baseCost);
+  const [tierKey, setTierKey] = useState<string>(DEFAULTS.advanced.tier);
+  const [otherFixedCosts, setOtherFixedCosts] = useState<number>(DEFAULTS.advanced.otherFixedCosts);
+  const [includeTheme, setIncludeTheme] = useState<boolean>(DEFAULTS.advanced.includeTheme);
 
   // Simple Calculations
   const simpleRevenue = useMemo(
@@ -94,465 +76,494 @@ export default function ROICalculator() {
   );
 
   // Advanced Calculations
-  const subRevenue = useMemo(
-    () => Math.max(0, clients) * Math.max(0, pricePerClientMonthly),
-    [clients, pricePerClientMonthly]
+  const tierMonthly = useMemo(() => {
+    const t = TIERS.find((t) => t.key === tierKey);
+    return t ? t.monthly : 0;
+  }, [tierKey]);
+
+  const advancedRevenue = useMemo(
+    () => Math.max(0, advancedClients) * Math.max(0, advancedPricePerClient),
+    [advancedClients, advancedPricePerClient]
   );
-  const usageMinutes = useMemo(
-    () => Math.max(0, clients) * Math.max(0, avgMinutesPerClient),
-    [clients, avgMinutesPerClient]
-  );
+
   const usageRevenue = useMemo(
-    () => usageMinutes * Math.max(0, sellRatePerMinute),
-    [usageMinutes, sellRatePerMinute]
+    () => Math.max(0, avgClients) * Math.max(0, sellRate),
+    [avgClients, sellRate]
   );
+
   const totalRevenue = useMemo(
-    () => subRevenue + usageRevenue,
-    [subRevenue, usageRevenue]
+    () => advancedRevenue + usageRevenue,
+    [advancedRevenue, usageRevenue]
   );
 
   const platformCost = useMemo(
-    () => tierMonthly + (includeTheme ? 30 : 0) + Math.max(0, otherFixedMonthlyCosts),
-    [tierMonthly, includeTheme, otherFixedMonthlyCosts]
+    () => tierMonthly + (includeTheme ? 30 : 0) + Math.max(0, otherFixedCosts),
+    [tierMonthly, includeTheme, otherFixedCosts]
   );
+
   const creditCost = useMemo(
-    () => usageMinutes * Math.max(0, baseCostPerMinute),
-    [usageMinutes, baseCostPerMinute]
-  );
-  const totalCost = useMemo(() => platformCost + creditCost, [platformCost, creditCost]);
-  const netProfit = useMemo(() => totalRevenue - totalCost, [totalRevenue, totalCost]);
-  const marginPct = useMemo(
-    () => (totalRevenue > 0 ? (netProfit / totalRevenue) * 100 : 0),
-    [netProfit, totalRevenue]
+    () => Math.max(0, avgClients) * Math.max(0, baseCost),
+    [avgClients, baseCost]
   );
 
-  // Break-even calculation
-  const contributionPerClient = useMemo(() => {
-    return (
-      Math.max(0, pricePerClientMonthly) +
-      Math.max(0, avgMinutesPerClient) *
-        (Math.max(0, sellRatePerMinute) - Math.max(0, baseCostPerMinute))
-    );
-  }, [pricePerClientMonthly, avgMinutesPerClient, sellRatePerMinute, baseCostPerMinute]);
+  const totalCosts = useMemo(
+    () => platformCost + creditCost,
+    [platformCost, creditCost]
+  );
 
-  const breakEvenClients = useMemo(() => {
-    if (contributionPerClient <= 0) return Infinity;
-    return Math.ceil(Math.max(0, platformCost) / contributionPerClient);
-  }, [platformCost, contributionPerClient]);
+  const advancedProfit = useMemo(
+    () => totalRevenue - totalCosts,
+    [totalRevenue, totalCosts]
+  );
 
   const fmt = (n: number) => formatMoney(n, currency, currencyCfg.locale);
 
+  const exportRows = useMemo(() => {
+    const baseRows =
+      mode === "simple"
+      ? [
+          { label: "Mode", value: "Simple" },
+          { label: "Currency", value: currency },
+          { label: "Number of Clients", value: simpleClients },
+          { label: "Selling Price Per Client", value: fmt(simplePrice) },
+          { label: "Platform Cost", value: fmt(simplePlatform) },
+          { label: "Total Monthly Revenue", value: fmt(simpleRevenue) },
+          { label: "Net Monthly Profit", value: fmt(simpleProfit) },
+        ]
+      : [
+          { label: "Mode", value: "Advanced" },
+          { label: "Currency", value: currency },
+          { label: "Number of Clients", value: advancedClients },
+          { label: "Selling Price Per Client", value: fmt(advancedPricePerClient) },
+          { label: "Average Clients", value: avgClients },
+          { label: "Sell Rate", value: sellRate },
+          { label: "Base Cost", value: baseCost },
+          { label: "CloserX Tier", value: TIERS.find((t) => t.key === tierKey)?.name ?? tierKey },
+          { label: "Other Fixed Costs", value: fmt(otherFixedCosts) },
+          { label: "Include Theme", value: includeTheme ? "Yes" : "No" },
+          { label: "Subscription Revenue", value: fmt(advancedRevenue) },
+          { label: "Usage Revenue", value: fmt(usageRevenue) },
+          { label: "Total Revenue", value: fmt(totalRevenue) },
+          { label: "Platform & Add-ons", value: fmt(platformCost) },
+          { label: "Credit Cost", value: fmt(creditCost) },
+          { label: "Total Costs", value: fmt(totalCosts) },
+          { label: "Net Monthly Profit", value: fmt(advancedProfit) },
+        ];
+
+    return baseRows;
+  }, [
+    mode,
+    currency,
+    simpleClients,
+    simplePrice,
+    simplePlatform,
+    simpleRevenue,
+    simpleProfit,
+    advancedClients,
+    advancedPricePerClient,
+    avgClients,
+    sellRate,
+    baseCost,
+    tierKey,
+    otherFixedCosts,
+    includeTheme,
+    advancedRevenue,
+    usageRevenue,
+    totalRevenue,
+    platformCost,
+    creditCost,
+    totalCosts,
+    advancedProfit,
+  ]);
+
+  const handleExport = () => {
+    const csvRows = exportRows
+      .map(({ label, value }) => `${label.replace(/"/g, '""')},"${String(value).replace(/"/g, '""')}"`)
+      .join("\r\n");
+
+    const csvContent = `Metric,Value\r\n${csvRows}`;
+
+    const blob = new Blob(["\ufeff", csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `roi-calculation-${mode}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-muted/20 to-background">
+    <div className="min-h-screen bg-black text-white">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 pattern-dots">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"></div>
-        <div className="container relative z-10 max-w-6xl mx-auto px-4">
-          <div className="text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <Calculator className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">ROI Calculator</span>
+      <main className="pt-28">
+        {/* Hero Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium mb-6">
+              Partner Program
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              The Numbers Say It All —{" "}
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                See Your AI Reselling Profits
-              </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              The Numbers Say It All — See Your AI Reselling Profits
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Instantly estimate your agency profits from white-labeling CloserX's AI Calling Agents. 
-              Toggle between Simple and Advanced modes to dial in your assumptions.
+            <p className="text-xl text-white max-w-3xl mx-auto">
+              Instantly estimate your agency profits from white-labeling CloserX's AI Calling Agents. Toggle between Simple and Advanced modes to dial in your assumptions.
             </p>
-
-            {/* Mode & Currency Controls */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 pt-6">
-              <div className="inline-flex rounded-2xl shadow-elegant border border-border bg-card p-1">
-                <button
-                  className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
-                    mode === "simple"
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  onClick={() => setMode("simple")}
-                >
-                  <span className="flex items-center gap-2">
-                    <Zap className="w-4 h-4" />
-                    Simple Mode
-                  </span>
-                </button>
-                <button
-                  className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
-                    mode === "advanced"
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  onClick={() => setMode("advanced")}
-                >
-                  <span className="flex items-center gap-2">
-                    <Target className="w-4 h-4" />
-                    Advanced Mode
-                  </span>
-                </button>
-              </div>
-
-              <div className="flex items-center gap-3 px-4 py-3 rounded-2xl border border-border bg-card shadow-sm">
-                <DollarSign className="w-4 h-4 text-muted-foreground" />
-                <select
-                  className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer"
-                  value={currency}
-                  onChange={(e) => setCurrency(e.target.value as Currency)}
-                >
-                  {Object.keys(CURRENCY_DEFAULTS).map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Calculator Section */}
-      <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Left: Inputs Card */}
-            <div className="rounded-3xl border border-border bg-card shadow-elegant p-8 space-y-8">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-primary/10">
-                  <Calculator className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold">Configure Your Model</h2>
-                  <p className="text-sm text-muted-foreground">Adjust inputs to match your business</p>
-                </div>
-              </div>
-
-              {mode === "simple" ? (
-                <div className="space-y-6">
-                  <InputField
-                    icon={<Users className="w-5 h-5 text-primary" />}
-                    label="Number of Clients"
-                    description="How many clients will you serve?"
-                    type="number"
-                    value={simpleClients}
-                    onChange={(val) => setSimpleClients(val)}
-                  />
-
-                  <InputField
-                    icon={<DollarSign className="w-5 h-5 text-secondary" />}
-                    label={`Selling Price per Client (${currencyCfg.symbol}/month)`}
-                    description="What will you charge each client?"
-                    type="number"
-                    value={simplePrice}
-                    onChange={(val) => setSimplePrice(val)}
-                    step={0.01}
-                  />
-
-                  <InputField
-                    icon={<TrendingUp className="w-5 h-5 text-accent" />}
-                    label="Platform Cost (CloserX subscription)"
-                    description="Your monthly CloserX subscription"
-                    type="number"
-                    value={simplePlatform}
-                    onChange={(val) => setSimplePlatform(val)}
-                    step={0.01}
-                  />
-
-                  <InfoBox>
-                    <p className="text-sm text-muted-foreground">
-                      💡 <strong>Pro Tip:</strong> Choose $29 (Starter), $97 (Standard), or $297 (Professional) tier based on your needs.
-                    </p>
-                  </InfoBox>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <InputField
-                      icon={<Users className="w-5 h-5 text-primary" />}
-                      label="Clients"
-                      type="number"
-                      value={clients}
-                      onChange={(val) => setClients(val)}
-                    />
-                    <InputField
-                      icon={<DollarSign className="w-5 h-5 text-secondary" />}
-                      label="Price/Client/Month"
-                      type="number"
-                      value={pricePerClientMonthly}
-                      onChange={(val) => setPricePerClientMonthly(val)}
-                      step={0.01}
-                    />
+        {/* ROI Calculator Section */}
+        <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">ROI Calculator</h2>
+            <p className="text-base text-gray-400 mb-2">Estimate Your Cost</p>
+            <p className="text-base text-gray-400 mb-12">
+              Adjust your usage, LLM, engine, and telephony to see real time pricing for our AI voice agent solution.
+            </p>
+            
+            {/* Calculator Container */}
+            <div 
+              className="rounded-2xl p-8 md:p-12 relative overflow-hidden"
+              style={{
+                background: 'linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)'
+              }}
+            >
+              {/* Noise Overlay */}
+              <div 
+                className="absolute inset-0 pointer-events-none rounded-2xl"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  opacity: 0.25
+                }}
+              />
+              <div className="grid lg:grid-cols-2 gap-12 relative z-10">
+                {/* Left Column - Configure Your Model */}
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Configure Your Model</h3>
+                    <p className="text-sm text-white/80">Adjust inputs to match your business</p>
                   </div>
 
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <InputField
-                      label="Avg Minutes/Client"
-                      type="number"
-                      value={avgMinutesPerClient}
-                      onChange={(val) => setAvgMinutesPerClient(val)}
-                    />
-                    <InputField
-                      label="Sell Rate/Minute"
-                      type="number"
-                      value={sellRatePerMinute}
-                      onChange={(val) => setSellRatePerMinute(val)}
-                      step={0.001}
-                    />
-                    <InputField
-                      label="Base Cost/Minute"
-                      type="number"
-                      value={baseCostPerMinute}
-                      onChange={(val) => setBaseCostPerMinute(val)}
-                      step={0.001}
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="block text-sm font-semibold">CloserX Tier</label>
-                      <select
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary transition-all"
-                        value={tierKey}
-                        onChange={(e) => setTierKey(e.target.value)}
+                  {/* Mode Buttons and Currency */}
+                  <div className="flex items-center gap-4">
+                    <div className="flex gap-4">
+                      <button
+                        onClick={() => setMode("simple")}
+                        className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                          mode === "simple"
+                            ? "bg-white/20 text-white"
+                            : "bg-white/10 text-white/70 hover:bg-white/15"
+                        }`}
                       >
-                        {TIERS.map((t) => (
-                          <option value={t.key} key={t.key}>
-                            {t.name} ({fmt(t.monthly)}/mo)
+                        Simple Mode
+                      </button>
+                      <button
+                        onClick={() => setMode("advanced")}
+                        className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                          mode === "advanced"
+                            ? "bg-white/20 text-white"
+                            : "bg-white/10 text-white/70 hover:bg-white/15"
+                        }`}
+                      >
+                        Advanced Mode
+                      </button>
+                    </div>
+                    <div className="relative">
+                      <select
+                        className="px-6 py-3 rounded-full border border-white/20 bg-white/10 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 pr-10"
+                        value={currency}
+                        onChange={(e) => setCurrency(e.target.value as Currency)}
+                      >
+                        {Object.entries(CURRENCY_DEFAULTS).map(([c, cfg]) => (
+                          <option key={c} value={c} className="bg-gray-800">
+                            {cfg.symbol} {c === 'INR' ? 'IND' : c}
                           </option>
                         ))}
                       </select>
+                      <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white pointer-events-none" />
                     </div>
-                    <InputField
-                      label="Other Fixed Costs"
-                      type="number"
-                      value={otherFixedMonthlyCosts}
-                      onChange={(val) => setOtherFixedMonthlyCosts(val)}
-                      step={0.01}
-                    />
                   </div>
 
-                  <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-muted/50">
-                    <div>
-                      <p className="text-sm font-semibold">Theme Add-on</p>
-                      <p className="text-xs text-muted-foreground">+$30/month</p>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        className="sr-only peer"
-                        checked={includeTheme}
-                        onChange={(e) => setIncludeTheme(e.target.checked)}
-                      />
-                      <div className="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary peer-focus:ring-2 peer-focus:ring-primary/50 transition-all">
-                        <div className="absolute top-0.5 left-0.5 bg-background w-5 h-5 rounded-full transition-transform peer-checked:translate-x-5"></div>
-                      </div>
-                    </label>
+                  {/* Input Fields */}
+                  <div className="space-y-6">
+                    {mode === "simple" ? (
+                      <>
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Number of Clients</label>
+                          <p className="text-xs text-white/70">How many clients will you Serve</p>
+                          <input
+                            type="number"
+                            min={0}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="100"
+                            value={simpleClients}
+                            onChange={(e) => setSimpleClients(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Selling Price per Client ({currencyCfg.symbol}/month)</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="500"
+                            value={simplePrice}
+                            onChange={(e) => setSimplePrice(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Platform Cost (CloserX subscription)</label>
+                          <p className="text-xs text-white/70">Your monthly CloserX subscription</p>
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="297"
+                            value={simplePlatform}
+                            onChange={(e) => setSimplePlatform(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Number of Clients</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <input
+                            type="number"
+                            min={0}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="100"
+                            value={advancedClients}
+                            onChange={(e) => setAdvancedClients(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Selling Price per Client ({currencyCfg.symbol}/month)</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="100"
+                            value={advancedPricePerClient}
+                            onChange={(e) => setAdvancedPricePerClient(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Average Clients</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <input
+                            type="number"
+                            min={0}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="200"
+                            value={avgClients}
+                            onChange={(e) => setAvgClients(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Sell Rate</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="0.25"
+                            value={sellRate}
+                            onChange={(e) => setSellRate(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Base Cost</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="0.1"
+                            value={baseCost}
+                            onChange={(e) => setBaseCost(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">CloserX Tier</label>
+                          <p className="text-xs text-white/70">What will you charge each client?</p>
+                          <div className="relative">
+                            <select
+                              className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 pr-10"
+                              value={tierKey}
+                              onChange={(e) => setTierKey(e.target.value)}
+                            >
+                              {TIERS.map((t) => (
+                                <option key={t.key} value={t.key} className="bg-gray-800">
+                                  {t.name} ({currencyCfg.symbol}{t.monthly}/Month)
+                                </option>
+                              ))}
+                            </select>
+                            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white pointer-events-none" />
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-white">Other Fixed Costs</label>
+                          <p className="text-xs text-white/70">Your monthly CloserX subscription</p>
+                          <input
+                            type="number"
+                            min={0}
+                            step={0.01}
+                            className="w-full px-4 py-3 rounded-full border-0 bg-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="0.2"
+                            value={otherFixedCosts}
+                            onChange={(e) => setOtherFixedCosts(parseFloat(e.target.value) || 0)}
+                          />
+                        </div>
+
+                        <div className="flex items-center justify-between p-4 rounded-full bg-white/10 border border-white/20">
+                          <div>
+                            <p className="text-sm font-semibold text-white">Theme ADD-On (+{currencyCfg.symbol}30/Month)</p>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input
+                              type="checkbox"
+                              className="sr-only peer"
+                              checked={includeTheme}
+                              onChange={(e) => setIncludeTheme(e.target.checked)}
+                            />
+                            <div className="w-11 h-6 bg-white/20 rounded-full peer peer-checked:bg-white/30 peer-focus:ring-2 peer-focus:ring-white/50 transition-all">
+                              <div className="absolute top-0.5 left-0.5 bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-5"></div>
+                            </div>
+                          </label>
+                        </div>
+                      </>
+                    )}
                   </div>
-
-                  <InfoBox>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Profit = (Subscription + Usage revenue) − (Platform + Credit costs). Credit cost = answered minutes × base cost/minute.
-                    </p>
-                  </InfoBox>
                 </div>
-              )}
-            </div>
 
-            {/* Right: Results Card */}
-            <div className="rounded-3xl border border-border bg-gradient-to-br from-card via-card to-primary/5 shadow-elegant p-8 space-y-8">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-secondary/10">
-                  <PieChart className="w-6 h-6 text-secondary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold">Your ROI Breakdown</h2>
-                  <p className="text-sm text-muted-foreground">Monthly financial projection</p>
+                {/* Right Column - Your ROI Breakdown */}
+                <div className="space-y-8">
+                  {/* Card Container */}
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 space-y-6">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-2xl font-bold text-white">Your ROI Breakdown</h3>
+                      <button
+                        type="button"
+                        onClick={handleExport}
+                        className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-semibold rounded-lg transition-colors"
+                      >
+                        Export
+                      </button>
+                    </div>
+                    <p className="text-sm text-white/80">Monthly financial projection</p>
+                  </div>
+                    {mode === "simple" ? (
+                      <>
+                        <div className="flex items-center justify-between py-4 border-b border-white/20">
+                          <span className="text-base text-white/90">Total Monthly Revenue</span>
+                          <span className="text-xl font-bold text-white">{fmt(simpleRevenue)}</span>
+                        </div>
+
+                        <div className="flex items-center justify-between py-4 border-b border-white/20">
+                          <span className="text-base text-white/90">Platform Fee</span>
+                          <span className="text-xl font-bold text-white">{fmt(simplePlatform)}</span>
+                        </div>
+
+                        <div className="flex items-center justify-between py-4 border-b border-white/20">
+                          <span className="text-base text-white/90">Net Monthly Profit</span>
+                          <span className="text-xl font-bold text-white">{fmt(simpleProfit)}</span>
+                        </div>
+
+                        <div className="pt-6 mt-6 border-t-2 border-white/30">
+                          <div className="flex items-center justify-between">
+                            <span className="text-2xl font-bold text-white">Total</span>
+                            <span className="text-3xl font-bold text-white">{fmt(simpleProfit)}</span>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="space-y-3">
+                          <p className="text-sm font-semibold text-white/70 uppercase tracking-wide">Revenue</p>
+                          <div className="flex items-center justify-between py-2">
+                            <span className="text-base text-white/90">Subscription</span>
+                            <span className="text-lg font-bold text-white">{fmt(advancedRevenue)}</span>
+                          </div>
+                          <div className="flex items-center justify-between py-2">
+                            <span className="text-base text-white/90">Usage</span>
+                            <span className="text-lg font-bold text-white">{fmt(usageRevenue)}</span>
+                          </div>
+                        </div>
+
+                        <div className="pt-4 border-t border-white/20">
+                          <div className="flex items-center justify-between">
+                            <span className="text-lg font-bold text-white">Total Revenue</span>
+                            <span className="text-xl font-bold text-white">{fmt(totalRevenue)}</span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3 pt-4 border-t border-white/20">
+                          <p className="text-sm font-semibold text-white/70 uppercase tracking-wide">Costs</p>
+                          <div className="flex items-center justify-between py-2">
+                            <span className="text-base text-white/90">Platform & Add-ons</span>
+                            <span className="text-lg font-bold text-white">{fmt(platformCost)}</span>
+                          </div>
+                          <div className="flex items-center justify-between py-2">
+                            <span className="text-base text-white/90">Credit Cost</span>
+                            <span className="text-lg font-bold text-white">{fmt(creditCost)}</span>
+                          </div>
+                        </div>
+
+                        <div className="pt-4 border-t border-white/20">
+                          <div className="flex items-center justify-between">
+                            <span className="text-lg font-bold text-white">Total Costs</span>
+                            <span className="text-xl font-bold text-white">{fmt(totalCosts)}</span>
+                          </div>
+                        </div>
+
+                        <div className="pt-6 mt-6 border-t-2 border-white/30">
+                          <div className="flex items-center justify-between">
+                            <span className="text-2xl font-bold text-white">Net Monthly Profit</span>
+                            <span className="text-3xl font-bold text-white">{fmt(advancedProfit)}</span>
+                          </div>
+                        </div>
+                      </>
+                    )}
+
+                    <button className="w-full bg-white text-purple-600 font-semibold py-4 rounded-lg hover:bg-white/90 transition-colors mt-8">
+                      Begin Reselling
+                    </button>
+                  </div>
                 </div>
               </div>
-
-              {mode === "simple" ? (
-                <div className="space-y-6">
-                  <MetricCard
-                    label="Total Monthly Revenue"
-                    value={fmt(simpleRevenue)}
-                    icon={<TrendingUp className="w-5 h-5" />}
-                    color="primary"
-                  />
-                  <MetricCard
-                    label="Platform Cost"
-                    value={fmt(simplePlatform)}
-                    icon={<DollarSign className="w-5 h-5" />}
-                    color="muted"
-                  />
-                  <div className="h-px bg-border my-4"></div>
-                  <ProfitCard value={fmt(simpleProfit)} profit={simpleProfit} />
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  <div className="p-6 rounded-2xl bg-background/60 border border-border space-y-3">
-                    <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Revenue</p>
-                    <MetricRow label="Subscription" value={fmt(subRevenue)} />
-                    <MetricRow label="Usage" value={fmt(usageRevenue)} />
-                    <div className="h-px bg-border my-2"></div>
-                    <MetricRow label="Total Revenue" value={fmt(totalRevenue)} bold />
-                  </div>
-
-                  <div className="p-6 rounded-2xl bg-background/60 border border-border space-y-3">
-                    <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Costs</p>
-                    <MetricRow label="Platform & Add-ons" value={fmt(platformCost)} />
-                    <MetricRow label="Credit Cost" value={fmt(creditCost)} />
-                    <div className="h-px bg-border my-2"></div>
-                    <MetricRow label="Total Costs" value={fmt(totalCost)} bold />
-                  </div>
-
-                  <div className="h-px bg-border my-4"></div>
-                  <ProfitCard value={fmt(netProfit)} profit={netProfit} />
-
-                  <div className="grid grid-cols-2 gap-4 mt-6">
-                    <StatBox label="Profit Margin" value={`${marginPct.toFixed(1)}%`} />
-                    <StatBox
-                      label="Break-even"
-                      value={breakEvenClients === Infinity ? "N/A" : `${breakEvenClients} clients`}
-                    />
-                  </div>
-                </div>
-              )}
-
-              <button className="w-full mt-8 flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-bold shadow-glow hover:shadow-elegant transition-all hover:scale-105">
-                Begin Reselling
-                <ArrowUpRight className="w-5 h-5" />
-              </button>
             </div>
-          </div>
 
-          {/* Footer Note */}
-          <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground max-w-3xl mx-auto">
-              💡 All assumptions are editable. For accuracy, update minutes and rates to match your niche, geography, and carrier costs.
+            {/* Pro Tip */}
+            <p className="text-sm text-white mt-8 text-center">
+              Pro Tip: Choose $29 (Starter), $97 (Standard), or $297 (Professional) tier based on your needs.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <Footer />
-    </div>
-  );
-}
-
-// Reusable Components
-function InputField({
-  icon,
-  label,
-  description,
-  type,
-  value,
-  onChange,
-  step,
-}: {
-  icon?: React.ReactNode;
-  label: string;
-  description?: string;
-  type: "number";
-  value: number;
-  onChange: (val: number) => void;
-  step?: number;
-}) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
-        {icon}
-        <label className="block text-sm font-semibold">{label}</label>
-      </div>
-      {description && <p className="text-xs text-muted-foreground">{description}</p>}
-      <input
-        type={type}
-        min={0}
-        step={step || 1}
-        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary transition-all"
-        value={value}
-        onChange={(e) =>
-          onChange(type === "number" ? parseFloat(e.target.value || "0") : parseInt(e.target.value || "0"))
-        }
-      />
-    </div>
-  );
-}
-
-function InfoBox({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex items-start gap-3 p-4 rounded-2xl bg-primary/5 border border-primary/20">
-      {children}
-    </div>
-  );
-}
-
-function MetricCard({
-  label,
-  value,
-  icon,
-  color,
-}: {
-  label: string;
-  value: string;
-  icon: React.ReactNode;
-  color: string;
-}) {
-  return (
-    <div className="p-6 rounded-2xl bg-background/60 border border-border flex items-center justify-between">
-      <div className="space-y-1">
-        <p className="text-sm text-muted-foreground">{label}</p>
-        <p className="text-2xl font-bold">{value}</p>
-      </div>
-      <div className={`p-3 rounded-xl bg-${color}/10`}>{icon}</div>
-    </div>
-  );
-}
-
-function MetricRow({ label, value, bold }: { label: string; value: string; bold?: boolean }) {
-  return (
-    <div className="flex items-center justify-between">
-      <span className={`text-sm ${bold ? "font-bold" : "text-muted-foreground"}`}>{label}</span>
-      <span className={`text-sm ${bold ? "font-bold" : ""}`}>{value}</span>
-    </div>
-  );
-}
-
-function ProfitCard({ value, profit }: { value: string; profit: number }) {
-  return (
-    <div className="p-8 rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 border-2 border-primary/20">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-            Net Monthly Profit
-          </p>
-          <p className={`text-4xl font-bold ${profit >= 0 ? "text-primary" : "text-destructive"}`}>
-            {value}
-          </p>
-        </div>
-        <div
-          className={`p-4 rounded-2xl ${
-            profit >= 0 ? "bg-primary/10" : "bg-destructive/10"
-          }`}
-        >
-          <TrendingUp className={`w-8 h-8 ${profit >= 0 ? "text-primary" : "text-destructive"}`} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function StatBox({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="p-4 rounded-xl bg-background/60 border border-border text-center">
-      <p className="text-xs text-muted-foreground mb-1">{label}</p>
-      <p className="text-lg font-bold">{value}</p>
     </div>
   );
 }

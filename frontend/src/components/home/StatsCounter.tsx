@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { Phone, Users, Zap, TrendingUp } from "lucide-react";
 
 const StatsCounter = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,78 +9,113 @@ const StatsCounter = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+        } else {
+          setIsVisible(false);
         }
       },
-      { threshold: 0.2 }
+      { 
+        threshold: 0.1, // Trigger when 10% of component is visible
+        rootMargin: '0px' 
+      }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
   const stats = [
-    { icon: Phone, value: 50, suffix: "M+", label: "Calls Processed", color: "from-primary to-purple-600" },
-    { icon: Users, value: 500, suffix: "+", label: "Active Agencies", color: "from-secondary to-cyan-600" },
-    { icon: Zap, value: 99.9, suffix: "%", label: "Uptime Guarantee", color: "from-accent to-orange-600" },
-    { icon: TrendingUp, value: 35, suffix: "%", label: "Avg. Conversion Increase", color: "from-green-500 to-emerald-600" },
+    { value: 10, suffix: "M+", label: "Calls Processed", isDecimal: false },
+    { value: 500, suffix: "+", label: "Calls Processed", isDecimal: false },
+    { value: 4.9, suffix: "/5", label: "Calls Processed", isDecimal: true },
+    { value: 99.9, suffix: "%", label: "Calls Processed", isDecimal: true },
   ];
 
-  const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
+  const description = "Proven voice AI performance across real, high-volume phone operations.";
+
+  const Counter = ({ 
+    end, 
+    suffix, 
+    isDecimal, 
+    duration = 2000 
+  }: { 
+    end: number; 
+    suffix: string; 
+    isDecimal: boolean;
+    duration?: number;
+  }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-      if (!isVisible) return;
+      // Reset count when component goes out of view
+      if (!isVisible) {
+        setCount(0);
+        return;
+      }
 
+      // Start counting animation when component comes into view
       let startTime: number;
+      let animationFrameId: number;
+      
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
-        setCount(Math.floor(progress * end));
-        if (progress < 1) {
-          requestAnimationFrame(step);
+        const currentCount = progress * end;
+        setCount(isDecimal ? parseFloat(currentCount.toFixed(1)) : Math.floor(currentCount));
+        if (progress < 1 && isVisible) {
+          animationFrameId = requestAnimationFrame(step);
         }
       };
-      requestAnimationFrame(step);
-    }, [isVisible, end, duration]);
+      
+      animationFrameId = requestAnimationFrame(step);
+      
+      return () => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+      };
+    }, [isVisible, end, duration, isDecimal]);
 
-    return <span>{count.toLocaleString()}</span>;
+    return (
+      <span>
+        {isDecimal ? count.toFixed(1) : count.toLocaleString()}{suffix}
+      </span>
+    );
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 pattern-dots-dark" />
-      
-      {/* Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" style={{ animation: 'glow-pulse 2s ease-in-out infinite' }} />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-[100px]" style={{ animation: 'glow-pulse 2s ease-in-out infinite', animationDelay: '1s' }} />
-
-      <div className="relative max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section ref={sectionRef} className="relative bg-black pt-20 pb-16 lg:pt-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:border-primary/50 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="flex flex-col items-start justify-between gap-4 border border-[#1f1f1f] bg-gradient-to-b from-purple-500/10 to-transparent p-8 text-left shadow-lg shadow-purple-500/10"
             >
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-purple-600/20 mb-6 group-hover:rotate-[360deg] transition-transform duration-1000">
-                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${stat.color} flex items-center justify-center`}>
-                  <stat.icon size={32} className="text-white" />
-                </div>
-              </div>
-
-              {/* Number */}
-              <div className="text-5xl font-extrabold text-white mb-2">
-                {isVisible && <Counter end={stat.value} />}
-                <span className="text-3xl font-semibold text-primary">{stat.suffix}</span>
+              {/* Large Number */}
+              <div className="text-5xl font-bold text-white lg:text-6xl">
+                <Counter 
+                  end={stat.value} 
+                  suffix={stat.suffix}
+                  isDecimal={stat.isDecimal}
+                />
               </div>
 
               {/* Label */}
-              <p className="text-base font-medium text-slate-300">{stat.label}</p>
+              <p className="text-base font-medium text-white lg:text-lg">
+                {stat.label}
+              </p>
+
+              {/* Description */}
+              <p className="text-sm leading-relaxed text-white/70">
+                {description}
+              </p>
             </div>
           ))}
         </div>

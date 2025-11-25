@@ -1,42 +1,53 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Bot, BarChart3, Zap, Shield } from "lucide-react";
+import FAQ from "@/components/home/FAQ";
+import FinalCTA from "@/components/home/FinalCTA";
+import Products from "@/components/home/Products";
+import { useLuna } from "@/contexts/LunaContext";
 
 const Platform = () => {
+  const { openLuna } = useLuna();
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black">
       <Header />
-      
-      <main className="pt-32 pb-20 pattern-dots-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-1.5 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-6">
-              Platform Overview
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Everything You Need in One Platform
+
+      <main className="pt-40 pb-32 px-4 sm:px-6 lg:px-6 ">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center my-20">
+            {/* Main Title - H1: Larger size */}
+            <h1 className="text-9xl font-bold text-white mb-6 leading-tight">
+              The CloserX.ai
+              <br />
+              Agent Platform
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A complete AI calling solution with white-label capabilities, advanced analytics, and seamless integrations.
+
+            {/* Subtitle - Body: 16px */}
+            <p className="text-base text-white mb-12 max-w-4xl mx-auto leading-relaxed">
+              A complete AI calling solution with white-label capabilities,<br />  advanced analytics, and seamless integrations.
             </p>
+
+            {/* Call-to-Action Buttons */}
+            <div className="flex flex-row items-center justify-center gap-6">
+              {/* Talk To Sales Button - Pill-shaped with purple background */}
+              <a href="/contact" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105">
+                Talk To Sales
+              </a>
+
+              {/* Create an AI Agent - Text link (not a button) */}
+              <button onClick={openLuna} className="text-purple-400 hover:text-purple-500 font-bold text-base transition-colors duration-300">
+                Create an AI Agent
+              </button>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-16">
-            {[
-              { icon: Bot, title: "AI Voice Agents", desc: "Natural-sounding AI that handles calls 24/7" },
-              { icon: BarChart3, title: "Real-Time Analytics", desc: "Track performance metrics as they happen" },
-              { icon: Zap, title: "Lightning Fast", desc: "Response times under 30 seconds" },
-              { icon: Shield, title: "Enterprise Security", desc: "Bank-level encryption and compliance" },
-            ].map((feature, idx) => (
-              <div key={idx} className="bg-card p-8 rounded-2xl border border-border hover:shadow-elegant transition-all">
-                <feature.icon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
+
         </div>
       </main>
+
+      <Products />
+      <FAQ />
+      <FinalCTA />
 
       <Footer />
     </div>

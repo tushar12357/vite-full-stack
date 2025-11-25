@@ -97,8 +97,24 @@ export default {
         "scale-in": "scale-in 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
         display: ["Poppins", "sans-serif"],
+      },
+      fontSize: {
+        // Poppins Desktop Scale: 1200 Minor Third, Base 16px
+        'xs': ['12px', { lineHeight: '1.5', letterSpacing: '0' }],      // Small: 12px
+        'sm': ['14px', { lineHeight: '1.5', letterSpacing: '0' }],      // Small-Medium
+        'base': ['16px', { lineHeight: '1.5', letterSpacing: '0' }],    // Body: 16px
+        'lg': ['18px', { lineHeight: '1.5', letterSpacing: '0' }],     // Headings 6: 18px
+        'xl': ['20px', { lineHeight: '1.4', letterSpacing: '0' }],     // Large
+        '2xl': ['24px', { lineHeight: '1.4', letterSpacing: '0' }],    // Headings 5: 24px
+        '3xl': ['28px', { lineHeight: '1.3', letterSpacing: '0' }],    // Headings 4: 28px
+        '4xl': ['32px', { lineHeight: '1.3', letterSpacing: '0' }],    // Headings 3: 32px
+        '5xl': ['40px', { lineHeight: '1.2', letterSpacing: '0' }],    // Headings 2: 40px
+        '6xl': ['48px', { lineHeight: '1.2', letterSpacing: '0' }],     // Headings 1: 48px
+        '7xl': ['56px', { lineHeight: '1.1', letterSpacing: '0' }],
+        '8xl': ['64px', { lineHeight: '1.1', letterSpacing: '0' }],
+        '9xl': ['72px', { lineHeight: '1', letterSpacing: '0' }],
       },
     },
   },
