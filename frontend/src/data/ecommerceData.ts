@@ -30,21 +30,25 @@ export const ecommerceData: SolutionData = {
       icon: XCircle,
       title: "High Support Costs",
       description: "Customer support teams cost $40K+ per agent and can't scale with growth.",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "After-Hours Sales Loss",
       description: "Customers abandon carts when they can't get help outside business hours.",
+      iconUrl: "https://api.iconify.design/lucide:moon.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Order Status Inquiries",
       description: "Reps spend hours answering 'where's my order?' questions.",
+      iconUrl: "https://api.iconify.design/lucide:package-search.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Return Processing",
       description: "Manual return processing creates delays and customer frustration.",
+      iconUrl: "https://api.iconify.design/lucide:rotate-ccw.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -77,12 +81,12 @@ export const ecommerceData: SolutionData = {
     { number: "05", title: "Follow-Up", description: "Sends confirmation emails and satisfaction surveys" },
   ],
   features: [
-    { icon: "📦", title: "Order Tracking", description: "Real-time order status and delivery updates" },
-    { icon: "🔄", title: "Returns & Refunds", description: "Automated return processing and refund initiation" },
-    { icon: "🛍️", title: "Product Questions", description: "Answers product specifications and availability" },
-    { icon: "💳", title: "Payment Support", description: "Handles payment issues and billing questions" },
-    { icon: "📧", title: "Email Integration", description: "Sends order confirmations and updates" },
-    { icon: "📊", title: "Sales Analytics", description: "Track customer interactions and conversion rates" },
+    { icon: "📦", title: "Order Tracking", description: "Real-time order status and delivery updates", iconUrl: "https://api.iconify.design/lucide:package.svg?color=%23ffffff" },
+    { icon: "🔄", title: "Returns & Refunds", description: "Automated return processing and refund initiation", iconUrl: "https://api.iconify.design/lucide:rotate-ccw.svg?color=%23ffffff" },
+    { icon: "🛍️", title: "Product Questions", description: "Answers product specifications and availability", iconUrl: "https://api.iconify.design/lucide:help-circle.svg?color=%23ffffff" },
+    { icon: "💳", title: "Payment Support", description: "Handles payment issues and billing questions", iconUrl: "https://api.iconify.design/lucide:credit-card.svg?color=%23ffffff" },
+    { icon: "📧", title: "Email Integration", description: "Sends order confirmations and updates", iconUrl: "https://api.iconify.design/lucide:mail.svg?color=%23ffffff" },
+    { icon: "📊", title: "Sales Analytics", description: "Track customer interactions and conversion rates", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "E-commerce Challenges",
@@ -97,10 +101,10 @@ export const ecommerceData: SolutionData = {
     title: "From Customer Call to Resolution",
     subtitle: "Streamlined e-commerce support",
     steps: [
-      { title: "Customer Calls", description: "AI answers immediately, understands customer need" },
-      { title: "Accesses Order Data", description: "Retrieves order information from your system" },
-      { title: "Resolves Inquiry", description: "Provides order status, processes returns, answers questions" },
-      { title: "Escalates if Needed", description: "Routes complex issues to human agents with full context" },
+      { title: "Customer Calls", description: "AI answers immediately, understands customer need", icon: "https://api.iconify.design/lucide:phone.svg?color=%23ffffff" },
+      { title: "Accesses Order Data", description: "Retrieves order information from your system", icon: "https://api.iconify.design/lucide:database.svg?color=%23ffffff" },
+      { title: "Resolves Inquiry", description: "Provides order status, processes returns, answers questions", icon: "https://api.iconify.design/lucide:check-circle-2.svg?color=%23ffffff" },
+      { title: "Escalates if Needed", description: "Routes complex issues to human agents with full context", icon: "https://api.iconify.design/lucide:user-check.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -142,4 +146,3 @@ export const ecommerceImages = {
   calendar1: workflowImage,
   tirado,
 };
-

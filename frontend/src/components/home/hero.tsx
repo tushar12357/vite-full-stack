@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import AgencyMarque from "./AgencyMarque";
-import heroBackgroundVideo from "@/assets/video/herobackground.mp4";
+
 import DemoModal from "@/components/DemoModal";
 
 const hero = () => {
@@ -27,7 +27,7 @@ const hero = () => {
             playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-100"
           >
-            <source src={heroBackgroundVideo} type="video/mp4" />
+            <source src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926e54f1a0c180b83dd621e.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/40" />
 

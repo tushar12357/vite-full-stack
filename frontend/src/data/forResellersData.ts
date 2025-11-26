@@ -29,21 +29,25 @@ export const forResellersData: SolutionData = {
       icon: XCircle,
       title: "High Startup Costs",
       description: "Building your own platform requires significant investment in development.",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Lack of Proven Templates",
       description: "Creating sales scripts and funnels from scratch is time-consuming.",
+      iconUrl: "https://api.iconify.design/lucide:file-x.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Technical Complexity",
       description: "Managing infrastructure and technology takes focus away from sales.",
+      iconUrl: "https://api.iconify.design/lucide:server-crash.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Market Uncertainty",
       description: "Unclear if there's demand for AI calling services in your market.",
+      iconUrl: "https://api.iconify.design/lucide:help-circle.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -75,12 +79,12 @@ export const forResellersData: SolutionData = {
     { number: "04", title: "Start Selling", description: "Charge $297-997/month per client" },
   ],
   features: [
-    { icon: "🎨", title: "White-Label Platform", description: "Your brand, your domain" },
-    { icon: "💰", title: "Proven Revenue Model", description: "$10-40K MRR potential" },
-    { icon: "📋", title: "Sales Templates", description: "Proven scripts and funnels" },
-    { icon: "📊", title: "Client Management", description: "Unlimited sub-accounts" },
-    { icon: "💳", title: "Automated Billing", description: "Usage tracking and invoicing" },
-    { icon: "🚀", title: "Quick Launch", description: "8 minutes to get started" },
+    { icon: "🎨", title: "White-Label Platform", description: "Your brand, your domain", iconUrl: "https://api.iconify.design/lucide:palette.svg?color=%23ffffff" },
+    { icon: "💰", title: "Proven Revenue Model", description: "$10-40K MRR potential", iconUrl: "https://api.iconify.design/lucide:trending-up.svg?color=%23ffffff" },
+    { icon: "📋", title: "Sales Templates", description: "Proven scripts and funnels", iconUrl: "https://api.iconify.design/lucide:file-text.svg?color=%23ffffff" },
+    { icon: "📊", title: "Client Management", description: "Unlimited sub-accounts", iconUrl: "https://api.iconify.design/lucide:users.svg?color=%23ffffff" },
+    { icon: "💳", title: "Automated Billing", description: "Usage tracking and invoicing", iconUrl: "https://api.iconify.design/lucide:credit-card.svg?color=%23ffffff" },
+    { icon: "🚀", title: "Quick Launch", description: "8 minutes to get started", iconUrl: "https://api.iconify.design/lucide:rocket.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "The Perfect Agency Opportunity",
@@ -95,10 +99,10 @@ export const forResellersData: SolutionData = {
     title: "Launch Your Agency in 8 Minutes",
     subtitle: "Simple 4-step process",
     steps: [
-      { title: "Sign Up", description: "Start with $97/month plan" },
-      { title: "Customize Branding", description: "Add your logo and domain" },
-      { title: "Use Proven Templates", description: "Leverage included sales materials" },
-      { title: "Start Selling", description: "Charge $297-997/month per client" },
+      { title: "Sign Up", description: "Start with $97/month plan", icon: "https://api.iconify.design/lucide:user-plus.svg?color=%23ffffff" },
+      { title: "Customize Branding", description: "Add your logo and domain", icon: "https://api.iconify.design/lucide:palette.svg?color=%23ffffff" },
+      { title: "Use Proven Templates", description: "Leverage included sales materials", icon: "https://api.iconify.design/lucide:copy.svg?color=%23ffffff" },
+      { title: "Start Selling", description: "Charge $297-997/month per client", icon: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -143,4 +147,3 @@ export const forResellersImages = {
   calendar1: workflowImage,
   tirado: workflowImage,
 };
-

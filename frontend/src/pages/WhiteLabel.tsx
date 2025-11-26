@@ -31,7 +31,7 @@ const WhiteLabel = () => {
             <div className="flex flex-row items-center justify-center gap-6">
               {/* Talk To Sales Button - Pill-shaped with purple background */}
               <a
-                href={whiteLabelHero.primaryCta.href}
+                href={whiteLabelHero.primaryCta.href} target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 {whiteLabelHero.primaryCta.label}

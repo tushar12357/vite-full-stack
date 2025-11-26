@@ -30,21 +30,25 @@ export const healthcareData: SolutionData = {
       icon: XCircle,
       title: "High No-Show Rates",
       description: "30% of appointments are no-shows, wasting valuable provider time and resources.",
+      iconUrl: "https://api.iconify.design/lucide:calendar-x.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "After-Hours Calls",
       description: "Patients call after hours for urgent questions, but staff isn't available.",
+      iconUrl: "https://api.iconify.design/lucide:moon.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Manual Scheduling",
       description: "Receptionists spend hours on the phone coordinating appointments.",
+      iconUrl: "https://api.iconify.design/lucide:phone-missed.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Follow-Up Gaps",
       description: "Patients miss post-visit check-ins and medication reminders.",
+      iconUrl: "https://api.iconify.design/lucide:alert-circle.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -77,12 +81,12 @@ export const healthcareData: SolutionData = {
     { number: "05", title: "Follow-Up Care", description: "Post-visit check-ins and medication reminders" },
   ],
   features: [
-    { icon: "🏥", title: "Appointment Scheduling", description: "Book, reschedule, cancel appointments" },
-    { icon: "📋", title: "Pre-Visit Screening", description: "Collect symptoms and medical history" },
-    { icon: "💊", title: "Medication Reminders", description: "Automated prescription and refill reminders" },
-    { icon: "📞", title: "Patient Triage", description: "Route urgent calls to on-call providers" },
-    { icon: "🔒", title: "HIPAA Compliant", description: "Secure, encrypted patient data handling" },
-    { icon: "📊", title: "Care Analytics", description: "Track patient engagement and outcomes" },
+    { icon: "🏥", title: "Appointment Scheduling", description: "Book, reschedule, cancel appointments", iconUrl: "https://api.iconify.design/lucide:calendar.svg?color=%23ffffff" },
+    { icon: "📋", title: "Pre-Visit Screening", description: "Collect symptoms and medical history", iconUrl: "https://api.iconify.design/lucide:clipboard-list.svg?color=%23ffffff" },
+    { icon: "💊", title: "Medication Reminders", description: "Automated prescription and refill reminders", iconUrl: "https://api.iconify.design/lucide:pill.svg?color=%23ffffff" },
+    { icon: "📞", title: "Patient Triage", description: "Route urgent calls to on-call providers", iconUrl: "https://api.iconify.design/lucide:ambulance.svg?color=%23ffffff" },
+    { icon: "🔒", title: "HIPAA Compliant", description: "Secure, encrypted patient data handling", iconUrl: "https://api.iconify.design/lucide:shield-check.svg?color=%23ffffff" },
+    { icon: "📊", title: "Care Analytics", description: "Track patient engagement and outcomes", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "Healthcare Challenges",
@@ -97,10 +101,10 @@ export const healthcareData: SolutionData = {
     title: "From Patient Call to Care Delivery",
     subtitle: "Streamlined healthcare workflow",
     steps: [
-      { title: "Patient Calls In", description: "AI answers immediately, understands patient needs" },
-      { title: "Checks Availability", description: "Syncs with provider calendars and schedules" },
-      { title: "Books Appointment", description: "Confirms time, sends calendar invite" },
-      { title: "Sends Reminders", description: "Automated calls 24hr and 2hr before visit" },
+      { title: "Patient Calls In", description: "AI answers immediately, understands patient needs", icon: "https://api.iconify.design/lucide:phone-incoming.svg?color=%23ffffff" },
+      { title: "Checks Availability", description: "Syncs with provider calendars and schedules", icon: "https://api.iconify.design/lucide:calendar-check.svg?color=%23ffffff" },
+      { title: "Books Appointment", description: "Confirms time, sends calendar invite", icon: "https://api.iconify.design/lucide:calendar-plus.svg?color=%23ffffff" },
+      { title: "Sends Reminders", description: "Automated calls 24hr and 2hr before visit", icon: "https://api.iconify.design/lucide:bell.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -142,4 +146,3 @@ export const healthcareImages = {
   calendar1: workflowImage,
   tirado,
 };
-

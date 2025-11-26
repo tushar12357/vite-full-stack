@@ -30,21 +30,25 @@ export const financialServiceData: SolutionData = {
       icon: XCircle,
       title: "Long Wait Times",
       description: "Customers wait 15+ minutes to speak with a representative during peak hours.",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "After-Hours Support",
       description: "No support available outside business hours, losing potential customers.",
+      iconUrl: "https://api.iconify.design/lucide:moon.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "High Operational Costs",
       description: "Call centers cost $40K+ per agent annually with high turnover rates.",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Compliance Challenges",
       description: "Manual processes make it difficult to ensure regulatory compliance.",
+      iconUrl: "https://api.iconify.design/lucide:shield-alert.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -77,12 +81,12 @@ export const financialServiceData: SolutionData = {
     { number: "05", title: "Compliance Logging", description: "Automatically logs all interactions for compliance" },
   ],
   features: [
-    { icon: "💳", title: "Account Inquiries", description: "Balance checks, transaction history, statements" },
-    { icon: "📋", title: "Loan Applications", description: "Collect information and pre-qualify applicants" },
-    { icon: "🔐", title: "Identity Verification", description: "Secure multi-factor authentication" },
-    { icon: "📞", title: "Customer Onboarding", description: "Guide new customers through setup process" },
-    { icon: "⚖️", title: "Compliance Logging", description: "Automatic audit trails and reporting" },
-    { icon: "📊", title: "Financial Analytics", description: "Track customer interactions and satisfaction" },
+    { icon: "💳", title: "Account Inquiries", description: "Balance checks, transaction history, statements", iconUrl: "https://api.iconify.design/lucide:credit-card.svg?color=%23ffffff" },
+    { icon: "📋", title: "Loan Applications", description: "Collect information and pre-qualify applicants", iconUrl: "https://api.iconify.design/lucide:file-text.svg?color=%23ffffff" },
+    { icon: "🔐", title: "Identity Verification", description: "Secure multi-factor authentication", iconUrl: "https://api.iconify.design/lucide:shield-check.svg?color=%23ffffff" },
+    { icon: "📞", title: "Customer Onboarding", description: "Guide new customers through setup process", iconUrl: "https://api.iconify.design/lucide:user-plus.svg?color=%23ffffff" },
+    { icon: "⚖️", title: "Compliance Logging", description: "Automatic audit trails and reporting", iconUrl: "https://api.iconify.design/lucide:scale.svg?color=%23ffffff" },
+    { icon: "📊", title: "Financial Analytics", description: "Track customer interactions and satisfaction", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "Financial Services Challenges",
@@ -97,10 +101,10 @@ export const financialServiceData: SolutionData = {
     title: "From Customer Call to Resolution",
     subtitle: "Secure and compliant workflow",
     steps: [
-      { title: "Customer Calls", description: "AI answers immediately, verifies identity" },
-      { title: "Understands Request", description: "Identifies account inquiry, loan application, or support need" },
-      { title: "Accesses Secure Data", description: "Retrieves account information with proper authentication" },
-      { title: "Resolves or Routes", description: "Handles request or escalates to human agent with context" },
+      { title: "Customer Calls", description: "AI answers immediately, verifies identity", icon: "https://api.iconify.design/lucide:phone-call.svg?color=%23ffffff" },
+      { title: "Understands Request", description: "Identifies account inquiry, loan application, or support need", icon: "https://api.iconify.design/lucide:ear.svg?color=%23ffffff" },
+      { title: "Accesses Secure Data", description: "Retrieves account information with proper authentication", icon: "https://api.iconify.design/lucide:shield-check.svg?color=%23ffffff" },
+      { title: "Resolves or Routes", description: "Handles request or escalates to human agent with context", icon: "https://api.iconify.design/lucide:check-square.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {

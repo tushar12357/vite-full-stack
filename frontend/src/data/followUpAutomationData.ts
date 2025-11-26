@@ -30,21 +30,25 @@ export const followUpAutomationData: SolutionData = {
       icon: XCircle,
       title: "Reps Forget",
       description: "Busy reps forget to follow up",
+      iconUrl: "https://api.iconify.design/lucide:brain-circuit.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Inconsistent Timing",
       description: "Follow-ups too early or too late",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "No Persistence",
       description: "Reps give up after 2-3 attempts",
+      iconUrl: "https://api.iconify.design/lucide:flag.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Not Personalized",
       description: "Generic 'just checking in' messages",
+      iconUrl: "https://api.iconify.design/lucide:message-square.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -78,12 +82,12 @@ export const followUpAutomationData: SolutionData = {
     { number: "06", title: "Final Attempt", description: "Last chance to engage" },
   ],
   features: [
-    { icon: "📅", title: "Smart Scheduling", description: "Optimal call times" },
-    { icon: "🎯", title: "Behavior Triggers", description: "Follows up based on actions" },
-    { icon: "📧", title: "Multi-channel", description: "Call, SMS, email" },
-    { icon: "🔄", title: "Automatic Re-engagement", description: "Wins back lost leads" },
-    { icon: "📊", title: "Sequence Analytics", description: "Optimize timing" },
-    { icon: "💬", title: "Personalization", description: "Uses lead data" },
+    { icon: "📅", title: "Smart Scheduling", description: "Optimal call times", iconUrl: "https://api.iconify.design/lucide:calendar-clock.svg?color=%23ffffff" },
+    { icon: "🎯", title: "Behavior Triggers", description: "Follows up based on actions", iconUrl: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
+    { icon: "📧", title: "Multi-channel", description: "Call, SMS, email", iconUrl: "https://api.iconify.design/lucide:share-2.svg?color=%23ffffff" },
+    { icon: "🔄", title: "Automatic Re-engagement", description: "Wins back lost leads", iconUrl: "https://api.iconify.design/lucide:refresh-cw.svg?color=%23ffffff" },
+    { icon: "📊", title: "Sequence Analytics", description: "Optimize timing", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
+    { icon: "💬", title: "Personalization", description: "Uses lead data", iconUrl: "https://api.iconify.design/lucide:user.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "The Follow-Up Problem",
@@ -98,10 +102,10 @@ export const followUpAutomationData: SolutionData = {
     title: "Automated Nurture Campaign",
     subtitle: "That converts cold leads",
     steps: [
-      { title: "Initial Contact", description: "First call and qualification" },
-      { title: "First Follow-up", description: "Address objections, provide value" },
-      { title: "Second Follow-up", description: "Share case study or social proof" },
-      { title: "Value-add Call", description: "Provide industry insights" },
+      { title: "Initial Contact", description: "First call and qualification", icon: "https://api.iconify.design/lucide:phone-call.svg?color=%23ffffff" },
+      { title: "First Follow-up", description: "Address objections, provide value", icon: "https://api.iconify.design/lucide:message-circle.svg?color=%23ffffff" },
+      { title: "Second Follow-up", description: "Share case study or social proof", icon: "https://api.iconify.design/lucide:file-text.svg?color=%23ffffff" },
+      { title: "Value-add Call", description: "Provide industry insights", icon: "https://api.iconify.design/lucide:lightbulb.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {

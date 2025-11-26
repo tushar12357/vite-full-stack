@@ -1,11 +1,4 @@
-import testimonial1 from "@/assets/testimonial/1.png";
-import testimonial2 from "@/assets/testimonial/2.png";
-import testimonial3 from "@/assets/testimonial/3.png";
-import testimonial4 from "@/assets/testimonial/4.png";
-import testimonial5 from "@/assets/testimonial/5.png";
-import testimonial6 from "@/assets/testimonial/6.png";
-import testimonial7 from "@/assets/testimonial/7.png";
-import testimonial8 from "@/assets/testimonial/8.png";
+import { useEffect } from "react";
 
 interface Testimonial {
   id: number;
@@ -19,60 +12,60 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Hannah Reed",
-    profileImage: testimonial1,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926e9f9f394dbcdd77f8ba6.png",
     text: "Well, simply amazing! My team loves it.",
   },
   {
     id: 2,
     name: "Sarah Johnson",
     role: "CEO",
-    profileImage: testimonial2,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea001a0c187536de57e1.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 3,
     name: "Michael Chen",
-    profileImage: testimonial3,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea04fbd3443d360d09ad.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 4,
     name: "Emily Davis",
     role: "Marketing Director",
-    profileImage: testimonial4,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea070863c3217c4168c6.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 5,
     name: "David Wilson",
-    profileImage: testimonial5,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea104ee4a35f9b332a88.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 6,
     name: "Jessica Martinez",
     role: "Operations Manager",
-    profileImage: testimonial6,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea184ee4a3a462332bad.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 7,
     name: "Hannah Ward",
     role: "Freelance",
-    profileImage: testimonial7,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea1bf394db58247faab4.png",
     text: "Using Flowline gave us a polished SaaS homepage in less than a week. The layout is clear and conversion-focused.",
   },
   {
     id: 8,
     name: "Robert Taylor",
-    profileImage: testimonial8,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea224ee4a344e9332d13.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
     id: 9,
     name: "Lisa Anderson",
     role: "Product Manager",
-    profileImage: testimonial1,
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926e9f9f394dbcdd77f8ba6.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
 ];
@@ -89,8 +82,8 @@ const testimonialVideos: Array<{ id: number; url: string }> = [
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
     <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <img 
-        src={testimonial.profileImage} 
+      <img
+        src={testimonial.profileImage}
         alt={testimonial.name}
         className="w-full h-auto object-cover"
       />
@@ -113,6 +106,13 @@ const TestimonialVideoCard = ({ url }: { url: string }) => (
 );
 
 const Testimonials = () => {
+  useEffect(() => {
+    testimonials.forEach((testimonial) => {
+      const img = new Image();
+      img.src = testimonial.profileImage;
+    });
+  }, []);
+
   return (
     <section className="bg-white py-20 md:py-32 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
@@ -122,10 +122,10 @@ const Testimonials = () => {
             Testimonials
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-semibold poppins text-[#111827] my-4 max-w-4xl mx-auto leading-3">
-            Don&apos;t take it from us,<br/> hear it from our users
+            Don&apos;t take it from us,<br /> hear it from our users
           </h2>
           <p className="text-[12px] md:text-[14px] text-gray-600 max-w-2xl mx-auto font-medium">
-          At CloserX, we believe in the power of<br/> connection and collaboration.
+            At CloserX, we believe in the power of<br /> connection and collaboration.
           </p>
         </div>
 

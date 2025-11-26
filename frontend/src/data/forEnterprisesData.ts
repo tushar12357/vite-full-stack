@@ -29,21 +29,25 @@ export const forEnterprisesData: SolutionData = {
       icon: XCircle,
       title: "Security Concerns",
       description: "Enterprise data requires the highest levels of security and compliance.",
+      iconUrl: "https://api.iconify.design/lucide:shield-alert.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Scalability Challenges",
       description: "Need to handle millions of calls across global operations.",
+      iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Integration Complexity",
       description: "Must integrate with existing enterprise systems and workflows.",
+      iconUrl: "https://api.iconify.design/lucide:server.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Support Requirements",
       description: "Need dedicated support and custom solutions for enterprise needs.",
+      iconUrl: "https://api.iconify.design/lucide:headphones.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -75,12 +79,12 @@ export const forEnterprisesData: SolutionData = {
     { number: "04", title: "Ongoing Support", description: "24/7 support with quarterly business reviews" },
   ],
   features: [
-    { icon: "🔒", title: "Enterprise Security", description: "SOC 2, ISO 27001, end-to-end encryption" },
-    { icon: "🌍", title: "Global Scale", description: "50+ languages, multi-region deployment" },
-    { icon: "⚡", title: "High Availability", description: "99.99% uptime SLA with failover" },
-    { icon: "👥", title: "Dedicated Support", description: "Named account managers and architects" },
-    { icon: "🔗", title: "Custom Integrations", description: "API access and professional services" },
-    { icon: "📊", title: "Enterprise Analytics", description: "Advanced reporting and insights" },
+    { icon: "🔒", title: "Enterprise Security", description: "SOC 2, ISO 27001, end-to-end encryption", iconUrl: "https://api.iconify.design/lucide:lock.svg?color=%23ffffff" },
+    { icon: "🌍", title: "Global Scale", description: "50+ languages, multi-region deployment", iconUrl: "https://api.iconify.design/lucide:globe.svg?color=%23ffffff" },
+    { icon: "⚡", title: "High Availability", description: "99.99% uptime SLA with failover", iconUrl: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
+    { icon: "👥", title: "Dedicated Support", description: "Named account managers and architects", iconUrl: "https://api.iconify.design/lucide:users.svg?color=%23ffffff" },
+    { icon: "🔗", title: "Custom Integrations", description: "API access and professional services", iconUrl: "https://api.iconify.design/lucide:plug.svg?color=%23ffffff" },
+    { icon: "📊", title: "Enterprise Analytics", description: "Advanced reporting and insights", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "Security First",
@@ -95,10 +99,10 @@ export const forEnterprisesData: SolutionData = {
     title: "Enterprise Implementation Process",
     subtitle: "Dedicated support from start to finish",
     steps: [
-      { title: "Executive Briefing", description: "Discuss your enterprise needs and requirements" },
-      { title: "Custom Solution Design", description: "Tailored implementation plan for your organization" },
-      { title: "Dedicated Implementation", description: "Professional services team handles deployment" },
-      { title: "Ongoing Support", description: "24/7 support with quarterly business reviews" },
+      { title: "Executive Briefing", description: "Discuss your enterprise needs and requirements", icon: "https://api.iconify.design/lucide:briefcase.svg?color=%23ffffff" },
+      { title: "Custom Solution Design", description: "Tailored implementation plan for your organization", icon: "https://api.iconify.design/lucide:pen-tool.svg?color=%23ffffff" },
+      { title: "Dedicated Implementation", description: "Professional services team handles deployment", icon: "https://api.iconify.design/lucide:rocket.svg?color=%23ffffff" },
+      { title: "Ongoing Support", description: "24/7 support with quarterly business reviews", icon: "https://api.iconify.design/lucide:headphones.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -140,4 +144,3 @@ export const forEnterprisesImages = {
   calendar1: workflowImage,
   tirado: workflowImage,
 };
-

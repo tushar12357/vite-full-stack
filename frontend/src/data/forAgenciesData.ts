@@ -29,21 +29,25 @@ export const forAgenciesData: SolutionData = {
       icon: XCircle,
       title: "Limited Service Offerings",
       description: "Agencies struggle to differentiate and add high-margin services to their portfolio.",
+      iconUrl: "https://api.iconify.design/lucide:layers.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "High Client Acquisition Costs",
       description: "Difficult to scale without hiring more staff and increasing overhead.",
+      iconUrl: "https://api.iconify.design/lucide:trending-up.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Low Recurring Revenue",
       description: "One-time projects don't provide predictable monthly income.",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Technical Barriers",
       description: "Building AI calling solutions requires expensive development resources.",
+      iconUrl: "https://api.iconify.design/lucide:code.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -75,12 +79,12 @@ export const forAgenciesData: SolutionData = {
     { number: "04", title: "Scale Revenue", description: "Charge clients $1,500-$5,000/month" },
   ],
   features: [
-    { icon: "🎨", title: "Custom Branding", description: "Your logo everywhere" },
-    { icon: "💰", title: "Recurring Revenue", description: "Predictable monthly income" },
-    { icon: "⚡", title: "Quick Setup", description: "24-hour deployment" },
-    { icon: "📊", title: "Client Management", description: "Multi-tenant dashboard" },
-    { icon: "💳", title: "Built-in Billing", description: "Stripe integration" },
-    { icon: "🚀", title: "Easy Upsell", description: "Add to existing services" },
+    { icon: "🎨", title: "Custom Branding", description: "Your logo everywhere", iconUrl: "https://api.iconify.design/lucide:palette.svg?color=%23ffffff" },
+    { icon: "💰", title: "Recurring Revenue", description: "Predictable monthly income", iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff" },
+    { icon: "⚡", title: "Quick Setup", description: "24-hour deployment", iconUrl: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
+    { icon: "📊", title: "Client Management", description: "Multi-tenant dashboard", iconUrl: "https://api.iconify.design/lucide:users.svg?color=%23ffffff" },
+    { icon: "💳", title: "Built-in Billing", description: "Stripe integration", iconUrl: "https://api.iconify.design/lucide:credit-card.svg?color=%23ffffff" },
+    { icon: "🚀", title: "Easy Upsell", description: "Add to existing services", iconUrl: "https://api.iconify.design/lucide:rocket.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "Why Agencies Love CloserX",
@@ -95,10 +99,10 @@ export const forAgenciesData: SolutionData = {
     title: "Launch Your Agency in 24 Hours",
     subtitle: "Simple 4-step process",
     steps: [
-      { title: "Sign Up", description: "Get your white-label account in minutes" },
-      { title: "Customize Branding", description: "Add your logo, colors, and domain" },
-      { title: "Onboard Clients", description: "Create sub-accounts for each client" },
-      { title: "Scale Revenue", description: "Charge clients $1,500-$5,000/month" },
+      { title: "Sign Up", description: "Get your white-label account in minutes", icon: "https://api.iconify.design/lucide:user-plus.svg?color=%23ffffff" },
+      { title: "Customize Branding", description: "Add your logo, colors, and domain", icon: "https://api.iconify.design/lucide:palette.svg?color=%23ffffff" },
+      { title: "Onboard Clients", description: "Create sub-accounts for each client", icon: "https://api.iconify.design/lucide:users.svg?color=%23ffffff" },
+      { title: "Scale Revenue", description: "Charge clients $1,500-$5,000/month", icon: "https://api.iconify.design/lucide:trending-up.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {

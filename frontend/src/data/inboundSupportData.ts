@@ -32,21 +32,25 @@ export const inboundSupportData: SolutionData = {
       icon: XCircle,
       title: "Missed Revenue",
       description: "67% of customers hang up if not answered in 30 seconds",
+      iconUrl: "https://api.iconify.design/lucide:phone-missed.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "After-Hours Chaos",
       description: "50% of calls come outside business hours. You're closed.",
+      iconUrl: "https://api.iconify.design/lucide:moon.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Long Wait Times",
       description: "Average hold time: 8 minutes. Customers are frustrated.",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "High Staff Costs",
       description: "Support agents cost $40K/year + benefits + training",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -78,12 +82,12 @@ export const inboundSupportData: SolutionData = {
     { number: "04", title: "Escalate When Needed", description: "Complex issues go to human agents with full context" },
   ],
   features: [
-    { icon: "🎙️", title: "Natural Conversations", description: "Sounds completely human" },
-    { icon: "🧠", title: "Smart Routing", description: "Directs to right department" },
-    { icon: "📚", title: "Knowledge Integration", description: "Access all your docs" },
-    { icon: "📅", title: "Appointment Booking", description: "Checks calendar, books slots" },
-    { icon: "🔄", title: "Multi-language", description: "Support in 50+ languages" },
-    { icon: "📊", title: "Call Analytics", description: "Track resolution rates" },
+    { icon: "🎙️", title: "Natural Conversations", description: "Sounds completely human", iconUrl: "https://api.iconify.design/lucide:message-circle.svg?color=%23ffffff" },
+    { icon: "🧠", title: "Smart Routing", description: "Directs to right department", iconUrl: "https://api.iconify.design/lucide:git-branch.svg?color=%23ffffff" },
+    { icon: "📚", title: "Knowledge Integration", description: "Access all your docs", iconUrl: "https://api.iconify.design/lucide:book.svg?color=%23ffffff" },
+    { icon: "📅", title: "Appointment Booking", description: "Checks calendar, books slots", iconUrl: "https://api.iconify.design/lucide:calendar.svg?color=%23ffffff" },
+    { icon: "🔄", title: "Multi-language", description: "Support in 50+ languages", iconUrl: "https://api.iconify.design/lucide:globe.svg?color=%23ffffff" },
+    { icon: "📊", title: "Call Analytics", description: "Track resolution rates", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "The Cost of Missed Calls",
@@ -98,10 +102,10 @@ export const inboundSupportData: SolutionData = {
     title: "From Call to Resolution in Seconds",
     subtitle: "Automated support that works",
     steps: [
-      { title: "Route Intelligently", description: "AI understands caller intent and routes to right department or resolves instantly" },
-      { title: "Access Knowledge Base", description: "AI pulls from your docs, FAQs, policies instantly" },
-      { title: "Take Action", description: "Book appointments, process returns, update accounts" },
-      { title: "Escalate When Needed", description: "Complex issues go to human agents with full context" },
+      { title: "Route Intelligently", description: "AI understands caller intent and routes to right department or resolves instantly", icon: "https://api.iconify.design/lucide:git-branch.svg?color=%23ffffff" },
+      { title: "Access Knowledge Base", description: "AI pulls from your docs, FAQs, policies instantly", icon: "https://api.iconify.design/lucide:book-open.svg?color=%23ffffff" },
+      { title: "Take Action", description: "Book appointments, process returns, update accounts", icon: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
+      { title: "Escalate When Needed", description: "Complex issues go to human agents with full context", icon: "https://api.iconify.design/lucide:user-plus.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -146,4 +150,3 @@ export const inboundSupportImages = {
   calendar1,
   tirado,
 };
-

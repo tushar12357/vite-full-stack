@@ -32,21 +32,25 @@ export const outboundSalesData: SolutionData = {
       icon: XCircle,
       title: "Limited Capacity",
       description: "Your sales team can only make 50-80 calls per day. You're leaving money on the table.",
+      iconUrl: "https://api.iconify.design/lucide:battery-low.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Inconsistent Quality",
       description: "Different reps, different scripts, different results. No standardization.",
+      iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "High Costs",
       description: "Hiring, training, and managing sales reps costs $60K+ per year per rep.",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Slow Follow-ups",
       description: "Leads go cold while your team is busy. 80% of leads need 5+ follow-ups.",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -78,12 +82,12 @@ export const outboundSalesData: SolutionData = {
     { number: "04", title: "Watch Sales Roll In", description: "Real-time dashboard shows calls, conversions, and revenue. Optimizes automatically." },
   ],
   features: [
-    { icon: "📞", title: "Parallel Dialing", description: "Make 100+ simultaneous calls" },
-    { icon: "🎯", title: "Lead Scoring", description: "AI qualifies leads in real-time" },
-    { icon: "📝", title: "CRM Auto-Update", description: "Logs every call instantly" },
-    { icon: "🔄", title: "Auto Follow-up", description: "Never miss a callback" },
-    { icon: "📊", title: "A/B Testing", description: "Test scripts automatically" },
-    { icon: "💬", title: "SMS Integration", description: "Follow calls with texts" },
+    { icon: "📞", title: "Parallel Dialing", description: "Make 100+ simultaneous calls", iconUrl: "https://api.iconify.design/lucide:phone-call.svg?color=%23ffffff" },
+    { icon: "🎯", title: "Lead Scoring", description: "AI qualifies leads in real-time", iconUrl: "https://api.iconify.design/lucide:target.svg?color=%23ffffff" },
+    { icon: "📝", title: "CRM Auto-Update", description: "Logs every call instantly", iconUrl: "https://api.iconify.design/lucide:file-text.svg?color=%23ffffff" },
+    { icon: "🔄", title: "Auto Follow-up", description: "Never miss a callback", iconUrl: "https://api.iconify.design/lucide:repeat.svg?color=%23ffffff" },
+    { icon: "📊", title: "A/B Testing", description: "Test scripts automatically", iconUrl: "https://api.iconify.design/lucide:bar-chart.svg?color=%23ffffff" },
+    { icon: "💬", title: "SMS Integration", description: "Follow calls with texts", iconUrl: "https://api.iconify.design/lucide:message-square.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "The Outbound Sales Challenge",
@@ -98,10 +102,10 @@ export const outboundSalesData: SolutionData = {
     title: "From Lead to Sale in 4 Steps",
     subtitle: "Simple process, powerful results",
     steps: [
-      { title: "Upload Your List", description: "Import leads from CSV, CRM, or any source. We integrate with 50+ platforms." },
-      { title: "Customize Your Script", description: "Train your AI agent with your best sales script. Add objection handling." },
-      { title: "Launch Campaigns", description: "Set your daily call volume, target hours, and goals. Hit start." },
-      { title: "Watch Sales Roll In", description: "Real-time dashboard shows calls, conversions, and revenue. Optimizes automatically." },
+      { title: "Upload Your List", description: "Import leads from CSV, CRM, or any source. We integrate with 50+ platforms.", icon: "https://api.iconify.design/lucide:upload-cloud.svg?color=%23ffffff" },
+      { title: "Customize Your Script", description: "Train your AI agent with your best sales script. Add objection handling.", icon: "https://api.iconify.design/lucide:file-edit.svg?color=%23ffffff" },
+      { title: "Launch Campaigns", description: "Set your daily call volume, target hours, and goals. Hit start.", icon: "https://api.iconify.design/lucide:rocket.svg?color=%23ffffff" },
+      { title: "Watch Sales Roll In", description: "Real-time dashboard shows calls, conversions, and revenue. Optimizes automatically.", icon: "https://api.iconify.design/lucide:bar-chart-3.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {

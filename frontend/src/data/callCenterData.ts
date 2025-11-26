@@ -30,21 +30,25 @@ export const callCenterData: SolutionData = {
       icon: XCircle,
       title: "High Operational Costs",
       description: "Call centers cost $40K+ per agent annually with benefits, training, and infrastructure.",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Long Wait Times",
       description: "Customers wait 10+ minutes during peak hours, leading to frustration and churn.",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "High Agent Turnover",
       description: "50% annual turnover rate requires constant hiring and training.",
+      iconUrl: "https://api.iconify.design/lucide:users.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Inconsistent Service",
       description: "Different agents provide different levels of service quality.",
+      iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -77,12 +81,12 @@ export const callCenterData: SolutionData = {
     { number: "05", title: "Follow-Up", description: "Automated satisfaction surveys and follow-up calls" },
   ],
   features: [
-    { icon: "📞", title: "Intelligent Routing", description: "Routes calls to right department or agent" },
-    { icon: "🤖", title: "AI Agent Handoff", description: "Seamless transition from AI to human agents" },
-    { icon: "📊", title: "Real-Time Analytics", description: "Monitor call volume, wait times, and resolution rates" },
-    { icon: "🎯", title: "Quality Assurance", description: "Automatic call scoring and agent feedback" },
-    { icon: "📝", title: "CRM Integration", description: "Logs all interactions automatically" },
-    { icon: "🌍", title: "Multi-Language", description: "Support in 50+ languages" },
+    { icon: "📞", title: "Intelligent Routing", description: "Routes calls to right department or agent", iconUrl: "https://api.iconify.design/lucide:git-branch.svg?color=%23ffffff" },
+    { icon: "🤖", title: "AI Agent Handoff", description: "Seamless transition from AI to human agents", iconUrl: "https://api.iconify.design/lucide:user-plus.svg?color=%23ffffff" },
+    { icon: "📊", title: "Real-Time Analytics", description: "Monitor call volume, wait times, and resolution rates", iconUrl: "https://api.iconify.design/lucide:bar-chart.svg?color=%23ffffff" },
+    { icon: "🎯", title: "Quality Assurance", description: "Automatic call scoring and agent feedback", iconUrl: "https://api.iconify.design/lucide:check-square.svg?color=%23ffffff" },
+    { icon: "📝", title: "CRM Integration", description: "Logs all interactions automatically", iconUrl: "https://api.iconify.design/lucide:database.svg?color=%23ffffff" },
+    { icon: "🌍", title: "Multi-Language", description: "Support in 50+ languages", iconUrl: "https://api.iconify.design/lucide:globe.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "Call Center Challenges",
@@ -97,10 +101,10 @@ export const callCenterData: SolutionData = {
     title: "From Call to Resolution",
     subtitle: "AI-augmented call center workflow",
     steps: [
-      { title: "Call Comes In", description: "AI answers immediately, no wait time" },
-      { title: "Understands Intent", description: "Identifies customer need and routes appropriately" },
-      { title: "Resolves or Routes", description: "Handles routine inquiries or escalates with context" },
-      { title: "Agent Handoff", description: "Human agents receive full conversation context" },
+      { title: "Call Comes In", description: "AI answers immediately, no wait time", icon: "https://api.iconify.design/lucide:phone-incoming.svg?color=%23ffffff" },
+      { title: "Understands Intent", description: "Identifies customer need and routes appropriately", icon: "https://api.iconify.design/lucide:brain-circuit.svg?color=%23ffffff" },
+      { title: "Resolves or Routes", description: "Handles routine inquiries or escalates with context", icon: "https://api.iconify.design/lucide:git-merge.svg?color=%23ffffff" },
+      { title: "Agent Handoff", description: "Human agents receive full conversation context", icon: "https://api.iconify.design/lucide:users.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -142,4 +146,3 @@ export const callCenterImages = {
   calendar1: workflowImage,
   tirado,
 };
-

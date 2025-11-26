@@ -10,6 +10,7 @@ export interface Problem {
   icon: LucideIcon;
   title: string;
   description: string;
+  iconUrl?: string;
 }
 
 export interface Solution {
@@ -33,6 +34,7 @@ export interface Feature {
   icon: string;
   title: string;
   description: string;
+  iconUrl?: string;
 }
 
 export interface LeadQualificationData {
@@ -75,6 +77,7 @@ export interface LeadQualificationData {
     steps: Array<{
       title: string;
       description: string;
+      icon?: string;
     }>;
   };
   qualificationCriteria: {
@@ -136,6 +139,7 @@ export interface LeadQualificationData {
       number: string;
       title: string;
       description: string;
+      iconUrl?: string;
     }>;
     rightImage?: string;
     rightImageAlt?: string;
@@ -167,41 +171,49 @@ export const leadQualificationData: LeadQualificationData = {
       icon: XCircle,
       title: "Unqualified Leads",
       description: "Sales team wastes 60% of time on bad leads",
+      iconUrl: "https://api.iconify.design/lucide:filter-x.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Slow Response",
       description: "48-hour response time means lost deals",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Inconsistent Qualification",
       description: "Different reps, different standards",
+      iconUrl: "https://api.iconify.design/lucide:scale.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Manual Data Entry",
       description: "CRM data is incomplete or wrong",
+      iconUrl: "https://api.iconify.design/lucide:keyboard.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "High Cost Per Lead",
       description: "Expensive manual qualification process",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Lost Opportunities",
       description: "Hot leads go cold before contact",
+      iconUrl: "https://api.iconify.design/lucide:thermometer-snowflake.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Poor Lead Scoring",
       description: "No systematic way to prioritize leads",
+      iconUrl: "https://api.iconify.design/lucide:list-ordered.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Time Zone Issues",
       description: "Can't reach leads in different time zones",
+      iconUrl: "https://api.iconify.design/lucide:globe.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -245,12 +257,12 @@ export const leadQualificationData: LeadQualificationData = {
     { title: "Decision Process", description: "Who else is involved?" },
   ],
   features: [
-    { icon: "🎯", title: "Custom Scoring Models", description: "Define your ideal customer" },
-    { icon: "🔄", title: "Automatic Routing", description: "Hot leads to sales, cold to nurture" },
-    { icon: "📝", title: "Call Transcripts", description: "Every conversation recorded" },
-    { icon: "📊", title: "Lead Insights", description: "Identifies patterns in good leads" },
-    { icon: "🚀", title: "Speed-to-Lead", description: "Contact within 5 minutes" },
-    { icon: "💬", title: "SMS Follow-up", description: "Text unqualified leads" },
+    { icon: "🎯", title: "Custom Scoring Models", description: "Define your ideal customer", iconUrl: "https://api.iconify.design/lucide:target.svg?color=%23ffffff" },
+    { icon: "🔄", title: "Automatic Routing", description: "Hot leads to sales, cold to nurture", iconUrl: "https://api.iconify.design/lucide:git-fork.svg?color=%23ffffff" },
+    { icon: "📝", title: "Call Transcripts", description: "Every conversation recorded", iconUrl: "https://api.iconify.design/lucide:file-text.svg?color=%23ffffff" },
+    { icon: "📊", title: "Lead Insights", description: "Identifies patterns in good leads", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
+    { icon: "🚀", title: "Speed-to-Lead", description: "Contact within 5 minutes", iconUrl: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
+    { icon: "💬", title: "SMS Follow-up", description: "Text unqualified leads", iconUrl: "https://api.iconify.design/lucide:message-square.svg?color=%23ffffff" },
   ],
   videoSection: {
     title: "Watch AI Qualify A Lead",
@@ -272,26 +284,32 @@ export const leadQualificationData: LeadQualificationData = {
       {
         title: "Lead Enters System",
         description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        icon: "https://api.iconify.design/lucide:log-in.svg?color=%23ffffff"
       },
       {
         title: "AI Calls Within 5 Minutes",
         description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        icon: "https://api.iconify.design/lucide:phone-outgoing.svg?color=%23ffffff"
       },
       {
         title: "Asks Qualification Questions",
         description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        icon: "https://api.iconify.design/lucide:help-circle.svg?color=%23ffffff"
       },
       {
         title: "Scores Lead (0-100)",
         description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        icon: "https://api.iconify.design/lucide:award.svg?color=%23ffffff"
       },
       {
         title: "Routes to Sales or Nurture",
         description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        icon: "https://api.iconify.design/lucide:git-fork.svg?color=%23ffffff"
       },
       {
         title: "Logs Everything in CRM",
         description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        icon: "https://api.iconify.design/lucide:database.svg?color=%23ffffff"
       },
     ],
   },
@@ -355,24 +373,27 @@ export const leadQualificationData: LeadQualificationData = {
         number: "01",
         title: "AI-Powered Scoring",
         description: "Every lead scored 0-100 automatically",
+        iconUrl: "https://api.iconify.design/lucide:award.svg?color=%23ffffff"
       },
       {
         number: "02",
         title: "Instant Response",
         description: "Leads contacted within 5 minutes of submission",
+        iconUrl: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff"
       },
       {
         number: "03",
         title: "Consistent Process",
         description: "Same qualification questions asked every time, ensuring uniform standards",
+        iconUrl: "https://api.iconify.design/lucide:list-checks.svg?color=%23ffffff"
       },
       {
         number: "04",
         title: "Perfect Data",
         description: "CRM automatically updated with complete conversation notes and scoring details",
+        iconUrl: "https://api.iconify.design/lucide:database.svg?color=%23ffffff"
       },
     ],
     rightImageAlt: "AI Workflow Diagram - CLOSERX Platform",
   },
 };
-
