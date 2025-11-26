@@ -30,21 +30,25 @@ export const realEstateData: SolutionData = {
       icon: XCircle,
       title: "Slow Response Times",
       description: "By the time you call back, they've already booked with another agent.",
+      iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "After-Hours Leads",
       description: "50% of leads come in evenings and weekends when you're off.",
+      iconUrl: "https://api.iconify.design/lucide:moon.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Showing Coordination Nightmare",
       description: "Playing phone tag to schedule one showing wastes hours.",
+      iconUrl: "https://api.iconify.design/lucide:calendar-x.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Inconsistent Follow-up",
       description: "You forget to follow up, they work with someone else.",
+      iconUrl: "https://api.iconify.design/lucide:user-x.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -78,12 +82,12 @@ export const realEstateData: SolutionData = {
     { number: "06", title: "Follows Up", description: "Nurtures until they're ready to buy" },
   ],
   features: [
-    { icon: "🗓️", title: "MLS Integration", description: "Syncs with property data" },
-    { icon: "📍", title: "Location Intelligence", description: "Discusses neighborhoods" },
-    { icon: "💵", title: "Price Range Qualification", description: "Qualifies budget" },
-    { icon: "🏡", title: "Property Matching", description: "Recommends listings" },
-    { icon: "📅", title: "Showing Coordination", description: "Checks your calendar" },
-    { icon: "📝", title: "Buyer Questionnaire", description: "Asks bedrooms, location, etc." },
+    { icon: "🗓️", title: "MLS Integration", description: "Syncs with property data", iconUrl: "https://api.iconify.design/lucide:database.svg?color=%23ffffff" },
+    { icon: "📍", title: "Location Intelligence", description: "Discusses neighborhoods", iconUrl: "https://api.iconify.design/lucide:map-pin.svg?color=%23ffffff" },
+    { icon: "💵", title: "Price Range Qualification", description: "Qualifies budget", iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff" },
+    { icon: "🏡", title: "Property Matching", description: "Recommends listings", iconUrl: "https://api.iconify.design/lucide:home.svg?color=%23ffffff" },
+    { icon: "📅", title: "Showing Coordination", description: "Checks your calendar", iconUrl: "https://api.iconify.design/lucide:calendar-check.svg?color=%23ffffff" },
+    { icon: "📝", title: "Buyer Questionnaire", description: "Asks bedrooms, location, etc.", iconUrl: "https://api.iconify.design/lucide:clipboard-list.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "Real Estate Challenges",
@@ -98,10 +102,10 @@ export const realEstateData: SolutionData = {
     title: "From Lead to Showing in Minutes",
     subtitle: "Automated real estate workflow",
     steps: [
-      { title: "Lead Comes In", description: "Zillow, Realtor.com, or your website" },
-      { title: "AI Calls Instantly", description: "Within 5 minutes, AI reaches out" },
-      { title: "Qualifies Buyer", description: "Asks budget, location, timeline" },
-      { title: "Schedules Showing", description: "Books directly into your calendar" },
+      { title: "Lead Comes In", description: "Zillow, Realtor.com, or your website", icon: "https://api.iconify.design/lucide:inbox.svg?color=%23ffffff" },
+      { title: "AI Calls Instantly", description: "Within 5 minutes, AI reaches out", icon: "https://api.iconify.design/lucide:phone-outgoing.svg?color=%23ffffff" },
+      { title: "Qualifies Buyer", description: "Asks budget, location, timeline", icon: "https://api.iconify.design/lucide:check-square.svg?color=%23ffffff" },
+      { title: "Schedules Showing", description: "Books directly into your calendar", icon: "https://api.iconify.design/lucide:calendar.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {
@@ -143,4 +147,3 @@ export const realEstateImages = {
   calendar1: workflowImage,
   tirado,
 };
-

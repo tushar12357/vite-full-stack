@@ -53,7 +53,7 @@ const Integrations = () => {
                 <a href="/integrations" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
                   Check Integrations
                 </a>
-                <a href="/contact" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
+                <a href="/contact" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
                   Talk To Sales
                 </a>
               </div>

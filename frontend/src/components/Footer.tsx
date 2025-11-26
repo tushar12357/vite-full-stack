@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin, Youtube } from "lucide-react";
+import { Twitter, Linkedin, Youtube, Instagram, Facebook } from "lucide-react";
 import logoCloserx from "@/assets/logoCloserx.png";
 import { useLuna } from "@/contexts/LunaContext";
 
@@ -33,7 +33,7 @@ const Footer = () => {
   const resourcesLinks = [
     { label: "Blog", to: "/blog" },
     { label: "Video Tutorials", to: "/videos" },
-    { label: "YouTube", to: "https://youtube.com" },
+    { label: "YouTube", to: "https://www.youtube.com/@CloserXAI" },
     { label: "ROI Calculator", to: "/roi-calculator" },
     { label: "Documentation", to: "https://docs.closerx.ai/api-reference/introduction" },
     { label: "Templates & Tools", to: "/templates" },
@@ -87,7 +87,7 @@ const Footer = () => {
               {/* Social Media Icons */}
               <div className="flex items-center gap-4">
                 <a
-                  href="https://twitter.com"
+                  href="https://x.com/closerxai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
@@ -96,7 +96,7 @@ const Footer = () => {
                   <Twitter className="w-5 h-5 text-white" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/closerxai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
@@ -105,13 +105,31 @@ const Footer = () => {
                   <Linkedin className="w-5 h-5 text-white" />
                 </a>
                 <a
-                  href="https://youtube.com"
+                  href="https://www.youtube.com/@CloserXAI"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
                   aria-label="YouTube"
                 >
                   <Youtube className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="https://www.instagram.com/closerx.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="https://www.facebook.com/CloserXAI/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5 text-white" />
                 </a>
               </div>
             </div>

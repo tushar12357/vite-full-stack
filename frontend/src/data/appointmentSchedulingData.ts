@@ -32,21 +32,25 @@ export const appointmentSchedulingData: SolutionData = {
       icon: XCircle,
       title: "Email Tennis",
       description: "5+ emails to find one meeting time",
+      iconUrl: "https://api.iconify.design/lucide:mail.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "No-Shows",
       description: "30% of appointments are no-shows",
+      iconUrl: "https://api.iconify.design/lucide:user-x.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Time Zones",
       description: "Scheduling across time zones is a nightmare",
+      iconUrl: "https://api.iconify.design/lucide:globe.svg?color=%23ffffff"
     },
     {
       icon: XCircle,
       title: "Manual Work",
       description: "Admin spends 10+ hours/week scheduling",
+      iconUrl: "https://api.iconify.design/lucide:file-edit.svg?color=%23ffffff"
     },
   ],
   solutions: [
@@ -80,12 +84,12 @@ export const appointmentSchedulingData: SolutionData = {
     { number: "06", title: "Updates on Changes", description: "Handles cancellations and rescheduling automatically" },
   ],
   features: [
-    { icon: "📅", title: "Calendar Integration", description: "Google, Outlook, iCal" },
-    { icon: "🔄", title: "Automatic Rescheduling", description: "Handles cancellations" },
-    { icon: "⏰", title: "Smart Reminders", description: "24hr, 2hr, 30min before" },
-    { icon: "🎯", title: "Qualification Questions", description: "Pre-qualify before booking" },
-    { icon: "🌍", title: "Time Zone Detection", description: "Automatic conversion" },
-    { icon: "📊", title: "Booking Analytics", description: "Track conversion rates" },
+    { icon: "📅", title: "Calendar Integration", description: "Google, Outlook, iCal", iconUrl: "https://api.iconify.design/lucide:calendar.svg?color=%23ffffff" },
+    { icon: "🔄", title: "Automatic Rescheduling", description: "Handles cancellations", iconUrl: "https://api.iconify.design/lucide:refresh-cw.svg?color=%23ffffff" },
+    { icon: "⏰", title: "Smart Reminders", description: "24hr, 2hr, 30min before", iconUrl: "https://api.iconify.design/lucide:bell.svg?color=%23ffffff" },
+    { icon: "🎯", title: "Qualification Questions", description: "Pre-qualify before booking", iconUrl: "https://api.iconify.design/lucide:clipboard-check.svg?color=%23ffffff" },
+    { icon: "🌍", title: "Time Zone Detection", description: "Automatic conversion", iconUrl: "https://api.iconify.design/lucide:globe-2.svg?color=%23ffffff" },
+    { icon: "📊", title: "Booking Analytics", description: "Track conversion rates", iconUrl: "https://api.iconify.design/lucide:bar-chart-2.svg?color=%23ffffff" },
   ],
   problemSection: {
     title: "The Scheduling Challenge",
@@ -100,10 +104,10 @@ export const appointmentSchedulingData: SolutionData = {
     title: "From First Contact to Confirmed Appointment",
     subtitle: "Simple automated process",
     steps: [
-      { title: "AI Calls Prospect", description: "Initiates outbound call or answers inbound request" },
-      { title: "Checks Your Calendar", description: "Syncs with Google, Outlook, or any calendar system" },
-      { title: "Offers Available Times", description: "Presents options based on your availability" },
-      { title: "Books & Confirms", description: "Adds to calendar and sends confirmation" },
+      { title: "AI Calls Prospect", description: "Initiates outbound call or answers inbound request", icon: "https://api.iconify.design/lucide:phone-call.svg?color=%23ffffff" },
+      { title: "Checks Your Calendar", description: "Syncs with Google, Outlook, or any calendar system", icon: "https://api.iconify.design/lucide:calendar-check.svg?color=%23ffffff" },
+      { title: "Offers Available Times", description: "Presents options based on your availability", icon: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff" },
+      { title: "Books & Confirms", description: "Adds to calendar and sends confirmation", icon: "https://api.iconify.design/lucide:check-circle.svg?color=%23ffffff" },
     ],
   },
   featuresSection: {

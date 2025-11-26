@@ -5,6 +5,7 @@ export interface Feature {
   number: string;
   title: string;
   description: string;
+  iconUrl?: string;
 }
 
 export interface TwoColumnFeatureSectionData {
@@ -47,7 +48,7 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
   // Intersection Observer for rise-in animation
   useEffect(() => {
     if (disableAnimation) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -78,13 +79,13 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
     ...(!disableAnimation && { transitionDuration: '1500ms' }),
     ...(hasBlackBg && { backgroundColor: '#000000' })
   };
-  
-  const animationClasses = disableAnimation 
-    ? 'opacity-100 translate-y-0' 
+
+  const animationClasses = disableAnimation
+    ? 'opacity-100 translate-y-0'
     : `transition-all ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
-  
+
   return (
-    <section 
+    <section
       ref={sectionRef}
       className={`${baseBgClass} py-16 md:py-24 px-4 sm:px-6 lg:px-16 xl:px-24 font-poppins ${animationClasses} ${className}`}
       style={sectionStyle}
@@ -98,14 +99,14 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
         </div>
 
         {/* Main Title */}
-        <h2 
+        <h2
           className="text-black text-center mb-4 mx-auto font-poppins text-3xl sm:text-4xl lg:text-[48px] font-semibold leading-tight max-w-[600px]"
         >
           {mainTitle}
         </h2>
 
         {/* Subtitle */}
-        <p 
+        <p
           className="text-black text-center mb-8 md:mb-12 mx-auto font-poppins text-sm sm:text-base font-light leading-relaxed max-w-[480px]"
         >
           {subtitle}
@@ -130,15 +131,21 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
                 return (
                   <div key={index}>
                     <div className="flex gap-4 py-4 flex-col lg:flex-row items-start">
-                     
+
                       <div className="flex-1">
                         <button
                           onClick={() => toggleFeature(index)}
-                          className="text-left w-full font-poppins"
+                          className="text-left w-full font-poppins flex items-center gap-3"
                         >
-                          
-                          <h4 className="text-[18px] font-medium text-black mb-2 hover:text-purple-400 transition-colors cursor-pointer font-poppins">
-                           {feature.number} {feature.title}
+                          {feature.iconUrl && (
+                            <img
+                              src={feature.iconUrl}
+                              alt=""
+                              className="w-8 h-8 object-contain"
+                            />
+                          )}
+                          <h4 className="text-[18px] font-medium text-black mb-0 hover:text-purple-400 transition-colors cursor-pointer font-poppins">
+                            {!feature.iconUrl && feature.number} {feature.title}
                           </h4>
                         </button>
                         {feature.description && isExpanded && (

@@ -16,27 +16,27 @@ const IntelligentAutomation = () => {
     {
       number: 1,
       title: "Lead Captured",
-      description: "Instant trigger to captured lead captured lead",
+      description: "Instantly capture new leads and route them into your funnel without delay.",
     },
     {
       number: 2,
       title: "CRM Sync",
-      description: "Instant trigger to captured lead captured lead",
+      description: "New leads are auto-synced into your CRM with zero manual effort.",
     },
     {
       number: 3,
       title: "AI Calls",
-      description: "Instant trigger to captured lead captured lead",
+      description: "AI instantly calls every new lead for qualification and appointment booking.",
     },
     {
       number: 4,
       title: "Follow-Up SMS",
-      description: "Instant trigger to captured lead captured lead",
+      description: "Automated follow-ups keep leads warm until they respond or convert.",
     },
     {
       number: 5,
       title: "Analytics",
-      description: "Instant trigger to captured lead captured lead",
+      description: "Track performance with real-time insights across calls, leads, and conversions.",
     },
   ];
 
@@ -46,7 +46,7 @@ const IntelligentAutomation = () => {
 
       const windowHeight = window.innerHeight;
       const activeStepsList: number[] = [];
-      
+
       // Trigger points for each step (as percentage of screen height)
       const triggerPoints = {
         1: windowHeight * 0.9,  // Step 1 at 80%
@@ -55,22 +55,22 @@ const IntelligentAutomation = () => {
         4: windowHeight * 0.45, // Step 4 at 35%
         5: windowHeight * 0.3,  // Step 5 at 20%
       };
-      
+
       // Check each step individually
       steps.forEach((step) => {
         const stepRef = stepRefs.current[step.number - 1];
         if (!stepRef) return;
-        
+
         const stepRect = stepRef.getBoundingClientRect();
         const stepCenter = stepRect.top + stepRect.height / 2;
         const triggerPoint = triggerPoints[step.number as keyof typeof triggerPoints];
-        
+
         // Step is active when its center reaches or passes its trigger point
         if (stepCenter <= triggerPoint) {
           activeStepsList.push(step.number);
         }
       });
-      
+
       setActiveSteps(activeStepsList);
     };
 
@@ -113,7 +113,7 @@ const IntelligentAutomation = () => {
         </h2>
 
         {/* Subtitle */}
-        <p 
+        <p
           className="text-center mb-12 md:mb-16 mx-auto"
           style={{
             fontFamily: 'Poppins, sans-serif',
@@ -173,16 +173,14 @@ const IntelligentAutomation = () => {
                   }}
                 >
                   <div
-                    className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full transition-all duration-500 ${
-                      isActive
+                    className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full transition-all duration-500 ${isActive
                         ? "bg-gradient-to-b from-purple-400 to-purple-600 shadow-[0_15px_40px_rgba(126,34,206,0.35)]"
                         : "bg-gray-100 border-2 border-gray-300"
-                    }`}
+                      }`}
                   >
                     <span
-                      className={`text-lg font-bold transition-colors duration-500 ${
-                        isActive ? "text-white" : "text-gray-700"
-                      }`}
+                      className={`text-lg font-bold transition-colors duration-500 ${isActive ? "text-white" : "text-gray-700"
+                        }`}
                     >
                       {step.number}
                     </span>

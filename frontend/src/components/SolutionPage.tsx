@@ -13,15 +13,16 @@ import StatsSection from "@/components/StatsSection";
 import ContentCarouselSection from "@/components/ContentCarouselSection";
 import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
+import { useLuna } from "@/contexts/LunaContext";
 
 interface SolutionPageProps {
   data: SolutionData;
   images: {
     uiScreenshot: string;
     workflowImage: string;
-    calendar : string;
-    calendar1 : string;
-    tirado : string;
+    calendar: string;
+    calendar1: string;
+    tirado: string;
   };
   pageTitle: string;
   metaDescription: string;
@@ -50,6 +51,8 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
     twoColumnSection,
   } = data;
 
+  const { openLuna } = useLuna();
+
   return (
     <div className="min-h-screen  flex flex-col bg-background">
       <Header />
@@ -65,7 +68,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
         items={problems}
         itemsPerView={4}
         renderItem={(problem) => (
-          <ProblemCard title={problem.title} description={problem.description} />
+          <ProblemCard title={problem.title} description={problem.description} iconUrl={problem.iconUrl} />
         )}
         showNavigation={true}
         backgroundColor="bg-black"
@@ -113,7 +116,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
         items={features}
         itemsPerView={4}
         renderItem={(feature) => (
-          <FeatureCard title={feature.title} description={feature.description} />
+          <FeatureCard title={feature.title} description={feature.description} iconUrl={feature.iconUrl} />
         )}
         showNavigation={true}
         backgroundColor="bg-black"
@@ -167,11 +170,11 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                   </div>
 
                   {/* Vertical Divider */}
-                    <div className="h-8 w-px bg-white/20"></div>
+                  <div className="h-8 w-px bg-white/20"></div>
 
                   {/* Right Stat */}
                   <div className="flex-1">
-                      <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-2">
+                    <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-2">
                       {customerStorySection.stats.right.value}
                     </div>
                     <div className="text-sm text-white/80">
@@ -201,14 +204,12 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                   )}
                   {customerStorySection.secondaryButton.text === "Talk To Sales" || customerStorySection.secondaryButton.text.includes("Sales") || customerStorySection.secondaryButton.text.includes("Demo") ? (
                     customerStorySection.secondaryButton.text.includes("Demo") ? (
-                      <a
-                        href="https://luna.closerx.ai/talk"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={openLuna}
                         className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
                       >
                         {customerStorySection.secondaryButton.text}
-                      </a>
+                      </button>
                     ) : (
                       <a
                         href="/contact"

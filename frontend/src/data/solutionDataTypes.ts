@@ -9,6 +9,7 @@ export interface Problem {
   icon: LucideIcon;
   title: string;
   description: string;
+  iconUrl?: string;
 }
 
 export interface Solution {
@@ -32,6 +33,7 @@ export interface Feature {
   icon: string;
   title: string;
   description: string;
+  iconUrl?: string;
 }
 
 export interface SolutionData {
@@ -74,6 +76,7 @@ export interface SolutionData {
     steps: Array<{
       title: string;
       description: string;
+      icon?: string;
     }>;
   };
   qualificationCriteria?: {

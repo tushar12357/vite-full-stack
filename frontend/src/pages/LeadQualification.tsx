@@ -51,6 +51,7 @@ const LeadQualification = () => {
           <ProblemCard
             title={problem.title}
             description={problem.description}
+            iconUrl={problem.iconUrl}
           />
         )}
         showNavigation={true}
@@ -59,7 +60,7 @@ const LeadQualification = () => {
 
       {/* Two Column Feature Section */}
       {twoColumnSection && (
-        <TwoColumnFeatureSection 
+        <TwoColumnFeatureSection
           data={{
             ...twoColumnSection,
             rightImage: workflowImage,
@@ -69,7 +70,7 @@ const LeadQualification = () => {
         />
       )}
 
- 
+
 
       {/* How It Works */}
       <HowItWorksSection data={howItWorks} />
@@ -105,6 +106,7 @@ const LeadQualification = () => {
           <FeatureCard
             title={feature.title}
             description={feature.description}
+            iconUrl={feature.iconUrl}
           />
         )}
         showNavigation={true}
@@ -113,7 +115,7 @@ const LeadQualification = () => {
 
       {/* Customer Story Section */}
       <section className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - Text Content */}
             <div className="text-left">
@@ -167,8 +169,8 @@ const LeadQualification = () => {
                     {customerStorySection.primaryButton.text}
                   </a>
                 ) : (
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300"
                   >
                     {customerStorySection.primaryButton.text}
@@ -183,8 +185,8 @@ const LeadQualification = () => {
                       {customerStorySection.secondaryButton.text}
                     </a>
                   ) : (
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       variant="outline"
                       className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300"
                     >
@@ -209,8 +211,8 @@ const LeadQualification = () => {
         </div>
       </section>
 
-      <FAQ/>
-      <FinalCTA/>
+      <FAQ />
+      <FinalCTA />
       <Footer />
     </div>
   );

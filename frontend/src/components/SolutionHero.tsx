@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useLuna } from "@/contexts/LunaContext";
 
 interface SolutionHeroProps {
   hero: {
@@ -20,6 +21,7 @@ interface SolutionHeroProps {
 }
 
 const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: SolutionHeroProps) => {
+  const { openLuna } = useLuna();
   return (
     <section className="relative bg-black py-20 md:py-32 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -44,10 +46,10 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
               {hero.primaryButton.text === "Try For Free" ? (
                 <a
-                  href="https://luna.closerx.ai/talk"
+                  onClick={openLuna}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
@@ -64,25 +66,32 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
                   {hero.primaryButton.text}
                 </a>
               ) : (
-                <Button 
-                  size="lg" 
-                  className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap"
+                <Button
+                  size="lg"
+                  className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap h-auto"
                 >
                   {hero.primaryButton.text}
                 </Button>
               )}
               {hero.secondaryButton.text === "Talk To Sales" || hero.secondaryButton.text.includes("Sales") ? (
                 <a
-                  href="/contact"
+                  href="/contact" target="_blank" rel="noopener noreferrer"
                   className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
                 >
                   {hero.secondaryButton.text}
                 </a>
+              ) : hero.secondaryButton.text.includes("Demo") ? (
+                <button
+                  onClick={openLuna}
+                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
+                >
+                  {hero.secondaryButton.text}
+                </button>
               ) : (
-                <Button 
+                <Button
                   size="lg"
                   variant="outline"
-                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300 whitespace-nowrap"
+                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300 whitespace-nowrap h-auto"
                 >
                   {hero.secondaryButton.text}
                 </Button>
