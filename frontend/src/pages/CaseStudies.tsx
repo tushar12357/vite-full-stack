@@ -18,6 +18,7 @@ const FEATURED_STORIES = [
       "Mike Craft's trade show company client achieved remarkable success, making 1,500 daily calls and increasing vendor participation by 30% year-over-year with CloserX.",
     cta: "View Success Story",
     image: CASE_STUDIES_DATA["mike-craft-tradeshow"]?.image || "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1000&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69271311fbd34495ad12017d.mp4"
   },
   {
     id: "bill-data-agency",
@@ -26,6 +27,7 @@ const FEATURED_STORIES = [
       "Bill Data, an AI agency for car dealerships, set up their first AI agent in just 30 minutes. CloserX AI became an essential cornerstone of their technology stack.",
     cta: "Read Success Story",
     image: CASE_STUDIES_DATA["bill-data-agency"]?.image || "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1000&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692713111e784c250a29b774.mp4"
   },
   {
     id: "enix-ai-whitelabel",
@@ -34,19 +36,40 @@ const FEATURED_STORIES = [
       "Enix AI successfully launched their white-label AI calling service with CloserX's unmatched customer service, earning a solid five stars and 100% recommendation.",
     cta: "Explore Story",
     image: CASE_STUDIES_DATA["enix-ai-whitelabel"]?.image || "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69271311fbd344030312017e.mp4"
   },
+  {
+    id: "webnamaste-agency",
+    title: "Creating Inbound AI Voice Agent in 8 Minutes",
+    description:
+      "Radha Krishnan created a fully functional inbound AI voice agent in just 8 minutes, discovering endless possibilities with CloserX's extensive platform capabilities.",
+    cta: "Watch Story",
+    image: CASE_STUDIES_DATA["webnamaste-agency"]?.image || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692713121a0c186be6e3400e.mp4"
+  },
+  {
+    id: "german-terado-business",
+    title: "Smooth Onboarding Experience with Dedicated Support",
+    description:
+      "German Terado praises CloserX's dedicated support team, particularly Ankit, for making the complex onboarding process easy, smooth, and successful.",
+    cta: "See Story",
+    image: CASE_STUDIES_DATA["german-terado-business"]?.image || "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69271311cb7a792160b578dc.mp4"
+  }
 ];
 
 const LOGOS = ["Bill Data", "Enix AI", "WebNamaste", "Mike Craft", "German Terado"];
 
 // Convert case studies data to stories format
-const STORIES = getAllCaseStudyIds().map((id) => {
-  const study = CASE_STUDIES_DATA[id];
+const STORIES = FEATURED_STORIES.map((story) => {
+  const study = CASE_STUDIES_DATA[story.id];
   return {
-    id: study.id,
-    industry: study.industry,
-    title: study.title,
-  action: "Read Now",
+    id: story.id,
+    industry: study?.industry || "Success Story",
+    title: story.title,
+    action: "Read Now",
+    video: story.video,
+    image: story.image,
   };
 });
 
@@ -96,7 +119,7 @@ export default function CaseStudies() {
               <p className="text-white/70 text-base leading-relaxed">
                 {featuredStory.description}
               </p>
-              <Link 
+              <Link
                 to={`/success-stories/${featuredStory.id}`}
                 className="mt-4 inline-flex items-center gap-3 bg-[#8B5CF6] hover:bg-[#7C3AED] px-6 py-3 rounded-full text-sm font-semibold transition-colors w-fit"
               >
@@ -105,25 +128,37 @@ export default function CaseStudies() {
               </Link>
             </div>
             <div className="flex-1 w-full">
-              <div className="relative rounded-[28px] overflow-hidden border border-white/10">
-                <img
-                  src={featuredStory.image}
-                  alt="Featured story visual"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative rounded-[28px] overflow-hidden border border-white/10 aspect-[4/3]">
+                {featuredStory.video ? (
+                  <video
+                    key={featuredStory.video}
+                    src={featuredStory.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <img
+                    src={featuredStory.image}
+                    alt="Featured story visual"
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
             </div>
 
             <button
               onClick={() => changeStory("prev")}
-              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full p-3 transition-colors"
+              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full p-3 transition-colors z-10"
               aria-label="Previous story"
             >
               <ChevronLeft className="w-5 h-5 text-white" />
             </button>
             <button
               onClick={() => changeStory("next")}
-              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full p-3 transition-colors"
+              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full p-3 transition-colors z-10"
               aria-label="Next story"
             >
               <ChevronRight className="w-5 h-5 text-white" />
@@ -178,14 +213,25 @@ export default function CaseStudies() {
                 <Link
                   key={story.id}
                   to={`/success-stories/${story.id}`}
-                  className="rounded-[28px] overflow-hidden border border-white/5 flex flex-col bg-transparent hover:border-white/20 transition-colors"
+                  className="rounded-[28px] overflow-hidden border border-white/5 flex flex-col bg-transparent hover:border-white/20 transition-colors group"
                 >
-                  <div className="bg-white flex items-center justify-center py-10">
-                    <img
-                      src={caseStudy?.image || globePlaceholder}
-                      alt={caseStudy?.company || story.title}
-                      className="w-full h-48 object-cover"
-                    />
+                  <div className="bg-white/5 flex items-center justify-center aspect-[4/3] overflow-hidden">
+                    {story.video ? (
+                      <video
+                        src={story.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <img
+                        src={story.image || caseStudy?.image || globePlaceholder}
+                        alt={caseStudy?.company || story.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                   <div className="bg-[#101010] p-6 flex flex-col gap-4 flex-1">
                     <span className="inline-flex px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.25em] text-white bg-white/10 w-fit">
@@ -210,7 +256,7 @@ export default function CaseStudies() {
 
           {hasMoreStories && !showAllStories && (
             <div className="flex justify-center">
-              <button 
+              <button
                 onClick={() => setShowAllStories(true)}
                 className="px-6 py-3 border border-white/10 rounded-full text-sm text-white/80 hover:bg-white/5 transition-colors"
               >
@@ -224,15 +270,15 @@ export default function CaseStudies() {
         <section className="px-4">
           <div className="max-w-6xl mx-auto bg-[#0B001A] rounded-[32px] overflow-hidden border border-[#7C3AED]/40 relative">
             <div className="absolute inset-0 opacity-60">
-                <video  
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  <source src={video} type="video/mp4" />
-                </video>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src={video} type="video/mp4" />
+              </video>
             </div>
             <div className="relative z-10 p-10 text-left space-y-6">
               <h3 className="text-3xl font-semibold">
@@ -245,9 +291,9 @@ export default function CaseStudies() {
                 <button className="px-6 py-3 rounded-full bg-white text-black font-semibold w-full sm:w-auto">
                   Get Stories
                 </button>
-                  <DemoModal buttonClassName="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
-                    Book Demo
-                  </DemoModal>
+                <DemoModal buttonClassName="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
+                  Book Demo
+                </DemoModal>
               </div>
             </div>
           </div>

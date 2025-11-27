@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import trustPilot from "@/assets/tp.png";
 
 interface Testimonial {
   id: number;
@@ -9,12 +10,7 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Hannah Reed",
-    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926e9f9f394dbcdd77f8ba6.png",
-    text: "Well, simply amazing! My team loves it.",
-  },
+
   {
     id: 2,
     name: "Sarah Johnson",
@@ -26,13 +22,6 @@ const testimonials: Testimonial[] = [
     id: 3,
     name: "Michael Chen",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea04fbd3443d360d09ad.png",
-    text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    role: "Marketing Director",
-    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea070863c3217c4168c6.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
@@ -49,34 +38,20 @@ const testimonials: Testimonial[] = [
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
-    id: 7,
-    name: "Hannah Ward",
-    role: "Freelance",
-    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea1bf394db58247faab4.png",
-    text: "Using Flowline gave us a polished SaaS homepage in less than a week. The layout is clear and conversion-focused.",
-  },
-  {
     id: 8,
     name: "Robert Taylor",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea224ee4a344e9332d13.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
-  },
-  {
-    id: 9,
-    name: "Lisa Anderson",
-    role: "Product Manager",
-    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926e9f9f394dbcdd77f8ba6.png",
-    text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
-  },
+  }
 ];
 
-const testimonialVideos: Array<{ id: number; url: string }> = [
-  { id: 1, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4eb10143a9cf36e32.mov" },
-  { id: 2, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef446b2e755937dd94c.mov" },
-  { id: 3, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe5124388f85.mp4" },
-  { id: 4, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe2a4c388f84.mov" },
-  { id: 5, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a5fc8d9567c1cbb7.mov" },
-  { id: 6, url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4c61b110c7b085e59.mp4" },
+const testimonialVideos: Array<{ id: number; url: string; name: string; agency: string }> = [
+  { id: 1, name: "Hannah Reed", agency: "Epix Ai Solution", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4eb10143a9cf36e32.mov" },
+  { id: 2, name: "Sarah Johnson", agency: "Hidden", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef446b2e755937dd94c.mov" },
+  { id: 3, name: "Christian Rivera", agency: "Enix.Ai", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe5124388f85.mp4" },
+  { id: 4, name: "Dan", agency: "Ai Bot Agency", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe2a4c388f84.mov" },
+  { id: 5, name: "David Wilson", agency: "Ai Agency Wealth", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a5fc8d9567c1cbb7.mov" },
+  { id: 6, name: "Jessica Martinez", agency: "Martinez Media", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4c61b110c7b085e59.mp4" },
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
@@ -91,17 +66,22 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   );
 };
 
-const TestimonialVideoCard = ({ url }: { url: string }) => (
-  <div className="rounded-3xl overflow-hidden shadow-xl bg-black/80 border border-white/10">
-    <div className="relative w-full" style={{ paddingTop: "177.78%" }}>
-      <video
-        src={url}
-        controls
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        poster=""
-      />
+const TestimonialVideoCard = ({ url, name, agency }: { url: string; name: string; agency: string }) => (
+  <div className="flex flex-col gap-4">
+    <div className="rounded-3xl overflow-hidden shadow-xl bg-black/80 border border-white/10">
+      <div className="relative w-full" style={{ paddingTop: "177.78%" }}>
+        <video
+          src={url}
+          controls
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster=""
+        />
+      </div>
     </div>
+    <p className="text-center font-semibold text-gray-900 text-lg">
+      {name}, <span className="text-gray-600 font-medium">{agency}</span>
+    </p>
   </div>
 );
 
@@ -127,6 +107,9 @@ const Testimonials = () => {
           <p className="text-[12px] md:text-[14px] text-gray-600 max-w-2xl mx-auto font-medium">
             At CloserX, we believe in the power of<br /> connection and collaboration.
           </p>
+          <div className="flex justify-center mt-6">
+            <img src={trustPilot} alt="Trustpilot Reviews" className="h-8 md:h-10 w-auto" />
+          </div>
         </div>
 
         {/* Mosaic Grid - Masonry Layout */}
@@ -145,7 +128,7 @@ const Testimonials = () => {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonialVideos.map((video) => (
-              <TestimonialVideoCard key={video.id} url={video.url} />
+              <TestimonialVideoCard key={video.id} url={video.url} name={video.name} agency={video.agency} />
             ))}
           </div>
         </div>

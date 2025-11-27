@@ -3,13 +3,13 @@ import Footer from "@/components/Footer";
 import BorderedButton from "@/components/BorderedButton";
 import ContentCarouselSection from "@/components/ContentCarouselSection";
 import ContentCarouselSectionWithButton from "@/components/ContentCarouselSectionWithButton";
-import { 
-  FileText, 
-  Shield, 
-  DollarSign, 
-  Plus, 
-  Square, 
-  Circle, 
+import {
+  FileText,
+  Shield,
+  DollarSign,
+  Plus,
+  Square,
+  Circle,
   Triangle,
   Check,
   ArrowRight,
@@ -31,6 +31,7 @@ interface WhatWeDoItem {
   number: string;
   title: string;
   description: string;
+  iconUrl: string;
 }
 
 interface CoreValueItem {
@@ -52,22 +53,26 @@ const About = () => {
     {
       number: "01",
       title: "Design",
-      description: "We work with you to design AI agents that align with your business goals and customer needs, ensuring seamless integration with your existing workflows."
+      description: "We work with you to design AI agents that align with your business goals and customer needs, ensuring seamless integration with your existing workflows.",
+      iconUrl: "https://api.iconify.design/lucide:pen-tool.svg?color=%23ffffff"
     },
     {
       number: "02",
       title: "Build",
-      description: "Our team of experts builds robust and scalable AI agents using the latest technologies and best practices in artificial intelligence."
+      description: "Our team of experts builds robust and scalable AI agents using the latest technologies and best practices in artificial intelligence.",
+      iconUrl: "https://api.iconify.design/lucide:hammer.svg?color=%23ffffff"
     },
     {
       number: "03",
       title: "Launch",
-      description: "We help you launch your AI agents quickly and efficiently, ensuring they are ready to handle real-world interactions from day one."
+      description: "We help you launch your AI agents quickly and efficiently, ensuring they are ready to handle real-world interactions from day one.",
+      iconUrl: "https://api.iconify.design/lucide:rocket.svg?color=%23ffffff"
     },
     {
       number: "04",
       title: "Scale",
-      description: "As your business grows, we provide the infrastructure and support needed to scale your AI agents to handle increasing volumes of interactions."
+      description: "As your business grows, we provide the infrastructure and support needed to scale your AI agents to handle increasing volumes of interactions.",
+      iconUrl: "https://api.iconify.design/lucide:trending-up.svg?color=%23ffffff"
     }
   ];
 
@@ -94,10 +99,38 @@ const About = () => {
     }
   ];
 
+  const whiteLabelFeatures = [
+    {
+      title: "Professional Custom Domain",
+      description: "Launch under your own domain to reinforce brand identity and build client trust",
+      iconUrl: "https://api.iconify.design/lucide:globe.svg?color=%23ffffff"
+    },
+    {
+      title: "Predictable Revenue Streams",
+      description: "$10,000-$15,000 monthly recurring revenue potential within your first two months",
+      iconUrl: "https://api.iconify.design/lucide:trending-up.svg?color=%23ffffff"
+    },
+    {
+      title: "Set Your Own Pricing",
+      description: "Establish margins on subscription fees and calling credits with complete control",
+      iconUrl: "https://api.iconify.design/lucide:dollar-sign.svg?color=%23ffffff"
+    },
+    {
+      title: "Unique Market Position",
+      description: "Present as proprietary solution, creating competitive advantage in crowded marketplace",
+      iconUrl: "https://api.iconify.design/lucide:target.svg?color=%23ffffff"
+    },
+    {
+      title: "Enterprise Support",
+      description: "Dedicated support team to help you succeed with implementation and ongoing optimization",
+      iconUrl: "https://api.iconify.design/lucide:shield.svg?color=%23ffffff"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
-      
+
       <main className="pt-28">
         {/* Hero Section */}
         <section className="bg-black min-h-screen py-10 md:py-16 px-8 md:px-12 lg:px-16 xl:px-24">
@@ -110,19 +143,19 @@ const About = () => {
                 className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover"
               />
             </div>
-            
+
             {/* Why We Are Here Button */}
             <div className="flex justify-center mb-6">
               <button className="px-4 py-2 bg-gray-800 rounded-lg text-white text-sm font-semibold uppercase tracking-wide">
                 WHY WE ARE HERE
               </button>
             </div>
-            
+
             {/* Main Heading */}
             <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white mb-3 leading-tight">
-              The Voice of Technology. <br /> Bringing the World's Knowledge, <br/ > Stories and Agents to Life.
+              The Voice of Technology. <br /> Bringing the World's Knowledge, <br /> Stories and Agents to Life.
             </h1>
-            
+
             {/* Tagline */}
             <p className="text-xs md:text-sm text-white/70 max-w-xl mx-auto">
               We help you create your own agents, stories and knowledge bases.
@@ -133,7 +166,7 @@ const About = () => {
         {/* About Us Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-5xl mx-auto">
-            <div 
+            <div
               className="grid md:grid-cols-2 gap-12 bg-[#121212] lg:gap-16 items-center"
               style={{
                 width: '1131px',
@@ -161,13 +194,13 @@ const About = () => {
                   <BorderedButton text="CONTACT US" />
                 </Link>
               </div>
-              
+
               {/* Right Column - Dashboard Screenshot */}
               <div className="relative h-[280px] sm:h-[400px] md:h-[620px] lg:h-[580px] xl:h-[580px]">
                 <div className="bg-white rounded-xl overflow-hidden border border-gray-200 h-full">
-                  <img 
-                    src={dashboardImage} 
-                    alt="Dashboard Screenshot" 
+                  <img
+                    src={dashboardImage}
+                    alt="Dashboard Screenshot"
                     className="w-[603px] h-[604px] object-cover"
                   />
                 </div>
@@ -179,7 +212,7 @@ const About = () => {
         {/* Our Mission Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-4xl mx-auto text-center">
-            <div 
+            <div
               className="flex flex-col"
               style={{
                 width: '839px',
@@ -202,258 +235,98 @@ const About = () => {
 
         {/* The White-Label Advantage Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* Cards Grid - 3 cards per row */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Card 1 - The White-Label Advantage Header */}
-                <div 
-                  className="bg-transparent p-6 flex flex-col gap-2"
+              {/* Card 1 - The White-Label Advantage Header */}
+              <div
+                className="bg-transparent p-6 flex flex-col gap-2"
+                style={{
+                  width: '100%',
+                  height: '280px',
+                  opacity: 1,
+                  transform: 'rotate(0deg)'
+                }}
+              >
+                <h2 className="text-[40px] font-normal mb-6 text-white leading-tight">
+                  The White-Label Advantage
+                </h2>
+                <p
+                  className="text-sm text-[#6B6B6B] leading-relaxed mb-10"
                   style={{
-                    width: '400px',
-                    height: '346px',
+                    width: '100%',
+                    height: 'auto',
                     opacity: 1,
                     transform: 'rotate(0deg)'
                   }}
                 >
-                  <h2 className="text-[40px] font-normal mb-6 text-white leading-tight">
-                    The White-Label Advantage
-                  </h2>
-                  <p 
-                    className="text-sm text-[#6B6B6B] leading-relaxed mb-10"
-                    style={{
-                      width: '334px',
-                      height: '72px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)'
-                    }}
-                  >
-                    Unlike traditional SaaS platforms, CloserX.ai empowers agencies to completely rebrand our AI calling platform with your own logo, colors, and custom domain.
-                  </p>
-                  <BorderedButton text="UNDERSTAND MORE" />
-                </div>
-                
-                {/* Card 2 - Professional Custom Domain */}
-                <div 
-                  className="bg-transparent border border-gray-800 p-6"
-                  style={{
-                    width: '400px',
-                    height: '346px',
-                    borderRadius: '12px',
-                    borderWidth: '1px',
-                    opacity: 1,
-                    transform: 'rotate(0deg)'
-                  }}
-                >
-                  <div 
-                    className="flex flex-col gap-3 mb-4"
-                    style={{
-                      width: '256px',
-                      height: '113px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)'
-                    }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
-                      <Globe className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-medium text-white">Professional Custom Domain</h3>
-                  </div>
-                  <p 
-                    className="text-sm text-gray-400 leading-relaxed"
-                    style={{
-                      width: '334px',
-                      height: '72px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)',
-                      marginTop: '100px',
-                      
-                    }}
-                  >
-                    Launch under your own domain to reinforce brand identity and build client trust
-                  </p>
-                </div>
-                
-                {/* Card 3 - Predictable Revenue Streams */}
-                <div 
-                  className="bg-transparent border border-gray-800 p-6"
-                  style={{
-                    width: '400px',
-                    height: '346px',
-                    borderRadius: '12px',
-                    borderWidth: '1px',
-                    opacity: 1,
-                    transform: 'rotate(0deg)'
-                    
-                  }}
-                >
-                  <div 
-                    className="flex flex-col gap-3 mb-4"
-                    style={{
-                      width: '256px',
-                      height: '113px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)'
-                    }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
-                      <TrendingUp className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-medium text-white">Predictable Revenue Streams</h3>
-                  </div>
-                  <p 
-                    className="text-sm text-gray-400 leading-relaxed"
-                    style={{
-                      width: '334px',
-                      height: '72px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)',
-                      marginTop: '100px',
+                  Unlike traditional SaaS platforms, CloserX.ai empowers agencies to completely rebrand our AI calling platform with your own logo, colors, and custom domain.
+                </p>
 
-                    }}
-                  >
-                    $10,000-$15,000 monthly recurring revenue potential within your first two months
-                  </p>
-                </div>
-                
-                {/* Card 4 - Set Your Own Pricing */}
-                <div 
-                  className="bg-transparent border border-gray-800 p-6"
+              </div>
+
+              {/* Feature Cards */}
+              {whiteLabelFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-transparent border border-gray-800 p-6 transition-all duration-300 hover:bg-[#1A1A1A]"
                   style={{
-                    width: '400px',
-                    height: '346px',
+                    width: '100%',
+                    height: '280px',
                     borderRadius: '12px',
                     borderWidth: '1px',
                     opacity: 1,
                     transform: 'rotate(0deg)'
                   }}
                 >
-                  <div 
+                  <div
                     className="flex flex-col gap-3 mb-4"
                     style={{
-                      width: '256px',
-                      height: '113px',
+                      width: '100%',
+                      height: 'auto',
                       opacity: 1,
                       transform: 'rotate(0deg)'
                     }}
                   >
                     <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
-                      <DollarSign className="w-7 h-7 text-white" />
+                      <img src={feature.iconUrl} alt={feature.title} className="w-7 h-7" />
                     </div>
-                    <h3 className="text-xl font-medium text-white">Set Your Own Pricing</h3>
+                    <h3 className="text-xl font-medium text-white">{feature.title}</h3>
                   </div>
-                  <p 
+                  <p
                     className="text-sm text-gray-400 leading-relaxed"
                     style={{
-                      width: '334px',
-                      height: '72px',
+                      width: '100%',
+                      height: 'auto',
                       opacity: 1,
                       transform: 'rotate(0deg)',
-                      marginTop: '100px',
+                      marginTop: 'auto',
                     }}
                   >
-                    Establish margins on subscription fees and calling credits with complete control
+                    {feature.description}
                   </p>
                 </div>
-                
-                {/* Card 5 - Unique Market Position */}
-                <div 
-                  className="bg-transparent border border-gray-800 p-6"
-                  style={{
-                    width: '400px',
-                    height: '346px',
-                    borderRadius: '12px',
-                    borderWidth: '1px',
-                    opacity: 1,
-                    transform: 'rotate(0deg)'
-                  }}
-                >
-                  <div 
-                    className="flex flex-col gap-3 mb-4"
-                    style={{
-                      width: '256px',
-                      height: '113px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)'
-                    }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
-                      <Target className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-medium text-white">Unique Market Position</h3>
-                  </div>
-                  <p 
-                    className="text-sm text-gray-400 leading-relaxed"
-                    style={{
-                      width: '334px',
-                      height: '72px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)',
-                      marginTop: '100px',
-                    }}
-                  >
-                    Present as proprietary solution, creating competitive advantage in crowded marketplace
-                  </p>
-                </div>
-                
-                {/* Card 6 - Additional Feature */}
-                <div 
-                  className="bg-transparent border border-gray-800 p-6"
-                  style={{
-                    width: '400px',
-                    height: '346px',
-                    borderRadius: '12px',
-                    borderWidth: '1px',
-                    opacity: 1,
-                    transform: 'rotate(0deg)'
-                  }}
-                >
-                  <div 
-                    className="flex flex-col gap-3 mb-4"
-                    style={{
-                      width: '256px',
-                      height: '113px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)'
-                    }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-[#1A1A1A] flex items-center justify-center">
-                      <Shield className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-medium text-white">Enterprise Support</h3>
-                  </div>
-                  <p 
-                    className="text-sm text-gray-400 leading-relaxed"
-                    style={{
-                      width: '334px',
-                      height: '72px',
-                      opacity: 1,
-                      transform: 'rotate(0deg)',
-                      marginTop: '100px',
-                    }}
-                  >
-                    Dedicated support team to help you succeed with implementation and ongoing optimization
-                  </p>
-                </div>
+              ))}
             </div>
           </div>
         </section>
-        
+
 
         {/* What We Do Section - First Instance (Design, Build, Launch, Scale) */}
         <ContentCarouselSectionWithButton
           title="What We Do"
           description="CloserX.ai provides an AI-powered voice calling platform that operates 24/7, 365 days a year with ultra-realistic voice agents"
-          buttonText="UNDERSTAND MORE"
+
           items={whatWeDoItems}
           itemsPerView={4}
           showNavigation={true}
           backgroundColor="bg-black"
           renderItem={(item) => (
-            <div 
-              className="bg-transparent border border-gray-800 p-8 flex flex-col "
+            <div
+              className="bg-transparent border border-gray-800 p-8 flex flex-col transition-all duration-300 hover:bg-[#1A1A1A]"
               style={{
-                width: '321px',
-                height: '376px',
+                width: '280px',
+                height: '240px',
                 opacity: 1,
                 transform: 'rotate(0deg)',
                 borderRadius: '12px',
@@ -463,13 +336,13 @@ const About = () => {
               }}
             >
               {/* Icon */}
-              <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-20">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+                <img src={item.iconUrl} alt={item.title} className="w-6 h-6" />
               </div>
-              
+
               {/* Title */}
-              <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
-              
+              <h3 className="text-2xl font-semibold text-white mb-3">{item.title}</h3>
+
               {/* Description */}
               <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
             </div>
@@ -489,143 +362,143 @@ const About = () => {
                 <p className="text-base text-gray-400">
                   Plans built for creators and business of all sizes
                 </p>
-                
+
 
               </div>
 
               {/* Right Column - Pricing Cards */}
               <div className="grid md:grid-cols-3 gap-6">
-              {/* Starter Plan */}
-              <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
-                <h3 className="text-[18px] font-medium text-white mb-2">Starter</h3>
-                <p className="text-sm text-gray-400 mb-16">For startups and publishers</p>
-                <p className="text-xs text-gray-500 mb-2">UP TO 05 Sub-Accounts</p>
-                <div className="mb-6 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold text-white">$29</span>
-                  <span className="text-base text-gray-400">Per Month</span>
+                {/* Starter Plan */}
+                <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                  <h3 className="text-[18px] font-medium text-white mb-2">Starter</h3>
+                  <p className="text-sm text-gray-400 mb-16">For startups and publishers</p>
+                  <p className="text-xs text-gray-500 mb-2">UP TO 3 Sub-Accounts</p>
+                  <div className="mb-6 flex items-baseline gap-1">
+                    <span className="text-5xl font-bold text-white">$29</span>
+                    <span className="text-base text-gray-400">Per Month</span>
+                  </div>
+                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=starter" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
+                    Get Started
+                  </a>
+                  <ul className="space-y-3 flex-grow mt-8">
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Basic dashboard</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Limited API access</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Email Support</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Up to 3 sub-accounts</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Basic analytics</span>
+                    </li>
+                  </ul>
                 </div>
-                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
-                  Get Started
-                </a>
-                <ul className="space-y-3 flex-grow mt-8">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Basic dashboard</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Limited API access</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Email Support</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Up to 05 sub-accounts</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Basic analytics</span>
-                  </li>
-                </ul>
+
+                {/* Professional Plan - Highlighted */}
+                <div className="bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 rounded-2xl p-8 flex flex-col relative">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 px-4 py-2 rounded-full">
+                    <span className="text-xs font-semibold text-white tracking-wide">MOST POPULAR</span>
+                  </div>
+                  <h3 className="text-[18px] font-medium text-white mb-2">Professional</h3>
+                  <p className="text-sm text-white/90 mb-12">For rapidly scaling startups and publishers</p>
+                  <p className="text-xs text-white/80 mb-2">UP TO 10 Sub-Accounts</p>
+                  <div className="mb-6 flex items-baseline gap-1">
+                    <span className="text-5xl font-bold text-white">$97</span>
+                    <span className="text-base text-white/90">Per Month</span>
+                  </div>
+                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=professional" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all text-center block">
+                    Get Started
+                  </a>
+                  <ul className="space-y-3 flex-grow mt-8">
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Advanced dashboard</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Priority API access</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Live chat support</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Up to 10 sub-accounts</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Advanced analytics</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Custom branding</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">Call recording</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Growing Plan */}
+                <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
+                  <h3 className="text-[18px] font-medium text-white mb-2">Growing</h3>
+                  <p className="text-sm text-gray-400 mb-6">For enterprises that need volume based discounts and custom terms</p>
+                  <p className="text-xs text-gray-500 mb-2">Unlimited Sub-Accounts</p>
+                  <div className="mb-6 flex items-baseline gap-1">
+                    <span className="text-5xl font-bold text-white">$297</span>
+                    <span className="text-base text-gray-400">Per Month</span>
+                  </div>
+                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=growing" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
+                    Get Started
+                  </a>
+                  <ul className="space-y-3 flex-grow mt-8">
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Full-featured dashboard</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Unlimited API calls</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">24/7 dedicated support</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Unlimited sub-accounts</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Advanced analytics</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Custom AI models</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">SLA guarantee</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Priority processing</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              
-              {/* Professional Plan - Highlighted */}
-              <div className="bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 rounded-2xl p-8 flex flex-col relative">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 px-4 py-2 rounded-full">
-                  <span className="text-xs font-semibold text-white tracking-wide">MOST POPULAR</span>
-                </div>
-                <h3 className="text-[18px] font-medium text-white mb-2">Professional</h3>
-                <p className="text-sm text-white/90 mb-12">For rapidly scaling startups and publishers</p>
-                <p className="text-xs text-white/80 mb-2">UP TO 20 Sub-Accounts</p>
-                <div className="mb-6 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold text-white">$97</span>
-                  <span className="text-base text-white/90">Per Month</span>
-                </div>
-                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all text-center block">
-                  Get Started
-                </a>
-                <ul className="space-y-3 flex-grow mt-8">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Advanced dashboard</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Priority API access</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Live chat support</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Up to 20 sub-accounts</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Advanced analytics</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Custom branding</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-white">Call recording</span>
-                  </li>
-                </ul>
-              </div>
-              
-              {/* Growing Plan */}
-              <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
-                <h3 className="text-[18px] font-medium text-white mb-2">Growing</h3>
-                <p className="text-sm text-gray-400 mb-6">For enterprises that need volume based discounts and custom terms</p>
-                <p className="text-xs text-gray-500 mb-2">Unlimited Sub-Accounts</p>
-                <div className="mb-6 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold text-white">$297</span>
-                  <span className="text-base text-gray-400">Per Month</span>
-                </div>
-                <a href="https://offer.closerx.ai" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
-                  Get Started
-                </a>
-                <ul className="space-y-3 flex-grow mt-8">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Full-featured dashboard</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Unlimited API calls</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">24/7 dedicated support</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Unlimited sub-accounts</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Advanced analytics</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Custom AI models</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">SLA guarantee</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">Priority processing</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
             </div>
           </div>
         </section>
@@ -665,28 +538,28 @@ const About = () => {
                 <div className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium mb-8">
                   WE ARE HIRING
                 </div>
-                
+
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
                   Join our team, we're building the future of enterprise.
                 </h2>
-                
+
                 <p className="text-base text-gray-400 mb-6 leading-relaxed">
                   Today, CloserX.ai stands as the trusted AI calling solution for thousands of agencies worldwide, helping them differentiate their offerings, increase revenue streams, and deliver exceptional value to their clients. With proven templates, comprehensive training, and a 30-day money-back guarantee (terms and conditions applied), we provide everything needed to launch and scale a profitable AI calling agency.
                 </p>
-                
+
                 <p className="text-base text-gray-400 mb-10 leading-relaxed">
                   Whether you're an established marketing agency looking to expand your service portfolio or an entrepreneur ready to enter the AI space, CloserX.ai provides the complete toolkit for success in the rapidly evolving world of AI-powered business communications.
                 </p>
-                
+
                 <BorderedButton text="CONTACT US" />
               </div>
 
               {/* Right Column - Dashboard Image */}
               <div className="relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src={dashboardImage} 
-                    alt="CloserX.ai Dashboard" 
+                  <img
+                    src={dashboardImage}
+                    alt="CloserX.ai Dashboard"
                     className="w-full h-auto"
                   />
                 </div>
@@ -698,7 +571,7 @@ const About = () => {
         {/* CTA Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-7xl mx-auto">
-            <div 
+            <div
               className="bg-[#121212] border border-gray-800 p-12 md:p-16 relative"
               style={{
                 width: '1247px',
@@ -727,7 +600,7 @@ const About = () => {
                     Join our growing network of partners and unlock new opportunities with AI-driven customer engagement.
                   </p>
                 </div>
-                <button 
+                <button
                   className="bg-purple-600 text-[14px] p-2 hover:bg-purple-700 text-white rounded-full font-normal transition-colors"
                   style={{
                     width: '120px',

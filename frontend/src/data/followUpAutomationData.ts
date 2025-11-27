@@ -20,10 +20,10 @@ export const followUpAutomationData: SolutionData = {
     },
   },
   stats: [
-    { value: "80%", label: "of sales need 5+ follow-ups" },
-    { value: "92%", label: "of reps give up after 4 attempts" },
-    { value: "AI", label: "never gives up" },
-    { value: "3x", label: "higher conversion rate" },
+    { value: "80%", label: "of sales need 5+ follow-ups", description: "Most deals require persistence that human agents struggle to maintain consistently." },
+    { value: "92%", label: "of reps give up after 4 attempts", description: "Don't let potential revenue slip away due to lack of follow-through." },
+    { value: "AI", label: "never gives up", description: "Our agents persist until they get a definitive yes or no, maximizing every lead." },
+    { value: "3x", label: "higher conversion rate", description: "Consistent, timely follow-ups dramatically increase your chances of closing." },
   ],
   problems: [
     {

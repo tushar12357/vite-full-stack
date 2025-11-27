@@ -4,6 +4,7 @@ import { CheckCircle2, XCircle } from "lucide-react";
 export interface Stat {
   value: string;
   label: string;
+  description?: string;
 }
 
 export interface Problem {
@@ -161,10 +162,10 @@ export const leadQualificationData: LeadQualificationData = {
     },
   },
   stats: [
-    { value: "1,000+", label: "leads qualified daily" },
-    { value: "90%", label: "accuracy rate" },
-    { value: "5-min", label: "qualification process" },
-    { value: "4x", label: "more qualified leads" },
+    { value: "1,000+", label: "leads qualified daily", description: "Scale your outreach without adding headcount or compromising quality." },
+    { value: "90%", label: "accuracy rate", description: "Precise AI scoring ensures only the best leads make it to your sales team." },
+    { value: "5-min", label: "qualification process", description: "Engage leads instantly while their interest is at its peak." },
+    { value: "4x", label: "more qualified leads", description: "Fill your pipeline with high-intent prospects ready to buy." },
   ],
   problems: [
     {

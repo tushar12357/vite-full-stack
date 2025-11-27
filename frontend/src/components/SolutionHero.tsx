@@ -58,7 +58,7 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
                 </a>
               ) : hero.primaryButton.text.includes("Get Started") || hero.primaryButton.text.includes("Start") ? (
                 <a
-                  href="https://offer.closerx.ai"
+                  href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"

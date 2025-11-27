@@ -49,7 +49,7 @@ const ContentCarouselSectionWithButton = <T,>({
 
   return (
     <section className={`py-20 ${backgroundColor}`}>
-      <div className="container mx-auto px-8 md:px-12 lg:px-16 xl:px-24">
+      <div className="max-w-5xl mx-auto px-8 md:px-12 lg:px-16 xl:px-24">
         <div className="relative mb-16">
           {/* Tag (optional) */}
           {tag && (
@@ -61,7 +61,7 @@ const ContentCarouselSectionWithButton = <T,>({
           )}
 
           {/* Title and Description */}
-          <div 
+          <div
             className="mb-8 flex flex-col"
             style={{
               width: '717px',
@@ -88,9 +88,8 @@ const ContentCarouselSectionWithButton = <T,>({
                   onClick={handlePrev}
                   disabled={currentIndex === 0}
                   aria-label="Previous items"
-                  className={`w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-white hover:bg-gray-700 transition-all ${
-                    currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
-                  }`}
+                  className={`w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-white hover:bg-gray-700 transition-all ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+                    }`}
                   type="button"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -99,9 +98,8 @@ const ContentCarouselSectionWithButton = <T,>({
                   onClick={handleNext}
                   disabled={currentIndex >= maxIndex}
                   aria-label="Next items"
-                  className={`w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-white hover:bg-gray-700 transition-all ${
-                    currentIndex >= maxIndex ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
-                  }`}
+                  className={`w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-white hover:bg-gray-700 transition-all ${currentIndex >= maxIndex ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+                    }`}
                   type="button"
                 >
                   <ChevronRight className="w-5 h-5" />
