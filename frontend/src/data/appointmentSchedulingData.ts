@@ -22,10 +22,10 @@ export const appointmentSchedulingData: SolutionData = {
     },
   },
   stats: [
-    { value: "500+", label: "appointments booked daily" },
-    { value: "85%", label: "show-up rate" },
-    { value: "Zero", label: "scheduling conflicts" },
-    { value: "24/7", label: "booking capability" },
+    { value: "500+", label: "appointments booked daily", description: "High-volume automation that keeps your sales team busy with qualified meetings." },
+    { value: "85%", label: "show-up rate", description: "Smart reminders and confirmations ensure prospects actually attend their meetings." },
+    { value: "Zero", label: "scheduling conflicts", description: "Real-time calendar sync prevents double bookings and administrative headaches." },
+    { value: "24/7", label: "booking capability", description: "Capture interest the moment it happens, regardless of time zone or business hours." },
   ],
   problems: [
     {

@@ -4,6 +4,7 @@ export interface CaseStudyData {
   industry: string;
   title: string;
   image: string;
+  video?: string;
   overview: string;
   challenge: {
     title: string;
@@ -90,25 +91,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Time Saved", 
-          value: "40 hrs/week", 
-          description: "Staff can now focus exclusively on closing deals and client relationships" 
+        {
+          label: "Time Saved",
+          value: "40 hrs/week",
+          description: "Staff can now focus exclusively on closing deals and client relationships"
         },
-        { 
-          label: "Automation Rate", 
-          value: "95%", 
-          description: "Of all appointment scheduling handled without human intervention" 
+        {
+          label: "Automation Rate",
+          value: "95%",
+          description: "Of all appointment scheduling handled without human intervention"
         },
-        { 
-          label: "Booking Increase", 
-          value: "23%", 
-          description: "More showings scheduled due to 24/7 availability and instant response" 
+        {
+          label: "Booking Increase",
+          value: "23%",
+          description: "More showings scheduled due to 24/7 availability and instant response"
         },
-        { 
-          label: "ROI", 
-          value: "430%", 
-          description: "Return on investment achieved within the first 6 months" 
+        {
+          label: "ROI",
+          value: "430%",
+          description: "Return on investment achieved within the first 6 months"
         }
       ],
       testimonial: {
@@ -130,33 +131,33 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Week 1", 
-          activity: "Discovery & Setup", 
+        {
+          phase: "Week 1",
+          activity: "Discovery & Setup",
           description: "Comprehensive analysis of current processes, CRM integration planning, and voice script customization. CloserX team conducted interviews with agents to understand pain points and created a detailed implementation roadmap.",
           duration: "5 business days"
         },
-        { 
-          phase: "Week 2", 
-          activity: "Training & Testing", 
+        {
+          phase: "Week 2",
+          activity: "Training & Testing",
           description: "AI model trained on Empire Realty's property database, historical call data, and common client scenarios. Extensive testing with simulated calls covering various property types and client situations.",
           duration: "5 business days"
         },
-        { 
-          phase: "Week 3", 
-          activity: "Pilot Launch", 
+        {
+          phase: "Week 3",
+          activity: "Pilot Launch",
           description: "Soft launch with 25% of incoming calls routed to AI system. Real-time monitoring and adjustment of responses based on actual client interactions. Agent feedback loop established for continuous improvement.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 4", 
-          activity: "Full Rollout", 
+        {
+          phase: "Week 4",
+          activity: "Full Rollout",
           description: "Scaled to 100% of appointment scheduling calls after successful pilot validation. All agents trained on the new system workflow and escalation procedures.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 5+", 
-          activity: "Optimization & Expansion", 
+        {
+          phase: "Week 5+",
+          activity: "Optimization & Expansion",
           description: "Fine-tuned scripts based on real-world performance data. Expanded to additional use cases including property inquiries, virtual tour scheduling, and lead nurturing campaigns.",
           duration: "Ongoing"
         }
@@ -236,25 +237,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "No-Show Reduction", 
-          value: "67%", 
-          description: "Patient no-show rate dropped from 32% to just 10.5%" 
+        {
+          label: "No-Show Reduction",
+          value: "67%",
+          description: "Patient no-show rate dropped from 32% to just 10.5%"
         },
-        { 
-          label: "Patient Satisfaction", 
-          value: "98%", 
-          description: "Patients rated the reminder system excellent or very good" 
+        {
+          label: "Patient Satisfaction",
+          value: "98%",
+          description: "Patients rated the reminder system excellent or very good"
         },
-        { 
-          label: "Calls Automated", 
-          value: "5,000/mo", 
-          description: "Reminder and follow-up calls handled by AI monthly" 
+        {
+          label: "Calls Automated",
+          value: "5,000/mo",
+          description: "Reminder and follow-up calls handled by AI monthly"
         },
-        { 
-          label: "Revenue Recovery", 
-          value: "$180K/yr", 
-          description: "Additional revenue from filled appointment slots" 
+        {
+          label: "Revenue Recovery",
+          value: "$180K/yr",
+          description: "Additional revenue from filled appointment slots"
         }
       ],
       testimonial: {
@@ -277,39 +278,39 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Week 1-2", 
-          activity: "HIPAA Compliance & Security Setup", 
+        {
+          phase: "Week 1-2",
+          activity: "HIPAA Compliance & Security Setup",
           description: "Comprehensive security audit and implementation of HIPAA-compliant communication infrastructure. Legal and compliance team review of all processes and scripts to ensure regulatory adherence.",
           duration: "10 business days"
         },
-        { 
-          phase: "Week 3", 
-          activity: "EMR Integration", 
+        {
+          phase: "Week 3",
+          activity: "EMR Integration",
           description: "Integration with Epic EMR system to securely access appointment data, patient preferences, and medical histories. Development of automated data synchronization protocols.",
           duration: "5 business days"
         },
-        { 
-          phase: "Week 4", 
-          activity: "Specialty-Specific Customization", 
+        {
+          phase: "Week 4",
+          activity: "Specialty-Specific Customization",
           description: "Creation of customized scripts for each medical specialty to ensure appropriate language and questions. Training AI on medical terminology and common patient scenarios for different departments.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 5", 
-          activity: "Pilot with Two Locations", 
+        {
+          phase: "Week 5",
+          activity: "Pilot with Two Locations",
           description: "Soft launch at two clinic locations representing different specialties. Close monitoring of patient responses, system performance, and staff feedback. Adjustment of scripts and timing based on real-world results.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 6-7", 
-          activity: "Network-Wide Rollout", 
+        {
+          phase: "Week 6-7",
+          activity: "Network-Wide Rollout",
           description: "Phased expansion to all 8 clinic locations. Staff training on new workflows and escalation procedures. Patient education materials distributed to explain the new reminder system.",
           duration: "14 days"
         },
-        { 
-          phase: "Week 8+", 
-          activity: "Optimization & Feature Expansion", 
+        {
+          phase: "Week 8+",
+          activity: "Optimization & Feature Expansion",
           description: "Analysis of no-show patterns and reminder effectiveness. A/B testing of different reminder timing and messaging. Addition of new features like prescription refill reminders and preventive care outreach.",
           duration: "Ongoing"
         }
@@ -391,25 +392,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Call Capacity", 
-          value: "10,000/mo", 
-          description: "Successfully handling peak volume without additional staff" 
+        {
+          label: "Call Capacity",
+          value: "10,000/mo",
+          description: "Successfully handling peak volume without additional staff"
         },
-        { 
-          label: "Cost Reduction", 
-          value: "45%", 
-          description: "Per-call support cost decreased while improving quality" 
+        {
+          label: "Cost Reduction",
+          value: "45%",
+          description: "Per-call support cost decreased while improving quality"
         },
-        { 
-          label: "Response Time", 
-          value: "<30 sec", 
-          description: "Average wait time reduced from 23 minutes" 
+        {
+          label: "Response Time",
+          value: "<30 sec",
+          description: "Average wait time reduced from 23 minutes"
         },
-        { 
-          label: "CSAT Score", 
-          value: "4.7/5.0", 
-          description: "Customer satisfaction recovered and exceeded previous high" 
+        {
+          label: "CSAT Score",
+          value: "4.7/5.0",
+          description: "Customer satisfaction recovered and exceeded previous high"
         }
       ],
       testimonial: {
@@ -433,39 +434,39 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Week 1-2", 
-          activity: "Knowledge Base Development", 
+        {
+          phase: "Week 1-2",
+          activity: "Knowledge Base Development",
           description: "Comprehensive catalog of all products, policies, and common support scenarios. Analysis of 6 months of support tickets to identify top issues and frequently asked questions. Creation of detailed troubleshooting flowcharts.",
           duration: "10 business days"
         },
-        { 
-          phase: "Week 3", 
-          activity: "System Integration", 
+        {
+          phase: "Week 3",
+          activity: "System Integration",
           description: "Integration with Shopify e-commerce platform, ShipStation for tracking, and Zendesk for ticket management. Development of real-time data synchronization for order and inventory information.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 4", 
-          activity: "AI Training & Testing", 
+        {
+          phase: "Week 4",
+          activity: "AI Training & Testing",
           description: "Training AI on product catalog, support knowledge base, and historical conversation data. Extensive testing with simulated customer scenarios covering returns, technical issues, and product questions.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 5", 
-          activity: "Pilot Launch", 
+        {
+          phase: "Week 5",
+          activity: "Pilot Launch",
           description: "Soft launch handling 20% of incoming calls, focusing on simple inquiries (order status, shipping tracking). Real-time monitoring by support team with instant feedback loop for improvements.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 6-7", 
-          activity: "Gradual Expansion", 
+        {
+          phase: "Week 6-7",
+          activity: "Gradual Expansion",
           description: "Phased increase to 50%, then 80% of call volume as system proved reliability. Addition of more complex support scenarios including returns, exchanges, and basic troubleshooting.",
           duration: "14 days"
         },
-        { 
-          phase: "Week 8+", 
-          activity: "Full Operation & Enhancement", 
+        {
+          phase: "Week 8+",
+          activity: "Full Operation & Enhancement",
           description: "100% of first-contact calls handled by AI with intelligent routing to humans for complex issues. Continuous improvement based on customer feedback and support team insights. Addition of proactive outreach capabilities.",
           duration: "Ongoing"
         }
@@ -547,25 +548,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Leads Qualified", 
-          value: "500/mo", 
-          description: "Every lead receives consistent, thorough qualification" 
+        {
+          label: "Leads Qualified",
+          value: "500/mo",
+          description: "Every lead receives consistent, thorough qualification"
         },
-        { 
-          label: "Qualified Meetings", 
-          value: "3x increase", 
-          description: "Advisors now meet only with qualified, ready prospects" 
+        {
+          label: "Qualified Meetings",
+          value: "3x increase",
+          description: "Advisors now meet only with qualified, ready prospects"
         },
-        { 
-          label: "Time to Qualify", 
-          value: "2 min avg", 
-          description: "Reduced from 30+ minutes per lead" 
+        {
+          label: "Time to Qualify",
+          value: "2 min avg",
+          description: "Reduced from 30+ minutes per lead"
         },
-        { 
-          label: "Conversion Rate", 
-          value: "41%", 
-          description: "Of qualified leads became clients, up from 23%" 
+        {
+          label: "Conversion Rate",
+          value: "41%",
+          description: "Of qualified leads became clients, up from 23%"
         }
       ],
       testimonial: {
@@ -589,39 +590,39 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Week 1-2", 
-          activity: "Compliance & Legal Review", 
+        {
+          phase: "Week 1-2",
+          activity: "Compliance & Legal Review",
           description: "Comprehensive review of all scripts and processes with compliance team. Ensuring adherence to SEC, FINRA, and state regulations for financial advisor communications. Development of compliant qualification questions and disclosures.",
           duration: "10 business days"
         },
-        { 
-          phase: "Week 3", 
-          activity: "Qualification Criteria Development", 
+        {
+          phase: "Week 3",
+          activity: "Qualification Criteria Development",
           description: "Detailed definition of ideal client profile and disqualification criteria. Creation of multi-factor scoring algorithm based on assets, goals, timeline, and fit. Input from all advisors on what makes a qualified prospect.",
           duration: "5 business days"
         },
-        { 
-          phase: "Week 4", 
-          activity: "CRM Integration", 
+        {
+          phase: "Week 4",
+          activity: "CRM Integration",
           description: "Integration with Salesforce and Redtail CRM systems. Automated lead assignment based on advisor specialties and capacity. Development of reporting dashboards for lead flow and qualification metrics.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 5", 
-          activity: "Testing & Refinement", 
+        {
+          phase: "Week 5",
+          activity: "Testing & Refinement",
           description: "Extensive testing with simulated leads representing different scenarios. Role-playing sessions with advisors providing feedback on qualification thoroughness. Adjustment of scripts based on initial results.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 6", 
-          activity: "Pilot Launch", 
+        {
+          phase: "Week 6",
+          activity: "Pilot Launch",
           description: "Soft launch with digital marketing leads only (30% of total volume). Careful monitoring of qualification accuracy and lead satisfaction. Daily review meetings with advisors to gather feedback.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 7+", 
-          activity: "Full Rollout & Optimization", 
+        {
+          phase: "Week 7+",
+          activity: "Full Rollout & Optimization",
           description: "Expansion to all lead sources. Implementation of nurture sequences for not-ready leads. Continuous refinement based on conversion data and advisor feedback. Addition of new qualification dimensions.",
           duration: "Ongoing"
         }
@@ -703,25 +704,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Monthly Revenue", 
-          value: "$50K MRR", 
-          description: "New recurring revenue stream in 90 days" 
+        {
+          label: "Monthly Revenue",
+          value: "$50K MRR",
+          description: "New recurring revenue stream in 90 days"
         },
-        { 
-          label: "Active Clients", 
-          value: "12", 
-          description: "Clients using AI voice solutions" 
+        {
+          label: "Active Clients",
+          value: "12",
+          description: "Clients using AI voice solutions"
         },
-        { 
-          label: "Profit Margin", 
-          value: "73%", 
-          description: "On AI voice division vs 40% on core services" 
+        {
+          label: "Profit Margin",
+          value: "73%",
+          description: "On AI voice division vs 40% on core services"
         },
-        { 
-          label: "Client Retention", 
-          value: "100%", 
-          description: "Zero churn in AI voice client base" 
+        {
+          label: "Client Retention",
+          value: "100%",
+          description: "Zero churn in AI voice client base"
         }
       ],
       testimonial: {
@@ -747,45 +748,45 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Week 1-2", 
-          activity: "Partnership Setup & Training", 
+        {
+          phase: "Week 1-2",
+          activity: "Partnership Setup & Training",
           description: "White-label agreement finalization and branding customization. Comprehensive training for agency team on platform capabilities, use cases, and vertical applications. Development of internal playbooks and processes.",
           duration: "10 business days"
         },
-        { 
-          phase: "Week 3-4", 
-          activity: "Sales Enablement", 
+        {
+          phase: "Week 3-4",
+          activity: "Sales Enablement",
           description: "Creation of sales materials, demo environments, and pitch decks. Pricing strategy development and ROI calculator customization. Role-playing sales scenarios and objection handling with CloserX team.",
           duration: "10 business days"
         },
-        { 
-          phase: "Week 5-6", 
-          activity: "Pilot Client Implementations", 
+        {
+          phase: "Week 5-6",
+          activity: "Pilot Client Implementations",
           description: "Deployment for 3 existing clients at discounted rates to build case studies. Close collaboration with CloserX on implementation best practices. Real-time problem solving and process refinement.",
           duration: "14 days"
         },
-        { 
-          phase: "Week 7-8", 
-          activity: "Case Study Development", 
+        {
+          phase: "Week 7-8",
+          activity: "Case Study Development",
           description: "Documentation of results from pilot clients. Creation of industry-specific marketing materials and success stories. Video testimonials and data visualization of ROI.",
           duration: "14 days"
         },
-        { 
-          phase: "Week 9-10", 
-          activity: "Market Launch", 
+        {
+          phase: "Week 9-10",
+          activity: "Market Launch",
           description: "Official announcement of new division to existing clients and market. Launch of targeted outreach campaign to prospects. Speaking engagements and thought leadership content.",
           duration: "14 days"
         },
-        { 
-          phase: "Week 11-12", 
-          activity: "Scaling & Optimization", 
+        {
+          phase: "Week 11-12",
+          activity: "Scaling & Optimization",
           description: "Onboarding of first paying clients beyond pilots. Refinement of delivery processes and client success workflows. Hiring of dedicated AI voice team members.",
           duration: "14 days"
         },
-        { 
-          phase: "Week 13+", 
-          activity: "Growth & Expansion", 
+        {
+          phase: "Week 13+",
+          activity: "Growth & Expansion",
           description: "Systematic client acquisition and onboarding. Expansion to additional verticals and use cases. Development of specialized industry offerings. Continuous partnership optimization with CloserX.",
           duration: "Ongoing"
         }
@@ -832,6 +833,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     industry: "AI Agency",
     title: "From Setup to Essential Tool: AI Agency Launches in 30 Minutes",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692713111e784c250a29b774.mp4",
     overview: "Bill Data is a specialized AI and automation agency founded by Eric Gale, exclusively serving the automotive retail sector. The agency helps car dealerships streamline customer communications, automate lead follow-ups, and enhance sales processes using cutting-edge AI technology. As a member of the AI Agency Vault School Community, Bill Data bridges the technology gap in automotive retail, delivering enterprise-level AI capabilities that drive efficiency and accelerate sales cycles.",
     challenge: {
       title: "The Challenge",
@@ -859,25 +861,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Setup Time", 
-          value: "30 min", 
-          description: "First AI agent deployed in under 30 minutes" 
+        {
+          label: "Setup Time",
+          value: "30 min",
+          description: "First AI agent deployed in under 30 minutes"
         },
-        { 
-          label: "Voice Quality", 
-          value: "100%", 
-          description: "Human-quality conversations indistinguishable from real people" 
+        {
+          label: "Voice Quality",
+          value: "100%",
+          description: "Human-quality conversations indistinguishable from real people"
         },
-        { 
-          label: "Tech Stack", 
-          value: "Essential", 
-          description: "CloserX AI became essential to agency's technology stack" 
+        {
+          label: "Tech Stack",
+          value: "Essential",
+          description: "CloserX AI became essential to agency's technology stack"
         },
-        { 
-          label: "Support Quality", 
-          value: "Instant", 
-          description: "Immediate problem resolution when technical issues emerged" 
+        {
+          label: "Support Quality",
+          value: "Instant",
+          description: "Immediate problem resolution when technical issues emerged"
         }
       ],
       testimonial: {
@@ -895,21 +897,21 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Day 1", 
-          activity: "Platform Discovery", 
+        {
+          phase: "Day 1",
+          activity: "Platform Discovery",
           description: "Eric discovered CloserX AI and was immediately impressed by the platform's remarkably natural voice technology.",
           duration: "Same day"
         },
-        { 
-          phase: "Day 1", 
-          activity: "First Agent Setup", 
+        {
+          phase: "Day 1",
+          activity: "First Agent Setup",
           description: "Set up first AI agent in just 30 minutes with instant support when needed.",
           duration: "30 minutes"
         },
-        { 
-          phase: "Week 3", 
-          activity: "Integration Complete", 
+        {
+          phase: "Week 3",
+          activity: "Integration Complete",
           description: "CloserX AI became an essential cornerstone of Bill Data's technology stack, serving automotive retail clients effectively.",
           duration: "3 weeks"
         }
@@ -946,6 +948,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     industry: "White-Label AI Service",
     title: "Building a White-Label AI Calling Service with Unmatched Support",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69271311fbd344030312017e.mp4",
     overview: "Enix AI is a white-label AI calling service founded by Christian Rivera, specializing in delivering high-quality AI voice solutions to businesses. The company leverages advanced conversational AI technology to provide clients with professional-grade automated calling capabilities. Built on the foundation of cutting-edge AI platforms, Enix AI focuses on helping businesses enhance their customer communication strategies through intelligent, scalable voice automation.",
     challenge: {
       title: "The Challenge",
@@ -973,25 +976,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Recommendation", 
-          value: "100%", 
-          description: "Solid five stars and 100% recommendation as a game changer" 
+        {
+          label: "Recommendation",
+          value: "100%",
+          description: "Solid five stars and 100% recommendation as a game changer"
         },
-        { 
-          label: "Rating", 
-          value: "5/5", 
-          description: "Perfect rating for platform and support" 
+        {
+          label: "Rating",
+          value: "5/5",
+          description: "Perfect rating for platform and support"
         },
-        { 
-          label: "Service Quality", 
-          value: "High", 
-          description: "Enix AI now delivers high-quality AI calling solutions to clients" 
+        {
+          label: "Service Quality",
+          value: "High",
+          description: "Enix AI now delivers high-quality AI calling solutions to clients"
         },
-        { 
-          label: "Support Quality", 
-          value: "Unmatched", 
-          description: "Customer service described as truly unmatched" 
+        {
+          label: "Support Quality",
+          value: "Unmatched",
+          description: "Customer service described as truly unmatched"
         }
       ],
       testimonial: {
@@ -1009,27 +1012,27 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Initial Setup", 
-          activity: "Account Setup & Guidance", 
+        {
+          phase: "Initial Setup",
+          activity: "Account Setup & Guidance",
           description: "CloserX AI team guided Christian step by step through account setup, answering every question.",
           duration: "Ongoing support"
         },
-        { 
-          phase: "Customization", 
-          activity: "Platform Customization", 
+        {
+          phase: "Customization",
+          activity: "Platform Customization",
           description: "Received comprehensive guidance on customizing and configuring platform features for white-label service.",
           duration: "Ongoing support"
         },
-        { 
-          phase: "Payment Processing", 
-          activity: "Payment Integration", 
+        {
+          phase: "Payment Processing",
+          activity: "Payment Integration",
           description: "Team assisted with payment processing setup, ensuring Christian felt comfortable with each part of the process.",
           duration: "Ongoing support"
         },
-        { 
-          phase: "Launch", 
-          activity: "Service Launch", 
+        {
+          phase: "Launch",
+          activity: "Service Launch",
           description: "Successfully launched Enix AI and now delivers high-quality AI calling solutions to clients.",
           duration: "Complete"
         }
@@ -1066,6 +1069,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     industry: "Marketing Agency",
     title: "Creating Inbound AI Voice Agent in 8 Minutes",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692713121a0c186be6e3400e.mp4",
     overview: "WebNamaste is a specialized marketing agency founded by Radha Krishnan that helps agencies and professional service providers double their revenue without raising costs. The agency specializes in marketing automation on the GoHighLevel platform, focusing on generating qualified leads, closing more deals, and building scalable sales and marketing processes.",
     challenge: {
       title: "The Challenge",
@@ -1093,25 +1097,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Setup Time", 
-          value: "8 min", 
-          description: "Inbound AI voice agent created in just 8 minutes" 
+        {
+          label: "Setup Time",
+          value: "8 min",
+          description: "Inbound AI voice agent created in just 8 minutes"
         },
-        { 
-          label: "Rating", 
-          value: "5/5", 
-          description: "Highly recommends platform with five out of five rating" 
+        {
+          label: "Rating",
+          value: "5/5",
+          description: "Highly recommends platform with five out of five rating"
         },
-        { 
-          label: "Capabilities", 
-          value: "Endless", 
-          description: "Possibilities are endless with extensive platform features" 
+        {
+          label: "Capabilities",
+          value: "Endless",
+          description: "Possibilities are endless with extensive platform features"
         },
-        { 
-          label: "Ease of Use", 
-          value: "Easy", 
-          description: "Platform setup described as 'that easy'" 
+        {
+          label: "Ease of Use",
+          value: "Easy",
+          description: "Platform setup described as 'that easy'"
         }
       ],
       testimonial: {
@@ -1129,21 +1133,21 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Initial Setup", 
-          activity: "Workflow Guidance", 
+        {
+          phase: "Initial Setup",
+          activity: "Workflow Guidance",
           description: "Guided through all essential workflows and how to set up inbound and outbound calling with AI.",
           duration: "Initial session"
         },
-        { 
-          phase: "Agent Creation", 
-          activity: "8-Minute Setup", 
+        {
+          phase: "Agent Creation",
+          activity: "8-Minute Setup",
           description: "Created fully functional inbound AI voice agent in just 8 minutes.",
           duration: "8 minutes"
         },
-        { 
-          phase: "Discovery", 
-          activity: "Platform Exploration", 
+        {
+          phase: "Discovery",
+          activity: "Platform Exploration",
           description: "Discovered endless possibilities and extensive capabilities available in the platform.",
           duration: "Ongoing"
         }
@@ -1180,6 +1184,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     industry: "Business Owner",
     title: "Smooth Onboarding Experience with Dedicated Support",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69271311cb7a792160b578dc.mp4",
     overview: "German Terado is a forward-thinking business owner who partnered with CloserX AI to implement advanced AI voice technology into their operations. Recognizing the transformative potential of conversational AI, they sought to enhance customer communications and streamline their business processes. Their onboarding experience highlights the comprehensive support CloserX AI provides to businesses at every stage of their AI adoption journey—from initial setup through full implementation and optimization.",
     challenge: {
       title: "The Challenge",
@@ -1207,25 +1212,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Support Days", 
-          value: "3 days", 
-          description: "Three consecutive days of dedicated support calls" 
+        {
+          label: "Support Days",
+          value: "3 days",
+          description: "Three consecutive days of dedicated support calls"
         },
-        { 
-          label: "Satisfaction", 
-          value: "100%", 
-          description: "Client feels team deserves recognition for amazing service" 
+        {
+          label: "Satisfaction",
+          value: "100%",
+          description: "Client feels team deserves recognition for amazing service"
         },
-        { 
-          label: "Experience", 
-          value: "Smooth", 
-          description: "Onboarding described as very easy and smooth" 
+        {
+          label: "Experience",
+          value: "Smooth",
+          description: "Onboarding described as very easy and smooth"
         },
-        { 
-          label: "Recommendation", 
-          value: "Strong", 
-          description: "Client strongly recommends based on amazing service" 
+        {
+          label: "Recommendation",
+          value: "Strong",
+          description: "Client strongly recommends based on amazing service"
         }
       ],
       testimonial: {
@@ -1243,21 +1248,21 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Days 1-3", 
-          activity: "Dedicated Support", 
+        {
+          phase: "Days 1-3",
+          activity: "Dedicated Support",
           description: "Ankit dedicated three consecutive days on calls, working through issues and ensuring everything functioned properly.",
           duration: "3 consecutive days"
         },
-        { 
-          phase: "Throughout", 
-          activity: "Comprehensive Onboarding", 
+        {
+          phase: "Throughout",
+          activity: "Comprehensive Onboarding",
           description: "Entire team provided support throughout the entire onboarding process, making it easy and smooth.",
           duration: "Ongoing"
         },
-        { 
-          phase: "Complete", 
-          activity: "Successful Implementation", 
+        {
+          phase: "Complete",
+          activity: "Successful Implementation",
           description: "Complex implementation completed successfully with everything functioning properly.",
           duration: "Complete"
         }
@@ -1294,6 +1299,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     industry: "Trade Shows",
     title: "1,500 Daily Calls & 30% Increase in Vendor Participation",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    video: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69271311fbd34495ad12017d.mp4",
     overview: "Mike Craft is an entrepreneur pursuing conversational AI full-time. He serves clients with high-volume communication needs, including a trade show company making 1,500 calls daily, and has achieved impressive results. Mike left his corporate career in 2023 to pursue conversational AI full-time and has been with CloserX since near its inception as a beta tester.",
     challenge: {
       title: "The Challenge",
@@ -1323,25 +1329,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Daily Calls", 
-          value: "1,500", 
-          description: "Successfully executing 1,500 calls per day consistently and reliably" 
+        {
+          label: "Daily Calls",
+          value: "1,500",
+          description: "Successfully executing 1,500 calls per day consistently and reliably"
         },
-        { 
-          label: "Vendor Participation", 
-          value: "30%", 
-          description: "30% increase in vendor participation compared to previous year" 
+        {
+          label: "Vendor Participation",
+          value: "30%",
+          description: "30% increase in vendor participation compared to previous year"
         },
-        { 
-          label: "Voice Quality", 
-          value: "Superior", 
-          description: "Realistic-sounding AI voices enhanced customer engagement" 
+        {
+          label: "Voice Quality",
+          value: "Superior",
+          description: "Realistic-sounding AI voices enhanced customer engagement"
         },
-        { 
-          label: "Reliability", 
-          value: "100%", 
-          description: "Platform stability supporting high-volume operations" 
+        {
+          label: "Reliability",
+          value: "100%",
+          description: "Platform stability supporting high-volume operations"
         }
       ],
       testimonial: {
@@ -1360,21 +1366,21 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Evaluation", 
-          activity: "Platform Selection", 
+        {
+          phase: "Evaluation",
+          activity: "Platform Selection",
           description: "After thorough evaluation of multiple platforms, chose CloserX for GHL integration, superior voice quality, and outstanding customer support.",
           duration: "Evaluation period"
         },
-        { 
-          phase: "Integration", 
-          activity: "GHL Integration", 
+        {
+          phase: "Integration",
+          activity: "GHL Integration",
           description: "Achieved smooth GHL integration enabling automated workflows for trade show operations.",
           duration: "Setup period"
         },
-        { 
-          phase: "Scaling", 
-          activity: "High-Volume Deployment", 
+        {
+          phase: "Scaling",
+          activity: "High-Volume Deployment",
           description: "Successfully scaled to 1,500 daily calls with consistent reliability and platform stability.",
           duration: "Ongoing"
         }
@@ -1448,25 +1454,25 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     results: {
       title: "The Results",
       metrics: [
-        { 
-          label: "Test Drives", 
-          value: "2x increase", 
-          description: "Doubled from 54 to 108 monthly test drive appointments" 
+        {
+          label: "Test Drives",
+          value: "2x increase",
+          description: "Doubled from 54 to 108 monthly test drive appointments"
         },
-        { 
-          label: "Response Rate", 
-          value: "89%", 
-          description: "Lead contact rate up from 65% with manual process" 
+        {
+          label: "Response Rate",
+          value: "89%",
+          description: "Lead contact rate up from 65% with manual process"
         },
-        { 
-          label: "Response Time", 
-          value: "<5 min", 
-          description: "Reduced from 4-hour average to under 5 minutes" 
+        {
+          label: "Response Time",
+          value: "<5 min",
+          description: "Reduced from 4-hour average to under 5 minutes"
         },
-        { 
-          label: "Sales Increase", 
-          value: "34%", 
-          description: "Monthly vehicle sales up 34% with same ad spend" 
+        {
+          label: "Sales Increase",
+          value: "34%",
+          description: "Monthly vehicle sales up 34% with same ad spend"
         }
       ],
       testimonial: {
@@ -1492,39 +1498,39 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyData> = {
     implementation: {
       title: "Implementation Timeline",
       steps: [
-        { 
-          phase: "Week 1", 
-          activity: "System Integration", 
+        {
+          phase: "Week 1",
+          activity: "System Integration",
           description: "Integration with DealerSocket DMS and inventory management system. Setup of lead sources including website, Facebook, AutoTrader, Cars.com. Configuration of sales team calendars and availability.",
           duration: "5 business days"
         },
-        { 
-          phase: "Week 2", 
-          activity: "Script Development", 
+        {
+          phase: "Week 2",
+          activity: "Script Development",
           description: "Creation of vehicle-specific conversation flows covering entire inventory. Development of qualification questions based on AutoMax's ideal customer profile. Trade-in valuation scripts with KBB integration.",
           duration: "5 business days"
         },
-        { 
-          phase: "Week 3", 
-          activity: "Sales Team Training", 
+        {
+          phase: "Week 3",
+          activity: "Sales Team Training",
           description: "Comprehensive training for sales staff on new lead process. Demonstration of AI capabilities and handling of scheduled appointments. Review of reports and dashboard for tracking leads.",
           duration: "3 days"
         },
-        { 
-          phase: "Week 3-4", 
-          activity: "Pilot Launch", 
+        {
+          phase: "Week 3-4",
+          activity: "Pilot Launch",
           description: "Soft launch with website leads only (40% of volume). Daily monitoring and adjustment of scripts based on customer responses. Gathering feedback from sales team on lead quality.",
           duration: "10 days"
         },
-        { 
-          phase: "Week 5", 
-          activity: "Full Rollout", 
+        {
+          phase: "Week 5",
+          activity: "Full Rollout",
           description: "Expansion to all lead sources including third-party automotive sites. Activation of after-hours response and weekend coverage. Implementation of multi-touch follow-up sequences.",
           duration: "7 days"
         },
-        { 
-          phase: "Week 6+", 
-          activity: "Optimization & Expansion", 
+        {
+          phase: "Week 6+",
+          activity: "Optimization & Expansion",
           description: "Fine-tuning based on conversion data and customer feedback. Addition of service department appointment scheduling. Expansion to include BDC (Business Development Center) functions.",
           duration: "Ongoing"
         }

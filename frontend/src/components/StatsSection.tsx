@@ -22,15 +22,15 @@ const StatsSection = ({ stats, description = "Proven voice AI performance across
               <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3">
                 {stat.value}
               </div>
-              
+
               {/* Label */}
               <div className="text-lg md:text-sm text-white mb-4">
                 {stat.label}
               </div>
-              
+
               {/* Description */}
               <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                {description}
+                {stat.description || description}
               </p>
             </div>
           ))}

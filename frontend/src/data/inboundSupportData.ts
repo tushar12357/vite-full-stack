@@ -22,10 +22,10 @@ export const inboundSupportData: SolutionData = {
     },
   },
   stats: [
-    { value: "100%", label: "of calls answered" },
-    { value: "< 3 sec", label: "wait time" },
-    { value: "24/7/365", label: "availability" },
-    { value: "90%", label: "issues resolved by AI" },
+    { value: "100%", label: "of calls answered", description: "Capture every opportunity with zero missed calls, day or night." },
+    { value: "< 3 sec", label: "wait time", description: "Instant pickup ensures customers never hang up in frustration." },
+    { value: "24/7/365", label: "availability", description: "Always open for business, even on weekends and holidays." },
+    { value: "90%", label: "issues resolved by AI", description: "Automate routine tasks so your team focuses on high-value work." },
   ],
   problems: [
     {

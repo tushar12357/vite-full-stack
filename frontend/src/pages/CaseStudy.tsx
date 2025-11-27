@@ -20,7 +20,7 @@ export default function CaseStudy() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <article className="pt-32 pb-20 px-4">
         <div className="max-w-5xl mx-auto">
           {/* Back Link */}
@@ -41,13 +41,25 @@ export default function CaseStudy() {
             {caseStudy.title}
           </h1>
 
-          {/* Featured Image */}
-          <div className="aspect-video rounded-2xl overflow-hidden mb-12">
-            <img 
-              src={caseStudy.image} 
-              alt={caseStudy.company}
-              className="w-full h-full object-cover"
-            />
+          {/* Featured Media */}
+          <div className="aspect-video rounded-2xl overflow-hidden mb-12 border border-border">
+            {caseStudy.video ? (
+              <video
+                src={caseStudy.video}
+                controls
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={caseStudy.image}
+                alt={caseStudy.company}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
 
           {/* Overview */}

@@ -13,7 +13,7 @@ const AgencyMarque = () => {
       <style>{`
         @keyframes marquee {
           from { transform: translateX(0); }
-          to { transform: translateX(calc(-100% / 3)); }
+          to { transform: translateX(-20%); }
         }
         .animate-marquee {
           animation: marquee 15s linear infinite;

@@ -187,7 +187,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                 <div className="flex flex-col sm:flex-row gap-4">
                   {customerStorySection.primaryButton.text.includes("Get Started") || customerStorySection.primaryButton.text.includes("Start") ? (
                     <a
-                      href="https://offer.closerx.ai"
+                      href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=solution_page"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"

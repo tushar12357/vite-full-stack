@@ -120,11 +120,10 @@ const Header = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
-                        item.label === "Product" 
-                          ? "text-white" 
+                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
+                          ? "text-white"
                           : "text-gray-500 hover:text-white"
-                      }`}
+                        }`}
                     >
                       {item.label}
                       {item.label === "Pricing" && (
@@ -135,29 +134,27 @@ const Header = () => {
                       <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                     </a>
                   ) : (
-                  <Link
-                    to={item.href}
-                    className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
-                      item.label === "Product" 
-                        ? "text-white" 
-                        : "text-gray-500 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    {item.label === "Pricing" && (
-                      <span className="ml-1 text-[9px] px-1.5 py-0.5 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-full font-bold">
-                        New
-                      </span>
-                    )}
-                    <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
-                  </Link>
+                    <Link
+                      to={item.href}
+                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
+                          ? "text-white"
+                          : "text-gray-500 hover:text-white"
+                        }`}
+                    >
+                      {item.label}
+                      {item.label === "Pricing" && (
+                        <span className="ml-1 text-[9px] px-1.5 py-0.5 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-full font-bold">
+                          New
+                        </span>
+                      )}
+                      <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
+                    </Link>
                   )
                 ) : (
-                  <button className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link ${
-                    item.label === "Product" 
-                      ? "text-white" 
+                  <button className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
+                      ? "text-white"
                       : "text-gray-500 hover:text-white"
-                  }`}>
+                    }`}>
                     {item.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                     <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
@@ -169,25 +166,49 @@ const Header = () => {
                   <div className="absolute top-full left-0 pt-2 z-[100]">
                     <div className="w-[320px] bg-black rounded-2xl shadow-xl border border-slate-800 p-2 animate-in fade-in slide-in-from-top-2 duration-200">
                       {item.dropdown.map((subItem, index) => (
-                        <Link
-                          key={subItem.label}
-                          to={subItem.href}
-                          className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
-                            {subItem.icon}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-[15px] font-medium text-white transition-colors">
-                              {subItem.label}
+                        /^https?:\/\//.test(subItem.href) ? (
+                          <a
+                            key={subItem.label}
+                            href={subItem.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
+                          >
+                            <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
+                              {subItem.icon}
                             </div>
-                          </div>
-                          {subItem.badge && (
-                            <span className="text-[10px] font-bold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2.5 py-1 rounded-full flex-shrink-0">
-                              {subItem.badge}
-                            </span>
-                          )}
-                        </Link>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[15px] font-medium text-white transition-colors">
+                                {subItem.label}
+                              </div>
+                            </div>
+                            {subItem.badge && (
+                              <span className="text-[10px] font-bold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2.5 py-1 rounded-full flex-shrink-0">
+                                {subItem.badge}
+                              </span>
+                            )}
+                          </a>
+                        ) : (
+                          <Link
+                            key={subItem.label}
+                            to={subItem.href}
+                            className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
+                          >
+                            <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
+                              {subItem.icon}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[15px] font-medium text-white transition-colors">
+                                {subItem.label}
+                              </div>
+                            </div>
+                            {subItem.badge && (
+                              <span className="text-[10px] font-bold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2.5 py-1 rounded-full flex-shrink-0">
+                                {subItem.badge}
+                              </span>
+                            )}
+                          </Link>
+                        )
                       ))}
                     </div>
                   </div>
@@ -280,8 +301,8 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
-            
-            <DemoModal/>
+
+            <DemoModal />
             <a href="https://app.closerx.ai" target="_blank" rel="noopener noreferrer" className="ml-2 px-3 py-2 text-sm font-semibold text-white hover:text-gray-300 transition-colors">
               Login
             </a>
@@ -322,14 +343,14 @@ const Header = () => {
                         <ChevronDown className="w-4 h-4 -rotate-90" />
                       </a>
                     ) : (
-                    <Link
-                      to={item.href}
-                      className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                      <ChevronDown className="w-4 h-4 -rotate-90" />
-                    </Link>
+                      <Link
+                        to={item.href}
+                        className="flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                        <ChevronDown className="w-4 h-4 -rotate-90" />
+                      </Link>
                     )
                   ) : (
                     <>
@@ -407,8 +428,8 @@ const Header = () => {
               ))}
 
               <div className="pt-6 space-y-3 px-2">
-                
-                <DemoModal/>
+
+                <DemoModal />
 
                 <a
                   href="https://app.closerx.ai"

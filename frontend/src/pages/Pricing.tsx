@@ -6,7 +6,7 @@ const plans = [
   {
     name: "Starter",
     tagline: "For startups and publishers",
-    subAccounts: "UP TO 05 Sub-Accounts",
+    subAccounts: "UP TO 3 Sub-Accounts",
     price: "$29",
     cadence: "Per Month",
     cta: "Get Started",
@@ -14,14 +14,14 @@ const plans = [
       "Basic dashboard",
       "Limited API access",
       "Email Support",
-      "Up to 05 sub-accounts",
+      "Up to 3 sub-accounts",
       "Basic analytics",
     ],
   },
   {
     name: "Professional",
     tagline: "For rapidly scaling startups and publishers",
-    subAccounts: "UP TO 20 Sub-Accounts",
+    subAccounts: "UP TO 10 Sub-Accounts",
     price: "$97",
     cadence: "Per Month",
     cta: "Get Started",
@@ -30,7 +30,7 @@ const plans = [
       "Advanced dashboard",
       "Priority API access",
       "Live chat support",
-      "Up to 20 sub-accounts",
+      "Up to 10 sub-accounts",
       "Advanced analytics",
       "Custom branding",
       "Call recording",
@@ -100,14 +100,13 @@ const Pricing = () => {
               return (
                 <div
                   key={plan.name}
-                  className={`relative rounded-[32px] border border-white/10 ${
-                    isPopular ? "" : "bg-[#080808]"
-                  }`}
+                  className={`relative rounded-[32px] border border-white/10 ${isPopular ? "" : "bg-[#080808]"
+                    }`}
                   style={
                     isPopular
                       ? {
-                          backgroundColor: "#080808",
-                        }
+                        backgroundColor: "#080808",
+                      }
                       : undefined
                   }
                 >
@@ -132,9 +131,8 @@ const Pricing = () => {
                     </div>
                   )}
                   <div
-                    className={`relative rounded-[30px] p-8 h-full flex flex-col gap-6 ${
-                      isPopular ? "bg-transparent pt-12" : "bg-transparent"
-                    }`}
+                    className={`relative rounded-[30px] p-8 h-full flex flex-col gap-6 ${isPopular ? "bg-transparent pt-12" : "bg-transparent"
+                      }`}
                   >
                     {isPopular && (
                       <>
@@ -196,19 +194,18 @@ const Pricing = () => {
                         </a>
                       ) : (
                         <a
-                          href={`https://offer.closerx.ai${plan.price === "$29" ? "?plan=starter" : plan.price === "$297" ? "?plan=professional" : ""}`}
+                          href={`https://offer.closerx.ai${plan.price === "$29" ? "?plan=starter&" : plan.price === "$297" ? "?plan=professional&" : "?"}utm_source=website&utm_medium=button&utm_campaign=pricing`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`w-full rounded-full px-6 py-3 text-sm font-semibold block text-center ${
-                            plan.popular
-                              ? "border border-white/20 text-white"
-                              : "bg-[#0F0F0F] text-white border border-white/15 hover:bg-white/10"
-                          }`}
+                          className={`w-full rounded-full px-6 py-3 text-sm font-semibold block text-center ${plan.popular
+                            ? "border border-white/20 text-white"
+                            : "bg-[#0F0F0F] text-white border border-white/15 hover:bg-white/10"
+                            }`}
                           style={
                             plan.popular
                               ? {
-                                  background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
-                                }
+                                background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
+                              }
                               : undefined
                           }
                         >

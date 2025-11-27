@@ -16,9 +16,9 @@ export default function Templates() {
 
   const filteredTemplates = displayedTemplates.filter(template => {
     const matchesSearch = template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         template.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = 
-      selectedCategory === "All templates" || 
+      template.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All templates" ||
       selectedCategory === "All" ||
       template.category.toLowerCase() === selectedCategory.toLowerCase();
     return matchesSearch && matchesCategory;
@@ -27,14 +27,14 @@ export default function Templates() {
   return (
     <div className="min-h-[50vh] bg-black">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-20 px-4 bg-black mt-16">
         <div className="max-w-5xl mx-auto min-h-screen">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 text-center">
             {templateHeroData.title}
           </h1>
-          
+
           <p className="text-sm md:text-base text-white/70 text-center max-w-xl mx-auto mb-8">
             {templateHeroData.subtitle}
           </p>
@@ -61,7 +61,7 @@ export default function Templates() {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Foreground window */}
                   <div className="relative bg-white rounded-lg shadow-2xl transform rotate-1">
                     <div className="p-4">
@@ -109,24 +109,24 @@ export default function Templates() {
                 <Badge className="bg-gray-800 text-white mb-3 w-fit px-2 py-1 rounded-md text-xs">
                   {templateHeroData.featuredTemplate.category}
                 </Badge>
-                
+
                 {/* Title */}
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   {templateHeroData.featuredTemplate.name}
                 </h2>
-                
+
                 {/* Description */}
                 <p className="text-white text-sm leading-relaxed mb-6">
                   {templateHeroData.featuredTemplate.description}
                 </p>
-                
+
                 {/* USE TEMPLATE Button */}
                 <div className="mb-6">
                   <Button className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-md font-semibold text-sm">
                     USE TEMPLATE
                   </Button>
                 </div>
-                
+
                 {/* Ratings and Downloads - Bottom Right */}
                 <div className="flex items-center gap-4">
                   {templateHeroData.featuredTemplate.rating && (
@@ -158,11 +158,10 @@ export default function Templates() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id === "all" ? "All templates" : category.label)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    selectedCategory === category.label || (selectedCategory === "All templates" && category.id === "all")
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === category.label || (selectedCategory === "All templates" && category.id === "all")
                       ? "bg-purple-600 text-white"
                       : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
-                  }`}
+                    }`}
                 >
                   {category.label}
                 </button>
@@ -205,32 +204,19 @@ export default function Templates() {
                         {template.isFree ? "Free" : "Premium"}
                       </Badge>
                     </div>
-                    {/* Wireframe Globe or Image */}
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-32 h-32 border-2 border-gray-300 rounded-full relative">
-                        {/* Wireframe globe effect */}
-                        <div className="absolute inset-0 border-2 border-gray-300 rounded-full" style={{
-                          background: 'radial-gradient(circle at 30% 30%, rgba(200,200,200,0.3), transparent 50%)',
-                          boxShadow: 'inset 0 0 20px rgba(200,200,200,0.2)'
-                        }}>
-                          {/* Grid lines */}
-                          <svg className="w-full h-full" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="40" fill="none" stroke="#d1d5db" strokeWidth="0.5"/>
-                            <circle cx="50" cy="50" r="30" fill="none" stroke="#d1d5db" strokeWidth="0.5"/>
-                            <circle cx="50" cy="50" r="20" fill="none" stroke="#d1d5db" strokeWidth="0.5"/>
-                            <line x1="10" y1="50" x2="90" y2="50" stroke="#d1d5db" strokeWidth="0.5"/>
-                            <line x1="50" y1="10" x2="50" y2="90" stroke="#d1d5db" strokeWidth="0.5"/>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Image */}
+                    <img
+                      src={template.image}
+                      alt={template.name}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
                   </div>
 
                   {/* Content - Black Background */}
                   <div className="p-5 flex flex-col flex-1 bg-black">
                     <h3 className="text-lg font-bold text-white mb-2 leading-tight">{template.name}</h3>
                     <p className="text-sm text-white/70 mb-4 flex-1 leading-relaxed">{template.description}</p>
-                    
+
                     {/* Stats - Rating and Downloads */}
                     <div className="mb-4 flex items-center gap-4">
                       {template.rating && (
@@ -249,7 +235,7 @@ export default function Templates() {
 
                     {/* Button */}
                     <div className="pt-2">
-                      <button 
+                      <button
                         className=" text-white text-xs font-semibold rounded-lg p-3 transition-all uppercase tracking-wider cursor-pointer hover:bg-white hover:text-purple-600 active:bg-black active:text-white focus:outline-none"
                         style={{
                           background: 'black',
@@ -274,7 +260,7 @@ export default function Templates() {
       {displayCount < sampleTemplates.length && (
         <section className="pb-12 px-4 bg-black">
           <div className="max-w-5xl mx-auto flex justify-center">
-            <button 
+            <button
               onClick={() => setDisplayCount(prev => Math.min(prev + 9, sampleTemplates.length))}
               className="px-8 py-3 bg-transparent border border-white/30 text-white font-semibold text-sm rounded-lg hover:bg-white/10 transition-all duration-300"
             >
@@ -283,7 +269,7 @@ export default function Templates() {
           </div>
         </section>
       )}
-      <FinalCTA/>
+      <FinalCTA />
       <Footer />
     </div>
   );

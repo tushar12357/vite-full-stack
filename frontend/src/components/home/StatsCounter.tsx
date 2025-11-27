@@ -13,9 +13,9 @@ const StatsCounter = () => {
           setIsVisible(false);
         }
       },
-      { 
+      {
         threshold: 0.1, // Trigger when 10% of component is visible
-        rootMargin: '0px' 
+        rootMargin: '0px'
       }
     );
 
@@ -31,22 +31,46 @@ const StatsCounter = () => {
   }, []);
 
   const stats = [
-    { value: 10, suffix: "M+", label: "Calls Processed", isDecimal: false },
-    { value: 500, suffix: "+", label: "Calls Processed", isDecimal: false },
-    { value: 4.9, suffix: "/5", label: "Calls Processed", isDecimal: true },
-    { value: 99.9, suffix: "%", label: "Calls Processed", isDecimal: true },
+    {
+      value: 10,
+      suffix: "M+",
+      label: "Calls Processed",
+      isDecimal: false,
+      description: "Proven voice AI performance across real, high-volume phone operations."
+    },
+    {
+      value: 500,
+      suffix: "+",
+      label: "Partner Agencies",
+      isDecimal: false,
+      description: "Trusted by leading agencies to power their voice automation."
+    },
+    {
+      value: 4.9,
+      suffix: "/5",
+      label: "Average Rating",
+      isDecimal: true,
+      description: "Consistently rated highly for voice quality and reliability."
+    },
+    {
+      value: 99.9,
+      suffix: "%",
+      label: "System Uptime",
+      isDecimal: true,
+      description: "Enterprise-grade infrastructure ensuring your agents are always available."
+    },
   ];
 
-  const description = "Proven voice AI performance across real, high-volume phone operations.";
 
-  const Counter = ({ 
-    end, 
-    suffix, 
-    isDecimal, 
-    duration = 2000 
-  }: { 
-    end: number; 
-    suffix: string; 
+
+  const Counter = ({
+    end,
+    suffix,
+    isDecimal,
+    duration = 2000
+  }: {
+    end: number;
+    suffix: string;
     isDecimal: boolean;
     duration?: number;
   }) => {
@@ -62,7 +86,7 @@ const StatsCounter = () => {
       // Start counting animation when component comes into view
       let startTime: number;
       let animationFrameId: number;
-      
+
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
@@ -72,9 +96,9 @@ const StatsCounter = () => {
           animationFrameId = requestAnimationFrame(step);
         }
       };
-      
+
       animationFrameId = requestAnimationFrame(step);
-      
+
       return () => {
         if (animationFrameId) {
           cancelAnimationFrame(animationFrameId);
@@ -91,7 +115,7 @@ const StatsCounter = () => {
 
   return (
     <section ref={sectionRef} className="relative bg-black pt-20 pb-16 lg:pt-32">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
@@ -100,8 +124,8 @@ const StatsCounter = () => {
             >
               {/* Large Number */}
               <div className="text-5xl font-bold text-white lg:text-6xl">
-                <Counter 
-                  end={stat.value} 
+                <Counter
+                  end={stat.value}
                   suffix={stat.suffix}
                   isDecimal={stat.isDecimal}
                 />
@@ -114,7 +138,7 @@ const StatsCounter = () => {
 
               {/* Description */}
               <p className="text-sm leading-relaxed text-white/70">
-                {description}
+                {stat.description}
               </p>
             </div>
           ))}
