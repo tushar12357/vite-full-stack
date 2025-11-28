@@ -44,6 +44,7 @@ import HelpArticle from "./pages/HelpArticle";
 import VideoTutorials from "./pages/VideoTutorials";
 import VideoDetail from "./pages/VideoDetail";
 import Templates from "./pages/Templates";
+import TemplateDemo from "./pages/TemplateDemo";
 import TrustCenter from "./pages/TrustCenter";
 import Integrations from "./pages/Integrations";
 import UptimeSLA from "./pages/UptimeSLA";
@@ -121,6 +122,7 @@ const App = () => (
             <Route path="/videos" element={<VideoTutorials />} />
             <Route path="/videos/:id" element={<VideoDetail />} />
             <Route path="/templates" element={<Templates />} />
+            <Route path="/templates/:id" element={<TemplateDemo />} />
             <Route path="/roi-calculator" element={<ROICalculator />} />
             <Route path="/security" element={<TrustCenter />} />
             <Route path="/uptime-sla" element={<UptimeSLA />} />

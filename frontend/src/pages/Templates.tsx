@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Search, Star, Download } from "lucide-react";
@@ -122,9 +123,12 @@ export default function Templates() {
 
                 {/* USE TEMPLATE Button */}
                 <div className="mb-6">
-                  <Button className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-md font-semibold text-sm">
+                  <Link
+                    to={`/templates/${templateHeroData.featuredTemplate.id}`}
+                    className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-2 rounded-md font-semibold text-sm inline-block"
+                  >
                     USE TEMPLATE
-                  </Button>
+                  </Link>
                 </div>
 
                 {/* Ratings and Downloads - Bottom Right */}
@@ -159,8 +163,8 @@ export default function Templates() {
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id === "all" ? "All templates" : category.label)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === category.label || (selectedCategory === "All templates" && category.id === "all")
-                      ? "bg-purple-600 text-white"
-                      : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
+                    ? "bg-purple-600 text-white"
+                    : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
                     }`}
                 >
                   {category.label}
@@ -235,8 +239,9 @@ export default function Templates() {
 
                     {/* Button */}
                     <div className="pt-2">
-                      <button
-                        className=" text-white text-xs font-semibold rounded-lg p-3 transition-all uppercase tracking-wider cursor-pointer hover:bg-white hover:text-purple-600 active:bg-black active:text-white focus:outline-none"
+                      <Link
+                        to={`/templates/${template.id}`}
+                        className=" text-white text-xs font-semibold rounded-lg p-3 transition-all uppercase tracking-wider cursor-pointer hover:bg-white hover:text-purple-600 active:bg-black active:text-white focus:outline-none block text-center"
                         style={{
                           background: 'black',
                           border: '1px solid white',
@@ -246,7 +251,7 @@ export default function Templates() {
                         }}
                       >
                         USE TEMPLATE
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
