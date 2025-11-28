@@ -58,9 +58,9 @@ const Integrations = () => {
                 >
                   Check Integrations
                 </button>
-                <a href="/contact" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
+                <Link to="/contact" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
                   Talk To Sales
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -133,8 +133,8 @@ const Integrations = () => {
                     key={category.id}
                     onClick={() => setActiveTab(category.id)}
                     className={`w-full text-left px-4 py-3 rounded-lg font-semibold text-base transition-all ${activeTab === category.id
-                        ? "bg-purple-600 text-white"
-                        : "text-white hover:bg-gray-800"
+                      ? "bg-purple-600 text-white"
+                      : "text-white hover:bg-gray-800"
                       }`}
                   >
                     {category.label}

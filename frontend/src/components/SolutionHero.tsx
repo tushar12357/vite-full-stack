@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useLuna } from "@/contexts/LunaContext";
+import { Link } from "react-router-dom";
 
 interface SolutionHeroProps {
   hero: {
@@ -74,12 +75,12 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
                 </Button>
               )}
               {hero.secondaryButton.text === "Talk To Sales" || hero.secondaryButton.text.includes("Sales") ? (
-                <a
-                  href="/contact" 
+                <Link
+                  to="/contact"
                   className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
                 >
                   {hero.secondaryButton.text}
-                </a>
+                </Link>
               ) : hero.secondaryButton.text.includes("Demo") ? (
                 <button
                   onClick={openLuna}

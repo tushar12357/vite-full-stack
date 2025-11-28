@@ -610,7 +610,7 @@ const About = () => {
 
                   }}
                 >
-                  <a href="/contact" className="inline-block">Get In Touch</a>
+                  <Link to="/contact" className="inline-block">Get In Touch</Link>
                 </button>
               </div>
             </div>

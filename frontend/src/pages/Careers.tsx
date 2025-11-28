@@ -59,6 +59,8 @@ const quickFacts = [
   "A member of our partnerships team will contact you to schedule a discovery call.",
 ];
 
+import { Link } from "react-router-dom";
+
 const Careers = () => {
   const [expandedRole, setExpandedRole] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState("All");
@@ -401,9 +403,9 @@ const Careers = () => {
               <p className="text-white/70 text-base max-w-2xl">
                 Join our growing network of partners and unlock new opportunities with AI-driven customer engagement.
               </p>
-              <a href="/contact" className="inline-block bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white rounded-full px-6 py-3 text-sm font-semibold w-fit">
+              <Link to="/contact" className="inline-block bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white rounded-full px-6 py-3 text-sm font-semibold w-fit">
                 Get In Touch
-              </a>
+              </Link>
             </div>
           </div>
         </section>

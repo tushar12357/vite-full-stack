@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Check } from "lucide-react";
 
+import { Link } from "react-router-dom";
+
 const plans = [
   {
     name: "Starter",
@@ -186,12 +188,12 @@ const Pricing = () => {
 
                     <div className="relative z-10">
                       {plan.enterprise ? (
-                        <a
-                          href="/contact"
+                        <Link
+                          to="/contact"
                           className="w-full rounded-full px-6 py-3 text-sm font-semibold bg-white text-black hover:bg-white/90 block text-center"
                         >
                           {plan.cta}
-                        </a>
+                        </Link>
                       ) : (
                         <a
                           href={`https://offer.closerx.ai${plan.price === "$29" ? "?plan=starter&" : plan.price === "$297" ? "?plan=professional&" : "?"}utm_source=website&utm_medium=button&utm_campaign=pricing`}

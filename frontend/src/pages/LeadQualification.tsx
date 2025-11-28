@@ -178,12 +178,12 @@ const LeadQualification = () => {
                 )}
                 {customerStorySection.secondaryButton.text && customerStorySection.secondaryButton.text !== "" && (
                   customerStorySection.secondaryButton.text === "Talk To Sales" ? (
-                    <a
-                      href="/contact"
+                    <Link
+                      to="/contact"
                       className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 text-center block"
                     >
                       {customerStorySection.secondaryButton.text}
-                    </a>
+                    </Link>
                   ) : (
                     <Button
                       size="lg"

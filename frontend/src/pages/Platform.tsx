@@ -5,6 +5,8 @@ import FinalCTA from "@/components/home/FinalCTA";
 import Products from "@/components/home/Products";
 import { useLuna } from "@/contexts/LunaContext";
 
+import { Link } from "react-router-dom";
+
 const Platform = () => {
   const { openLuna } = useLuna();
   return (
@@ -30,9 +32,9 @@ const Platform = () => {
             {/* Call-to-Action Buttons */}
             <div className="flex flex-row items-center justify-center gap-6">
               {/* Talk To Sales Button - Pill-shaped with purple background */}
-              <a href="/contact"  rel="noopener noreferrer" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <Link to="/contact" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105">
                 Talk To Sales
-              </a>
+              </Link>
 
               {/* Create an AI Agent - Text link (not a button) */}
               <button onClick={openLuna} className="text-purple-400 hover:text-purple-500 font-bold text-base transition-colors duration-300">
