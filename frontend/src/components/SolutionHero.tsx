@@ -75,7 +75,7 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
               )}
               {hero.secondaryButton.text === "Talk To Sales" || hero.secondaryButton.text.includes("Sales") ? (
                 <a
-                  href="/contact" target="_blank" rel="noopener noreferrer"
+                  href="/contact" 
                   className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
                 >
                   {hero.secondaryButton.text}
