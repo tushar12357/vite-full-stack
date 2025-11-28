@@ -52,6 +52,7 @@ const testimonialVideos: Array<{ id: number; url: string; name: string; agency: 
   { id: 4, name: "Dan", agency: "Ai Bot Agency", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a6fefe2a4c388f84.mov" },
   { id: 5, name: "David Wilson", agency: "Ai Agency Wealth", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4a5fc8d9567c1cbb7.mov" },
   { id: 6, name: "Jessica Martinez", agency: "Martinez Media", url: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69245ef4c61b110c7b085e59.mp4" },
+  { id: 7, name: "Client", agency: "Empowering Media", url: "https://storage.googleapis.com/msgsndr/KUu5UkTcHdHgg0RsAb37/media/69284df59637ed320225e602.mp4" },
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {

@@ -61,9 +61,27 @@ const quickFacts = [
 
 const Careers = () => {
   const [expandedRole, setExpandedRole] = useState<string | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState("All");
+  const [selectedFunction, setSelectedFunction] = useState("All");
 
   const toggleRole = (title: string) => {
     setExpandedRole((prev) => (prev === title ? null : title));
+  };
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    age: "",
+    phoneNumber: "",
+    email: "",
+    qualification: "",
+    role: "",
+    cv: null as File | null
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    // Add submission logic here
   };
 
   return (
@@ -88,6 +106,7 @@ const Careers = () => {
               <Button
                 variant="outline"
                 className="bg-transparent border-white/20 text-white hover:bg-white/10 px-8 py-5 rounded-xl text-base font-semibold"
+                onClick={() => document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Open Positions
               </Button>
@@ -103,7 +122,7 @@ const Careers = () => {
         </section>
 
         {/* Open Positions */}
-        <section className="px-4">
+        <section className="px-4" id="open-positions">
           <div className="max-w-5xl mx-auto space-y-8">
             <div>
               <p className="text-sm uppercase tracking-[0.4em] text-white/50 mb-3">
@@ -115,16 +134,41 @@ const Careers = () => {
                   of our partnerships team will contact you to schedule a discovery call.
                 </h2>
                 <div className="flex flex-wrap gap-3">
-                  <button className="flex w-full sm:w-auto items-center justify-between gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
-                    <MapPin className="w-4 h-4" />
-                    All locations
-                    <ChevronDown className="w-4 h-4" />
-                  </button>
-                  <button className="flex w-full sm:w-auto items-center justify-between gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all">
-                    <Building2 className="w-4 h-4" />
-                    All functions
-                    <ChevronDown className="w-4 h-4" />
-                  </button>
+                  {/* Location Filter */}
+                  <div className="relative">
+                    <div className="flex w-full sm:w-auto items-center justify-between gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all min-w-[160px]">
+                      <MapPin className="w-4 h-4" />
+                      <select
+                        className="bg-transparent text-white/80 focus:outline-none appearance-none cursor-pointer w-full"
+                        value={selectedLocation}
+                        onChange={(e) => setSelectedLocation(e.target.value)}
+                      >
+                        <option value="All" className="bg-gray-900">All locations</option>
+                        {Array.from(new Set(jobGroups.flatMap(group => group.roles.map(role => role.location)))).map(loc => (
+                          <option key={loc} value={loc} className="bg-gray-900">{loc}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="w-4 h-4 pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* Function Filter */}
+                  <div className="relative">
+                    <div className="flex w-full sm:w-auto items-center justify-between gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white/80 hover:bg-white/10 transition-all min-w-[160px]">
+                      <Building2 className="w-4 h-4" />
+                      <select
+                        className="bg-transparent text-white/80 focus:outline-none appearance-none cursor-pointer w-full"
+                        value={selectedFunction}
+                        onChange={(e) => setSelectedFunction(e.target.value)}
+                      >
+                        <option value="All" className="bg-gray-900">All functions</option>
+                        {jobGroups.map(group => (
+                          <option key={group.label} value={group.label} className="bg-gray-900">{group.label}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="w-4 h-4 pointer-events-none" />
+                    </div>
+                  </div>
                 </div>
               </div>
               <p className="text-white/60 text-base mt-4">
@@ -133,59 +177,73 @@ const Careers = () => {
             </div>
 
             <div className="space-y-6">
-              {jobGroups.map((group, groupIdx) => (
-                <div
-                  key={`${group.label}-${groupIdx}`}
-                  className="rounded-2xl border border-white/10 bg-black/30 p-6 space-y-4"
-                >
-                  <div className="flex items-center justify-between text-sm text-white/60 uppercase tracking-[0.3em]">
-                    <span>{group.label}</span>
-                    <span>{group.countLabel}</span>
-                  </div>
-                  <div className="space-y-3">
-                    {group.roles.map((role, roleIdx) => (
-                      <div
-                        key={`${role.title}-${roleIdx}`}
-                        className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between rounded-2xl border border-white/5 bg-white/[0.02] px-6 py-5"
-                      >
-                        <div>
-                          <p className="text-lg font-semibold mb-1">{role.title}</p>
-                          <div className="flex flex-wrap items-center gap-3 text-sm text-white/60">
-                            <span className="inline-flex items-center gap-1">
-                              <MapPin className="w-4 h-4" />
-                              {role.location}
-                            </span>
-                            <span className="inline-flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
-                              Full-time
-                            </span>
-                            <span className="inline-flex items-center gap-1">
-                              <Building2 className="w-4 h-4" />
-                              {role.workplace}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="space-y-3">
-                          <button
-                            onClick={() => toggleRole(role.title)}
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition"
-                          >
-                            {expandedRole === role.title ? "Hide details" : "View role"}
-                            <ChevronRight
-                              className={`w-4 h-4 transition-transform ${expandedRole === role.title ? "rotate-90" : ""}`}
-                            />
-                          </button>
-                          {expandedRole === role.title && (
-                            <p className="text-sm text-white/70 leading-relaxed border-t border-white/10 pt-3">
-                              {role.description}
-                            </p>
-                          )}
-                        </div>
+              {jobGroups
+                .filter(group => selectedFunction === "All" || group.label === selectedFunction)
+                .map((group, groupIdx) => {
+                  const filteredRoles = group.roles.filter(role => selectedLocation === "All" || role.location === selectedLocation);
+
+                  if (filteredRoles.length === 0) return null;
+
+                  return (
+                    <div
+                      key={`${group.label}-${groupIdx}`}
+                      className="rounded-2xl border border-white/10 bg-black/30 p-6 space-y-4"
+                    >
+                      <div className="flex items-center justify-between text-sm text-white/60 uppercase tracking-[0.3em]">
+                        <span>{group.label}</span>
+                        <span>· {filteredRoles.length}</span>
                       </div>
-                    ))}
+                      <div className="space-y-3">
+                        {filteredRoles.map((role, roleIdx) => (
+                          <div
+                            key={`${role.title}-${roleIdx}`}
+                            className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between rounded-2xl border border-white/5 bg-white/[0.02] px-6 py-5"
+                          >
+                            <div>
+                              <p className="text-lg font-semibold mb-1">{role.title}</p>
+                              <div className="flex flex-wrap items-center gap-3 text-sm text-white/60">
+                                <span className="inline-flex items-center gap-1">
+                                  <MapPin className="w-4 h-4" />
+                                  {role.location}
+                                </span>
+                                <span className="inline-flex items-center gap-1">
+                                  <Clock className="w-4 h-4" />
+                                  Full-time
+                                </span>
+                                <span className="inline-flex items-center gap-1">
+                                  <Building2 className="w-4 h-4" />
+                                  {role.workplace}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="space-y-3">
+                              <button
+                                onClick={() => toggleRole(role.title)}
+                                className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition"
+                              >
+                                {expandedRole === role.title ? "Hide details" : "View role"}
+                                <ChevronRight
+                                  className={`w-4 h-4 transition-transform ${expandedRole === role.title ? "rotate-90" : ""}`}
+                                />
+                              </button>
+                              {expandedRole === role.title && (
+                                <p className="text-sm text-white/70 leading-relaxed border-t border-white/10 pt-3">
+                                  {role.description}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              {jobGroups.filter(group => selectedFunction === "All" || group.label === selectedFunction)
+                .every(group => group.roles.filter(role => selectedLocation === "All" || role.location === selectedLocation).length === 0) && (
+                  <div className="text-center py-12 text-white/50">
+                    No positions found matching your criteria.
                   </div>
-                </div>
-              ))}
+                )}
             </div>
           </div>
         </section>
@@ -241,34 +299,94 @@ const Careers = () => {
                         "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E\")",
                     }}
                   />
-                  <div className="relative z-10 space-y-4">
-                    {[
-                      { label: "Full Name*" },
-                      { label: "Age*" },
-                      { label: "Phone Number*" },
-                      { label: "Email Address*" },
-                      { label: "Qualification*" },
-                      { label: "Role*", isSelect: true },
-                      { label: "Upload Your CV", isSelect: true },
-                    ].map((field, idx, arr) => (
-                      <div
-                        key={field.label}
-                        className={`flex items-center justify-between py-3 text-sm text-white/90 ${idx !== arr.length - 1 ? "border-b border-white/20" : ""}`}
+                  <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
+                    <div className="border-b border-white/20 py-3">
+                      <input
+                        type="text"
+                        placeholder="Full Name*"
+                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
+                        value={formData.fullName}
+                        onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="border-b border-white/20 py-3">
+                      <input
+                        type="text"
+                        placeholder="Age*"
+                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
+                        value={formData.age}
+                        onChange={e => setFormData({ ...formData, age: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="border-b border-white/20 py-3">
+                      <input
+                        type="tel"
+                        placeholder="Phone Number*"
+                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
+                        value={formData.phoneNumber}
+                        onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="border-b border-white/20 py-3">
+                      <input
+                        type="email"
+                        placeholder="Email Address*"
+                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
+                        value={formData.email}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="border-b border-white/20 py-3">
+                      <input
+                        type="text"
+                        placeholder="Qualification*"
+                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
+                        value={formData.qualification}
+                        onChange={e => setFormData({ ...formData, qualification: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="border-b border-white/20 py-3 relative">
+                      <select
+                        className="w-full bg-transparent text-sm text-white focus:outline-none appearance-none cursor-pointer"
+                        value={formData.role}
+                        onChange={e => setFormData({ ...formData, role: e.target.value })}
+                        required
                       >
-                        <span>{field.label}</span>
-                        {field.isSelect && <ChevronDown className="w-4 h-4 text-white" />}
+                        <option value="" disabled className="bg-gray-900">Role*</option>
+                        <option value="developer" className="bg-gray-900">Developer</option>
+                        <option value="designer" className="bg-gray-900">Designer</option>
+                        <option value="manager" className="bg-gray-900">Manager</option>
+                        <option value="other" className="bg-gray-900">Other</option>
+                      </select>
+                      <ChevronDown className="w-4 h-4 text-white absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </div>
+                    <div className="py-3 relative">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-white/90">{formData.cv ? formData.cv.name : "Upload Your CV"}</span>
+                        <input
+                          type="file"
+                          className="absolute inset-0 opacity-0 cursor-pointer"
+                          onChange={e => setFormData({ ...formData, cv: e.target.files ? e.target.files[0] : null })}
+                          accept=".pdf,.doc,.docx"
+                        />
+                        <ChevronDown className="w-4 h-4 text-white" />
                       </div>
-                    ))}
+                    </div>
 
                     <p className="text-[11px] text-white/90 leading-relaxed pt-2">
                       Applications are typically reviewed within 2-3 business days. A member of our partnerships team will contact you to schedule a discovery call.
                     </p>
 
-                    <Button className="w-fit px-8 py-3 rounded-full bg-white text-[#7C3AED] hover:bg-white/90 font-semibold flex items-center gap-2">
+                    <Button type="submit" className="w-fit px-8 py-3 rounded-full bg-white text-[#7C3AED] hover:bg-white/90 font-semibold flex items-center gap-2">
                       Submit
                       <ArrowUpRight className="w-4 h-4" />
                     </Button>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>

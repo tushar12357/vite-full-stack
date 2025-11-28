@@ -22,10 +22,10 @@ export const outboundSalesData: SolutionData = {
     },
   },
   stats: [
-    { value: "10,000+", label: "calls/day per agent" },
-    { value: "35%", label: "average conversion rate" },
-    { value: "3x", label: "faster than human teams" },
-    { value: "$0.20", label: "per call" },
+    { value: "10,000+", label: "calls/day per agent", description: "Massive scale to reach every lead in your pipeline." },
+    { value: "35%", label: "average conversion rate", description: "Intelligent conversations that drive higher conversion." },
+    { value: "3x", label: "faster than human teams", description: "Speed to lead is critical. AI beats humans every time." },
+    { value: "$0.20", label: "per call", description: "Dramatically reduce your customer acquisition costs." },
   ],
   problems: [
     {

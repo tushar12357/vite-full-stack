@@ -20,10 +20,10 @@ export const ecommerceData: SolutionData = {
     },
   },
   stats: [
-    { value: "90%", label: "cost reduction" },
-    { value: "24/7", label: "customer support" },
-    { value: "3 sec", label: "average response" },
-    { value: "95%", label: "satisfaction rate" },
+    { value: "90%", label: "cost reduction", description: "Slash support costs by automating routine inquiries and order tracking." },
+    { value: "24/7", label: "customer support", description: "Never miss a sale with round-the-clock assistance for your shoppers." },
+    { value: "3 sec", label: "average response", description: "Instant answers keep customers engaged and reduce cart abandonment." },
+    { value: "95%", label: "satisfaction rate", description: "Fast, accurate support leads to happier, more loyal customers." },
   ],
   problems: [
     {

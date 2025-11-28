@@ -19,10 +19,10 @@ export const forResellersData: SolutionData = {
     },
   },
   stats: [
-    { value: "$10-40K", label: "average monthly recurring revenue" },
-    { value: "2,847", label: "agencies already scaling" },
-    { value: "8 min", label: "to launch your agency" },
-    { value: "$97", label: "starting monthly cost" },
+    { value: "$10-40K", label: "average monthly recurring revenue", description: "Build a profitable business with predictable income." },
+    { value: "2,847", label: "agencies already scaling", description: "Join thousands of partners successfully growing with us." },
+    { value: "8 min", label: "to launch your agency", description: "Get started instantly with our turnkey white-label platform." },
+    { value: "$97", label: "starting monthly cost", description: "Low barrier to entry with massive upside potential." },
   ],
   problems: [
     {

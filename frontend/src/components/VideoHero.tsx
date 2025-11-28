@@ -14,7 +14,7 @@ interface VideoHeroProps {
 
 const VideoHero = ({ hero, uiScreenshot, videoId, videoUrl }: VideoHeroProps) => {
   return (
-    <section className="relative bg-black py-16 md:py-20 overflow-hidden mt-16 min-h-screen">
+    <section className="relative bg-black py-16 md:py-20 overflow-hidden mt-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
@@ -79,7 +79,7 @@ const VideoHero = ({ hero, uiScreenshot, videoId, videoUrl }: VideoHeroProps) =>
           </div>
         </div>
       </div>
-      
+
     </section>
   );
 };

@@ -19,10 +19,10 @@ export const forAgenciesData: SolutionData = {
     },
   },
   stats: [
-    { value: "500+", label: "agencies using CloserX" },
-    { value: "$50K", label: "average monthly revenue" },
-    { value: "24hrs", label: "setup time" },
-    { value: "Zero", label: "technical skills needed" },
+    { value: "500+", label: "agencies using CloserX", description: "Join a thriving community of successful agency owners." },
+    { value: "$50K", label: "average monthly revenue", description: "High-margin recurring revenue model built for scale." },
+    { value: "24hrs", label: "setup time", description: "Launch your fully branded agency in less than a day." },
+    { value: "Zero", label: "technical skills needed", description: "No coding required. We handle the tech, you handle the clients." },
   ],
   problems: [
     {

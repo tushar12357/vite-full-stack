@@ -20,10 +20,10 @@ export const callCenterData: SolutionData = {
     },
   },
   stats: [
-    { value: "80%", label: "of calls handled by AI" },
-    { value: "95%", label: "cost reduction" },
-    { value: "< 3 sec", label: "average wait time" },
-    { value: "24/7", label: "availability" },
+    { value: "80%", label: "of calls handled by AI", description: "Automate the majority of your volume, freeing agents for complex issues." },
+    { value: "95%", label: "cost reduction", description: "Dramatically lower operational expenses while improving service levels." },
+    { value: "< 3 sec", label: "average wait time", description: "Eliminate queues and hold music with instant AI answering." },
+    { value: "24/7", label: "availability", description: "Provide consistent, high-quality support around the clock." },
   ],
   problems: [
     {
