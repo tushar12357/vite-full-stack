@@ -42,13 +42,13 @@ const Header = () => {
       label: "Product",
       dropdown: [
         // REQUESTED CHANGE: Updated order for Product dropdown
-        { label: "Platform Overview", href: "/platform", icon: "🏠" },
-        { label: "White-Label Features", href: "/white-label", icon: "🎨", badge: "Popular" },
-        { label: "AI Voice Agents", href: "/voice-agents", icon: "🎙️" },
-        { label: "Workflow Automation", href: "/automation", icon: "⚡" },
-        { label: "Call Management", href: "/call-management", icon: "📞" },
-        { label: "Integrations", href: "/integrations", icon: "🔌", badge: "50+" },
-        { label: "API Documentation", href: "/api-docs", icon: "📚" },
+        { label: "Platform Overview", href: "/platform", icon: "https://api.iconify.design/lucide:layout-dashboard.svg?color=%23ffffff" },
+        { label: "White-Label Features", href: "/white-label", icon: "https://api.iconify.design/lucide:palette.svg?color=%23ffffff", badge: "Popular" },
+        { label: "AI Voice Agents", href: "/voice-agents", icon: "https://api.iconify.design/lucide:mic.svg?color=%23ffffff" },
+        { label: "Workflow Automation", href: "/automation", icon: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
+        { label: "Call Management", href: "/call-management", icon: "https://api.iconify.design/lucide:phone.svg?color=%23ffffff" },
+        { label: "Integrations", href: "/integrations", icon: "https://api.iconify.design/lucide:plug.svg?color=%23ffffff", badge: "50+" },
+        { label: "API Documentation", href: "/api-docs", icon: "https://api.iconify.design/lucide:book-open.svg?color=%23ffffff" },
       ],
     },
     {
@@ -68,23 +68,23 @@ const Header = () => {
       label: "Resources",
       dropdown: [
         // REQUESTED CHANGE: Updated Resources content
-        { label: "Blog", href: "/blog", icon: "📝" },
-        { label: "Video Tutorials", href: "/videos", icon: "🎥" },
-        { label: "YouTube", href: "https://www.youtube.com/@CloserXAI", icon: "▶️", badge: "New" }, // Assuming a link to YouTube
-        { label: "ROI Calculator", href: "/roi-calculator", icon: "🧮" },
-        { label: "Documentation", href: "/docs", icon: "📖" },
-        { label: "Templates & Tools", href: "/templates", icon: "📦" },
+        { label: "Blog", href: "/blog", icon: "https://api.iconify.design/lucide:file-text.svg?color=%23ffffff" },
+        { label: "Video Tutorials", href: "/videos", icon: "https://api.iconify.design/lucide:video.svg?color=%23ffffff" },
+        { label: "YouTube", href: "https://www.youtube.com/@CloserXAI", icon: "https://api.iconify.design/lucide:youtube.svg?color=%23ffffff", badge: "New" }, // Assuming a link to YouTube
+        { label: "ROI Calculator", href: "/roi-calculator", icon: "https://api.iconify.design/lucide:calculator.svg?color=%23ffffff" },
+        { label: "Documentation", href: "/docs", icon: "https://api.iconify.design/lucide:book.svg?color=%23ffffff" },
+        { label: "Templates & Tools", href: "/templates", icon: "https://api.iconify.design/lucide:box.svg?color=%23ffffff" },
       ],
     },
     {
       label: "Company",
       dropdown: [
         // REQUESTED CHANGE: Updated and reordered Company content
-        { label: "About Us", href: "/about", icon: "ℹ️" },
-        { label: "Become Our Partners", href: "https://affiliate.closerx.ai/home975572-1328-2226-4154", icon: "🤝" }, // REQUESTED CHANGE: Moved Partners here
-        { label: "Security", href: "/security", icon: "🔒" },
-        { label: "Contact Us", href: "/contact", icon: "📧" }, // Changed 'Contact' to 'Contact Us' for clarity
-        { label: "Careers", href: "/careers", icon: "💼", badge: "We're Hiring!" }, // Re-added Careers
+        { label: "About Us", href: "/about", icon: "https://api.iconify.design/lucide:info.svg?color=%23ffffff" },
+        { label: "Become Our Partners", href: "https://affiliate.closerx.ai/home975572-1328-2226-4154", icon: "https://api.iconify.design/lucide:handshake.svg?color=%23ffffff" }, // REQUESTED CHANGE: Moved Partners here
+        { label: "Security", href: "/security", icon: "https://api.iconify.design/lucide:lock.svg?color=%23ffffff" },
+        { label: "Contact Us", href: "/contact", icon: "https://api.iconify.design/lucide:mail.svg?color=%23ffffff" }, // Changed 'Contact' to 'Contact Us' for clarity
+        { label: "Careers", href: "/careers", icon: "https://api.iconify.design/lucide:briefcase.svg?color=%23ffffff", badge: "We're Hiring!" }, // Re-added Careers
       ],
     },
     // REQUESTED CHANGE: "Partners" removed from here
@@ -101,7 +101,7 @@ const Header = () => {
             <img
               src={logo}
               alt="CloserX.ai Logo"
-              className="h-32 sm:h-40 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-8 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-100"
             />
           </Link>
 
@@ -121,8 +121,8 @@ const Header = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
-                          ? "text-white"
-                          : "text-gray-500 hover:text-white"
+                        ? "text-white"
+                        : "text-gray-500 hover:text-white"
                         }`}
                     >
                       {item.label}
@@ -137,8 +137,8 @@ const Header = () => {
                     <Link
                       to={item.href}
                       className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
-                          ? "text-white"
-                          : "text-gray-500 hover:text-white"
+                        ? "text-white"
+                        : "text-gray-500 hover:text-white"
                         }`}
                     >
                       {item.label}
@@ -152,8 +152,8 @@ const Header = () => {
                   )
                 ) : (
                   <button className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
-                      ? "text-white"
-                      : "text-gray-500 hover:text-white"
+                    ? "text-white"
+                    : "text-gray-500 hover:text-white"
                     }`}>
                     {item.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
@@ -174,8 +174,12 @@ const Header = () => {
                             rel="noopener noreferrer"
                             className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
                           >
-                            <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
-                              {subItem.icon}
+                            <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
+                              {subItem.icon?.startsWith('http') ? (
+                                <img src={subItem.icon} alt={subItem.label} className="w-6 h-6 object-contain" />
+                              ) : (
+                                subItem.icon
+                              )}
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="text-[15px] font-medium text-white transition-colors">
@@ -194,8 +198,12 @@ const Header = () => {
                             to={subItem.href}
                             className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
                           >
-                            <div className="w-10 h-10 rounded-lg bg-white group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
-                              {subItem.icon}
+                            <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
+                              {subItem.icon?.startsWith('http') ? (
+                                <img src={subItem.icon} alt={subItem.label} className="w-6 h-6 object-contain" />
+                              ) : (
+                                subItem.icon
+                              )}
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="text-[15px] font-medium text-white transition-colors">
@@ -222,11 +230,11 @@ const Header = () => {
                         <div>
                           <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">USE CASE</h4>
                           {[
-                            { name: "Outbound Sales", emoji: "📊" },
-                            { name: "Inbound Support", emoji: "⚽" },
-                            { name: "Appointment Scheduling", emoji: "📅" },
-                            { name: "Lead Qualification", emoji: "🔍" },
-                            { name: "Follow-up Automation", emoji: "⚙️" }
+                            { name: "Outbound Sales", emoji: "https://api.iconify.design/lucide:bar-chart-3.svg?color=%23ffffff" },
+                            { name: "Inbound Support", emoji: "https://api.iconify.design/lucide:headphones.svg?color=%23ffffff" },
+                            { name: "Appointment Scheduling", emoji: "https://api.iconify.design/lucide:calendar.svg?color=%23ffffff" },
+                            { name: "Lead Qualification", emoji: "https://api.iconify.design/lucide:filter.svg?color=%23ffffff" },
+                            { name: "Follow-up Automation", emoji: "https://api.iconify.design/lucide:refresh-cw.svg?color=%23ffffff" }
                           ].map((useCase) => (
                             <Link
                               key={useCase.name}
@@ -234,7 +242,7 @@ const Header = () => {
                               className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-purple-600 transition-all group"
                             >
                               <div className="w-10 h-10 rounded-lg bg-black group-hover:bg-purple-600 flex items-center justify-center text-lg flex-shrink-0 transition-colors">
-                                {useCase.emoji}
+                                <img src={useCase.emoji} alt={useCase.name} className="w-6 h-6 object-contain" />
                               </div>
                               <span>{useCase.name}</span>
                             </Link>
@@ -243,11 +251,11 @@ const Header = () => {
                         <div>
                           <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">INDUSTRY</h4>
                           {[
-                            { name: "Real Estate", emoji: "🏢" },
-                            { name: "Healthcare", emoji: "🛡️" },
-                            { name: "Financial Service", emoji: "🏦" },
-                            { name: "E-commerce", emoji: "🛍️" },
-                            { name: "Call Centres", emoji: "🎧" },
+                            { name: "Real Estate", emoji: "https://api.iconify.design/lucide:building.svg?color=%23ffffff" },
+                            { name: "Healthcare", emoji: "https://api.iconify.design/lucide:heart-pulse.svg?color=%23ffffff" },
+                            { name: "Financial Service", emoji: "https://api.iconify.design/lucide:landmark.svg?color=%23ffffff" },
+                            { name: "E-commerce", emoji: "https://api.iconify.design/lucide:shopping-bag.svg?color=%23ffffff" },
+                            { name: "Call Centres", emoji: "https://api.iconify.design/lucide:headset.svg?color=%23ffffff" },
                           ].map((industry) => (
                             <Link
                               key={industry.name}
@@ -255,7 +263,7 @@ const Header = () => {
                               className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-purple-600 transition-all group"
                             >
                               <div className="w-10 h-10 rounded-lg bg-black group-hover:bg-purple-600 flex items-center justify-center text-lg flex-shrink-0 transition-colors">
-                                {industry.emoji}
+                                <img src={industry.emoji} alt={industry.name} className="w-6 h-6 object-contain" />
                               </div>
                               <span>{industry.name}</span>
                             </Link>
@@ -264,9 +272,9 @@ const Header = () => {
                         <div>
                           <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">TEAM</h4>
                           {[
-                            { name: "For Agencies", emoji: "📄" },
-                            { name: "For Enterprises", emoji: "💼" },
-                            { name: "For Resellers", emoji: "▶️" },
+                            { name: "For Agencies", emoji: "https://api.iconify.design/lucide:users.svg?color=%23ffffff" },
+                            { name: "For Enterprises", emoji: "https://api.iconify.design/lucide:briefcase.svg?color=%23ffffff" },
+                            { name: "For Resellers", emoji: "https://api.iconify.design/lucide:share-2.svg?color=%23ffffff" },
                           ].map((team) => (
                             <Link
                               key={team.name}
@@ -274,7 +282,7 @@ const Header = () => {
                               className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-[14px] font-medium text-white hover:bg-purple-600 transition-all group"
                             >
                               <div className="w-10 h-10 rounded-lg bg-black group-hover:bg-purple-600 flex items-center justify-center text-lg flex-shrink-0 transition-colors">
-                                {team.emoji}
+                                <img src={team.emoji} alt={team.name} className="w-6 h-6 object-contain" />
                               </div>
                               <span>{team.name}</span>
                             </Link>

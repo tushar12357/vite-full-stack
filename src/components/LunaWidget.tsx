@@ -3,7 +3,7 @@ import { X, Send } from "lucide-react";
 import { useLuna } from "@/contexts/LunaContext";
 
 export default function LunaWidget() {
-  const { isOpen: open, openLuna, closeLuna } = useLuna();
+  const { isOpen: open, openLuna, closeLuna, selectedTemplate } = useLuna();
 
   return (
     <>
@@ -49,9 +49,11 @@ export default function LunaWidget() {
 
           {/* Body */}
           <div className="p-4 space-y-3">
-            <p className="text-base font-medium text-foreground">Hi Prio 👋🏻</p>
+            <p className="text-base font-medium text-foreground">
+              {selectedTemplate ? `Hi, I'm your ${selectedTemplate.name} Assistant` : "Hi Prio 👋🏻"}
+            </p>
             <p className="text-sm text-muted-foreground -mt-2">
-              How can we help you today?
+              {selectedTemplate?.firstMessage || "How can we help you today?"}
             </p>
 
             {/* Recent Message */}
