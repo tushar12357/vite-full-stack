@@ -20,10 +20,10 @@ export const financialServiceData: SolutionData = {
     },
   },
   stats: [
-    { value: "90%", label: "faster response time" },
-    { value: "24/7", label: "customer support" },
-    { value: "SOC 2", label: "Compliant" },
-    { value: "85%", label: "call resolution rate" },
+    { value: "90%", label: "faster response time", description: "Instant AI responses eliminate hold times and improve customer satisfaction." },
+    { value: "24/7", label: "customer support", description: "Always-on service ensures your customers get help whenever they need it." },
+    { value: "SOC 2", label: "Compliant", description: "Bank-grade security and compliance for peace of mind." },
+    { value: "85%", label: "call resolution rate", description: "High accuracy AI resolves most inquiries without human intervention." },
   ],
   problems: [
     {
@@ -31,12 +31,6 @@ export const financialServiceData: SolutionData = {
       title: "Long Wait Times",
       description: "Customers wait 15+ minutes to speak with a representative during peak hours.",
       iconUrl: "https://api.iconify.design/lucide:clock.svg?color=%23ffffff"
-    },
-    {
-      icon: XCircle,
-      title: "After-Hours Support",
-      description: "No support available outside business hours, losing potential customers.",
-      iconUrl: "https://api.iconify.design/lucide:moon.svg?color=%23ffffff"
     },
     {
       icon: XCircle,

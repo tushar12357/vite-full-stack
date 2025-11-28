@@ -19,10 +19,10 @@ export const forEnterprisesData: SolutionData = {
     },
   },
   stats: [
-    { value: "99.99%", label: "uptime SLA" },
-    { value: "50+", label: "languages supported" },
-    { value: "SOC 2", label: "Type II certified" },
-    { value: "24/7", label: "priority support" },
+    { value: "99.99%", label: "uptime SLA", description: "Enterprise-grade reliability for mission-critical operations." },
+    { value: "50+", label: "languages supported", description: "Global coverage to support your customers worldwide." },
+    { value: "SOC 2", label: "Type II certified", description: "Highest standards of security and data protection." },
+    { value: "24/7", label: "priority support", description: "Dedicated team available around the clock for your needs." },
   ],
   problems: [
     {

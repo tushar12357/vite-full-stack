@@ -20,10 +20,10 @@ export const healthcareData: SolutionData = {
     },
   },
   stats: [
-    { value: "80%", label: "reduction in no-shows" },
-    { value: "24/7", label: "patient support" },
-    { value: "HIPAA", label: "Compliant" },
-    { value: "95%", label: "patient satisfaction" },
+    { value: "80%", label: "reduction in no-shows", description: "Automated reminders and easy rescheduling ensure patients keep their appointments." },
+    { value: "24/7", label: "patient support", description: "Answer questions and book appointments anytime, day or night." },
+    { value: "HIPAA", label: "Compliant", description: "Fully secure and compliant with all healthcare data privacy regulations." },
+    { value: "95%", label: "patient satisfaction", description: "Patients love the convenience of instant answers and zero hold times." },
   ],
   problems: [
     {

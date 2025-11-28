@@ -248,7 +248,7 @@ const About = () => {
                   transform: 'rotate(0deg)'
                 }}
               >
-                <h2 className="text-[40px] font-normal mb-6 text-white leading-tight">
+                <h2 className="text-3xl md:text-4xl font-normal mb-6 text-white leading-tight">
                   The White-Label Advantage
                 </h2>
                 <p
@@ -325,7 +325,6 @@ const About = () => {
             <div
               className="bg-transparent border border-gray-800 p-8 flex flex-col transition-all duration-300 hover:bg-[#1A1A1A]"
               style={{
-                width: '280px',
                 height: '240px',
                 opacity: 1,
                 transform: 'rotate(0deg)',

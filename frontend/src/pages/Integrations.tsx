@@ -26,8 +26,8 @@ const Integrations = () => {
 
       {/* 🎯 NEW HERO SECTION - Dark Theme */}
       <section className="relative bg-black pt-32 pb-48 overflow-hidden my-20">
-        
-        
+
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Section - Text and Buttons */}
@@ -36,32 +36,37 @@ const Integrations = () => {
               <div className="inline-block px-3 py-1 bg-gray-800 border border-gray-700 rounded text-xs text-white font-medium mb-6">
                 Integrations
               </div>
-              
+
               {/* Main Title */}
               <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
                 Connect CloserX to your Tech{" "}
-                
+
               </h1>
-              
+
               {/* Subtitle */}
               <p className="text-base text-white mb-8 leading-relaxed">
                 Connect to any CRM, telephony, automation platform
               </p>
-              
+
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="/integrations" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
+                <button
+                  onClick={() => {
+                    document.getElementById('integrations-grid')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center cursor-pointer"
+                >
                   Check Integrations
-                </a>
+                </button>
                 <a href="/contact" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-xl transition-all duration-300 text-center">
                   Talk To Sales
                 </a>
               </div>
             </div>
-            
+
             {/* Right Section - Integrations List with Marquee Animation */}
             <div className="relative h-[400px] overflow-hidden">
-              <div 
+              <div
                 className="space-y-4 animate-marquee-up"
                 style={{
                   animation: 'marqueeUp 8s linear infinite',
@@ -75,8 +80,8 @@ const Integrations = () => {
                   >
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5">
                       {integration.logoImage ? (
-                        <img 
-                          src={integration.logoImage} 
+                        <img
+                          src={integration.logoImage}
                           alt={integration.name}
                           className="w-full h-full object-contain"
                         />
@@ -95,8 +100,8 @@ const Integrations = () => {
                   >
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1.5">
                       {integration.logoImage ? (
-                        <img 
-                          src={integration.logoImage} 
+                        <img
+                          src={integration.logoImage}
                           alt={integration.name}
                           className="w-full h-full object-contain"
                         />
@@ -110,14 +115,14 @@ const Integrations = () => {
               </div>
             </div>
           </div>
-          
+
         </div>
       </section>
 
 
 
       {/* 🧭 CATEGORY SECTION - Dark Theme with Left Navigation */}
-      <section className="py-20 bg-black">
+      <section id="integrations-grid" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-12 gap-8">
             {/* Left Navigation Menu */}
@@ -127,11 +132,10 @@ const Integrations = () => {
                   <button
                     key={category.id}
                     onClick={() => setActiveTab(category.id)}
-                    className={`w-full text-left px-4 py-3 rounded-lg font-semibold text-base transition-all ${
-                      activeTab === category.id
+                    className={`w-full text-left px-4 py-3 rounded-lg font-semibold text-base transition-all ${activeTab === category.id
                         ? "bg-purple-600 text-white"
                         : "text-white hover:bg-gray-800"
-                    }`}
+                      }`}
                   >
                     {category.label}
                   </button>
@@ -147,27 +151,27 @@ const Integrations = () => {
                   {categories.find((c) => c.id === activeTab)?.label || "All Integrations"}
                 </h2>
                 <p className="text-base text-white/80 leading-relaxed">
-                  {activeTab === "crm" 
+                  {activeTab === "crm"
                     ? "Connect your CRM to streamline customer interactions and data management."
                     : activeTab === "payment"
-                    ? "Secure payment processing and financial integrations."
-                    : activeTab === "automation"
-                    ? "Automate workflows and connect with automation platforms."
-                    : activeTab === "communication"
-                    ? "Enhance communication with messaging and voice platforms."
-                    : activeTab === "scheduling"
-                    ? "Schedule appointments and manage calendars seamlessly."
-                    : activeTab === "analytics"
-                    ? "Track performance and gain insights with analytics tools."
-                    : "Seamlessly integrate CloserX.ai with the tools you already use."}
+                      ? "Secure payment processing and financial integrations."
+                      : activeTab === "automation"
+                        ? "Automate workflows and connect with automation platforms."
+                        : activeTab === "communication"
+                          ? "Enhance communication with messaging and voice platforms."
+                          : activeTab === "scheduling"
+                            ? "Schedule appointments and manage calendars seamlessly."
+                            : activeTab === "analytics"
+                              ? "Track performance and gain insights with analytics tools."
+                              : "Seamlessly integrate CloserX.ai with the tools you already use."}
                 </p>
               </div>
 
               {/* Integration Cards Grid */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredIntegrations.map((integration, index) => (
-                  <IntegrationCard 
-                    key={index} 
+                  <IntegrationCard
+                    key={index}
                     integration={integration}
                     onConnect={(integration) => {
                       // Handle connection - you can customize this
@@ -204,8 +208,8 @@ const Integrations = () => {
           </div>
         </div>
       </section> */}
-      <FAQ/>
-      <FinalCTA/>
+      <FAQ />
+      <FinalCTA />
       <Footer />
     </div>
   );
@@ -226,7 +230,7 @@ const IntegrationCard = ({ integration, onConnect }) => {
   };
 
   return (
-    <div 
+    <div
       onClick={handleConnect}
       className="group bg-black rounded-xl p-6 border border-gray-700 hover:border-purple-600 hover:shadow-lg hover:shadow-purple-600/20 transition-all cursor-pointer flex flex-col items-center text-center"
     >
@@ -234,8 +238,8 @@ const IntegrationCard = ({ integration, onConnect }) => {
       <div className="mb-4 flex justify-center">
         <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform p-2">
           {integration.logoImage ? (
-            <img 
-              src={integration.logoImage} 
+            <img
+              src={integration.logoImage}
               alt={integration.name}
               className="w-full h-full object-contain"
             />

@@ -49,7 +49,7 @@ const ContentCarouselSectionWithButton = <T,>({
 
   return (
     <section className={`py-20 ${backgroundColor}`}>
-      <div className="max-w-5xl mx-auto px-8 md:px-12 lg:px-16 xl:px-24">
+      <div className="max-w-5xl mx-auto px-2 md:px-6 lg:px-8 xl:px-8">
         <div className="relative mb-16">
           {/* Tag (optional) */}
           {tag && (
@@ -111,7 +111,7 @@ const ContentCarouselSectionWithButton = <T,>({
           {/* Cards Grid with Carousel */}
           <div className="relative overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-in-out gap-6"
+              className="flex transition-transform duration-500 ease-in-out"
               style={{
                 transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
                 willChange: "transform",
@@ -122,7 +122,7 @@ const ContentCarouselSectionWithButton = <T,>({
                 return (
                   <div
                     key={idx}
-                    className="flex-shrink-0"
+                    className="flex-shrink-0 px-3"
                     style={{
                       width: `${cardWidth}%`,
                       minWidth: `${cardWidth}%`,

@@ -20,10 +20,10 @@ export const realEstateData: SolutionData = {
     },
   },
   stats: [
-    { value: "87%", label: "faster lead response" },
-    { value: "3x", label: "more showings booked" },
-    { value: "45%", label: "increase in closings" },
-    { value: "TCPA", label: "Compliant" },
+    { value: "87%", label: "faster lead response", description: "Engage leads instantly, 24/7, ensuring you never miss an opportunity." },
+    { value: "3x", label: "more showings booked", description: "Automated scheduling fills your calendar with qualified buyers ready to view properties." },
+    { value: "45%", label: "increase in closings", description: "More conversations and showings lead directly to more closed deals and higher revenue." },
+    { value: "TCPA", label: "Compliant", description: "Fully compliant with TCPA regulations, protecting your business while you scale." },
   ],
   problems: [
     {
