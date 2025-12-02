@@ -103,7 +103,7 @@ const TemplateDemo = () => {
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="border-white/20 hover:bg-white/10 text-gray-300"
+                                    className="border-white/20 hover:bg-white/10 text-black"
                                     onClick={handleCopyPrompt}
                                     disabled={!template.systemPrompt}
                                 >

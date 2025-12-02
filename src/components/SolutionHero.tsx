@@ -27,7 +27,7 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
-          <div className="text-left">
+          <div className="text-left relative z-20">
             {/* Tag */}
             <div className="mb-6">
               <span className="inline-block px-4 py-1 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium">
@@ -61,7 +61,7 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
                   href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
+                  className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
                 >
                   {hero.primaryButton.text}
                 </a>
@@ -75,15 +75,15 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
               )}
               {hero.secondaryButton.text === "Talk To Sales" || hero.secondaryButton.text.includes("Sales") ? (
                 <a
-                  href="/contact" 
+                  href="/contact"
                   className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
                 >
                   {hero.secondaryButton.text}
                 </a>
-              ) : hero.secondaryButton.text.includes("Demo") ? (
+              ) : hero.secondaryButton.text.includes("Demo") || hero.secondaryButton.text.includes("Trial") || hero.secondaryButton.text.includes("Book Call") ? (
                 <button
                   onClick={openLuna}
-                  className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
+                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
                 >
                   {hero.secondaryButton.text}
                 </button>
@@ -100,7 +100,7 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
           </div>
 
           {/* Right Column - UI Screenshot */}
-          <div className="relative lg:sticky lg:top-20">
+          <div className="relative lg:sticky lg:top-20 z-10">
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
               <img
                 src={uiScreenshot}

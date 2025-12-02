@@ -14,7 +14,7 @@ export const forResellersData: SolutionData = {
       variant: "primary",
     },
     secondaryButton: {
-      text: "Book Strategy Call",
+      text: "Book Call",
       variant: "secondary",
     },
   },
@@ -129,7 +129,7 @@ export const forResellersData: SolutionData = {
       text: "Start Your Agency - $97/mo",
     },
     secondaryButton: {
-      text: "Book Strategy Call",
+      text: "Book Call",
     },
   },
   cta: {

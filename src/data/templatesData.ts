@@ -22,7 +22,7 @@ export interface TemplateHeroData {
 
 export const templateCategories = [
   { id: "all", label: "All templates" },
-  { id: "admin", label: "Admin" },
+
   { id: "crm", label: "CRM" },
   { id: "ecommerce", label: "E-commerce" },
   { id: "other", label: "Other" },

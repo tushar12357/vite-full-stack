@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "sonner";
 
 interface Blog {
   _id: string;
@@ -67,6 +68,26 @@ export default function BlogPost() {
 
   const formatReadTime = (mins: number) => `${mins} min read`;
 
+
+
+  const handleShare = async () => {
+    if (!post) return;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: post.title,
+          text: post.excerpt,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.success("Link copied to clipboard!");
+      }
+    } catch (err) {
+      console.error("Error sharing:", err);
+    }
+  };
+
   // -----------------------------------------------------------------
   // RENDER
   // -----------------------------------------------------------------
@@ -106,30 +127,30 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       <Header />
 
       <article className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto">
           {/* BACK */}
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Link>
-
-          {/* CATEGORY */}
-          <Badge className="mb-4">{post.category}</Badge>
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Blog
+            </Link>
+            <Badge>{post.category}</Badge>
+          </div>
 
           {/* TITLE */}
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
             {post.title}
           </h1>
 
           {/* META */}
-          <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-8 pb-8 border-b border-border">
+          <div className="flex flex-wrap items-center gap-6 text-gray-400 mb-8 pb-8 border-b border-gray-800">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4" />
               <span className="font-medium">{post.author}</span>
@@ -142,7 +163,11 @@ export default function BlogPost() {
               <Clock className="h-4 w-4" />
               <span>{formatReadTime(post.readTime)}</span>
             </div>
-            <Button variant="ghost" size="sm" className="ml-auto">
+            <Button
+              size="sm"
+              className="ml-auto bg-purple-600 hover:bg-purple-700 text-white border-none"
+              onClick={handleShare}
+            >
               <Share2 className="h-4 w-4 mr-2" />
               Share
             </Button>
@@ -160,12 +185,14 @@ export default function BlogPost() {
           {/* CONTENT (HTML) */}
           <div
             className="prose prose-lg max-w-none
-              prose-headings:font-bold prose-headings:text-foreground
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
-              prose-ul:text-muted-foreground prose-ul:my-6
-              prose-li:my-2
-              prose-strong:text-foreground prose-strong:font-semibold"
+              prose-headings:font-bold prose-headings:text-white
+              prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:border-t prose-h2:border-gray-800 prose-h2:pt-8
+              prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:border-t prose-h3:border-gray-800 prose-h3:pt-8
+              prose-p:text-gray-300 prose-p:leading-loose prose-p:mb-8
+              prose-ul:text-gray-300 prose-ul:my-8
+              prose-li:my-3
+              prose-strong:text-white prose-strong:font-semibold
+              prose-img:rounded-2xl prose-img:my-12 prose-img:shadow-lg"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
