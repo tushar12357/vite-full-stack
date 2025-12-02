@@ -7,6 +7,10 @@ import partnerLogo5 from "@/assets/AgencyMarque/reiunlock.webp";
 import partnerLogo6 from "@/assets/AgencyMarque/unicorn.webp";
 import partnerLogo7 from "@/assets/AgencyMarque/zbotai.webp";
 
+const partnerLogo8 = "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692eb2852b865ef37d51dab5.jpg";
+const partnerLogo9 = "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692eb285fd073a016acf2d4d.jpg";
+const partnerLogo10 = "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692eb285fd073a0973cf2d4c.jpg";
+
 const AgencyMarque = () => {
   return (
     <>
@@ -16,7 +20,7 @@ const AgencyMarque = () => {
           to { transform: translateX(-20%); }
         }
         .animate-marquee {
-          animation: marquee 15s linear infinite;
+          animation: marquee 40s linear infinite;
           will-change: transform;
         }
       `}</style>
@@ -30,15 +34,15 @@ const AgencyMarque = () => {
           <div className="flex animate-marquee" style={{ width: "max-content" }}>
             {/* All logos in continuous row - multiple duplicates to fill entire width */}
             {[
-              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7],
-              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7],
-              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7],
-              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7],
-              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7],
+              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7, partnerLogo8, partnerLogo9, partnerLogo10],
+              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7, partnerLogo8, partnerLogo9, partnerLogo10],
+              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7, partnerLogo8, partnerLogo9, partnerLogo10],
+              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7, partnerLogo8, partnerLogo9, partnerLogo10],
+              ...[partnerLogo1, partnerLogo2, partnerLogo3, partnerLogo4, partnerLogo5, partnerLogo6, partnerLogo7, partnerLogo8, partnerLogo9, partnerLogo10],
             ].map((logo, idx) => (
               <div
                 key={`logo-${idx}`}
-                className="flex items-center justify-center flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity mr-8 lg:mr-12"
+                className="flex items-center justify-center flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity mr-20 lg:mr-32"
               >
                 <img
                   src={logo}

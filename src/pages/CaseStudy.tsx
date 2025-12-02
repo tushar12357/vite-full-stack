@@ -1,259 +1,181 @@
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, CheckCircle2, TrendingUp, Users, Clock, Target } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Building2, TrendingUp, Target, CheckCircle2, Rocket, Zap, Clock } from "lucide-react";
-import { Link, useParams, Navigate } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
+import DemoModal from "@/components/DemoModal";
 import { Button } from "@/components/ui/button";
-import { getCaseStudyById } from "@/data/caseStudiesData";
+import { Badge } from "@/components/ui/badge";
+import { CASE_STUDIES_DATA } from "@/data/caseStudiesData";
 
 export default function CaseStudy() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
+  const study = id ? CASE_STUDIES_DATA[id] : null;
 
-  // Fetch the actual case study by ID
-  const caseStudy = id ? getCaseStudyById(id) : undefined;
-
-  // If case study not found, redirect to case studies page
-  if (!caseStudy) {
-    return <Navigate to="/success-stories" replace />;
+  if (!study) {
+    return (
+      <div className="min-h-screen bg-black text-white">
+        <Header />
+        <div className="pt-32 pb-20 px-4 max-w-4xl mx-auto text-center">
+          <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
+          <p className="text-gray-400 mb-8">The case study you are looking for does not exist.</p>
+          <Link to="/case-studies">
+            <Button variant="outline">Back to Case Studies</Button>
+          </Link>
+        </div>
+        <Footer />
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       <Header />
 
       <article className="pt-32 pb-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          {/* Back Link */}
-          <Link to="/success-stories" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Case Studies
-          </Link>
-
-          {/* Company Info */}
-          <div className="flex items-center gap-3 mb-4">
-            <Building2 className="h-6 w-6 text-muted-foreground" />
-            <span className="text-xl font-semibold">{caseStudy.company}</span>
-            <Badge variant="outline" className="ml-2">{caseStudy.industry}</Badge>
+        <div className="max-w-4xl mx-auto">
+          {/* BACK */}
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              to="/case-studies"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Case Studies
+            </Link>
+            <Badge variant="outline" className="text-primary border-primary">{study.industry}</Badge>
           </div>
 
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
-            {caseStudy.title}
-          </h1>
-
-          {/* Featured Media */}
-          <div className="aspect-video rounded-2xl overflow-hidden mb-12 border border-border">
-            {caseStudy.video ? (
-              <video
-                src={caseStudy.video}
-                controls
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src={caseStudy.image}
-                alt={caseStudy.company}
-                className="w-full h-full object-cover"
-              />
-            )}
-          </div>
-
-          {/* Overview */}
-          <div className="mb-16">
-            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-              {caseStudy.overview}
+          {/* HEADER */}
+          <div className="mb-12">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              {study.title}
+            </h1>
+            <p className="text-xl text-gray-400 leading-relaxed">
+              {study.overview}
             </p>
           </div>
 
-          {/* Results Metrics - Featured */}
-          <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
-            <div className="flex items-center gap-2 mb-6">
-              <TrendingUp className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold">Key Results</h2>
-            </div>
-            <div className="grid md:grid-cols-4 gap-6">
-              {caseStudy.results.metrics.map((metric, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">{metric.value}</div>
-                  <div className="font-semibold mb-1">{metric.label}</div>
-                  <div className="text-sm text-muted-foreground">{metric.description}</div>
-                </div>
-              ))}
-            </div>
+          {/* HERO IMAGE */}
+          <div className="aspect-video rounded-2xl overflow-hidden mb-16 bg-gray-900">
+            <img
+              src={study.image}
+              alt={study.title}
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          {/* The Challenge */}
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <Target className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold">{caseStudy.challenge.title}</h2>
-            </div>
-            <div className="bg-card rounded-2xl p-8 border border-border mb-6">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                {caseStudy.challenge.context}
-              </p>
-              <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950 dark:to-orange-950 rounded-xl p-6 border border-red-200 dark:border-red-800">
-                <h3 className="text-lg font-bold mb-4 text-red-900 dark:text-red-100">Key Challenges</h3>
-                <ul className="space-y-3">
-                  {caseStudy.challenge.problems.map((problem, i) => (
-                    <li key={i} className="flex gap-3 text-base">
-                      <span className="text-red-500 mt-1 flex-shrink-0">✕</span>
-                      <span className="text-muted-foreground">{problem}</span>
+          {/* METRICS GRID */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {study.results.metrics.map((metric, index) => (
+              <div key={index} className="p-6 rounded-xl bg-white/5 border border-white/10">
+                <div className="text-3xl font-bold text-primary mb-2">{metric.value}</div>
+                <div className="text-sm font-medium text-white mb-1">{metric.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* CONTENT SECTIONS */}
+          <div className="space-y-16">
+            {/* Challenge */}
+            <section>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Target className="h-6 w-6 text-primary" />
+                {study.challenge.title}
+              </h2>
+              <div className="prose prose-invert max-w-none">
+                <p className="text-gray-300 text-lg mb-6">{study.challenge.context}</p>
+                <ul className="grid md:grid-cols-2 gap-4 list-none pl-0">
+                  {study.challenge.problems.map((problem, i) => (
+                    <li key={i} className="flex items-start gap-3 bg-white/5 p-4 rounded-lg">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0" />
+                      <span className="text-gray-300">{problem}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
+            </section>
 
-          {/* The Solution */}
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <Rocket className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold">{caseStudy.solution.title}</h2>
-            </div>
-            <div className="bg-card rounded-2xl p-8 border border-border mb-6">
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                {caseStudy.solution.description}
-              </p>
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 rounded-xl p-6 border border-green-200 dark:border-green-800 mb-6">
-                <h3 className="text-lg font-bold mb-4 text-green-900 dark:text-green-100">Key Features</h3>
+            {/* Solution */}
+            <section>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Users className="h-6 w-6 text-primary" />
+                {study.solution.title}
+              </h2>
+              <div className="prose prose-invert max-w-none">
+                <p className="text-gray-300 text-lg mb-6">{study.solution.description}</p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {caseStudy.solution.features.map((feature, i) => (
-                    <div key={i} className="flex gap-3 items-start">
-                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
-                      <span className="text-muted-foreground">{feature}</span>
+                  {study.solution.features.map((feature, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                      <span className="text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                {caseStudy.solution.implementation}
-              </p>
-            </div>
-          </div>
+            </section>
 
-          {/* Additional Benefits */}
-          {caseStudy.results.additionalBenefits && (
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Additional Benefits</h2>
+            {/* Results */}
+            <section>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <TrendingUp className="h-6 w-6 text-primary" />
+                {study.results.title}
+              </h2>
+
+
+
               <div className="grid md:grid-cols-2 gap-4">
-                {caseStudy.results.additionalBenefits.map((benefit, i) => (
-                  <div key={i} className="flex gap-3 items-start bg-card p-4 rounded-xl border border-border hover:shadow-md transition-shadow">
-                    <Zap className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{benefit}</span>
+                {study.results.additionalBenefits.map((benefit, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-white/5 p-4 rounded-lg">
+                    <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                    <span className="text-gray-300">{benefit}</span>
                   </div>
                 ))}
               </div>
-            </div>
-          )}
+            </section>
 
-          {/* Implementation Timeline */}
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <Clock className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold">{caseStudy.implementation.title}</h2>
-            </div>
-            <div className="space-y-4">
-              {caseStudy.implementation.steps.map((step, i) => (
-                <div key={i} className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-colors">
-                  <div className="flex items-start gap-4">
-                    <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0 font-bold text-white text-xl shadow-lg">
-                      {i + 1}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3 flex-wrap">
-                        <Badge variant="outline" className="bg-primary/10">{step.phase}</Badge>
-                        <h3 className="font-bold text-lg">{step.activity}</h3>
-                        {step.duration && (
-                          <span className="text-sm text-muted-foreground ml-auto">
-                            Duration: {step.duration}
-                          </span>
-                        )}
+            {/* Implementation Timeline */}
+            <section>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Clock className="h-6 w-6 text-primary" />
+                {study.implementation.title}
+              </h2>
+              <div className="space-y-6">
+                {study.implementation.steps.map((step, i) => (
+                  <div key={i} className="flex gap-4 md:gap-6">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary text-primary flex items-center justify-center font-bold text-sm shrink-0">
+                        {i + 1}
                       </div>
-                      <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                      {i !== study.implementation.steps.length - 1 && (
+                        <div className="w-px h-full bg-white/10 my-2" />
+                      )}
+                    </div>
+                    <div className="pb-8">
+                      <div className="flex flex-wrap items-center gap-3 mb-2">
+                        <h3 className="text-lg font-bold text-white">{step.activity}</h3>
+                        <Badge variant="secondary" className="text-xs">{step.duration}</Badge>
+                      </div>
+                      <p className="text-gray-400">{step.description}</p>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technical Details */}
-          {caseStudy.technicalDetails && (
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">{caseStudy.technicalDetails.title}</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-card rounded-2xl p-6 border border-border">
-                  <h3 className="text-xl font-bold mb-4">Integrations</h3>
-                  <ul className="space-y-3">
-                    {caseStudy.technicalDetails.integrations.map((integration, i) => (
-                      <li key={i} className="flex gap-3 items-start">
-                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{integration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-card rounded-2xl p-6 border border-border">
-                  <h3 className="text-xl font-bold mb-4">Advanced Features</h3>
-                  <ul className="space-y-3">
-                    {caseStudy.technicalDetails.features.map((feature, i) => (
-                      <li key={i} className="flex gap-3 items-start">
-                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                ))}
               </div>
-            </div>
-          )}
-
-          {/* Future Goals */}
-          {caseStudy.futureGoals && (
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">{caseStudy.futureGoals.title}</h2>
-              <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 border border-primary/20">
-                <ul className="grid md:grid-cols-2 gap-4">
-                  {caseStudy.futureGoals.plans.map((plan, i) => (
-                    <li key={i} className="flex gap-3 items-start">
-                      <Rocket className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                      <span className="text-muted-foreground">{plan}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {/* Testimonial */}
-          <div className="mb-16 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12 border border-border">
-            <div className="text-4xl text-primary mb-6">"</div>
-            <p className="text-xl md:text-2xl font-medium mb-8 leading-relaxed">
-              {caseStudy.results.testimonial.quote}
-            </p>
-            <div>
-              <div className="font-bold text-lg">{caseStudy.results.testimonial.author}</div>
-              <div className="text-muted-foreground">{caseStudy.results.testimonial.role}</div>
-            </div>
+            </section>
           </div>
 
           {/* CTA */}
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-primary to-accent text-white text-center">
+          <div className="mt-20 p-8 rounded-2xl bg-gradient-to-br from-primary to-accent text-white text-center">
             <h3 className="text-3xl font-bold mb-4">Ready for Similar Results?</h3>
             <p className="text-lg mb-6 text-white/90">
               See how CloserX can transform your business operations
             </p>
-            <Link to="/contact">
-              <Button size="lg" variant="secondary" className="font-semibold">
+            <div className="flex justify-center">
+              <DemoModal
+                buttonClassName="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-11 rounded-md px-8 font-semibold"
+              >
                 Schedule a Demo
-              </Button>
-            </Link>
+              </DemoModal>
+            </div>
           </div>
         </div>
       </article>

@@ -31,7 +31,7 @@ export const sampleBlogPosts: BlogPost[] = [
   // Industry Insights (12 posts)
   {
     slug: "ai-voice-technology-trends-2025",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "AI Voice Technology Trends Shaping 2025",
     excerpt: "Discover the latest trends in AI voice technology and how they're transforming customer interactions across industries.",
     author: "Sarah Chen, Industry Analyst",
@@ -40,7 +40,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "future-of-voice-automation",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "The Future of Voice Automation in Business",
     excerpt: "Exploring how voice automation is revolutionizing business operations and customer service delivery.",
     author: "Michael Rodriguez, Tech Writer",
@@ -49,7 +49,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "customer-experience-evolution",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "Customer Experience Evolution Through AI",
     excerpt: "How AI-powered voice solutions are creating more personalized and efficient customer experiences.",
     author: "Emily Watson, CX Expert",
@@ -58,7 +58,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-market-analysis",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "Voice AI Market Analysis: Growth and Opportunities",
     excerpt: "Comprehensive analysis of the voice AI market, including growth projections and emerging opportunities.",
     author: "David Kim, Market Researcher",
@@ -67,7 +67,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "enterprise-ai-adoption-rates",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "Enterprise AI Adoption Rates: What the Data Shows",
     excerpt: "Analyzing adoption rates of AI voice technology in enterprise environments and key success factors.",
     author: "Lisa Anderson, Business Analyst",
@@ -76,7 +76,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "remote-work-voice-solutions",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "Voice Solutions for the Remote Work Era",
     excerpt: "How voice AI is enabling seamless communication and collaboration in distributed work environments.",
     author: "James Wilson, Remote Work Specialist",
@@ -85,7 +85,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "ai-voice-regulations-compliance",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "AI Voice Regulations and Compliance Guide",
     excerpt: "Understanding regulatory requirements and compliance considerations for AI voice technology implementations.",
     author: "Rachel Green, Compliance Officer",
@@ -94,7 +94,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-commerce-trends",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "Voice Commerce: The Next Frontier in E-commerce",
     excerpt: "Exploring how voice-activated shopping is transforming the e-commerce landscape and consumer behavior.",
     author: "Tom Brown, E-commerce Strategist",
@@ -103,7 +103,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "multilingual-ai-solutions",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "Multilingual AI Solutions: Breaking Language Barriers",
     excerpt: "How AI voice technology is enabling seamless communication across different languages and cultures.",
     author: "Maria Garcia, Localization Expert",
@@ -112,7 +112,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "ai-voice-security-concerns",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "AI Voice Security: Addressing Privacy Concerns",
     excerpt: "Examining security and privacy considerations in AI voice technology and best practices for protection.",
     author: "Alex Thompson, Security Specialist",
@@ -121,7 +121,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-smb-adoption",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "SMB Adoption of Voice AI: Trends and Challenges",
     excerpt: "How small and medium businesses are leveraging voice AI to compete with larger enterprises.",
     author: "Jennifer Lee, SMB Consultant",
@@ -130,7 +130,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "ai-voice-healthcare-transformation",
-    category: "Industry Insights",
+    category: "Market Intelligence",
     title: "AI Voice Technology Transforming Healthcare",
     excerpt: "Exploring innovative applications of voice AI in healthcare delivery and patient care.",
     author: "Dr. Robert Martinez, Healthcare Tech",
@@ -141,7 +141,7 @@ export const sampleBlogPosts: BlogPost[] = [
   // Success Stories (8 posts)
   {
     slug: "real-estate-agency-success",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "How a Real Estate Agency Increased Leads by 300%",
     excerpt: "Case study of a real estate agency that transformed their lead generation using AI voice agents.",
     author: "Mark Stevens, Success Manager",
@@ -150,7 +150,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "healthcare-practice-efficiency",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "Healthcare Practice Reduces Appointment No-Shows by 40%",
     excerpt: "Discover how a medical practice used AI voice automation to improve appointment management.",
     author: "Dr. Amanda White, Healthcare Consultant",
@@ -159,7 +159,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "ecommerce-customer-service-win",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "E-commerce Brand Achieves 24/7 Customer Support",
     excerpt: "How an online retailer implemented AI voice agents to provide round-the-clock customer service.",
     author: "Jessica Park, Customer Success",
@@ -168,7 +168,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "financial-services-automation",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "Financial Services Firm Automates 80% of Inquiries",
     excerpt: "A financial services company's journey to automating customer inquiries with AI voice technology.",
     author: "Robert Chen, Financial Tech Advisor",
@@ -177,7 +177,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "call-center-transformation",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "Call Center Cuts Costs by 60% with AI Voice Agents",
     excerpt: "How a call center transformed operations and reduced costs while improving customer satisfaction.",
     author: "Patricia Johnson, Operations Manager",
@@ -186,7 +186,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "insurance-company-roi",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "Insurance Company Sees 250% ROI in First Year",
     excerpt: "An insurance company's success story implementing AI voice agents for claims processing.",
     author: "Daniel Miller, Insurance Tech",
@@ -195,7 +195,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "retail-chain-expansion",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "Retail Chain Scales Support Across 50 Locations",
     excerpt: "How a retail chain used AI voice technology to provide consistent support across all locations.",
     author: "Laura Davis, Retail Strategist",
@@ -204,7 +204,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "saas-company-growth",
-    category: "Success Stories",
+    category: "Agency Growth",
     title: "SaaS Company Doubles Sales Team Efficiency",
     excerpt: "A SaaS company's journey to doubling sales efficiency using AI-powered lead qualification.",
     author: "Kevin Taylor, Sales Operations",
@@ -215,7 +215,7 @@ export const sampleBlogPosts: BlogPost[] = [
   // Best Practices (10 posts)
   {
     slug: "implementing-voice-ai-best-practices",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Best Practices for Implementing Voice AI",
     excerpt: "Essential guidelines and best practices for successfully implementing AI voice technology in your business.",
     author: "Chris Anderson, Implementation Expert",
@@ -224,7 +224,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-training-tips",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Training Your AI Voice Agent: Tips and Tricks",
     excerpt: "Learn how to effectively train and optimize your AI voice agents for better performance.",
     author: "Michelle Roberts, AI Trainer",
@@ -233,7 +233,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-script-optimization",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Voice Script Optimization for Better Conversions",
     excerpt: "How to write and optimize voice scripts that drive higher conversion rates and customer satisfaction.",
     author: "Steven Clark, Copywriting Expert",
@@ -242,7 +242,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "measuring-voice-ai-success",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Measuring Success: Key Metrics for Voice AI",
     excerpt: "Understanding which metrics matter most when evaluating the success of your voice AI implementation.",
     author: "Nancy Martinez, Analytics Specialist",
@@ -251,7 +251,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-integration-guide",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Complete Guide to Voice AI Integration",
     excerpt: "Step-by-step guide to integrating AI voice technology with your existing systems and workflows.",
     author: "Brian Wilson, Integration Specialist",
@@ -260,7 +260,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-personalization",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Personalizing Voice AI Interactions",
     excerpt: "Best practices for creating personalized and engaging voice AI experiences for your customers.",
     author: "Angela Moore, UX Designer",
@@ -269,7 +269,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-error-handling",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Error Handling in Voice AI: Best Practices",
     excerpt: "How to effectively handle errors and edge cases in voice AI interactions for better user experience.",
     author: "Ryan Adams, AI Developer",
@@ -278,7 +278,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-testing-strategies",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Testing Strategies for Voice AI Applications",
     excerpt: "Comprehensive testing strategies to ensure your voice AI performs reliably in production.",
     author: "Samantha Brown, QA Engineer",
@@ -287,7 +287,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-scaling-tips",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Scaling Voice AI: Tips for Growth",
     excerpt: "Essential tips for scaling your voice AI operations as your business grows and demand increases.",
     author: "Jason Lee, Scalability Expert",
@@ -296,7 +296,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-maintenance-guide",
-    category: "Best Practices",
+    category: "Platform Guide",
     title: "Maintaining and Updating Voice AI Systems",
     excerpt: "Best practices for maintaining, updating, and continuously improving your voice AI systems.",
     author: "Karen White, DevOps Engineer",
@@ -307,7 +307,7 @@ export const sampleBlogPosts: BlogPost[] = [
   // Technical (15 posts)
   {
     slug: "voice-ai-architecture-deep-dive",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Voice AI Architecture: A Deep Dive",
     excerpt: "Technical exploration of voice AI system architecture, components, and design patterns.",
     author: "Dr. Michael Chen, Software Architect",
@@ -316,7 +316,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "nlp-voice-applications",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Natural Language Processing in Voice Applications",
     excerpt: "Understanding how NLP powers voice AI applications and improves conversation quality.",
     author: "Dr. Sarah Kim, NLP Researcher",
@@ -325,7 +325,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-synthesis-technologies",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Voice Synthesis Technologies Explained",
     excerpt: "Technical overview of different voice synthesis technologies and their applications.",
     author: "Dr. James Wilson, Audio Engineer",
@@ -334,7 +334,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "real-time-voice-processing",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Real-Time Voice Processing: Technical Challenges",
     excerpt: "Exploring the technical challenges and solutions for real-time voice processing in AI systems.",
     author: "Dr. Emily Rodriguez, Systems Engineer",
@@ -343,7 +343,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-api-integration",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Voice AI API Integration: Technical Guide",
     excerpt: "Comprehensive technical guide to integrating voice AI APIs into your applications.",
     author: "David Park, API Developer",
@@ -352,7 +352,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-data-security",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Voice Data Security: Encryption and Protection",
     excerpt: "Technical deep dive into securing voice data through encryption and security best practices.",
     author: "Alex Thompson, Security Engineer",
@@ -361,7 +361,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-performance-optimization",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Performance Optimization for Voice AI Systems",
     excerpt: "Technical strategies for optimizing the performance and latency of voice AI systems.",
     author: "Lisa Anderson, Performance Engineer",
@@ -370,7 +370,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "machine-learning-voice-models",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Machine Learning Models for Voice AI",
     excerpt: "Understanding the machine learning models powering modern voice AI systems.",
     author: "Dr. Robert Martinez, ML Researcher",
@@ -379,7 +379,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-deployment-strategies",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Voice AI Deployment Strategies: Cloud vs On-Premise",
     excerpt: "Technical comparison of cloud and on-premise deployment strategies for voice AI systems.",
     author: "Jennifer Lee, DevOps Architect",
@@ -388,7 +388,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-monitoring-tools",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Monitoring and Observability for Voice AI",
     excerpt: "Technical guide to implementing monitoring and observability for voice AI systems.",
     author: "Tom Brown, SRE Engineer",
@@ -397,7 +397,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-load-balancing",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Load Balancing Strategies for Voice AI",
     excerpt: "Technical approaches to load balancing and scaling voice AI systems under high demand.",
     author: "Maria Garcia, Infrastructure Engineer",
@@ -406,7 +406,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-database-design",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Database Design for Voice AI Applications",
     excerpt: "Technical considerations for designing databases that support voice AI applications.",
     author: "Kevin Taylor, Database Architect",
@@ -415,7 +415,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-caching-strategies",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Caching Strategies for Voice AI Performance",
     excerpt: "How to implement effective caching strategies to improve voice AI system performance.",
     author: "Patricia Johnson, Backend Engineer",
@@ -424,7 +424,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-microservices",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Building Voice AI with Microservices Architecture",
     excerpt: "Technical guide to building scalable voice AI systems using microservices architecture.",
     author: "Daniel Miller, Software Architect",
@@ -433,7 +433,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-containerization",
-    category: "Technical",
+    category: "AI Solutions",
     title: "Containerizing Voice AI Applications",
     excerpt: "Technical guide to containerizing and orchestrating voice AI applications with Docker and Kubernetes.",
     author: "Laura Davis, DevOps Engineer",
@@ -444,7 +444,7 @@ export const sampleBlogPosts: BlogPost[] = [
   // Case Studies (7 posts)
   {
     slug: "fortune-500-voice-ai-case-study",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Fortune 500 Company Transforms Customer Service",
     excerpt: "Detailed case study of how a Fortune 500 company implemented voice AI to transform customer service operations.",
     author: "Mark Stevens, Case Study Author",
@@ -453,7 +453,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "healthcare-system-voice-ai",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Healthcare System Improves Patient Engagement",
     excerpt: "Case study examining how a healthcare system used voice AI to improve patient engagement and reduce costs.",
     author: "Dr. Amanda White, Healthcare Analyst",
@@ -462,7 +462,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "retail-giant-automation",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Retail Giant Automates Customer Support",
     excerpt: "In-depth case study of a retail giant's journey to automating customer support with voice AI.",
     author: "Jessica Park, Business Analyst",
@@ -471,7 +471,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "banking-voice-ai-implementation",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Banking Institution's Voice AI Implementation",
     excerpt: "Case study of a major banking institution's successful implementation of voice AI for customer service.",
     author: "Robert Chen, Financial Analyst",
@@ -480,7 +480,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "telecom-company-transformation",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Telecom Company's Digital Transformation",
     excerpt: "How a telecom company used voice AI as part of their digital transformation strategy.",
     author: "Patricia Johnson, Transformation Consultant",
@@ -489,7 +489,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "education-platform-voice-ai",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Education Platform Enhances Student Support",
     excerpt: "Case study of an online education platform using voice AI to provide better student support.",
     author: "Daniel Miller, EdTech Analyst",
@@ -498,7 +498,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "logistics-company-efficiency",
-    category: "Case Studies",
+    category: "Industry Solutions",
     title: "Logistics Company Streamlines Operations",
     excerpt: "How a logistics company used voice AI to streamline operations and improve customer communication.",
     author: "Laura Davis, Operations Analyst",
@@ -509,7 +509,7 @@ export const sampleBlogPosts: BlogPost[] = [
   // Research (5 posts)
   {
     slug: "voice-ai-user-satisfaction-research",
-    category: "Research",
+    category: "Compliance & Security",
     title: "User Satisfaction with Voice AI: Research Findings",
     excerpt: "Research study examining user satisfaction levels with voice AI interactions and key satisfaction drivers.",
     author: "Dr. Sarah Chen, Research Scientist",
@@ -518,7 +518,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-adoption-barriers",
-    category: "Research",
+    category: "Compliance & Security",
     title: "Barriers to Voice AI Adoption: Research Analysis",
     excerpt: "Research analysis identifying key barriers to voice AI adoption and strategies to overcome them.",
     author: "Dr. Michael Rodriguez, Behavioral Researcher",
@@ -527,7 +527,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-roi-study",
-    category: "Research",
+    category: "Compliance & Security",
     title: "ROI of Voice AI: Comprehensive Research Study",
     excerpt: "Comprehensive research study analyzing the return on investment of voice AI implementations across industries.",
     author: "Dr. Emily Watson, Economics Researcher",
@@ -536,7 +536,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-accessibility-research",
-    category: "Research",
+    category: "Compliance & Security",
     title: "Voice AI and Accessibility: Research Insights",
     excerpt: "Research insights on how voice AI technology is improving accessibility for users with disabilities.",
     author: "Dr. David Kim, Accessibility Researcher",
@@ -545,7 +545,7 @@ export const sampleBlogPosts: BlogPost[] = [
   },
   {
     slug: "voice-ai-future-predictions",
-    category: "Research",
+    category: "Compliance & Security",
     title: "Future of Voice AI: Research-Based Predictions",
     excerpt: "Research-based predictions on the future evolution of voice AI technology and its applications.",
     author: "Dr. Lisa Anderson, Future Tech Researcher",
@@ -562,11 +562,22 @@ export interface Category {
 
 export const blogCategories: Category[] = [
   { id: "all", label: "All Blogs", count: 50 },
-  { id: "industry-insights", label: "Industry Insights", count: 12 },
-  { id: "success-stories", label: "Success Stories", count: 8 },
-  { id: "best-practices", label: "Best Practices", count: 10 },
-  { id: "technical", label: "Technical", count: 15 },
-  { id: "case-studies", label: "Case Studies", count: 7 },
-  { id: "research", label: "Research", count: 5 },
+  { id: "platform-comparison", label: "Platform Comparison", count: 3 },
+  { id: "lead-nurturing", label: "Lead Nurturing", count: 3 },
+  { id: "accounting-solution", label: "Accounting Solution", count: 2 },
+  { id: "compliance-security", label: "Compliance & Security", count: 3 },
+  { id: "agency-growth", label: "Agency Growth", count: 4 },
+  { id: "student-recruitment", label: "Student Recruitment", count: 2 },
+  { id: "revenue-recovery", label: "Revenue Recovery", count: 2 },
+  { id: "platform-guide", label: "Platform Guide", count: 4 },
+  { id: "industry-solutions", label: "Industry Solutions", count: 3 },
+  { id: "sales-automation", label: "Sales Automation", count: 4 },
+  { id: "marketing-sales", label: "Marketing & Sales", count: 3 },
+  { id: "ai-solutions", label: "AI Solutions", count: 5 },
+  { id: "client-management", label: "Client Management", count: 3 },
+  { id: "service-automation", label: "Service Automation", count: 3 },
+  { id: "market-intelligence", label: "Market Intelligence", count: 2 },
+  { id: "emergency-automation", label: "Emergency Automation", count: 2 },
+  { id: "agency-monetization", label: "Agency Monetization", count: 3 },
 ];
 

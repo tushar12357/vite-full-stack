@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { X } from "lucide-react";
 
 interface VideoHeroProps {
   hero: {
@@ -13,6 +14,12 @@ interface VideoHeroProps {
 }
 
 const VideoHero = ({ hero, uiScreenshot, videoId, videoUrl }: VideoHeroProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+  };
+
   return (
     <section className="relative bg-black py-16 md:py-20 overflow-hidden mt-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -31,23 +38,13 @@ const VideoHero = ({ hero, uiScreenshot, videoId, videoUrl }: VideoHeroProps) =>
 
             {/* CTA Button - Centered */}
             <div className="flex justify-start">
-              {videoId ? (
-                <Link to={`/videos/${videoId}`}>
-                  <Button
-                    size="lg"
-                    className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm rounded-lg border border-white transition-all duration-300"
-                  >
-                    {hero.buttonText}
-                  </Button>
-                </Link>
-              ) : (
-                <Button
-                  size="lg"
-                  className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm rounded-lg border border-white transition-all duration-300"
-                >
-                  {hero.buttonText}
-                </Button>
-              )}
+              <Button
+                size="lg"
+                className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm rounded-lg border border-white transition-all duration-300"
+                onClick={handlePlay}
+              >
+                {hero.buttonText}
+              </Button>
             </div>
           </div>
 
@@ -80,7 +77,35 @@ const VideoHero = ({ hero, uiScreenshot, videoId, videoUrl }: VideoHeroProps) =>
         </div>
       </div>
 
-    </section>
+
+
+      {/* Fullscreen Video Overlay */}
+      {
+        isPlaying && (
+          <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10 animate-in fade-in duration-300">
+            <button
+              onClick={() => setIsPlaying(false)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 p-2 rounded-full backdrop-blur-sm"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <div className="w-full max-w-7xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`${videoUrl}?autoplay=1`}
+                title={hero.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
+          </div>
+        )
+      }
+    </section >
   );
 };
 

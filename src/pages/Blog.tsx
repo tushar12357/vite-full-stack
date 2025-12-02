@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import BlogHero from "@/components/BlogHero";
 import BlogArticleCard from "@/components/BlogArticleCard";
-import { blogHeroData, blogCategories } from "@/data/blogData";
+import { blogHeroData, Category } from "@/data/blogData";
 import uiScreenshot from "@/assets/image copy.png";
 import FinalCTA from "@/components/home/FinalCTA";
 
@@ -45,8 +45,52 @@ export default function BlogList() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(5);
+  const [categories, setCategories] = useState<Category[]>([
+    { id: "all", label: "All Blogs", count: 0 }
+  ]);
 
   const limit = 9;
+
+  // -----------------------------------------------------------------
+  // FETCH CATEGORIES
+  // -----------------------------------------------------------------
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch("https://vite-full-stack.vercel.app/api/blogs?limit=1000");
+        if (!res.ok) throw new Error("Failed to load categories");
+        const json = await res.json();
+        const allPosts: Blog[] = json.data ?? [];
+
+        const tagsMap = new Map<string, number>();
+        allPosts.forEach((post) => {
+          if (post.category) {
+            const tag = post.category.trim();
+            tagsMap.set(tag, (tagsMap.get(tag) || 0) + 1);
+          }
+        });
+
+        const dynamicCategories: Category[] = Array.from(tagsMap.entries()).map(([label, count]) => ({
+          id: label.toLowerCase().replace(/\s+/g, "-"),
+          label,
+          count
+        }));
+
+        // Sort by count descending
+        dynamicCategories.sort((a, b) => (b.count || 0) - (a.count || 0));
+
+        setCategories([
+          { id: "all", label: "All Blogs", count: allPosts.length },
+          ...dynamicCategories
+        ]);
+      } catch (e) {
+        console.error("Failed to fetch categories", e);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   // -----------------------------------------------------------------
   // FETCH LIST
@@ -97,30 +141,30 @@ export default function BlogList() {
 
   const heroData = latestPost
     ? {
-        tag: latestPost.category || blogHeroData.tag,
-        title: latestPost.title,
-        description: latestPost.excerpt,
-        buttonText: blogHeroData.buttonText,
-        author: latestPost.author,
-        createdAt: latestPost.createdAt,
-        image: latestPost.image,
-      }
+      tag: latestPost.category || blogHeroData.tag,
+      title: latestPost.title,
+      description: latestPost.excerpt,
+      buttonText: blogHeroData.buttonText,
+      author: latestPost.author,
+      createdAt: latestPost.createdAt,
+      image: latestPost.image,
+    }
     : null;
 
   const postsWithoutHero = latestPost
     ? blogs.filter((post) =>
-        post._id && latestPost._id
-          ? post._id !== latestPost._id
-          : post.slug !== latestPost.slug
-      )
+      post._id && latestPost._id
+        ? post._id !== latestPost._id
+        : post.slug !== latestPost.slug
+    )
     : blogs;
   const normalize = (value: string) => value?.trim().toLowerCase();
   const visiblePosts =
     selectedCategory === "All"
       ? postsWithoutHero
       : postsWithoutHero.filter(
-          (post) => normalize(post.category) === normalize(selectedCategory)
-        );
+        (post) => normalize(post.category) === normalize(selectedCategory)
+      );
   const totalPages = Math.max(pagination.pages ?? 1, 1);
 
   // -----------------------------------------------------------------
@@ -161,11 +205,11 @@ export default function BlogList() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             {/* Categories on Left */}
             <div className="flex flex-wrap items-center gap-1.5">
-              {blogCategories.map((category) => {
-                const isActive = 
+              {categories.slice(0, visibleCount).map((category) => {
+                const isActive =
                   (selectedCategory === "All" && category.id === "all") ||
                   selectedCategory === category.label;
-                
+
                 return (
                   <button
                     key={category.id}
@@ -173,16 +217,33 @@ export default function BlogList() {
                       setSelectedCategory(category.id === "all" ? "All" : category.label);
                       setPage(1);
                     }}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                      isActive
-                        ? "bg-purple-600 text-white shadow-lg"
-                        : "bg-gray-800 hover:bg-gray-700 text-white/80 border border-gray-700"
-                    }`}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${isActive
+                      ? "bg-purple-600 text-white shadow-lg"
+                      : "bg-gray-800 hover:bg-gray-700 text-white/80 border border-gray-700"
+                      }`}
                   >
                     {category.label}
                   </button>
                 );
               })}
+
+              {visibleCount < categories.length && (
+                <button
+                  onClick={() => setVisibleCount(prev => prev + 5)}
+                  className="px-3 py-1.5 rounded-full text-xs font-medium bg-gray-800 hover:bg-gray-700 text-white/80 border border-gray-700 transition-all"
+                >
+                  + More
+                </button>
+              )}
+
+              {visibleCount > 5 && (
+                <button
+                  onClick={() => setVisibleCount(5)}
+                  className="px-3 py-1.5 rounded-full text-xs font-medium bg-gray-800 hover:bg-gray-700 text-white/80 border border-gray-700 transition-all"
+                >
+                  - Less
+                </button>
+              )}
             </div>
 
             {/* Search on Right */}
@@ -256,11 +317,10 @@ export default function BlogList() {
                         )}
                         <button
                           onClick={() => setPage(p)}
-                          className={`px-3 py-1.5 rounded-lg transition-colors text-sm ${
-                            page === p
-                              ? "bg-purple-600 text-white"
-                              : "bg-gray-800 text-white hover:bg-gray-700"
-                          }`}
+                          className={`px-3 py-1.5 rounded-lg transition-colors text-sm ${page === p
+                            ? "bg-purple-600 text-white"
+                            : "bg-gray-800 text-white hover:bg-gray-700"
+                            }`}
                         >
                           {p}
                         </button>

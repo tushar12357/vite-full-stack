@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -194,6 +195,15 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                     >
                       {customerStorySection.primaryButton.text}
                     </a>
+                  ) : customerStorySection.primaryButton.text === "More Customer Stories" ? (
+                    <Link to="/success-stories">
+                      <Button
+                        size="lg"
+                        className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap"
+                      >
+                        {customerStorySection.primaryButton.text}
+                      </Button>
+                    </Link>
                   ) : (
                     <Button
                       size="lg"
@@ -202,8 +212,8 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                       {customerStorySection.primaryButton.text}
                     </Button>
                   )}
-                  {customerStorySection.secondaryButton.text === "Talk To Sales" || customerStorySection.secondaryButton.text.includes("Sales") || customerStorySection.secondaryButton.text.includes("Demo") ? (
-                    customerStorySection.secondaryButton.text.includes("Demo") ? (
+                  {customerStorySection.secondaryButton.text === "Talk To Sales" || customerStorySection.secondaryButton.text.includes("Sales") || customerStorySection.secondaryButton.text.includes("Demo") || customerStorySection.secondaryButton.text.includes("Trial") || customerStorySection.secondaryButton.text.includes("Book Call") ? (
+                    customerStorySection.secondaryButton.text.includes("Demo") || customerStorySection.secondaryButton.text.includes("Trial") || customerStorySection.secondaryButton.text.includes("Book Call") ? (
                       <button
                         onClick={openLuna}
                         className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"

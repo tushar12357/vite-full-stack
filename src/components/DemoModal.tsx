@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+
 import PhoneInput, { CountryData } from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -73,52 +73,33 @@ export default function DemoModal({
     }
   }, [triggerSnowieWidget]);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://link.closerx.ai/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const modal = (
-    <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="relative w-full max-w-md bg-card border border-border rounded-2xl shadow-2xl p-6 my-10 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden my-10 animate-in fade-in duration-200 bg-white">
         {/* Close Button */}
         <button
           onClick={() => setOpen(false)}
-          className="absolute top-3 right-3 text-muted-foreground hover:text-foreground"
+          className="absolute top-4 right-4 z-50 text-gray-500 hover:text-gray-900 bg-white/80 backdrop-blur-sm rounded-full p-2 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <h2 className="text-2xl font-bold mb-2">Test Your Call</h2>
-        <p className="text-muted-foreground mb-6 text-sm">
-          Experience our AI-powered agent with a test call.
-        </p>
-
-        {/* Prompt */}
-        <label className="text-sm font-medium mb-1 block">Prompt</label>
-        <Textarea
-          defaultValue="You are a professional real estate agent. Assist the caller by providing information about available properties, scheduling viewings, and answering questions about the buying process."
-          className="mb-4 text-sm resize-none"
-          rows={4}
-        />
-
-        {/* Name */}
-        <label className="text-sm font-medium mb-1 block">Your Name</label>
-        <Input type="text" placeholder="Enter your full name" className="mb-4" />
-
-        {/* Phone */}
-        <div className="mb-6">
-          <label className="text-sm font-medium mb-1 block">Phone Number</label>
-          <PhoneInput
-            country={country}
-            value={phone}
-            onChange={handlePhoneChange}
-            enableSearch={true}
-            inputClass="!w-full !py-2 !pl-12 !text-sm !rounded-lg !border !border-border focus:!outline-none focus:!ring-2 focus:!ring-primary/40"
-            buttonClass="!border-border !bg-muted"
-            containerClass="!w-full"
-          />
-        </div>
-
-        {/* Submit */}
-        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-          Start Call
-        </Button>
+        <iframe
+          src="https://link.closerx.ai/widget/booking/CyUUbqPRgIqfUb6HhpCP"
+          style={{ width: "100%", border: "none", overflow: "auto", height: "400px" }}
+          scrolling="yes"
+          id="CyUUbqPRgIqfUb6HhpCP_1764373596691"
+        ></iframe>
       </div>
     </div>
   );

@@ -10,39 +10,80 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-
   {
-    id: 2,
+    id: 1,
     name: "Sarah Johnson",
     role: "CEO",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea001a0c187536de57e1.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
-    id: 3,
-    name: "Michael Chen",
+    id: 2,
+    name: "Ema pitcher",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea04fbd3443d360d09ad.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
-    id: 5,
-    name: "David Wilson",
+    id: 3,
+    name: "Ricardo james",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea104ee4a35f9b332a88.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
-    id: 6,
+    id: 4,
     name: "Jessica Martinez",
     role: "Operations Manager",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea184ee4a3a462332bad.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
   },
   {
-    id: 8,
+    id: 5,
     name: "Robert Taylor",
     profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/6926ea224ee4a344e9332d13.png",
     text: "I've been using this for about 6 months now and it's been a game changer for our business. The amount of time it saves us is incredible. Highly recommend to anyone looking to streamline their workflow.",
-  }
+  },
+  {
+    id: 6,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ea133fd073a633fcc9680.jpg",
+    text: "Testimonial",
+  },
+  {
+    id: 7,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ea133aaad91e35f4fa47f.jpg",
+    text: "Testimonial",
+  },
+  {
+    id: 8,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ea133aaad9159ca4fa47d.jpg",
+    text: "Testimonial",
+  },
+  {
+    id: 11,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ea13382f4c5e9c3914a93.jpg",
+    text: "Testimonial",
+  },
+  {
+    id: 12,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ea13373043ae30f345943.jpg",
+    text: "Testimonial",
+  },
+  {
+    id: 13,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ec7562b865e539a54f7af.png",
+    text: "Testimonial",
+  },
+  {
+    id: 14,
+    name: "Client",
+    profileImage: "https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/692ec756aaad9174065528d7.png",
+    text: "Testimonial",
+  },
 ];
 
 const testimonialVideos: Array<{ id: number; url: string; name: string; agency: string }> = [
@@ -57,7 +98,7 @@ const testimonialVideos: Array<{ id: number; url: string; name: string; agency: 
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-50 min-h-[100px]">
       <img
         src={testimonial.profileImage}
         alt={testimonial.name}
@@ -114,7 +155,7 @@ const Testimonials = () => {
         </div>
 
         {/* Mosaic Grid - Masonry Layout */}
-        <div className="columns-1 md:columns-2 gap-8 md:gap-10 space-y-8 md:space-y-10">
+        <div className="columns-1 md:columns-2 gap-8 md:gap-10">
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="break-inside-avoid mb-8 md:mb-10">
               <TestimonialCard testimonial={testimonial} />

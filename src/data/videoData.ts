@@ -25,7 +25,7 @@ export interface ProblemCard {
 export const videoHeroData: VideoHeroData = {
   title: "Introduction to CloserX.ai",
   description: "Watch this introduction to see how Kore.ai is enabling enterprises to reimagine every aspect of their business with AI for Work, AI for Service, and AI for Customer Experience.",
-  buttonText: "READ ARTICLE",
+  buttonText: "Watch Now",
 };
 
 const toEmbedUrl = (url: string) => {

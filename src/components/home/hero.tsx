@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import AgencyMarque from "./AgencyMarque";
 
+import LiveDemoModal from "@/components/LiveDemoModal";
 import DemoModal from "@/components/DemoModal";
 
 const hero = () => {
@@ -51,14 +52,7 @@ const hero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
-                  <DemoModal
-                    buttonClassName="group relative flex items-center gap-0 px-0 py-0 bg-purple-600 text-white text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all overflow-hidden"
-                  >
-                    <span className="px-6 py-3">Try Live Demo</span>
-                    <span className="w-10 h-10 flex m-2 items-center justify-center bg-purple-700 rounded-full">
-                      <ArrowUpRight className="w-5 h-5" />
-                    </span>
-                  </DemoModal>
+                  <LiveDemoModal />
                   <DemoModal
                     buttonClassName="flex items-center gap-2 px-0 py-0 bg-transparent text-white text-base font-semibold hover:text-white/80 transition-colors"
                   >

@@ -14,7 +14,7 @@ export const forAgenciesData: SolutionData = {
       variant: "primary",
     },
     secondaryButton: {
-      text: "Schedule Agency Demo",
+      text: "Schedule Demo",
       variant: "secondary",
     },
   },
@@ -129,7 +129,7 @@ export const forAgenciesData: SolutionData = {
       text: "Start Your Agency Today",
     },
     secondaryButton: {
-      text: "Schedule Agency Demo",
+      text: "Schedule Demo",
     },
   },
   cta: {

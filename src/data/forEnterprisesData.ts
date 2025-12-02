@@ -14,7 +14,7 @@ export const forEnterprisesData: SolutionData = {
       variant: "primary",
     },
     secondaryButton: {
-      text: "Request Enterprise Trial",
+      text: "Request Trial",
       variant: "secondary",
     },
   },
@@ -126,7 +126,7 @@ export const forEnterprisesData: SolutionData = {
       text: "Schedule Executive Briefing",
     },
     secondaryButton: {
-      text: "Request Enterprise Trial",
+      text: "Request Trial",
     },
   },
   cta: {

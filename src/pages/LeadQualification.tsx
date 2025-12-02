@@ -168,6 +168,15 @@ const LeadQualification = () => {
                   >
                     {customerStorySection.primaryButton.text}
                   </a>
+                ) : customerStorySection.primaryButton.text === "More Customer Stories" ? (
+                  <Link to="/success-stories">
+                    <Button
+                      size="lg"
+                      className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300"
+                    >
+                      {customerStorySection.primaryButton.text}
+                    </Button>
+                  </Link>
                 ) : (
                   <Button
                     size="lg"
