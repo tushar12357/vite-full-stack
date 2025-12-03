@@ -28,27 +28,24 @@ export const discoverCloserXData: DiscoverCloserXData = {
   features: [
     {
       number: "01.",
-      title: "AI-Powered Callback Scheduling",
-      description:
-        'AI understands customer requests like "call me after 5 minutes" or "call me in 1 hour" and schedules callbacks automatically.',
+      title: "Setup Your Agency",
+      description: "Create your agency profile, customize your branding, and configure your workspace settings to get started.",
     },
     {
       number: "02.",
-      title: "Automated Phone Number Rotation",
-      description:
-        "Automatically rotate through multiple phone numbers to maintain high deliverability rates and avoid spam filters, ensuring your calls always get through.",
+      title: "Setup Your Phone Numbers",
+      description: "Purchase or port phone numbers from multiple regions to ensure local presence and high answer rates.",
     },
     {
       number: "03.",
-      title: "Intelligent Auto-Dialing",
-      description:
-        "Smart dialing system that automatically calls leads at optimal times, handles busy signals, and connects only when a human answers to maximize efficiency.",
+      title: "Onboard Your First Client",
+      description: "Add your first client, set up their sub-account, and assign dedicated resources to manage their campaigns.",
     },
     {
       number: "04.",
-      title: "Payment Integration Hub",
+      title: "Setup Your First Agent",
       description:
-        "Seamlessly integrate with popular payment gateways to process transactions, accept payments, and manage billing all within your AI calling platform.",
+        "Configure your first AI agent to handle calls, upload contacts, or start a campaign.",
     },
   ],
 };

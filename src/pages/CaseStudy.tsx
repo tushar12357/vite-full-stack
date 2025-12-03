@@ -18,8 +18,8 @@ export default function CaseStudy() {
         <div className="pt-32 pb-20 px-4 max-w-4xl mx-auto text-center">
           <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
           <p className="text-gray-400 mb-8">The case study you are looking for does not exist.</p>
-          <Link to="/case-studies">
-            <Button variant="outline">Back to Case Studies</Button>
+          <Link to="/success-stories">
+            <Button variant="outline">Back to Success Stories</Button>
           </Link>
         </div>
         <Footer />
@@ -36,11 +36,11 @@ export default function CaseStudy() {
           {/* BACK */}
           <div className="flex items-center justify-between mb-8">
             <Link
-              to="/case-studies"
+              to="/success-stories"
               className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Case Studies
+              Back to Success Stories
             </Link>
             <Badge variant="outline" className="text-primary border-primary">{study.industry}</Badge>
           </div>
