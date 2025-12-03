@@ -15,6 +15,7 @@ import ContentCarouselSection from "@/components/ContentCarouselSection";
 import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
 import { useLuna } from "@/contexts/LunaContext";
+import DemoModal from "@/components/DemoModal";
 
 interface SolutionPageProps {
   data: SolutionData;
@@ -186,7 +187,11 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  {customerStorySection.primaryButton.text.includes("Get Started") || customerStorySection.primaryButton.text.includes("Start") ? (
+                  {customerStorySection.primaryButton.text === "Schedule Executive Briefing" ? (
+                    <DemoModal buttonClassName="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center">
+                      {customerStorySection.primaryButton.text}
+                    </DemoModal>
+                  ) : customerStorySection.primaryButton.text.includes("Get Started") || customerStorySection.primaryButton.text.includes("Start") ? (
                     <a
                       href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=solution_page"
                       target="_blank"

@@ -25,7 +25,6 @@ export const templateCategories = [
 
   { id: "crm", label: "CRM" },
   { id: "ecommerce", label: "E-commerce" },
-  { id: "other", label: "Other" },
 ];
 
 export const templateHeroData: TemplateHeroData = {
