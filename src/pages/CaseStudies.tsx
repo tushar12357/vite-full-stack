@@ -183,7 +183,7 @@ export default function CaseStudies() {
         </section>
 
         {/* Stories grid */}
-        <section className="px-4 space-y-10">
+        <section id="stories" className="px-4 space-y-10">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
               <h2 className="text-2xl font-semibold mb-2">
@@ -288,7 +288,10 @@ export default function CaseStudies() {
                 Join 500+ agencies building their white-label business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-6 py-3 rounded-full bg-white text-black font-semibold w-full sm:w-auto">
+                <button
+                  onClick={() => document.getElementById('stories')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-6 py-3 rounded-full bg-white text-black font-semibold w-full sm:w-auto"
+                >
                   Get Stories
                 </button>
                 <DemoModal buttonClassName="px-6 py-3 rounded-full border border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
