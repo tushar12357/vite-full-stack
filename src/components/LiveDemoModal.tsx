@@ -19,10 +19,47 @@ export default function LiveDemoModal() {
         }
     };
 
-    const handleStartCall = () => {
-        console.log("Starting call...", { name, phone, country });
-        // API integration will go here
+const handleStartCall = async () => {
+    if (!name || !phone) {
+        alert("Please enter your name and phone number.");
+        return;
+    }
+
+    const formattedPhone = phone.startsWith("+") ? phone : `+${phone}`;
+
+    const payload = {
+        name,
+        phone: formattedPhone,
+        country
     };
+
+    try {
+        const response = await fetch("https://app.closerx.ai/api/ravan-ai-start/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        console.log("API Response:", data);
+
+        if (!response.ok) {
+            alert("Something went wrong: " + (data?.message || "API error"));
+            return;
+        }
+
+        alert("Your AI call is starting. Keep your phone nearby!");
+        setOpen(false);
+
+    } catch (error) {
+        console.error("API Error:", error);
+        alert("Error starting call. Try again.");
+    }
+};
+
+
 
     return (
         <>
