@@ -9,6 +9,8 @@ export default function LiveDemoModal() {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
     const [country, setCountry] = useState("us");
 
     const handlePhoneChange = (value: string, countryData: CountryData) => {
@@ -20,21 +22,26 @@ export default function LiveDemoModal() {
     };
 
 const handleStartCall = async () => {
-    if (!name || !phone) {
-        alert("Please enter your name and phone number.");
+    if (!name || !phone || !email) {
+        alert("Please enter your name, phone number, and email.");
         return;
     }
+
+    setLoading(true);
 
     const formattedPhone = phone.startsWith("+") ? phone : `+${phone}`;
 
     const payload = {
+        access_key: "testmycall",
+        calling_number: "+18582520325",
+        email,
+        receiver_number: formattedPhone,
         name,
-        phone: formattedPhone,
-        country
+        new_agent: 164
     };
 
     try {
-        const response = await fetch("https://app.closerx.ai/api/ravan-ai-start/", {
+        const response = await fetch("https://app.closerx.ai/api/testcall/voizerfreeaccount/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47,16 +54,23 @@ const handleStartCall = async () => {
 
         if (!response.ok) {
             alert("Something went wrong: " + (data?.message || "API error"));
+            setLoading(false);
             return;
         }
 
-        alert("Your AI call is starting. Keep your phone nearby!");
+        setName("");
+        setPhone("");
+        setEmail("");
+        setCountry("us");
+
         setOpen(false);
 
     } catch (error) {
         console.error("API Error:", error);
         alert("Error starting call. Try again.");
     }
+
+    setLoading(false);
 };
 
 
@@ -115,14 +129,27 @@ const handleStartCall = async () => {
                                         disableSearchIcon
                                     />
                                 </div>
+                                
+                                <div>
+                                    <label className="text-sm font-medium mb-1.5 block text-gray-700">Email</label>
+                                    <Input
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="w-full bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:ring-purple-500 focus:border-purple-500"
+                                    />
+                                </div>
+
                             </div>
 
-                            <Button
-                                className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-6 text-base font-semibold rounded-lg mt-2"
-                                onClick={handleStartCall}
-                            >
-                                Start Call
-                            </Button>
+                           <Button
+                            className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-6 text-base font-semibold rounded-lg mt-2"
+                            onClick={handleStartCall}
+                            disabled={loading}
+                        >
+                            {loading ? "Starting..." : "Start Call"}
+                        </Button>
                         </div>
                     </div>
                 </div>
