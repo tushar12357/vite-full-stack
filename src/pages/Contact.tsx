@@ -119,19 +119,19 @@ const Contact = () => {
               Help us serve you better. Your information is secure and confidential.
             </p>
               {/* Noise Overlay */}
-              <div 
+              {/* <div 
                 className="absolute inset-0 pointer-events-none rounded-2xl"
                 style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
                   opacity: 0.25
                 }}
-              />
+              /> */}
               
            <div className="relative z-10">
             <iframe
               id="contact-iframe"
               src={iframeUrl}
-              style={{ width: "100%", height: "930px", border: "none", borderRadius: "12px" }}
+             style={{ width: "100%", height: "2500px", border: "none", borderRadius: "12px" }}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-activation-type="alwaysActivated"

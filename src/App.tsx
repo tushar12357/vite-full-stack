@@ -15,6 +15,7 @@ import WhiteLabel from "./pages/WhiteLabel";
 import Pricing from "./pages/Pricing";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Partnership from "./pages/Partnership";
 import ComingSoon from "./pages/ComingSoon";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -102,6 +103,7 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/partnership" element={<Partnership />} />
             <Route path="/why-choose-closerx" element={<WhyChooseCloserX />} />
 
             {/* Legal */}

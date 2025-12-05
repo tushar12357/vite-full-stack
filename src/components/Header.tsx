@@ -85,6 +85,7 @@ const Header = () => {
         { label: "Security", href: "/security", icon: "https://api.iconify.design/lucide:lock.svg?color=%23ffffff" },
         { label: "Contact Us", href: "/contact", icon: "https://api.iconify.design/lucide:mail.svg?color=%23ffffff" }, // Changed 'Contact' to 'Contact Us' for clarity
         { label: "Careers", href: "/careers", icon: "https://api.iconify.design/lucide:briefcase.svg?color=%23ffffff", badge: "We're Hiring!" }, // Re-added Careers
+        { label: "Partnership", href: "/partnership", icon: "https://api.iconify.design/lucide:handshake.svg?color=%23ffffff" },
       ],
     },
     // REQUESTED CHANGE: "Partners" removed from here
