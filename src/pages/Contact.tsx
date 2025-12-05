@@ -65,12 +65,32 @@ const Contact = () => {
   });
 
   const [activeLocation, setActiveLocation] = useState<Location>(LOCATIONS[0]);
+  const [iframeUrl, setIframeUrl] = useState(
+  "https://link.closerx.ai/widget/form/7jDa7BrJDhVWuhSkKUek"
+);
+
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission
-  };
+  e.preventDefault();
+
+  const params = new URLSearchParams({
+    fullName: formData.fullName,
+    email: formData.email,
+    phone: formData.phone,
+    companyName: formData.companyName,
+    industry: formData.industry,
+    hearAbout: formData.hearAbout,
+  });
+
+  // Update iframe URL with query params
+  setIframeUrl(
+    `https://link.closerx.ai/widget/form/7jDa7BrJDhVWuhSkKUek?${params.toString()}`
+  );
+
+  // Optional: Scroll to iframe after submit
+  document.getElementById("contact-iframe")?.scrollIntoView({ behavior: "smooth" });
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -87,7 +107,7 @@ const Contact = () => {
         {/* Contact Form Section */}
         <section className="bg-black py-20 md:py-32 px-8 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium mb-6">
+            <div className="inline-block px-4 py-2 bg-black border border-black-700 rounded-lg text-sm text-white font-medium mb-6">
               Contact Us
             </div>
             
@@ -98,14 +118,6 @@ const Contact = () => {
             <p className="text-base text-gray-400 mb-12 max-w-2xl mx-auto">
               Help us serve you better. Your information is secure and confidential.
             </p>
-
-            {/* Form Container */}
-            <div 
-              className="rounded-2xl p-8 md:p-12 relative overflow-hidden"
-              style={{
-                background: 'linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)'
-              }}
-            >
               {/* Noise Overlay */}
               <div 
                 className="absolute inset-0 pointer-events-none rounded-2xl"
@@ -115,105 +127,23 @@ const Contact = () => {
                 }}
               />
               
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                <div>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Full Name*"
-                    required
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  />
-                </div>
+           <div className="relative z-10">
+            <iframe
+              id="contact-iframe"
+              src={iframeUrl}
+              style={{ width: "100%", height: "930px", border: "none", borderRadius: "12px" }}
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-activation-type="alwaysActivated"
+              data-deactivation-type="neverDeactivate"
+              data-height="930"
+              data-form-name="Closerx form created by aman"
+              data-form-id="7jDa7BrJDhVWuhSkKUek"
+              title="CloserX Form"
+            ></iframe>
 
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address*"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  />
-                </div>
-
-                <div>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number*"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  />
-                </div>
-
-                <div>
-                  <input
-                    type="text"
-                    name="companyName"
-                    placeholder="Company Name (Optional)"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  />
-                </div>
-
-                <div className="relative">
-                  <select
-                    name="industry"
-                    required
-                    value={formData.industry}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 pr-10"
-                  >
-                    <option value="" className="bg-gray-800">Industry/Sector*</option>
-                    <option value="technology" className="bg-gray-800">Technology</option>
-                    <option value="healthcare" className="bg-gray-800">Healthcare</option>
-                    <option value="finance" className="bg-gray-800">Finance</option>
-                    <option value="retail" className="bg-gray-800">Retail</option>
-                    <option value="real-estate" className="bg-gray-800">Real Estate</option>
-                    <option value="other" className="bg-gray-800">Other</option>
-                  </select>
-                  <ArrowRight className="absolute right-3 top-1/2 transform -translate-y-1/2 rotate-90 w-5 h-5 text-white pointer-events-none" />
-                </div>
-
-                <div className="relative">
-                  <select
-                    name="hearAbout"
-                    required
-                    value={formData.hearAbout}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/20 bg-white/10 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 pr-10"
-                  >
-                    <option value="" className="bg-gray-800">HOW DID YOU HEAR ABOUT US?</option>
-                    <option value="google" className="bg-gray-800">Google Search</option>
-                    <option value="social-media" className="bg-gray-800">Social Media</option>
-                    <option value="referral" className="bg-gray-800">Referral</option>
-                    <option value="event" className="bg-gray-800">Event/Conference</option>
-                    <option value="other" className="bg-gray-800">Other</option>
-                  </select>
-                  <ArrowRight className="absolute right-3 top-1/2 transform -translate-y-1/2 rotate-90 w-5 h-5 text-white pointer-events-none" />
-                </div>
-
-                <div className="text-xs text-white/70 space-y-1 pt-2">
-                  <p>*Fields marked with * are required</p>
-                  <p>Your data is encrypted and never shared with third parties.</p>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-white text-purple-600 font-semibold py-4 rounded-lg hover:bg-white/90 transition-colors flex items-center justify-center gap-2 mt-6"
-                >
-                  SUBMIT
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </form>
-            </div>
+            <script src="https://link.closerx.ai/js/form_embed.js"></script>
+            </div>              
           </div>
         </section>
 
