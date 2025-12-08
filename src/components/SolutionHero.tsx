@@ -47,61 +47,84 @@ const SolutionHero = ({ hero, uiScreenshot, imageAlt = "Solution Dashboard" }: S
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
-              {hero.primaryButton.text === "Try For Free" ? (
-                <a
-                  onClick={openLuna}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
-                >
-                  {hero.primaryButton.text}
-                </a>
-              ) : hero.primaryButton.text === "Schedule Executive Briefing" ? (
-                <DemoModal buttonClassName="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center">
-                  {hero.primaryButton.text}
-                </DemoModal>
-              ) : hero.primaryButton.text.includes("Get Started") || hero.primaryButton.text.includes("Start") ? (
-                <a
-                  href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
-                >
-                  {hero.primaryButton.text}
-                </a>
-              ) : (
-                <Button
-                  size="lg"
-                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap h-auto"
-                >
-                  {hero.primaryButton.text}
-                </Button>
-              )}
-              {hero.secondaryButton.text === "Talk To Sales" || hero.secondaryButton.text.includes("Sales") ? (
-                <a
-                  href="/contact"
-                  className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
-                >
-                  {hero.secondaryButton.text}
-                </a>
-              ) : hero.secondaryButton.text.includes("Demo") || hero.secondaryButton.text.includes("Trial") || hero.secondaryButton.text.includes("Book Call") ? (
-                <button
-                  onClick={openLuna}
-                  className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
-                >
-                  {hero.secondaryButton.text}
-                </button>
-              ) : (
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300 whitespace-nowrap h-auto"
-                >
-                  {hero.secondaryButton.text}
-                </Button>
-              )}
-            </div>
+{/* CTA Buttons */}
+<div className="flex flex-col sm:flex-row gap-4 items-center">
+
+  {/* PRIMARY BUTTON FIX — Only Lead Qualification uses "Talk To Sales" */}
+  {hero.primaryButton.text === "Talk To Sales" ? (
+    <a
+      href="https://offer.closerx.ai/?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
+    >
+      {hero.primaryButton.text}
+    </a>
+  ) : hero.primaryButton.text === "Try For Free" ? (
+    <button
+      onClick={openLuna}
+      className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
+    >
+      {hero.primaryButton.text}
+    </button>
+  ) : hero.primaryButton.text === "Schedule Executive Briefing" ? (
+    <DemoModal buttonClassName="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center">
+      {hero.primaryButton.text}
+    </DemoModal>
+  ) : hero.primaryButton.text.includes("Get Started") || hero.primaryButton.text.includes("Start") ? (
+    <a
+      href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center"
+    >
+      {hero.primaryButton.text}
+    </a>
+  ) : (
+    <Button
+      size="lg"
+      className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap h-auto"
+    >
+      {hero.primaryButton.text}
+    </Button>
+  )}
+
+  {/* SECONDARY BUTTON FIX — Try For Free should open Luna */}
+  {hero.secondaryButton.text === "Try For Free" ? (
+    <button
+      onClick={openLuna}
+      className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
+    >
+      {hero.secondaryButton.text}
+    </button>
+  ) : hero.secondaryButton.text === "Talk To Sales" ? (
+    <a
+      href="https://offer.closerx.ai/?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
+    >
+      {hero.secondaryButton.text}
+    </a>
+  ) : hero.secondaryButton.text.includes("Demo") || hero.secondaryButton.text.includes("Trial") || hero.secondaryButton.text.includes("Book Call") ? (
+    <button
+      onClick={openLuna}
+      className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 whitespace-nowrap text-center"
+    >
+      {hero.secondaryButton.text}
+    </button>
+  ) : (
+    <Button
+      size="lg"
+      variant="outline"
+      className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border-gray-700 transition-all duration-300 whitespace-nowrap h-auto"
+    >
+      {hero.secondaryButton.text}
+    </Button>
+  )}
+
+</div>
+
           </div>
 
           {/* Right Column - UI Screenshot */}

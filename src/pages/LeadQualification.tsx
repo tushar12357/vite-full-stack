@@ -188,7 +188,10 @@ const LeadQualification = () => {
                 {customerStorySection.secondaryButton.text && customerStorySection.secondaryButton.text !== "" && (
                   customerStorySection.secondaryButton.text === "Talk To Sales" ? (
                     <a
-                      href="/contact"
+                     href="https://offer.closerx.ai/?utm_source=website&utm_medium=button&utm_campaign=solution_hero"
+                      target="_blank"
+                      rel="noopener noreferrer"
+
                       className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold text-base rounded-full border border-gray-700 transition-all duration-300 text-center block"
                     >
                       {customerStorySection.secondaryButton.text}

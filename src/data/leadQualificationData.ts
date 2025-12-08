@@ -153,11 +153,11 @@ export const leadQualificationData: LeadQualificationData = {
     title: "LeadQualification",
     description: "CloserX AI takes the complexity out of lead qualification by automating the process, engaging prospects in natural conversations, and determining their readiness and interest level quickly and effectively.",
     primaryButton: {
-      text: "Try For Free",
+      text: "Talk To Sales",
       variant: "primary",
     },
     secondaryButton: {
-      text: "Talk To Sales",
+      text: "Try For Free",
       variant: "secondary",
     },
   },
