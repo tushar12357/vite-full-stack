@@ -226,6 +226,27 @@ const Footer = () => {
           </div>
         </div>
       </div>
+        <div className="bg-[#0c1425] border-t border-white/10">
+          <div className="max-w-7xl mx-auto py-6 flex flex-col md:flex-row items-center md:items-start justify-between text-sm text-white/60">
+
+            <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+              <span>© 2025 CloserX.ai. All rights reserved.</span>
+
+            <div className="flex justify-start gap-1 text-white/50">
+              Made with <span className="text-pink-400 text-lg">❤</span> in San Francisco
+            </div>
+
+            </div>
+
+            <div className="flex flex-wrap justify-center md:justify-end gap-6 mt-4 md:mt-0 text-white/70 py-2">
+              <Link to="/terms" className="hover:text-white transition">Terms & Conditions</Link>
+              <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
+              <Link to="/cookie-policy" className="hover:text-white transition">Cookie Policy</Link>
+              <Link to="/acceptable-use" className="hover:text-white transition">Acceptable Use</Link>
+              <Link to="/refund-policy" className="hover:text-white transition">Refund Policy</Link>
+            </div>
+          </div>
+        </div>
     </footer>
   );
 };
