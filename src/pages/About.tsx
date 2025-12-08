@@ -550,7 +550,10 @@ const About = () => {
                   Whether you're an established marketing agency looking to expand your service portfolio or an entrepreneur ready to enter the AI space, CloserX.ai provides the complete toolkit for success in the rapidly evolving world of AI-powered business communications.
                 </p>
 
+                <Link to="/contact">
                 <BorderedButton text="CONTACT US" />
+              </Link>
+
               </div>
 
               {/* Right Column - Dashboard Image */}
