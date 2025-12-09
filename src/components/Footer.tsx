@@ -239,8 +239,8 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-end gap-6 mt-4 md:mt-0 text-white/70 py-2">
-              <Link to="/terms" className="hover:text-white transition">Terms & Conditions</Link>
-              <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
+              <Link to="/terms-and-conditions" className="hover:text-white transition">Terms & Conditions</Link>
+              <Link to="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
               <Link to="/cookie-policy" className="hover:text-white transition">Cookie Policy</Link>
               <Link to="/acceptable-use" className="hover:text-white transition">Acceptable Use</Link>
               <Link to="/refund-policy" className="hover:text-white transition">Refund Policy</Link>
