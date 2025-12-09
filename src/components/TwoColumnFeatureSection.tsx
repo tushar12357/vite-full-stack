@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { LucideIcon } from "lucide-react";
+import Website from "@/assets/Website.png";
 
 export interface Feature {
   number: string;
@@ -168,7 +169,7 @@ const TwoColumnFeatureSection = ({ data, rightContent, className = "", disableAn
             ) : rightImage ? (
               <div className="relative w-full overflow-hidden min-h-[320px] sm:min-h-[420px] lg:min-h-[500px]">
                 <img
-                  src={rightImage}
+                  src={Website}
                   alt={rightImageAlt || "Feature Image"}
                   className="w-full h-full object-contain rounded-3xl"
                 />
