@@ -284,32 +284,32 @@ export const leadQualificationData: LeadQualificationData = {
     steps: [
       {
         title: "Lead Enters System",
-        description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        description: "Automatically capture and organize incoming leads from multiple channels, ensuring no opportunity slips through the cracks while maintaining complete data accuracy.",
         icon: "https://api.iconify.design/lucide:log-in.svg?color=%23ffffff"
       },
       {
         title: "AI Calls Within 5 Minutes",
-        description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        description: "Engage prospects instantly with intelligent voice conversations that qualify interest, answer questions, and schedule meetings while they're still hot.",
         icon: "https://api.iconify.design/lucide:phone-outgoing.svg?color=%23ffffff"
       },
       {
         title: "Asks Qualification Questions",
-        description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        description: "Intelligently assess prospect fit by asking the right questions at the right time, gathering critical information to prioritize your highest-value opportunities.",
         icon: "https://api.iconify.design/lucide:help-circle.svg?color=%23ffffff"
       },
       {
         title: "Scores Lead (0-100)",
-        description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        description: "Evaluate each prospect using advanced criteria and behavioral signals, automatically assigning priority scores so your team focuses on leads most likely to convert.",
         icon: "https://api.iconify.design/lucide:award.svg?color=%23ffffff"
       },
       {
         title: "Routes to Sales or Nurture",
-        description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        description: "Seamlessly direct qualified leads to your sales team for immediate follow-up, while automatically enrolling others in personalized nurture campaigns for future engagement.",
         icon: "https://api.iconify.design/lucide:git-fork.svg?color=%23ffffff"
       },
       {
         title: "Logs Everything in CRM",
-        description: "Turn your voice AI agents into action-driven assistants that execute real-world tasks across thousands of apps without custom coding.",
+        description: "Maintain perfect records of every interaction, decision, and data point, ensuring your team has complete visibility and can pick up conversations exactly where they left off.",
         icon: "https://api.iconify.design/lucide:database.svg?color=%23ffffff"
       },
     ],

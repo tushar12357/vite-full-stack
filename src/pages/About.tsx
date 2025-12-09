@@ -325,7 +325,7 @@ const About = () => {
             <div
               className="bg-transparent border border-gray-800 p-8 flex flex-col transition-all duration-300 hover:bg-[#1A1A1A]"
               style={{
-                height: '240px',
+                // height: '240px',
                 opacity: 1,
                 transform: 'rotate(0deg)',
                 borderRadius: '12px',
@@ -343,7 +343,7 @@ const About = () => {
               <h3 className="text-2xl font-semibold text-white mb-3">{item.title}</h3>
 
               {/* Description */}
-              <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
+              <p className="text-sm text-gray-400 leading-relaxed h-full">{item.description}</p>
             </div>
           )}
         />
