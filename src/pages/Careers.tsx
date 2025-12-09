@@ -275,123 +275,56 @@ const Careers = () => {
         </section>
 
         {/* Application Form */}
-        <section className="px-4">
-          <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[0.7fr,1.3fr] lg:items-center">
-            <div className="space-y-4">
-              <h4 className="text-3xl font-semibold">Not finding what you’re looking for?</h4>
-              <p className="text-white/70">
-                Get in touch here and we’ll get back to you.
-              </p>
-            </div>
+          <section className="px-4">
+            <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[0.7fr,1.3fr] lg:items-center">
+              <div className="space-y-4">
+                <h4 className="text-3xl font-semibold">Not finding what you’re looking for?</h4>
+                <p className="text-white/70">
+                  Get in touch here and we’ll get back to you.
+                </p>
+              </div>
 
-            <div className="relative w-full">
-              <div className="rounded-[36px] overflow-hidden shadow-[0_20px_70px_rgba(108,48,198,0.35)]">
-                <div
-                  className="relative p-8"
-                  style={{
-                    background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
-                  }}
-                >
+              <div className="relative w-full">
+                <div className="rounded-[36px] overflow-hidden shadow-[0_20px_70px_rgba(108,48,198,0.35)]">
                   <div
-                    className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none"
+                    className="relative p-8"
                     style={{
-                      backgroundImage:
-                        "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E\")",
+                      background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
                     }}
-                  />
-                  <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
-                    <div className="border-b border-white/20 py-3">
-                      <input
-                        type="text"
-                        placeholder="Full Name*"
-                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
-                        value={formData.fullName}
-                        onChange={e => setFormData({ ...formData, fullName: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="border-b border-white/20 py-3">
-                      <input
-                        type="text"
-                        placeholder="Age*"
-                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
-                        value={formData.age}
-                        onChange={e => setFormData({ ...formData, age: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="border-b border-white/20 py-3">
-                      <input
-                        type="tel"
-                        placeholder="Phone Number*"
-                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
-                        value={formData.phoneNumber}
-                        onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="border-b border-white/20 py-3">
-                      <input
-                        type="email"
-                        placeholder="Email Address*"
-                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
-                        value={formData.email}
-                        onChange={e => setFormData({ ...formData, email: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="border-b border-white/20 py-3">
-                      <input
-                        type="text"
-                        placeholder="Qualification*"
-                        className="w-full bg-transparent text-sm text-white placeholder:text-white/90 focus:outline-none"
-                        value={formData.qualification}
-                        onChange={e => setFormData({ ...formData, qualification: e.target.value })}
-                        required
-                      />
-                    </div>
-                    <div className="border-b border-white/20 py-3 relative">
-                      <select
-                        className="w-full bg-transparent text-sm text-white focus:outline-none appearance-none cursor-pointer"
-                        value={formData.role}
-                        onChange={e => setFormData({ ...formData, role: e.target.value })}
-                        required
-                      >
-                        <option value="" disabled className="bg-gray-900">Role*</option>
-                        <option value="developer" className="bg-gray-900">Developer</option>
-                        <option value="designer" className="bg-gray-900">Designer</option>
-                        <option value="manager" className="bg-gray-900">Manager</option>
-                        <option value="other" className="bg-gray-900">Other</option>
-                      </select>
-                      <ChevronDown className="w-4 h-4 text-white absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
-                    </div>
-                    <div className="py-3 relative">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-white/90">{formData.cv ? formData.cv.name : "Upload Your CV"}</span>
-                        <input
-                          type="file"
-                          className="absolute inset-0 opacity-0 cursor-pointer"
-                          onChange={e => setFormData({ ...formData, cv: e.target.files ? e.target.files[0] : null })}
-                          accept=".pdf,.doc,.docx"
-                        />
-                        <ChevronDown className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
+                  >
+                    <div
+                      className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none"
+                      style={{
+                        backgroundImage:
+                          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E\")",
+                      }}
+                    />
 
-                    <p className="text-[11px] text-white/90 leading-relaxed pt-2">
-                      Applications are typically reviewed within 2-3 business days. A member of our partnerships team will contact you to schedule a discovery call.
-                    </p>
+                    {/* Replace custom form with iframe */}
+                    <iframe
+                      src="https://link.quickadpro.com/widget/form/myIc3HyYvZYEFrr9k88S"
+                      style={{ width: "100%", height: "1303px", border: "none", borderRadius: "3px" }}
+                      id="inline-myIc3HyYvZYEFrr9k88S"
+                      title="Form of Careers"
+                      data-layout="{'id':'INLINE'}"
+                      data-trigger-type="alwaysShow"
+                      data-trigger-value=""
+                      data-activation-type="alwaysActivated"
+                      data-activation-value=""
+                      data-deactivation-type="neverDeactivate"
+                      data-deactivation-value=""
+                      data-form-name="Form of Careers"
+                      data-layout-iframe-id="inline-myIc3HyYvZYEFrr9k88S"
+                      data-form-id="myIc3HyYvZYEFrr9k88S"
+                    ></iframe>
+                    <script src="https://link.quickadpro.com/js/form_embed.js"></script>
 
-                    <Button type="submit" className="w-fit px-8 py-3 rounded-full bg-white text-[#7C3AED] hover:bg-white/90 font-semibold flex items-center gap-2">
-                      Submit
-                      <ArrowUpRight className="w-4 h-4" />
-                    </Button>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+
 
         {/* CTA Banner */}
         <section className="px-4">
