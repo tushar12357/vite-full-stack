@@ -5,6 +5,7 @@ import { Plug, Shield, Clock } from "lucide-react";
 import imageOne from "@/assets/whyChooseCloserX/1.png";
 import imageTwo from "@/assets/whyChooseCloserX/2.png";
 import imageThree from "@/assets/whyChooseCloserX/3.png";
+import Website from "@/assets/Website.png";
 
 const WhyChooseCloserX = () => {
   const leftCardRef = useRef<HTMLDivElement>(null);
@@ -168,7 +169,7 @@ const WhyChooseCloserX = () => {
           >
             <div className="w-full">
               <img 
-                src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/69208a79f8fa3b2a122580a4.png" 
+                src={Website}
                 alt="Scale Without Limits" 
                 className="w-full h-auto"
               />
