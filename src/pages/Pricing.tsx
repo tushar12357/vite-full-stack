@@ -71,6 +71,7 @@ const plans = [
       "Custom AI models",
       "SLA guarantee",
       "Priority processing",
+     "Unlimited Scaling Security" 
     ],
   },
 ];

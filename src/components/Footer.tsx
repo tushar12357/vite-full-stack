@@ -233,7 +233,7 @@ const Footer = () => {
               <span>© 2025 CloserX.ai. All rights reserved.</span>
 
             <div className="flex justify-start gap-1 text-white/50">
-              Made with <span className="text-pink-400 text-lg">❤</span> in San Francisco
+              Made with <span className="text-pink-400 text-lg">❤</span> in UAE
             </div>
 
             </div>
