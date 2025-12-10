@@ -143,7 +143,7 @@ const Testimonials = () => {
           <span className="inline-block px-2 py-1 rounded-[6px] bg-[#F9FAFB] border text-[12px] border-gray-200 md:text-[12px] text-[#111827] ">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-semibold poppins text-[#111827] my-4 max-w-4xl mx-auto leading-3">
+         <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-semibold poppins text-[#111827] my-4 max-w-4xl mx-auto leading-[1.1]">
             Don&apos;t take it from us,<br /> hear it from our users
           </h2>
           <p className="text-[12px] md:text-[14px] text-gray-600 max-w-2xl mx-auto font-medium">
