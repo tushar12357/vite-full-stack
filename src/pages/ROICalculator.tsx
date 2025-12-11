@@ -242,14 +242,14 @@ export default function ROICalculator() {
               />
               <div className="grid lg:grid-cols-2 gap-12 relative z-10">
                 {/* Left Column - Configure Your Model */}
-                <div className="space-y-8">
+                <div className="space-y-8 max-h-[80vh] overflow-y-auto pr-2 lg:max-h-none lg:overflow-visible">
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">Configure Your Model</h3>
                     <p className="text-sm text-white/80">Adjust inputs to match your business</p>
                   </div>
 
                   {/* Mode Buttons and Currency */}
-                  <div className="flex items-center gap-4">
+                 <div className="flex items-center gap-4 min-w-0 w-full">
                     <div className="flex gap-4">
                       <button
                         onClick={() => setMode("simple")}
@@ -272,9 +272,9 @@ export default function ROICalculator() {
                         Advanced Mode
                       </button>
                     </div>
-                    <div className="relative">
+                    <div className="relative flex-shrink min-w-[120px]">
                       <select
-                        className="px-6 py-3 rounded-full border border-white/20 bg-white/10 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 pr-10"
+                      className="px-3 py-3 rounded-full border border-white/20 bg-white/10 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-white/50 pr-10 truncate max-w-full"
                         value={currency}
                         onChange={(e) => setCurrency(e.target.value as Currency)}
                       >
