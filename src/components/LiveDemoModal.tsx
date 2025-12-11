@@ -4,7 +4,66 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import PhoneInput, { CountryData } from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import favicon from "@/favicon.png";
+
+
+const countries = [
+  { "name": "United States", "dial_code": "+1", "code": "US" },
+  { "name": "Afghanistan", "dial_code": "+93", "code": "AF" },
+  { "name": "Albania", "dial_code": "+355", "code": "AL" },
+  { "name": "Algeria", "dial_code": "+213", "code": "DZ" },
+  { "name": "Andorra", "dial_code": "+376", "code": "AD" },
+  { "name": "Angola", "dial_code": "+244", "code": "AO" },
+  { "name": "Argentina", "dial_code": "+54", "code": "AR" },
+  { "name": "Armenia", "dial_code": "+374", "code": "AM" },
+  { "name": "Australia", "dial_code": "+61", "code": "AU" },
+  { "name": "Austria", "dial_code": "+43", "code": "AT" },
+  { "name": "Azerbaijan", "dial_code": "+994", "code": "AZ" },
+  { "name": "Bahamas", "dial_code": "+1", "code": "BS" },
+  { "name": "Bahrain", "dial_code": "+973", "code": "BH" },
+  { "name": "Bangladesh", "dial_code": "+880", "code": "BD" },
+  { "name": "Belarus", "dial_code": "+375", "code": "BY" },
+  { "name": "Belgium", "dial_code": "+32", "code": "BE" },
+  { "name": "Belize", "dial_code": "+501", "code": "BZ" },
+  { "name": "Benin", "dial_code": "+229", "code": "BJ" },
+  { "name": "Bhutan", "dial_code": "+975", "code": "BT" },
+  { "name": "Bolivia", "dial_code": "+591", "code": "BO" },
+  { "name": "Bosnia and Herzegovina", "dial_code": "+387", "code": "BA" },
+  { "name": "Botswana", "dial_code": "+267", "code": "BW" },
+  { "name": "Brazil", "dial_code": "+55", "code": "BR" },
+  { "name": "Bulgaria", "dial_code": "+359", "code": "BG" },
+  { "name": "Canada", "dial_code": "+1", "code": "CA" },
+  { "name": "China", "dial_code": "+86", "code": "CN" },
+  { "name": "Denmark", "dial_code": "+45", "code": "DK" },
+  { "name": "Egypt", "dial_code": "+20", "code": "EG" },
+  { "name": "France", "dial_code": "+33", "code": "FR" },
+  { "name": "Germany", "dial_code": "+49", "code": "DE" },
+  { "name": "India", "dial_code": "+91", "code": "IN" },
+  { "name": "Indonesia", "dial_code": "+62", "code": "ID" },
+  { "name": "Ireland", "dial_code": "+353", "code": "IE" },
+  { "name": "Italy", "dial_code": "+39", "code": "IT" },
+  { "name": "Japan", "dial_code": "+81", "code": "JP" },
+  { "name": "Kenya", "dial_code": "+254", "code": "KE" },
+  { "name": "Mexico", "dial_code": "+52", "code": "MX" },
+  { "name": "Nepal", "dial_code": "+977", "code": "NP" },
+  { "name": "Netherlands", "dial_code": "+31", "code": "NL" },
+  { "name": "New Zealand", "dial_code": "+64", "code": "NZ" },
+  { "name": "Nigeria", "dial_code": "+234", "code": "NG" },
+  { "name": "Pakistan", "dial_code": "+92", "code": "PK" },
+  { "name": "Russia", "dial_code": "+7", "code": "RU" },
+  { "name": "Saudi Arabia", "dial_code": "+966", "code": "SA" },
+  { "name": "Singapore", "dial_code": "+65", "code": "SG" },
+  { "name": "South Africa", "dial_code": "+27", "code": "ZA" },
+  { "name": "South Korea", "dial_code": "+82", "code": "KR" },
+  { "name": "Spain", "dial_code": "+34", "code": "ES" },
+  { "name": "Sri Lanka", "dial_code": "+94", "code": "LK" },
+  { "name": "Sweden", "dial_code": "+46", "code": "SE" },
+  { "name": "Switzerland", "dial_code": "+41", "code": "CH" },
+  { "name": "Turkey", "dial_code": "+90", "code": "TR" },
+  { "name": "United Arab Emirates", "dial_code": "+971", "code": "AE" },
+  { "name": "United Kingdom", "dial_code": "+44", "code": "GB" }
+];
+
+
 
 export default function LiveDemoModal() {
     const [open, setOpen] = useState(false);
@@ -13,6 +72,10 @@ export default function LiveDemoModal() {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [country, setCountry] = useState("us");
+    const [countryCode, setCountryCode] = useState("+1");
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [search, setSearch] = useState("");
+
 
     const handlePhoneChange = (value: string, countryData: CountryData) => {
         setPhone(value);
@@ -30,7 +93,7 @@ const handleStartCall = async () => {
 
     setLoading(true);
 
-    const formattedPhone = phone.startsWith("+") ? phone : `+${phone}`;
+    const formattedPhone = `${countryCode}${phone}`;
 
     const payload = {
         access_key: "testmycall",
@@ -136,22 +199,83 @@ const handleStartCall = async () => {
                                 </div>
 
                                 {/* Phone Number */}
-                                <div>
+                          
+                                    <div>
                                     <label className="text-sm font-medium mb-1.5 block text-gray-700">
                                         Phone Number *
                                     </label>
-                                    <PhoneInput
-                                        country={country}
+
+                                    <div className="flex gap-3 mt-1">
+                                        {/* COUNTRY CODE DROPDOWN */}
+                                        <div className="relative">
+                                        <button
+                                            type="button"
+                                            onClick={() => setDropdownOpen(!dropdownOpen)}
+                                            className="w-20 px-3 py-2.5 rounded-xl border bg-gray-50 flex items-center justify-between text-sm"
+                                        >
+                                            <span>{countryCode}</span>
+                                            <svg
+                                            className="w-4 h-4 opacity-50"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                            </svg>
+                                        </button>
+
+                                        {/* DROPDOWN */}
+                                        {dropdownOpen && (
+                                            <div className="absolute z-50 mt-2 w-64 bg-white shadow-lg rounded-xl border p-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Search..."
+                                                className="w-full px-3 py-2 text-sm border rounded-lg mb-2"
+                                                value={search}
+                                                onChange={(e) => setSearch(e.target.value)}
+                                            />
+
+                                            <div className="max-h-60 overflow-y-auto">
+                                                {countries
+                                                .filter(
+                                                    (c) =>
+                                                    c.name.toLowerCase().includes(search.toLowerCase()) ||
+                                                    c.dial_code.includes(search)
+                                                )
+                                                .map((c) => (
+                                                    <div
+                                                    key={c.code}
+                                                    onClick={() => {
+                                                        setCountryCode(c.dial_code);
+                                                        setDropdownOpen(false);
+                                                    }}
+                                                    className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-100 rounded-lg"
+                                                    >
+                                                    <span>{c.name}</span>
+                                                    <span className="font-medium">{c.dial_code}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            </div>
+                                        )}
+                                        </div>
+
+                                        {/* PHONE NUMBER INPUT */}
+                                        <input
+                                        type="tel"
+                                        placeholder="Phone number"
+                                        className="flex-1 h-11 px-4 bg-gray-50 border rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition border-gray-200"
                                         value={phone}
-                                        onChange={handlePhoneChange}
-                                        inputClass="!w-full !h-10 !text-sm !bg-white !border-gray-200 !text-gray-900 !rounded-md focus:!ring-2 focus:!ring-purple-500 focus:!border-transparent"
-                                        containerClass="!w-full"
-                                        buttonClass="!bg-white !border-gray-200 !rounded-l-md"
-                                        dropdownClass="!bg-white !text-gray-900"
-                                        enableSearch
-                                        disableSearchIcon
-                                    />
-                                </div>
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        />
+                                    </div>
+                                    </div>
+
 
                                 {/* Email */}
                                 <div>
