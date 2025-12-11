@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import PhoneInput, { CountryData } from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import favicon from "@/favicon.png";
 
 export default function LiveDemoModal() {
     const [open, setOpen] = useState(false);
@@ -89,34 +90,56 @@ const handleStartCall = async () => {
 
             {open && (
                 <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                    <div className="relative w-full max-w-md bg-card border border-border rounded-2xl shadow-2xl p-6 my-10 animate-in fade-in zoom-in-95 duration-200 bg-white">
-                        <button
-                            onClick={() => setOpen(false)}
-                            className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition-colors"
-                        >
-                            <X className="w-5 h-5" />
-                        </button>
+                    <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
 
-                        <h2 className="text-2xl font-bold mb-2 text-gray-900">Test Your Call</h2>
-                        <p className="text-gray-500 mb-6 text-sm">
-                            Enter your details to receive a test call from our AI agent.
-                        </p>
-
-                        <div className="space-y-4">
-                            <div>
-                                <label className="text-sm font-medium mb-1.5 block text-gray-700">Name</label>
-                                <Input
-                                    type="text"
-                                    placeholder="Enter your name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    className="w-full bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:ring-purple-500 focus:border-purple-500"
-                                />
+                        {/* Top Gradient Header */}
+                           <div className="w-full h-32 bg-gradient-to-b from-purple-600 to-purple-500 flex flex-col items-center justify-center">
+                            <div className="w-14 h-14 mt-12 bg-white rounded-xl shadow-md flex items-center justify-center border border-purple-200">
+                                <img src="favicon.png" alt="CloserX Logo" className="w-8 h-8" />
                             </div>
+                        </div>
 
-                            <div>
-                                <label className="text-sm font-medium mb-1.5 block text-gray-700">Phone Number</label>
-                                <div className="phone-input-container">
+                        {/* Form Container */}
+                        <div className="p-6 relative">
+
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition-colors"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+
+                            {/* Title & Subtitle */}
+                            <h2 className="text-2xl font-bold text-center text-gray-900">
+                                Welcome to <span className="text-purple-600">CloserX</span>
+                            </h2>
+                            <p className="text-gray-500 text-center text-sm mt-1 mb-6">
+                                Please fill in your details to start the demo
+                            </p>
+
+                            {/* Form Fields */}
+                            <div className="space-y-4">
+
+                                {/* Name */}
+                                <div>
+                                    <label className="text-sm font-medium mb-1.5 block text-gray-700">
+                                        Full Name *
+                                    </label>
+                                    <Input
+                                        type="text"
+                                        placeholder="Enter full name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        className="w-full bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:ring-purple-500 focus:border-purple-500"
+                                    />
+                                </div>
+
+                                {/* Phone Number */}
+                                <div>
+                                    <label className="text-sm font-medium mb-1.5 block text-gray-700">
+                                        Phone Number *
+                                    </label>
                                     <PhoneInput
                                         country={country}
                                         value={phone}
@@ -129,9 +152,12 @@ const handleStartCall = async () => {
                                         disableSearchIcon
                                     />
                                 </div>
-                                
+
+                                {/* Email */}
                                 <div>
-                                    <label className="text-sm font-medium mb-1.5 block text-gray-700">Email</label>
+                                    <label className="text-sm font-medium mb-1.5 block text-gray-700">
+                                        Email Address *
+                                    </label>
                                     <Input
                                         type="email"
                                         placeholder="Enter your email"
@@ -141,19 +167,20 @@ const handleStartCall = async () => {
                                     />
                                 </div>
 
+                                {/* Submit Button */}
+                                <Button
+                                    className="w-full bg-purple-600 hover:bg-purple-700 text-white py-6 text-base font-semibold rounded-lg mt-2"
+                                    onClick={handleStartCall}
+                                    disabled={loading}
+                                >
+                                    {loading ? "Starting..." : "Continue to Demo →"}
+                                </Button>
                             </div>
-
-                           <Button
-                            className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-6 text-base font-semibold rounded-lg mt-2"
-                            onClick={handleStartCall}
-                            disabled={loading}
-                        >
-                            {loading ? "Starting..." : "Start Call"}
-                        </Button>
                         </div>
                     </div>
                 </div>
             )}
+
         </>
     );
 }
