@@ -155,7 +155,7 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
               <div
                 key={item.label}
                 className="relative group/nav"
-                onMouseEnter={() => !item.href && setActiveDropdown(item.label)}
+                onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {item.href ? (
@@ -214,15 +214,38 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
                         <div key={subItem.label} className="relative group">
 
                           {/* First Level (Use Cases / Industries / Teams) */}
-                          <button className="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-purple-600 rounded-lg">
-                            {subItem.label}
-                            {subItem.subDropdown && (
-                              <ChevronDown
-                                size={14}
-                                className="transition-transform group-hover:rotate-180"
-                              />
-                            )}
-                          </button>
+                          {subItem.href ? (
+                          // If item has href → navigate
+                            <Link
+                              to={subItem.href}
+                              className="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-purple-600 rounded-lg"
+                              onClick={() => setActiveDropdown(null)}  // closes dropdown
+                            >
+                              <div className="flex items-center gap-2">
+                                {subItem.icon && (
+                                  <img src={subItem.icon} alt="" className="w-5 h-5" />
+                                )}
+                                {subItem.label}
+                              </div>
+
+                              {subItem.badge && (
+                                <span className="text-[10px] bg-purple-600 px-2 py-0.5 rounded-full">
+                                  {subItem.badge}
+                                </span>
+                              )}
+                            </Link>
+                          ) : (
+                            // If item has subDropdown → keep button
+                            <button
+                              className="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-purple-600 rounded-lg"
+                            >
+                              {subItem.label}
+                              {subItem.subDropdown && (
+                                <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
+                              )}
+                            </button>
+                          )}
+
 
                           {/* Second Level */}
                           {subItem.subDropdown && (
@@ -387,7 +410,10 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
                     <>
                       <button
                         className="w-full flex items-center justify-between py-4 text-base font-semibold text-slate-900 active:bg-slate-50 touch-manipulation min-h-[44px]"
-                        onClick={() => setOpenMobile(openMobile === item.label ? null : item.label)}
+                        onClick={() => {
+                        setOpenMobile(openMobile === item.label ? null : item.label);
+                        setOpenSubMenu(null);
+                      }}
                         aria-expanded={openMobile === item.label}
                       >
                         {item.label}
@@ -413,8 +439,8 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
               <span>{dropdownItem.label}</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform ${
-                  openMobile === dropdownItem.label ? "rotate-180" : ""
-                }`}
+                openSubMenu === dropdownItem.label ? "rotate-180" : ""
+              }`}
               />
             </button>
 
