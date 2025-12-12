@@ -26,6 +26,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [openMobile, setOpenMobile] = useState<string | null>(null);
+const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -392,28 +393,69 @@ const Header = () => {
                         {item.label}
                         <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openMobile === item.label ? 'rotate-180' : ''}`} />
                       </button>
-                      {item.dropdown && openMobile === item.label && (
-                        <div className="pl-3 pb-3 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                          {item.dropdown.map((dropdownItem) => (
-                            <Link
-                              key={dropdownItem.label}
-                              to={dropdownItem.href}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className="flex items-center gap-2 py-3 px-3 text-sm text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg active:bg-slate-100 touch-manipulation min-h-[44px]"
-                            >
-                              <span className="w-5 h-5 flex-shrink-0">
-                              <img src={dropdownItem.icon} alt={dropdownItem.label} className="w-5 h-5 object-contain" />
-                            </span>
-                              <span>{dropdownItem.label}</span>
-                              {dropdownItem.badge && (
-                                <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 bg-primary/10 text-primary rounded">
-                                  {dropdownItem.badge}
-                                </span>
-                              )}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
+                  {item.dropdown && openMobile === item.label && (
+  <div className="pl-3 pb-3 space-y-1 animate-in slide-in-from-top-2 duration-200">
+    {item.dropdown.map((dropdownItem) => (
+      <div key={dropdownItem.label}>
+        
+        {/* If item has subDropdown → show collapsible button */}
+        {dropdownItem.subDropdown ? (
+          <>
+            <button
+             onClick={() =>
+            setOpenSubMenu(
+              openSubMenu === dropdownItem.label ? null : dropdownItem.label
+            )
+          }
+
+              className="w-full flex items-center justify-between py-3 px-3 text-sm text-slate-700"
+            >
+              <span>{dropdownItem.label}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${
+                  openMobile === dropdownItem.label ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {/* Nested items */}
+            {openSubMenu === dropdownItem.label && (
+              <div className="pl-6 space-y-1">
+                {dropdownItem.subDropdown.map((nested) => (
+                  <Link
+                    key={nested.label}
+                    to={nested.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block py-2 text-sm text-slate-600"
+                  >
+                    {nested.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          /* Normal link (when href exists) */
+          <Link
+            to={dropdownItem.href}
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-2 py-3 px-3 text-sm text-slate-600 hover:text-primary rounded-lg"
+          >
+            {dropdownItem.icon && (
+              <img
+                src={dropdownItem.icon}
+                alt=""
+                className="w-5 h-5 object-contain"
+              />
+            )}
+            {dropdownItem.label}
+          </Link>
+        )}
+      </div>
+    ))}
+  </div>
+)}
+
                       {item.megaMenu && openMobile === item.label && (
                         <div className="pl-3 pb-3 space-y-3 animate-in slide-in-from-top-2 duration-200">
                           <div className="space-y-1">
