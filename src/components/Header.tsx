@@ -5,12 +5,21 @@ import logo from "@/assets/logo-white.png";
 import DemoModal from "@/components/DemoModal";
 
 
+interface NavDropdownItem {
+  label: string;
+  href?: string;
+  icon?: string;
+  badge?: string;
+  subDropdown?: { label: string; href: string }[];
+}
+
 interface NavItem {
   label: string;
   href?: string;
-  dropdown?: { label: string; href: string; icon?: string; badge?: string }[];
+  dropdown?: NavDropdownItem[];
   megaMenu?: boolean;
 }
+
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,7 +66,36 @@ const Header = () => {
     },
     {
       label: "Solutions",
-      megaMenu: true,
+      dropdown: [
+        {
+          label: "Use Cases",
+          subDropdown: [
+            { label: "Outbound Sales", href: "/use-cases/outbound-sales" },
+            { label: "Inbound Support", href: "/use-cases/inbound-support" },
+            { label: "Appointment Scheduling", href: "/use-cases/appointment-scheduling" },
+            { label: "Lead Qualification", href: "/use-cases/lead-qualification" },
+            { label: "Follow-up Automation", href: "/use-cases/follow-up-automation" },
+          ]
+        },
+        {
+          label: "Industries",
+          subDropdown: [
+            { label: "Real Estate", href: "/industries/real-estate" },
+            { label: "Healthcare", href: "/industries/healthcare" },
+            { label: "Financial Service", href: "/industries/financial-service" },
+            { label: "E-commerce", href: "/industries/e-commerce" },
+            { label: "Call Centres", href: "/industries/call-centres" },
+          ]
+        },
+        {
+          label: "Teams",
+          subDropdown: [
+            { label: "For Agencies", href: "/teams/for-agencies" },
+            { label: "For Enterprises", href: "/teams/for-enterprises" },
+            { label: "For Resellers", href: "/teams/for-resellers" },
+          ]
+        }
+      ]
     },
     {
       label: "Pricing",
@@ -169,64 +207,43 @@ const Header = () => {
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && item.dropdown && (
                   <div className="absolute top-full left-0 pt-2 z-[100]">
-                    <div className="w-[320px] bg-black rounded-2xl shadow-xl border border-slate-800 p-2 animate-in fade-in slide-in-from-top-2 duration-200">
-                      {item.dropdown.map((subItem, index) => (
-                        /^https?:\/\//.test(subItem.href) ? (
-                          <a
-                            key={subItem.label}
-                            href={subItem.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
-                          >
-                            <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
-                              {subItem.icon?.startsWith('http') ? (
-                                <img src={subItem.icon} alt={subItem.label} className="w-6 h-6 object-contain" />
-                              ) : (
-                                subItem.icon
-                              )}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[15px] font-medium text-white transition-colors">
-                                {subItem.label}
-                              </div>
-                            </div>
-                            {subItem.badge && (
-                              <span className="text-[10px] font-bold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2.5 py-1 rounded-full flex-shrink-0">
-                                {subItem.badge}
-                              </span>
+                    <div className="w-[320px] bg-black rounded-2xl shadow-xl border border-slate-800 p-2">
+
+                      {item.dropdown.map((subItem) => (
+                        <div key={subItem.label} className="relative group">
+
+                          {/* First Level (Use Cases / Industries / Teams) */}
+                          <button className="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-purple-600 rounded-lg">
+                            {subItem.label}
+                            {subItem.subDropdown && (
+                              <ChevronDown
+                                size={14}
+                                className="transition-transform group-hover:rotate-180"
+                              />
                             )}
-                          </a>
-                        ) : (
-                          <Link
-                            key={subItem.label}
-                            to={subItem.href}
-                            className="flex items-center gap-3 px-4 py-3 group transition-all hover:bg-purple-600 rounded-lg"
-                          >
-                            <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-purple-600 flex items-center justify-center text-xl flex-shrink-0 transition-colors">
-                              {subItem.icon?.startsWith('http') ? (
-                                <img src={subItem.icon} alt={subItem.label} className="w-6 h-6 object-contain" />
-                              ) : (
-                                subItem.icon
-                              )}
+                          </button>
+
+                          {/* Second Level */}
+                          {subItem.subDropdown && (
+                            <div className="absolute top-0 left-full ml-2 w-60 bg-black border border-slate-800 rounded-lg p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all translate-x-2 group-hover:translate-x-0">
+                              {subItem.subDropdown.map((nested) => (
+                                <Link
+                                  key={nested.label}
+                                  to={nested.href}
+                                  className="block px-4 py-2 text-sm text-white hover:bg-purple-600 rounded-lg"
+                                >
+                                  {nested.label}
+                                </Link>
+                              ))}
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[15px] font-medium text-white transition-colors">
-                                {subItem.label}
-                              </div>
-                            </div>
-                            {subItem.badge && (
-                              <span className="text-[10px] font-bold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2.5 py-1 rounded-full flex-shrink-0">
-                                {subItem.badge}
-                              </span>
-                            )}
-                          </Link>
-                        )
+                          )}
+
+                        </div>
                       ))}
+
                     </div>
                   </div>
                 )}
-
                 {/* Mega Menu for Solutions */}
                 {item.megaMenu && activeDropdown === item.label && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[100]">
