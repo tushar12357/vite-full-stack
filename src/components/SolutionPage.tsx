@@ -125,26 +125,26 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
       />
 
       {/* Customer Story Section */}
-      {customerStorySection && (
+      {/* {customerStorySection && (
         <section className="py-20 bg-black">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center"> */}
               {/* Left Column - Text Content */}
-              <div className="text-left">
+              {/* <div className="text-left"> */}
                 {/* Tag */}
-                <div className="mb-6">
+                {/* <div className="mb-6">
                   <span className="inline-block p-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white font-medium">
                     {customerStorySection.tag}
                   </span>
-                </div>
+                </div> */}
 
                 {/* Main Title */}
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-8 leading-tight">
+                {/* <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-8 leading-tight">
                   {customerStorySection.title}
-                </h2>
+                </h2> */}
 
                 {/* Testimonial Quote */}
-                {customerStorySection.testimonial && (
+                {/* {customerStorySection.testimonial && (
                   <div className="mb-8">
                     <blockquote className="text-base md:text-sm text-white/90 italic leading-relaxed mb-4">
                       "{customerStorySection.testimonial}"
@@ -157,25 +157,25 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                       </div>
                     )}
                   </div>
-                )}
+                )} */}
 
                 {/* Statistics */}
-                <div className="flex items-center gap-8 mb-8">
+                {/* <div className="flex items-center gap-8 mb-8"> */}
                   {/* Left Stat */}
-                  <div className="flex-1">
+                  {/* <div className="flex-1">
                     <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-2">
                       {customerStorySection.stats.left.value}
                     </div>
                     <div className="text-base text-white/80">
                       {customerStorySection.stats.left.label}
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Vertical Divider */}
-                  <div className="h-8 w-px bg-white/20"></div>
+                  {/* <div className="h-8 w-px bg-white/20"></div> */}
 
                   {/* Right Stat */}
-                  <div className="flex-1">
+                  {/* <div className="flex-1">
                     <div className="text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-2">
                       {customerStorySection.stats.right.value}
                     </div>
@@ -183,10 +183,10 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                       {customerStorySection.stats.right.label}
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                {/* <div className="flex flex-col sm:flex-row gap-4">
                   {customerStorySection.primaryButton.text === "Schedule Executive Briefing" ? (
                     <DemoModal buttonClassName="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-base rounded-full transition-all duration-300 whitespace-nowrap text-center">
                       {customerStorySection.primaryButton.text}
@@ -243,10 +243,10 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
                     </Button>
                   )}
                 </div>
-              </div>
+              </div> */}
 
               {/* Right Column - UI Screenshot */}
-              <div className="relative lg:sticky lg:top-20">
+              {/* <div className="relative lg:sticky lg:top-20">
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
                   <img
                     src={images.tirado}
@@ -258,7 +258,7 @@ const SolutionPage = ({ data, images, pageTitle, metaDescription }: SolutionPage
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       <FAQ />
       <FinalCTA />
