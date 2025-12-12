@@ -19,6 +19,8 @@ const PlugAndPlay = () => {
   const socketRef = useRef(null);
   const rafRef = useRef(null);
   const [connected, setConnected] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+
 
   useEffect(() => {
     let lastProgress = 0;
@@ -48,7 +50,7 @@ const PlugAndPlay = () => {
       const rect = section.getBoundingClientRect();
       const winH = window.innerHeight;
       const progress = computeProgress(rect, winH);
-
+      setShowTitle(progress >= PHASE_1_PLUG_STICK && progress < PHASE_3_CONNECT);
       // Detect scroll direction
       if (progress + 0.002 < lastProgress) forwardModeRef.current = false;
       else if (progress > lastProgress + 0.002) forwardModeRef.current = true;
@@ -298,10 +300,23 @@ const PlugAndPlay = () => {
       style={{ overflow: "visible" }}
     >
       <div className="relative w-full max-w-4xl mx-auto px-4 py-10 text-center pointer-events-none">
-        <p className={`text-lg lg:text-xl mb-12 ${connected ? "text-gray-800" : "text-gray-400"}`}>
-          {connected ? "⚡ Connected!" : ""}
-        </p>
-
+     {showTitle && (
+        <div
+          className="fixed left-1/2 transform -translate-x-1/2 transition-colors duration-300 pointer-events-none"
+          style={{
+            top: PLUG_STICK_TOP + 120,
+            zIndex: 80,
+          }}
+        >
+          <p
+            className={`text-3xl font-bold ${
+              connected ? "text-black" : "text-white"
+            }`}
+          >
+            {connected ? "⚡ Connected!" : "Plug and Play"}
+          </p>
+        </div>
+      )}
         <div className="relative h-[1000px] w-full">
           <img
             ref={plugRef}
