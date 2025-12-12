@@ -55,7 +55,7 @@ const featureGrid = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="relative p-6 py-10 bg-black border-2 border-purple-500/30 rounded-xl hover:border-purple-500/50 transition-all overflow-hidden group"
+                className="relative p-6 py-8 bg-black border-2 border-purple-500/30 rounded-xl hover:border-purple-500/50 transition-all overflow-hidden group"
               >
                 {/* Purple Glow Effect on Hover - Gradient Background from black to purple */}
                 <div

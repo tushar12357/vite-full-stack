@@ -27,22 +27,22 @@ export const discoverCloserXData: DiscoverCloserXData = {
   },
   features: [
     {
-      number: "01.",
+      number: "●",
       title: "Setup Your Agency",
       description: "Create your agency profile, customize your branding, and configure your workspace settings to get started.",
     },
     {
-      number: "02.",
+      number: "●",
       title: "Setup Your Phone Numbers",
       description: "Purchase or port phone numbers from multiple regions to ensure local presence and high answer rates.",
     },
     {
-      number: "03.",
+      number: "●",
       title: "Onboard Your First Client",
       description: "Add your first client, set up their sub-account, and assign dedicated resources to manage their campaigns.",
     },
     {
-      number: "04.",
+      number: "●",
       title: "Setup Your First Agent",
       description:
         "Configure your first AI agent to handle calls, upload contacts, or start a campaign.",
