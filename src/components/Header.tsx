@@ -380,7 +380,9 @@ const Header = () => {
                               onClick={() => setMobileMenuOpen(false)}
                               className="flex items-center gap-2 py-3 px-3 text-sm text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg active:bg-slate-100 touch-manipulation min-h-[44px]"
                             >
-                              <span className="text-base">{dropdownItem.icon}</span>
+                              <span className="w-5 h-5 flex-shrink-0">
+                              <img src={dropdownItem.icon} alt={dropdownItem.label} className="w-5 h-5 object-contain" />
+                            </span>
                               <span>{dropdownItem.label}</span>
                               {dropdownItem.badge && (
                                 <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 bg-primary/10 text-primary rounded">

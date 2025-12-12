@@ -152,8 +152,8 @@ const handleStartCall = async () => {
             </button>
 
             {open && (
-                <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                    <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                <div className="fixed inset-0 z-[999999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+                    <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl  overflow-hidden animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col">
 
                         {/* Top Gradient Header */}
                            <div className="w-full h-32 bg-gradient-to-b from-purple-600 to-purple-500 flex flex-col items-center justify-center">
@@ -231,7 +231,7 @@ const handleStartCall = async () => {
 
                                         {/* DROPDOWN */}
                                         {dropdownOpen && (
-                                            <div className="absolute z-50 mt-2 w-64 bg-white shadow-lg rounded-xl border p-2">
+                                            <div className="fixed z-[99999] mt-2 w-64 bg-white shadow-xl rounded-xl border p-2">
                                             <input
                                                 type="text"
                                                 placeholder="Search..."
