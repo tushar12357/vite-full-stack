@@ -39,6 +39,10 @@ const Header = () => {
 
   const navigation: NavItem[] = [
     {
+      label: "Home",
+      href: "/",
+    },
+    {
       label: "Product",
       dropdown: [
         // REQUESTED CHANGE: Updated order for Product dropdown
