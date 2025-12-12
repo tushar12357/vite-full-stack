@@ -31,10 +31,10 @@ const featureGrid = () => {
   return (
     <>
       {/* Features Grid */}
-      <div className="bg-black py-20 lg:py-32 bg-gradient-to-b from-gray-900 to-purple-950">
+      <div className="bg-black py-2 lg:py-32 bg-gradient-to-b from-gray-900 to-purple-950">
         <div className="max-w-7xl mx-auto px-4">
           {/* Intelligent Automation Tag */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-2">
             <span className="px-4 py-2 border border-[#1f1f1f] bg-[#121212] rounded-sm text-sm font-medium text-white">
               Intelligent Automation
             </span>

@@ -114,13 +114,13 @@ const StatsCounter = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-black pt-20 pb-16 lg:pt-32">
+   <section ref={sectionRef} className="relative bg-black py-24 lg:py-32">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="flex flex-col items-start justify-between gap-4 border border-[#1f1f1f] bg-gradient-to-b from-purple-500/10 to-transparent p-8 text-left shadow-lg shadow-purple-500/10"
+              className="flex flex-col items-start justify-start gap-2 border border-[#1f1f1f] bg-gradient-to-b from-purple-500/10 to-transparent p-8 text-left shadow-lg shadow-purple-500/10"
             >
               {/* Large Number */}
               <div className="text-5xl font-bold text-white lg:text-6xl">

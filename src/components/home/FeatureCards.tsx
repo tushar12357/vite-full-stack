@@ -53,7 +53,7 @@ const FeatureCards = () => {
   ];
 
   return (
-    <section className="relative bg-black w-full pt-32 bg-gradient-to-b from-purple-950 to-purple-750 font-poppins">
+    <section className="relative bg-black w-full pt-2 bg-gradient-to-b from-purple-950 to-purple-750 font-poppins">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center py-16 px-4 relative">

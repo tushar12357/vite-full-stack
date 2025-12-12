@@ -26,7 +26,7 @@ const AgencyMarque = () => {
       `}</style>
       <div className="bg-black py-6 mb-12 rounded-3xl">
         <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-white">
+          <p className="text-2xl font-semibold text-white">
             Be part of the 500+ Agencies transforming their digital presence.
           </p>
         </div>
