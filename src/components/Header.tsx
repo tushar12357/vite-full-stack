@@ -62,7 +62,7 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
         { label: "Workflow Automation", href: "/automation", icon: "https://api.iconify.design/lucide:zap.svg?color=%23ffffff" },
         { label: "Call Management", href: "/call-management", icon: "https://api.iconify.design/lucide:phone.svg?color=%23ffffff" },
         { label: "Integrations", href: "/integrations", icon: "https://api.iconify.design/lucide:plug.svg?color=%23ffffff", badge: "50+" },
-        { label: "API Documentation", href: "/api-docs", icon: "https://api.iconify.design/lucide:book-open.svg?color=%23ffffff" },
+      
       ],
     },
     {
@@ -116,7 +116,8 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
         { label: "YouTube", href: "https://www.youtube.com/@CloserXAI", icon: "https://api.iconify.design/lucide:youtube.svg?color=%23ffffff", badge: "New" }, // Assuming a link to YouTube
         { label: "ROI Calculator", href: "/roi-calculator", icon: "https://api.iconify.design/lucide:calculator.svg?color=%23ffffff" },
         { label: "Documentation", href: "/docs", icon: "https://api.iconify.design/lucide:book.svg?color=%23ffffff" },
-        { label: "Templates & Tools", href: "/templates", icon: "https://api.iconify.design/lucide:box.svg?color=%23ffffff" },
+        // { label: "Templates & Tools", href: "/templates", icon: "https://api.iconify.design/lucide:box.svg?color=%23ffffff" },
+        { label: "API Documentation", href: "/api-docs", icon: "https://api.iconify.design/lucide:book-open.svg?color=%23ffffff" },
       ],
     },
     {
@@ -164,10 +165,7 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
-                        ? "text-white"
-                        : "text-gray-500 hover:text-white"
-                        }`}
+                      className="px-3 py-2 text-sm font-semibold transition-colors relative group/link text-gray-500 hover:text-white"
                     >
                       {item.label}
                       {item.label === "Pricing" && (
@@ -180,10 +178,7 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
                   ) : (
                     <Link
                       to={item.href}
-                      className={`px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
-                        ? "text-white"
-                        : "text-gray-500 hover:text-white"
-                        }`}
+                      className="px-3 py-2 text-sm font-semibold transition-colors relative group/link text-gray-500 hover:text-white"
                     >
                       {item.label}
                       {item.label === "Pricing" && (
@@ -195,10 +190,7 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
                     </Link>
                   )
                 ) : (
-                  <button className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link ${item.label === "Product"
-                    ? "text-white"
-                    : "text-gray-500 hover:text-white"
-                    }`}>
+                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors relative group/link text-gray-500 hover:text-white">
                     {item.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                     <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-white scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
@@ -249,12 +241,13 @@ const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
                           {/* Second Level */}
                           {subItem.subDropdown && (
-                            <div className="absolute top-0 left-full ml-2 w-60 bg-black border border-slate-800 rounded-lg p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all translate-x-2 group-hover:translate-x-0">
+                            <div className="absolute top-0 left-full -ml-1 w-60 bg-black border border-slate-800 rounded-lg p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
                               {subItem.subDropdown.map((nested) => (
                                 <Link
                                   key={nested.label}
                                   to={nested.href}
                                   className="block px-4 py-2 text-sm text-white hover:bg-purple-600 rounded-lg"
+                                  onClick={() => setActiveDropdown(null)}
                                 >
                                   {nested.label}
                                 </Link>

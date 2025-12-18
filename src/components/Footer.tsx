@@ -33,10 +33,9 @@ const Footer = () => {
   const resourcesLinks = [
     { label: "Blog", to: "/blog" },
     { label: "Video Tutorials", to: "/videos" },
-    { label: "YouTube", to: "https://www.youtube.com/@CloserXAI" },
     { label: "ROI Calculator", to: "/roi-calculator" },
     { label: "Documentation", to: "https://docs.closerx.ai/api-reference/introduction" },
-    { label: "Templates & Tools", to: "/templates" },
+    // { label: "Templates & Tools", to: "/templates" },
   ];
 
   const productLinks = [

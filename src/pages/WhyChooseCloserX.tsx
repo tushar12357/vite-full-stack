@@ -126,7 +126,7 @@ const WhyChooseCloserX = () => {
             Why Leading Teams <br /> <span className="mt-3 inline-block">Choose CloserX</span>
           </h1>
           <p className="text-sm md:text-sm text-gray-300 max-w-sm mx-auto">
-            Automate, manage, and scale thousands of calls from one unified Voice AI Operating System.
+            Automate, Manage, and Scale Thousands of Calls from One Unified Voice AI Operating System.
           </p>
         </div>
 
@@ -153,7 +153,7 @@ const WhyChooseCloserX = () => {
             <div className="p-6">
               <h3 className="text-2xl font-normal text-white mb-2">Launch in 24 Hours</h3>
               <p className="text-gray-300 text-sm">
-                From signup to fully branded platform.<br /> No technical skills, no setup headaches, no delays.
+                From Signup to Fully Branded Platform.<br /> No Technical Skills, No Setup Headaches, No Delays.
               </p>
             </div>
           </div>
@@ -179,7 +179,7 @@ const WhyChooseCloserX = () => {
             <div className="p-6">
               <h3 className="text-2xl font-normal text-left text-white mb-2">Scale Without Limits</h3>
               <p className="text-gray-300 text-left text-sm">
-                Multi-tenant architecture supporting unlimited clients and 10,000+ concurrent calls. Built for enterprise scale.
+                Multi-tenant Architecture Supporting unlimited Clients and 10,000+ Concurrent Calls. Built for Enterprise Scale.
               </p>
             </div>
           </div>
@@ -210,7 +210,7 @@ const WhyChooseCloserX = () => {
           <Plug className="w-5 h-5 text-purple-400" />
           <h3 className="text-xl font-bold text-white">Integrations</h3>
         </div>
-        <p className="text-gray-300 text-sm">CRMs, calendars, and business tools. All connected.</p>
+        <p className="text-gray-300 text-sm">CRMs, Calendars, and Business Tools. All Connected.</p>
       </div>
 
       {/* Enterprise Security Box (second card) */}
@@ -232,7 +232,7 @@ const WhyChooseCloserX = () => {
           <Shield className="w-5 h-5 text-purple-400" />
           <h3 className="text-xl font-bold text-white">Enterprise Security</h3>
         </div>
-        <p className="text-gray-300 text-sm">Bank-level encryption with industry-leading compliance</p>
+        <p className="text-gray-300 text-sm">Bank-level Encryption with Industry-leading Compliance.</p>
       </div>
     </div>
 
@@ -255,7 +255,7 @@ const WhyChooseCloserX = () => {
         <Clock className="w-5 h-5 text-purple-400" />
         <h3 className="text-xl font-bold text-white">24/7</h3>
       </div>
-      <p className="text-gray-300 text-sm">Dedicated success manager, technical support, and exclusive partner community access.</p>
+      <p className="text-gray-300 text-sm">Dedicated Success Manager, Technical Support, and Exclusive Partner Community Access.</p>
     </div>
   </div>
 </div>

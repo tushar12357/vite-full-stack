@@ -111,7 +111,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 const TestimonialVideoCard = ({ url, name, agency }: { url: string; name: string; agency: string }) => (
   <div className="flex flex-col gap-4">
     <div className="rounded-3xl overflow-hidden shadow-xl bg-black/80 border border-white/10">
-      <div className="relative w-full" style={{ paddingTop: "177.78%" }}>
+      <div className="relative w-full" style={{ paddingTop: "133%" }}>
         <video
           src={url}
           controls
@@ -144,10 +144,10 @@ const Testimonials = () => {
             Testimonials
           </span>
          <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-semibold poppins text-[#111827] my-4 max-w-4xl mx-auto leading-[1.1]">
-            Don&apos;t take it from us,<br /> hear it from our users
+            Don&apos;t take it from us,<br /> Hear it from our Users
           </h2>
           <p className="text-[12px] md:text-[14px] text-gray-600 max-w-2xl mx-auto font-medium">
-            At CloserX, we believe in the power of<br /> connection and collaboration.
+            At CloserX, We Believe in the Power of<br /> Connection and Collaboration.
           </p>
           <div className="flex justify-center mt-6">
             <img src={trustPilot} alt="Trustpilot Reviews" className="h-8 md:h-10 w-auto" />
@@ -166,7 +166,7 @@ const Testimonials = () => {
         {/* Testimonial Videos */}
         <div className="mt-16">
           <h3 className="text-xl md:text-2xl font-semibold text-[#111827] text-center mb-8">
-            Watch their stories
+            Watch their Stories
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonialVideos.map((video) => (

@@ -8,23 +8,23 @@ export const productsData = [
   {
     icon: Clock,
     title: "Watch Your Calls in Real-Time",
-    description: "Beautiful analytics that update as your AI agents work",
+    description: "Beautiful Analytics that Update as your AI Agents Work",
     image: imageOne,
     features: [
       {
         icon: Clock,
         title: "Live Call Monitoring",
-        description: "Observe AI-led calls with real-time transcripts, sentiment, and call controls.",
+        description: "Observe AI-led calls with Real-time Transcripts, Sentiment, and Call Controls.",
       },
       {
         icon: Zap,
         title: "Instant Notifications",
-        description: "Trigger alerts for key call outcomes so teams can follow up instantly.",
+        description: "Trigger Alerts for Key Call Outcomes so Teams can Follow up Instantly.",
       },
       {
         icon: Shield,
         title: "Secure Data Handling",
-        description: "All recordings and transcripts are encrypted at rest and in transit.",
+        description: "All Recordings and Transcripts are Encrypted at Rest and in Transit.",
       },
     ],
     gradient: "from-blue-500 to-cyan-500",
@@ -32,23 +32,23 @@ export const productsData = [
   {
     icon: Zap,
     title: "Lightning Fast Performance",
-    description: "Experience blazing fast speeds with our optimized infrastructure",
+    description: "Experience Blazing Fast Speeds with our Optimized Infrastructure",
     image: imageTwo,
     features: [
       {
         icon: Zap,
         title: "99.9% Uptime",
-        description: "Redundant regions and active monitoring keep every dialer session online.",
+        description: "Redundant Regions and Active Monitoring keep Every Dialer Session Online.",
       },
       {
         icon: Target,
         title: "Global CDN",
-        description: "Edge acceleration means low-latency call starts no matter your caller location.",
+        description: "Edge Acceleration means Low-latency Call Starts no matter your Caller Location.",
       },
       {
         icon: Shield,
         title: "Auto-scaling",
-        description: "Automatically provisions capacity when campaigns spike without any manual work.",
+        description: "Automatically Provisions Capacity when Campaigns Spike without any Manual Work.",
       },
     ],
     gradient: "from-purple-500 to-pink-500",
@@ -56,23 +56,23 @@ export const productsData = [
   {
     icon: Shield,
     title: "Enterprise-Grade Security",
-    description: "Your data is protected with industry-leading security measures",
+    description: "Your Data is Protected with Industry-leading Security Measures",
     image: imageThree,
     features: [
       {
         icon: Shield,
         title: "End-to-End Encryption",
-        description: "TLS 1.3, rotated keys, and scoped secrets protect your full voice stack.",
+        description: "TLS 1.3, Rotated keys, and Scoped Secrets Protect your Full Voice Stack.",
       },
       {
         icon: Clock,
         title: "24/7 Monitoring",
-        description: "Dedicated SRE coverage with proactive alerting across every service.",
+        description: "Dedicated SRE Coverage with Proactive Alerting across every Service.",
       },
       {
         icon: Target,
         title: "Compliance Ready",
-        description: "SOC2, HIPAA, and GDPR controls help reduce your vendor review cycles.",
+        description: "SOC2, HIPAA, and GDPR controls help Reduce your Vendor Review Cycles.",
       },
     ],
     gradient: "from-green-500 to-emerald-500",
@@ -80,23 +80,23 @@ export const productsData = [
   {
     icon: Target,
     title: "Smart AI Integration",
-    description: "Powerful AI tools that enhance your workflow automatically",
+    description: "Powerful AI Tools that Enhance your Workflow Automatically",
     image: imageFour,
     features: [
       {
         icon: Target,
         title: "Smart Routing",
-        description: "Automatically routes leads to the right script, language, and compliance profile.",
+        description: "Automatically Routes leads to the right script, Language, and Compliance Profile.",
       },
       {
         icon: Zap,
         title: "Predictive Analytics",
-        description: "Models forecast conversion probability and advise the next best action.",
+        description: "Models Forecast Conversion Probability and advise the next Best Action.",
       },
       {
         icon: Clock,
         title: "Auto-optimization",
-        description: "Continuously tunes prompts and cadences based on live win/loss signals.",
+        description: "Continuously tunes Prompts and Cadences based on live win/loss Signals.",
       },
     ],
     gradient: "from-orange-500 to-red-500",

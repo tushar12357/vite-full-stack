@@ -285,7 +285,7 @@ export default function CaseStudies() {
                 Ready to Launch Your AI Calling Platform?
               </h3>
               <p className="text-white/70 max-w-2xl">
-                Join 500+ agencies building their white-label business.
+                Join 500+ Agencies Building their White-label Business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button

@@ -17,14 +17,14 @@ const Platform = () => {
           <div className="text-center my-20">
             {/* Main Title - H1: Larger size */}
             <h1 className="text-9xl font-bold text-white mb-6 leading-tight">
-              The CloserX.ai
+            White-label AI
               <br />
-              Agent Platform
+              Calling Platform
             </h1>
 
             {/* Subtitle - Body: 16px */}
             <p className="text-base text-white mb-12 max-w-4xl mx-auto leading-relaxed">
-              A complete AI calling solution with white-label capabilities,<br />  advanced analytics, and seamless integrations.
+            Empower your Agency with AI Appointment Booking,<br />  24/7 Voice Agents, and unlimited Scalability.
             </p>
 
             {/* Call-to-Action Buttons */}

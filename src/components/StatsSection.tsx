@@ -5,7 +5,7 @@ interface StatsSectionProps {
   description?: string;
 }
 
-const StatsSection = ({ stats, description = "Proven voice AI performance across real, high-volume phone operations." }: StatsSectionProps) => {
+const StatsSection = ({ stats, description = "Proven Voice AI Performance across Real, High-Volume Phone Operations." }: StatsSectionProps) => {
   return (
     <section className="py-20 bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

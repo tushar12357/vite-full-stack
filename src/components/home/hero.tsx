@@ -37,18 +37,18 @@ const hero = () => {
             <div className="text-center w-full">
               <div className="flex flex-col items-center justify-center min-h-[60vh]">
                 <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white mb-8 tracking-wide max-w-6xl mx-auto">
-                  Launch Your Own
+                White Label AI Calling
                   <br />
-                  <span className="text-white">AI Calling Platform</span>
+                  <span className="text-white">Platform for Agencies</span>
                 </h1>
 
                 <p className="text-base lg:text-lg text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
-                  White-label AI voice agents that handle{" "}
-                  <span className="font-bold text-transparent bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] bg-clip-text">
-                    10,000+ calls/day
+                Launch your AI Calling Agency in Minutes with{" "}
+                  <span className="font-bold text-transparent bg-gradient-to-r from-[#3c7dd6] to-[#c084fc] bg-clip-text">
+                  24/7 Automated
                   </span>
                   <br />
-                  Fully branded. Fully yours. Launch in 24 hours.
+                  Appointment Booking and Conversational AI Voice Agents.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">

@@ -153,12 +153,14 @@ const About = () => {
 
             {/* Main Heading */}
             <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white mb-3 leading-tight">
-              The Voice of Technology. <br /> Bringing the World's Knowledge, <br /> Stories and Agents to Life.
+            Empowering Agencies to Scale. <br /> with AI Voice Technology.
             </h1>
 
             {/* Tagline */}
             <p className="text-xs md:text-sm text-white/70 max-w-xl mx-auto">
-              We help you create your own agents, stories and knowledge bases.
+            We believe every business deserves 24/7 sales and support, without the overhead.
+            <br />
+            Trusted by 500+ marketing agencies, real estate teams, and sales organizations worldwide.
             </p>
           </div>
         </section>
@@ -368,18 +370,24 @@ const About = () => {
               {/* Right Column - Pricing Cards */}
               <div className="grid md:grid-cols-3 gap-6">
                 {/* Starter Plan */}
-                <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
-                  <h3 className="text-[18px] font-medium text-white mb-2">Starter</h3>
-                  <p className="text-sm text-gray-400 mb-16">For startups and publishers</p>
-                  <p className="text-xs text-gray-500 mb-2">UP TO 3 Sub-Accounts</p>
-                  <div className="mb-6 flex items-baseline gap-1">
+                <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col relative overflow-hidden">
+                  <div 
+                    className="absolute inset-0 pointer-events-none opacity-20"
+                    style={{
+                      background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
+                    }}
+                  />
+                  <h3 className="text-[18px] font-medium text-white mb-2 relative z-10">Starter</h3>
+                  <p className="text-sm text-gray-400 mb-16 relative z-10">For startups and publishers</p>
+                  <p className="text-xs text-gray-500 mb-2 relative z-10">UP TO 3 Sub-Accounts</p>
+                  <div className="mb-6 flex items-baseline gap-1 relative z-10">
                     <span className="text-5xl font-bold text-white">$29</span>
                     <span className="text-base text-gray-400">Per Month</span>
                   </div>
-                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=starter" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
+                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=starter" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block relative z-10">
                     Get Started
                   </a>
-                  <ul className="space-y-3 flex-grow mt-8">
+                  <ul className="space-y-3 flex-grow mt-8 relative z-10">
                     <li className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-gray-300">Basic dashboard</span>
@@ -404,21 +412,27 @@ const About = () => {
                 </div>
 
                 {/* Professional Plan - Highlighted */}
-                <div className="bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 rounded-2xl p-8 flex flex-col relative">
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 px-4 py-2 rounded-full">
+                <div className="bg-[#0D0D0D] rounded-2xl p-8 flex flex-col relative overflow-hidden">
+                  <div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(270deg, #4C1D95 -15%, #5B21B6 50.02%, #4C1D95 115.04%)",
+                    }}
+                  />
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 px-4 py-2 rounded-full z-20">
                     <span className="text-xs font-semibold text-white tracking-wide">MOST POPULAR</span>
                   </div>
-                  <h3 className="text-[18px] font-medium text-white mb-2">Professional</h3>
-                  <p className="text-sm text-white/90 mb-12">For rapidly scaling startups and publishers</p>
-                  <p className="text-xs text-white/80 mb-2">UP TO 10 Sub-Accounts</p>
-                  <div className="mb-6 flex items-baseline gap-1">
+                  <h3 className="text-[18px] font-medium text-white mb-2 relative z-10">Professional</h3>
+                  <p className="text-sm text-white/90 mb-12 relative z-10">For rapidly scaling startups and publishers</p>
+                  <p className="text-xs text-white/80 mb-2 relative z-10">UP TO 10 Sub-Accounts</p>
+                  <div className="mb-6 flex items-baseline gap-1 relative z-10">
                     <span className="text-5xl font-bold text-white">$97</span>
                     <span className="text-base text-white/90">Per Month</span>
                   </div>
-                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=professional" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all text-center block">
+                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=professional" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all text-center block relative z-10">
                     Get Started
                   </a>
-                  <ul className="space-y-3 flex-grow mt-8">
+                  <ul className="space-y-3 flex-grow mt-8 relative z-10">
                     <li className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-white">Advanced dashboard</span>
@@ -451,18 +465,24 @@ const About = () => {
                 </div>
 
                 {/* Growing Plan */}
-                <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col">
-                  <h3 className="text-[18px] font-medium text-white mb-2">Growing</h3>
-                  <p className="text-sm text-gray-400 mb-6">For enterprises that need volume based discounts and custom terms</p>
-                  <p className="text-xs text-gray-500 mb-2">Unlimited Sub-Accounts</p>
-                  <div className="mb-6 flex items-baseline gap-1">
+                <div className="bg-[#0D0D0D] border border-gray-800 rounded-2xl p-8 flex flex-col relative overflow-hidden">
+                  <div 
+                    className="absolute inset-0 pointer-events-none opacity-20"
+                    style={{
+                      background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
+                    }}
+                  />
+                  <h3 className="text-[18px] font-medium text-white mb-2 relative z-10">Growing</h3>
+                  <p className="text-sm text-gray-400 mb-6 relative z-10">For enterprises that need volume based discounts and custom terms</p>
+                  <p className="text-xs text-gray-500 mb-2 relative z-10">Unlimited Sub-Accounts</p>
+                  <div className="mb-6 flex items-baseline gap-1 relative z-10">
                     <span className="text-5xl font-bold text-white">$297</span>
                     <span className="text-base text-gray-400">Per Month</span>
                   </div>
-                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=growing" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block">
+                  <a href="https://offer.closerx.ai?utm_source=website&utm_medium=button&utm_campaign=about_page&utm_content=growing" target="_blank" rel="noopener noreferrer" className="w-full bg-transparent border border-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-all text-center block relative z-10">
                     Get Started
                   </a>
-                  <ul className="space-y-3 flex-grow mt-8">
+                  <ul className="space-y-3 flex-grow mt-8 relative z-10">
                     <li className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-gray-300">Full-featured dashboard</span>

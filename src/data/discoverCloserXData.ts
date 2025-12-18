@@ -19,7 +19,7 @@ export interface DiscoverCloserXData {
 export const discoverCloserXData: DiscoverCloserXData = {
   tag: "Intelligent Automation",
   mainTitle: "Powerful Features That Work 24/7 on Autopilot",
-  subtitle: "Advanced automation that handles complex tasks intelligently, so you can focus on what matters most.",
+  subtitle: "Advanced Automation that Handles Complex tasks Intelligently, so you can Focus on What matters most.",
   leftColumn: {
     title: "Discover",
     titleHighlight: "CLOSERX",

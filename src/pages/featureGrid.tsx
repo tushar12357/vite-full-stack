@@ -5,26 +5,26 @@ const featureGrid = () => {
   const features = [
     {
       icon: <Waves className="w-6 h-6" />,
-      title: "AI Voice Agents",
-      description: "Human-like conversations in 50+ languages with advanced natural language processing",
+      title: "AI Voice Agent Software",
+      description: "Advanced Conversational AI Calling with Natural Voice Transcription and AI Call Recording Software Built-in.",
       video: "https://storage.googleapis.com/msgsndr/KUu5UkTcHdHgg0RsAb37/media/692856cb8f8797520b97318d.mp4"
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      title: "Full White-Label",
-      description: "Complete customization of colors, logos, domains - make it truly yours",
+      title: "White Label AI Agent Platform",
+      description: "Resellable AI Calling Platform with your Branding. Perfect for SMMA AI Tools and Marketing Agency AI Calling Solutions.",
       video: "https://storage.googleapis.com/msgsndr/KUu5UkTcHdHgg0RsAb37/media/692856cb571896b6aa5fcc3a.mp4"
     },
     {
       icon: <Activity className="w-6 h-6" />,
-      title: "Launch in 24 Hours",
-      description: "Pre-built platform ready to deploy with zero technical hassle",
+      title: "Automated AI Appointment Setter",
+      description: "24/7 AI Appointment Booking with Calendar Integration. AI Voice Agent for Appointment Booking that never Sleeps.",
       video: "https://storage.googleapis.com/msgsndr/KUu5UkTcHdHgg0RsAb37/media/692856cb3080d30a2d80305c.mp4"
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Enterprise Security",
-      description: "SOC 2 Type II, GDPR, and HIPAA compliant with bank-level encryption",
+      description: "SOC 2 Type II, GDPR, and HIPAA Compliant with Bank-level Encryption",
       video: "https://storage.googleapis.com/msgsndr/KUu5UkTcHdHgg0RsAb37/media/692856cbfa305597a0740dc7.mp4"
     },
   ];
@@ -42,12 +42,12 @@ const featureGrid = () => {
 
           {/* Main Title */}
           <h2 className="text-4xl lg:text-5xl font-black text-white text-center mb-6">
-            Everything You Need to Scale
+           Complete AI Calling Software for Agencies
           </h2>
 
           {/* Subtitle */}
           <p className="text-lg lg:text-xl text-gray-400 text-center mb-16 max-w-3xl mx-auto">
-            A complete platform with all the tools your business needs to succeed
+            Everything you need to Replace Human Callers with AI and Scale Calling Operations.
           </p>
 
           {/* Feature Cards */}
