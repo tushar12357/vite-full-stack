@@ -36,28 +36,28 @@ const StatsCounter = () => {
       suffix: "M+",
       label: "Calls Processed",
       isDecimal: false,
-      description: "Proven voice AI performance across real, high-volume phone operations."
+      description: "Proven Voice AI Performance across Real, High-Volume Phone Operations."
     },
     {
       value: 500,
       suffix: "+",
       label: "Partner Agencies",
       isDecimal: false,
-      description: "Trusted by leading agencies to power their voice automation."
+      description: "Trusted by Leading Agencies to Power their Voice Automation."
     },
     {
       value: 4.9,
       suffix: "/5",
       label: "Average Rating",
       isDecimal: true,
-      description: "Consistently rated highly for voice quality and reliability."
+      description: "Consistently Rated Highly for Voice Quality and Reliability."
     },
     {
       value: 99.9,
       suffix: "%",
       label: "System Uptime",
       isDecimal: true,
-      description: "Enterprise-grade infrastructure ensuring your agents are always available."
+      description: "Enterprise-grade Infrastructure Ensuring your Agents are always Available."
     },
   ];
 

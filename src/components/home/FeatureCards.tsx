@@ -9,7 +9,7 @@ const FeatureCards = () => {
     {
       icon: Clock,
       title: "Watch Your Calls in Real-Time",
-      description: "Beautiful analytics that update as your AI agents work",
+      description: "Beautiful Analytics that Update as your AI Agents Work",
       features: [
         { icon: Clock, title: "Live Call Monitoring" },
         { icon: Zap, title: "Instant Notifications" },
@@ -20,7 +20,7 @@ const FeatureCards = () => {
     {
       icon: Zap,
       title: "Lightning Fast Performance",
-      description: "Experience blazing fast speeds with our optimized infrastructure",
+      description: "Experience Blazing Fast Speeds with our Optimized Infrastructure",
       features: [
         { icon: Zap, title: "99.9% Uptime" },
         { icon: Target, title: "Global CDN" },
@@ -31,7 +31,7 @@ const FeatureCards = () => {
     {
       icon: Shield,
       title: "Enterprise-Grade Security",
-      description: "Your data is protected with industry-leading security measures",
+      description: "Your Data is Protected with Industry-leading Security Measures",
       features: [
         { icon: Shield, title: "End-to-End Encryption" },
         { icon: Clock, title: "24/7 Monitoring" },
@@ -42,7 +42,7 @@ const FeatureCards = () => {
     {
       icon: Target,
       title: "Smart AI Integration",
-      description: "Powerful AI tools that enhance your workflow automatically",
+      description: "Powerful AI Tools that Enhance your Workflow Automatically",
       features: [
         { icon: Target, title: "Smart Routing" },
         { icon: Zap, title: "Predictive Analytics" },
@@ -74,7 +74,7 @@ const FeatureCards = () => {
 
           {/* Subtitle */}
           <p className="text-base text-gray-400 max-w-3xl mx-auto leading-relaxed font-poppins">
-            Powerful features designed to make teamwork seamless
+            Powerful Features Designed to make Teamwork Seamless.
           </p>
         </div>
 

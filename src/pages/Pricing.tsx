@@ -87,10 +87,10 @@ const Pricing = () => {
           <div className="text-center space-y-4 mb-16">
             <p className="text-xs uppercase tracking-[0.6em] text-white/60">Pricing</p>
             <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
-              No Platform fees.<br />pay only for what you use
+            Simple pricing <br /> Real conversations
             </h1>
             <p className="text-base md:text-lg text-white/70">
-              Treat Retell like your outsourced call centre.
+            One subscription, unlimited potential.
             </p>
           </div>
 
@@ -101,15 +101,10 @@ const Pricing = () => {
               return (
                 <div
                   key={plan.name}
-                  className={`relative rounded-[32px] border border-white/10 ${isPopular ? "" : "bg-[#080808]"
-                    }`}
-                  style={
-                    isPopular
-                      ? {
-                        backgroundColor: "#080808",
-                      }
-                      : undefined
-                  }
+                  className={`relative rounded-[32px] border border-white/10`}
+                  style={{
+                    backgroundColor: "#080808",
+                  }}
                 >
                   {isPopular && (
                     <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-[80%] z-30">
@@ -141,7 +136,7 @@ const Pricing = () => {
                           <div
                             className="absolute inset-0 pointer-events-none"
                             style={{
-                              background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
+                              background: "linear-gradient(270deg, #4C1D95 -15%, #5B21B6 50.02%, #4C1D95 115.04%)",
                             }}
                           />
                           <div
@@ -156,6 +151,17 @@ const Pricing = () => {
                     )}
 
                     {!isPopular && (
+                      <div className="absolute inset-0 rounded-[30px] overflow-hidden">
+                        <div
+                          className="absolute inset-0 pointer-events-none opacity-20"
+                          style={{
+                            background: "linear-gradient(270deg, #C4B5FD -15%, #974BF3 50.02%, #C4B5FD 115.04%)",
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {!isPopular && (
                       <div className="text-sm font-semibold text-white">{plan.name}</div>
                     )}
 
@@ -165,8 +171,8 @@ const Pricing = () => {
                       ) : (
                         <h3 className="text-[22px] font-semibold">{plan.name}</h3>
                       )}
-                      <p className="text-sm text-white/70">{plan.tagline}</p>
-                      <p className="text-xs text-white/60 uppercase tracking-[0.4em]">{plan.subAccounts}</p>
+                      <p className="text-sm text-slate-300">{plan.tagline}</p>
+                      <p className="text-xs text-white/80 uppercase tracking-[0.1em]">{plan.subAccounts}</p>
                     </div>
 
                     <div className="relative z-10 space-y-1">

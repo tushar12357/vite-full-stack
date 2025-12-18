@@ -8,7 +8,7 @@ import visualWorkflow from "@/assets/images/automation/visual.png";
 export const workflowHero = {
   titleLines: ["Workflow", "Automation"],
   description:
-    "Build intelligent automation workflows that connect your AI agents with your entire tech stack for seamless operations.",
+    "Build intelligent automation wx  orkflows that connect your AI agents with your entire tech stack for seamless operations.",
   primaryCta: {
     label: "Talk To Sales",
     href: "/contact",

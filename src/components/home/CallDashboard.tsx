@@ -143,7 +143,7 @@ const CallDashboard = () => {
             Watch Your Calls in Real-Time
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Beautiful analytics that update as your AI agents work
+            Beautiful Analytics that Update as your AI Agents Work
           </p>
         </div>
 

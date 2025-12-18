@@ -6,9 +6,9 @@ import ownCloserx from "@/assets/images/whiteLable/own closerx.png";
 import agencySetup from "@/assets/images/whiteLable/agency setup.png";
 
 export const whiteLabelHero = {
-  titleLines: ["The CloserX.ai", "Agent Platform"],
+  titleLines: ["White-Label AI Calling","That Scales Your Agency"],
   description:
-    "A complete AI calling solution with white-label capabilities, advanced analytics, and seamless integrations.",
+    "Launch your own AI Calling Agency with a Fully White-labeled Platform. Customize everything from Branding to Pricing while we handle the Infrastructure, so you can focus on Scaling your business and Delighting your Clients.",
   primaryCta: {
     label: "Talk To Sales",
     href: "/contact",
@@ -48,23 +48,23 @@ export const whiteLabelProductCards: ProductCard[] = [
   {
     icon: Palette,
     title: "White-Labeled Control Center",
-    description: "Launch CloserX with your brand system—from logo lockups to typography and color tokens.",
+    description: "Launch CloserX with your brand System—from logo lockups to Typography and Color Tokens.",
     image: agencySetup,
     features: [
       {
         icon: Palette,
         title: "Full Branding Control",
-        description: "Upload brand kits, fonts, and palettes to auto-theme every customer touchpoint.",
+        description: "Upload Brand Kits, Fonts, and Palettes to auto-theme every Customer Touchpoint.",
       },
       {
         icon: Sparkles,
         title: "Customizable UX Blocks",
-        description: "Rearrange dashboard widgets and rename navigation to mirror your product vocabulary.",
+        description: "Rearrange Dashboard Widgets and Rename Navigation to mirror your Product Vocabulary.",
       },
       {
         icon: Crown,
         title: "Client-Specific Themes",
-        description: "Spin up unique sub-brands for each reseller client without touching code.",
+        description: "Spin up unique sub-brands for each Reseller Client without Touching code.",
       },
     ],
     gradient: "from-purple-500 to-pink-500",
@@ -72,23 +72,23 @@ export const whiteLabelProductCards: ProductCard[] = [
   {
     icon: Globe,
     title: "Own The Domain Experience",
-    description: "Keep your customers inside your ecosystem with branded URLs, auth, and localization.",
+    description: "Keep your Customers inside your Ecosystem with Branded URLs, Auth, and Localization.",
     image: ownCloserx,
     features: [
       {
         icon: Globe,
         title: "Custom Domains",
-        description: "Point CNAME records to your portal with automated SSL provisioning.",
+        description: "Point CNAME records to your Portal with Automated SSL Provisioning.",
       },
       {
         icon: Globe,
         title: "Global Localization",
-        description: "Serve localized dashboards and IVR flows per market with a single codebase.",
+        description: "Serve Localized Dashboards and IVR Flows per Market with a Single Codebase.",
       },
       {
         icon: Crown,
         title: "Single Sign-On",
-        description: "Offer SAML/SCIM SSO so enterprise clients log in through your identity provider.",
+        description: "Offer SAML/SCIM SSO so Enterprise Clients log in through your Identity Provider.",
       },
     ],
     gradient: "from-blue-500 to-cyan-500",
@@ -96,23 +96,23 @@ export const whiteLabelProductCards: ProductCard[] = [
   {
     icon: Crown,
     title: "Client-Facing Portal",
-    description: "Give agencies and partners a dashboard that feels bespoke—without rebuilding features.",
+    description: "Give Agencies and Partners a Dashboard that feels bespoke—without Rebuilding features.",
     image: clientPortal,
     features: [
       {
         icon: Crown,
         title: "Role-Based Branding",
-        description: "Set different colorways and permissions for admins, resellers, and end customers.",
+        description: "Set different Colorways and Permissions for Admins, Resellers, and end Customers.",
       },
       {
         icon: Sparkles,
         title: "Template Library",
-        description: "Package proven playbooks so clients can launch AI agents with one click.",
+        description: "Package Proven Playbooks so Clients can Launch AI agents with one Click.",
       },
       {
         icon: Globe,
         title: "Embedded Analytics",
-        description: "Share live call intelligence widgets anywhere you embed the white-label portal.",
+        description: "Share live Call Intelligence Widgets anywhere you embed the white-label Portal.",
       },
     ],
     gradient: "from-green-500 to-emerald-500",
@@ -120,23 +120,23 @@ export const whiteLabelProductCards: ProductCard[] = [
   {
     icon: Sparkles,
     title: "Monetize Premium Add-ons",
-    description: "Bundle advanced AI capabilities under your brand to create new revenue streams.",
+    description: "Bundle Advanced AI Capabilities under your brand to create new Revenue Streams.",
     image: landingPages,
     features: [
       {
         icon: Sparkles,
         title: "Usage-Based Billing",
-        description: "Bill clients for minutes, seats, or outcomes and let CloserX handle metering.",
+        description: "Bill Clients for minutes, Seats, or outcomes and let CloserX handle Metering.",
       },
       {
         icon: Crown,
         title: "AI Upsell Modules",
-        description: "Offer advanced sentiment, compliance, and routing packs as branded add-ons.",
+        description: "Offer Advanced Sentiment, Compliance, and Routing packs as branded Add-ons.",
       },
       {
         icon: Palette,
         title: "Automated Provisioning",
-        description: "Provision premium features instantly when a customer upgrades inside your portal.",
+        description: "Provision Premium features instantly when a Customer upgrades inside your portal.",
       },
     ],
     gradient: "from-orange-500 to-red-500",

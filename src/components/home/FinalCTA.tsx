@@ -31,7 +31,7 @@ const FinalCTA = () => {
 
               {/* Subheading */}
               <p className="text-base text-[#A1A1AA] mb-6 md:mb-6 max-w-2xl mx-auto">
-                Join 500+ agencies building their white-label business
+                Join 500+ Agencies Building their White-label Business
               </p>
 
               {/* CTA Buttons */}

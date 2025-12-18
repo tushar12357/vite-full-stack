@@ -314,7 +314,7 @@ const PlugAndPlay = () => {
             }`}
           >
             {connected ? "⚡ Connected!" : "Plug and Play"}
-          </p>
+          </p>x
         </div>
       )}
         <div className="relative h-[1000px] w-full">
